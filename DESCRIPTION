@@ -1,11 +1,41 @@
 Package: pkmapr
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Title: Access and Analyse Pakistan Administrative Boundary Data
+Version: 0.1.0
+Authors@R:
+    person("Abdullah Umer", email = "abdullahumer1101@gmail.com",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0008-4082-8394"))
+Description: Provides a tidy interface to Pakistan's official administrative
+    boundary data from the United Nations Office for the Coordination of
+    Humanitarian Affairs (OCHA). Downloads and caches spatial data at
+    country, province, district, and tehsil levels as sf objects
+    compatible with the tidyverse and geospatial ecosystem. Includes
+    utilities for geographic dictionary lookup, coordinate reference
+    system selection, spatial measurement, and neighbour structure
+    construction for use with spdep, ggplot2, leaflet, and related packages.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
+Imports:
+    sf,
+    httr2,
+    dplyr,
+    rlang,
+    cli,
+    spdep,
+    readr
+Suggests:
+    ggplot2,
+    leaflet,
+    rmapshaper,
+    httptest2,
+    testthat (>= 3.0.0),
+    tmap,
+    knitr,
+    rmarkdown,
+    spelling
+VignetteBuilder: knitr
+URL: https://abdullahumer1101.github.io/pkmapr,
+    https://github.com/abdullahumer1101/pkmapr
+BugReports: https://github.com/abdullahumer1101/pkmapr/issues
