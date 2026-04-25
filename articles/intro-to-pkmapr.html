@@ -35,7 +35,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/epidemiology-pkmapr.html">epidemiology-pkmapr</a></li>
     <li><a class="dropdown-item" href="../articles/intro-to-pkmapr.html">intro-to-pkmapr</a></li>
-    <li><a class="dropdown-item" href="../articles/spatial-analysis-pkmapr.html">spatial-analysis-pkmapr</a></li>
+    <li><a class="dropdown-item" href="../articles/spatial-analysis-pkmapr.html">Spatial Analysis with pkmapr</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -69,7 +69,78 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://abdullahumer1101.github.io/pkmapr">pkmapr</a></span><span class="op">)</span></span></code></pre></div>
-  </main>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>Install pkmapr from GitHub:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"abdullahumer1101/pkmapr"</span><span class="op">)</span></span></code></pre></div>
+<p>Once R-Universe is ready:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("pkmapr", repos = "https://abdullahumer1101.r-universe.dev")</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="your-first-map">Your first map<a class="anchor" aria-label="anchor" href="#your-first-map"></a>
+</h2>
+<p>Get province boundaries and create a quick map:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">provinces</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_provinces.html">get_provinces</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/pak_map.html">pak_map</a></span><span class="op">(</span><span class="va">provinces</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="look-up-names-before-joining">Look up names before joining<a class="anchor" aria-label="anchor" href="#look-up-names-before-joining"></a>
+</h2>
+<p>Always check official names before filtering or joining:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># All provinces with their codes</span></span>
+<span><span class="fu"><a href="../reference/pak_dictionary.html">pak_dictionary</a></span><span class="op">(</span><span class="st">"provinces"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Districts in Punjab</span></span>
+<span><span class="fu"><a href="../reference/pak_dictionary.html">pak_dictionary</a></span><span class="op">(</span><span class="st">"districts"</span>, province <span class="op">=</span> <span class="st">"Punjab"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Tehsils in Lahore district</span></span>
+<span><span class="fu"><a href="../reference/pak_dictionary.html">pak_dictionary</a></span><span class="op">(</span><span class="st">"tehsils"</span>, district <span class="op">=</span> <span class="st">"Lahore"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="join-your-own-data">Join your own data<a class="anchor" aria-label="anchor" href="#join-your-own-data"></a>
+</h2>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Example: district-level data</span></span>
+<span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  district_code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PK603"</span>, <span class="st">"PK604"</span><span class="op">)</span>,</span>
+<span>  value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">42</span>, <span class="fl">37</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/pak_join.html">pak_join</a></span><span class="op">(</span><span class="va">my_data</span>, by <span class="op">=</span> <span class="st">"district_code"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Map the result</span></span>
+<span><span class="fu"><a href="../reference/pak_map.html">pak_map</a></span><span class="op">(</span><span class="va">districts</span>, fill <span class="op">=</span> <span class="st">"value"</span>, title <span class="op">=</span> <span class="st">"My Values"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="interactive-maps">Interactive maps<a class="anchor" aria-label="anchor" href="#interactive-maps"></a>
+</h2>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pak_map_interactive.html">pak_map_interactive</a></span><span class="op">(</span><span class="va">districts</span>, </span>
+<span>                    fill <span class="op">=</span> <span class="st">"value"</span>,</span>
+<span>                    popup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"district_name"</span>, <span class="st">"value"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
+</h2>
+<ul>
+<li>
+<code><a href="../articles/spatial-analysis-pkmapr.html">vignette("spatial-analysis-pkmapr")</a></code> for buffers,
+centroids, and point-in-polygon</li>
+<li>
+<code><a href="../articles/epidemiology-pkmapr.html">vignette("epidemiology-pkmapr")</a></code> for spatial
+autocorrelation and hotspots</li>
+</ul>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
