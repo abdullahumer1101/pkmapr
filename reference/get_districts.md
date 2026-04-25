@@ -43,7 +43,7 @@ area_km2, geometry.
 # \donttest{
   all_districts    <- get_districts()
 #> ℹ Downloading pak_districts_simplified.gpkg
-#> ✔ Downloading pak_districts_simplified.gpkg [128ms]
+#> ✔ Downloading pak_districts_simplified.gpkg [310ms]
 #> 
   punjab_districts <- get_districts(province = "Punjab")
 # }
