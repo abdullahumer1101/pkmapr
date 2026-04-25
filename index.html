@@ -54,21 +54,112 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="pkmapr">pkmapr<a class="anchor" aria-label="anchor" href="#pkmapr"></a>
+  <main id="main" class="col-md-9"><p><code>{r, include = FALSE} knitr::opts_chunk$set(   collapse = TRUE,   comment = "#&gt;",   fig.path = "man/figures/README-",   out.width = "100%" )</code></p>
+<div class="section level1">
+<div class="page-header"><h1 id="pkmapr-pakistan-administrative-boundaries-toolkit">pkmapr: Pakistan Administrative Boundaries Toolkit<a class="anchor" aria-label="anchor" href="#pkmapr-pakistan-administrative-boundaries-toolkit"></a>
 </h1></div>
 <!-- badges: start -->
 
-<p>The goal of pkmapr is to …</p>
+<p><strong>pkmapr</strong> (pronounced <em>Pak Mapper</em>) provides a clean, tidy interface to Pakistan’s official administrative boundary data from <a href="https://data.humdata.org/dataset/cod-ab-pak" class="external-link">OCHA/HDX</a>. It downloads and caches geometries at country, province, district, and tehsil level as <code>sf</code> objects compatible with the tidyverse and geospatial ecosystem, and includes utilities for geographic dictionary lookup, spatial measurement, and neighbour structure construction for use with <code>spdep</code>, <code>ggplot2</code>, <code>leaflet</code>, and related packages.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of pkmapr from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"abdullahumer1101/pkmapr"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># GitHub</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"abdullahumer1101/pkmapr"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># R-Universe</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pkmapr"</span>, repos <span class="op">=</span> <span class="st">"https://abdullahumer1101.r-universe.dev"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
+</h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://abdullahumer1101.github.io/pkmapr">pkmapr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Get province boundaries and map them</span></span>
+<span><span class="fu"><a href="reference/get_provinces.html">get_provinces</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/pak_map.html">pak_map</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Pakistan provinces"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Look up official names before joining</span></span>
+<span><span class="fu"><a href="reference/pak_dictionary.html">pak_dictionary</a></span><span class="op">(</span><span class="st">"districts"</span>, province <span class="op">=</span> <span class="st">"Punjab"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Join your data and map</span></span>
+<span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>district_code <span class="op">=</span> <span class="st">"PK603"</span>, value <span class="op">=</span> <span class="fl">42</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="reference/pak_join.html">pak_join</a></span><span class="op">(</span><span class="va">my_data</span>, by <span class="op">=</span> <span class="st">"district_code"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="reference/pak_map.html">pak_map</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"value"</span>, title <span class="op">=</span> <span class="st">"My data"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="key-functions">Key functions<a class="anchor" aria-label="anchor" href="#key-functions"></a>
+</h2>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr class="header">
+<th>Function</th>
+<th>What it does</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>
+<code><a href="reference/get_country.html">get_country()</a></code>, <code><a href="reference/get_provinces.html">get_provinces()</a></code>, <code><a href="reference/get_districts.html">get_districts()</a></code>, <code><a href="reference/get_tehsils.html">get_tehsils()</a></code>
+</td>
+<td>Download boundary geometries as <code>sf</code> objects</td>
+</tr>
+<tr class="even">
+<td><code><a href="reference/pak_dictionary.html">pak_dictionary()</a></code></td>
+<td>Look up official names and PBS codes</td>
+</tr>
+<tr class="odd">
+<td><code><a href="reference/pak_join.html">pak_join()</a></code></td>
+<td>Join data to geometries with unmatched-row warnings</td>
+</tr>
+<tr class="even">
+<td><code><a href="reference/pak_neighbors.html">pak_neighbors()</a></code></td>
+<td>Build spatial weights for <code>spdep</code> with Pakistan-specific boundary handling</td>
+</tr>
+<tr class="odd">
+<td><code><a href="reference/pak_crs_suggest.html">pak_crs_suggest()</a></code></td>
+<td>Recommend the right projected CRS for your extent</td>
+</tr>
+<tr class="even">
+<td>
+<code><a href="reference/pak_map.html">pak_map()</a></code>, <code><a href="reference/pak_map_interactive.html">pak_map_interactive()</a></code>
+</td>
+<td>Quick static and interactive maps</td>
+</tr>
+<tr class="odd">
+<td>
+<code><a href="reference/pak_centroid.html">pak_centroid()</a></code>, <code><a href="reference/pak_buffer.html">pak_buffer()</a></code>, <code><a href="reference/pak_distance.html">pak_distance()</a></code>
+</td>
+<td>Geometric operations in km</td>
+</tr>
+<tr class="even">
+<td><code><a href="reference/pak_points_in.html">pak_points_in()</a></code></td>
+<td>Assign GPS points to administrative units</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level2">
+<h2 id="data-source">Data source<a class="anchor" aria-label="anchor" href="#data-source"></a>
+</h2>
+<p>Boundaries are sourced from the <a href="https://data.humdata.org/dataset/cod-ab-pak" class="external-link">OCHA Pakistan COD-AB</a>, covering country, province, district, and tehsil levels (577 tehsil features). Data are released under CC BY licence.</p>
+</div>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"pkmapr"</span><span class="op">)</span></span></code></pre></div>
+<p>Or cite directly:</p>
+<blockquote>
+<p>Umer, A. (2025). pkmapr: Pakistan Administrative Boundaries Toolkit. <a href="https://doi.org/10.5281/zenodo.19769542" class="external-link uri">https://doi.org/10.5281/zenodo.19769542</a></p>
+</blockquote>
 </div>
 </div>
+
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
