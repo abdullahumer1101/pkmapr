@@ -4,7 +4,7 @@
 \name{pkmapr-package}
 \alias{pkmapr}
 \alias{pkmapr-package}
-\title{pkmapr: Access and Analyse Pakistan Administrative Boundary Data}
+\title{pkmapr: Pakistan Administrative Boundaries Toolkit}
 \description{
 Provides a tidy interface to Pakistan's official administrative boundary data from the United Nations Office for the Coordination of Humanitarian Affairs (OCHA). Downloads and caches spatial data at country, province, district, and tehsil levels as sf objects compatible with the tidyverse and geospatial ecosystem. Includes utilities for geographic dictionary lookup, coordinate reference system selection, spatial measurement, and neighbour structure construction for use with spdep, ggplot2, leaflet, and related packages.
 }
