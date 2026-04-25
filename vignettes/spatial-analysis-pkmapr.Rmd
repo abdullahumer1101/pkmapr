@@ -1,24 +1,4 @@
 ---
-title: "spatial-analysis-pkmapr"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{spatial-analysis-pkmapr}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
-
-```{r setup}
-library(pkmapr)
-```
-
----
 title: "Spatial Analysis with pkmapr"
 output: rmarkdown::html_vignette
 vignette: >
