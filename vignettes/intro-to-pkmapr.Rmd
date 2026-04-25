@@ -5,14 +5,18 @@ vignette: >
   %\VignetteIndexEntry{intro-to-pkmapr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+pkgdown:
+  as_is: true
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = FALSE
 )
 ```
+
 
 ```{r setup}
 library(pkmapr)
