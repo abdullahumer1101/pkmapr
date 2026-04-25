@@ -2,7 +2,7 @@
 
 `{r, include = FALSE} knitr::opts_chunk$set( collapse = TRUE, comment = "#>", fig.path = "man/figures/README-", out.width = "100%" )`
 
-**pkmapr** (pronounced *Pak Mapper*) provides a clean, tidy interface to
+**pkmapr** (pronounced *P-K-Mapper*) provides a clean, tidy interface to
 Pakistan’s official administrative boundary data from
 [OCHA/HDX](https://data.humdata.org/dataset/cod-ab-pak). It downloads
 and caches geometries at country, province, district, and tehsil level
