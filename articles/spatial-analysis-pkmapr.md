@@ -1,4 +1,4 @@
-# Introduction to pkmapr
+# Spatial Analysis with pkmapr
 
 ``` r
 library(pkmapr)
@@ -29,7 +29,7 @@ lahore <- get_districts(province = "Punjab") |>
 
 lahore_buffer <- pak_buffer(lahore, dist_km = 10)
 
-pak_map(lahore_buffer, fill = NA, color = "blue") +
+pak_map(lahore_buffer, title = "Lahore buffer") +
   ggplot2::geom_sf(data = lahore, fill = "red", alpha = 0.5)
 ```
 

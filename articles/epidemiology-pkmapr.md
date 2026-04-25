@@ -70,7 +70,10 @@ districts$cluster <- case_when(
 )
 
 # Map the clusters
-pak_map(districts, fill = "cluster", title = "Spatial Clusters")
+ggplot2::ggplot(districts) +
+  ggplot2::geom_sf(ggplot2::aes(fill = cluster)) +
+  ggplot2::theme_void() +
+  ggplot2::labs(title = "Spatial Clusters")
 ```
 
 ## Hotspot detection (Getis-Ord Gi\*)
