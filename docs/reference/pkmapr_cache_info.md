@@ -16,20 +16,21 @@ A data frame of cached files and sizes, returned invisibly.
 
 ``` r
 pkmapr_cache_info()
-#> ℹ Cache directory: C:\Users\abdul\AppData\Local\Temp\RtmpgZM5lh
-#> ℹ 13 file(s), 1.4 MB total
+#> ℹ Cache directory: C:\Users\abdul\AppData\Local\Temp\RtmpG4J0jF
+#> ℹ 14 file(s), 1.4 MB total
 #>                                      file size_mb
-#> 1                          Rf4f4074785052    0.00
+#> 1                           Rf45cc3ea2384    0.00
 #> 2  bslib-4fc2f69b3ab5aab986c84d53124598a7    0.00
 #> 3                                 downlit    0.00
-#> 4                        file4f40126d7102    0.00
-#> 5                        file4f402eef2f17    0.00
-#> 6                        file4f40384e6e46    0.00
-#> 7                        file4f40570a6048    0.00
-#> 8                        file4f4068691002    0.00
-#> 9             pak_country_simplified.gpkg    0.10
-#> 10                     pak_dictionary.csv    0.04
-#> 11          pak_districts_simplified.gpkg    0.38
-#> 12          pak_provinces_simplified.gpkg    0.12
-#> 13            pak_tehsils_simplified.gpkg    0.70
+#> 4                        file45cc18425448    0.00
+#> 5                        file45cc3aee6438    0.00
+#> 6                        file45cc6baa4048    0.00
+#> 7                         file45cc72fb735    0.00
+#> 8                        file45cc79106e33    0.00
+#> 9                        file45cc7b8e29c5    0.00
+#> 10            pak_country_simplified.gpkg    0.10
+#> 11                     pak_dictionary.csv    0.04
+#> 12          pak_districts_simplified.gpkg    0.38
+#> 13          pak_provinces_simplified.gpkg    0.12
+#> 14            pak_tehsils_simplified.gpkg    0.70
 ```
