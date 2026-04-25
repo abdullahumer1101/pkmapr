@@ -1,4 +1,4 @@
-# Spatial Analysis with pkmapr
+# Introduction to pkmapr
 
 ``` r
 library(pkmapr)

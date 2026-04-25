@@ -1,4 +1,4 @@
-# pkmapr: Access and Analyse Pakistan Administrative Boundary Data
+# pkmapr: Pakistan Administrative Boundaries Toolkit
 
 Provides a tidy interface to Pakistan's official administrative boundary
 data from the United Nations Office for the Coordination of Humanitarian
