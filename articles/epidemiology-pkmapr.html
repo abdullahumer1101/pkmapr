@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>epidemiology-pkmapr • pkmapr</title>
+<title>Epidemiological Analysis with pkmapr • pkmapr</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="epidemiology-pkmapr">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Epidemiological Analysis with pkmapr">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -33,7 +33,7 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/epidemiology-pkmapr.html">epidemiology-pkmapr</a></li>
+<li><a class="dropdown-item" href="../articles/epidemiology-pkmapr.html">Epidemiological Analysis with pkmapr</a></li>
     <li><a class="dropdown-item" href="../articles/intro-to-pkmapr.html">intro-to-pkmapr</a></li>
     <li><a class="dropdown-item" href="../articles/spatial-analysis-pkmapr.html">Spatial Analysis with pkmapr</a></li>
   </ul>
@@ -58,7 +58,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>epidemiology-pkmapr</h1>
+      <h1>Epidemiological Analysis with pkmapr</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/main/vignettes/epidemiology-pkmapr.Rmd" class="external-link"><code>vignettes/epidemiology-pkmapr.Rmd</code></a></small>
@@ -68,8 +68,140 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://abdullahumer1101.github.io/pkmapr">pkmapr</a></span><span class="op">)</span></span></code></pre></div>
-  </main>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://abdullahumer1101.github.io/pkmapr">pkmapr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-spatial/spdep/" class="external-link">spdep</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="the-problem-non-contiguous-units">The problem: Non-contiguous units<a class="anchor" aria-label="anchor" href="#the-problem-non-contiguous-units"></a>
+</h2>
+<p>Gilgit-Baltistan and Azad Kashmir share no land boundaries with other
+provinces. Under standard contiguity rules, they would have zero
+neighbours — breaking most spatial statistics.</p>
+<p><code><a href="../reference/pak_neighbors.html">pak_neighbors()</a></code> handles this automatically.</p>
+</div>
+<div class="section level2">
+<h2 id="build-spatial-weights">Build spatial weights<a class="anchor" aria-label="anchor" href="#build-spatial-weights"></a>
+</h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pak_neighbors.html">pak_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"exclude"</span><span class="op">)</span></span></code></pre></div>
+<p>The returned object contains: - <code>w$nb</code>: neighbours list -
+<code>w$listw</code>: row-standardised weights (ready for spdep)</p>
+</div>
+<div class="section level2">
+<h2 id="global-morans-i-synthetic-data">Global Moran’s I (synthetic data)<a class="anchor" aria-label="anchor" href="#global-morans-i-synthetic-data"></a>
+</h2>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">2023</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create spatially autocorrelated synthetic data</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">districts</span><span class="op">)</span></span>
+<span><span class="va">rho</span> <span class="op">&lt;-</span> <span class="fl">0.6</span></span>
+<span><span class="va">W_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/spdep/reference/nb2mat.html" class="external-link">listw2mat</a></span><span class="op">(</span><span class="va">w</span><span class="op">$</span><span class="va">listw</span><span class="op">)</span></span>
+<span><span class="va">epsilon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">50</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/solve.html" class="external-link">solve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">-</span> <span class="va">rho</span> <span class="op">*</span> <span class="va">W_mat</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">epsilon</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">districts</span><span class="op">$</span><span class="va">synthetic_rate</span> <span class="op">&lt;-</span> <span class="va">y</span></span>
+<span></span>
+<span><span class="co"># Test for spatial autocorrelation</span></span>
+<span><span class="va">moran_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/spdep/reference/moran.test.html" class="external-link">moran.test</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">synthetic_rate</span>, <span class="va">w</span><span class="op">$</span><span class="va">listw</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">moran_result</span><span class="op">)</span></span></code></pre></div>
+<p>A significant p-value indicates spatial clustering.</p>
+</div>
+<div class="section level2">
+<h2 id="local-indicators-of-spatial-association-lisa">Local Indicators of Spatial Association (LISA)<a class="anchor" aria-label="anchor" href="#local-indicators-of-spatial-association-lisa"></a>
+</h2>
+<p>Identify local clusters and outliers:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate local Moran's I</span></span>
+<span><span class="va">lisa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/spdep/reference/localmoran.html" class="external-link">localmoran</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">synthetic_rate</span>, <span class="va">w</span><span class="op">$</span><span class="va">listw</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add results to districts</span></span>
+<span><span class="va">districts</span><span class="op">$</span><span class="va">lisa_i</span> <span class="op">&lt;-</span> <span class="va">lisa</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>  <span class="co"># local I</span></span>
+<span><span class="va">districts</span><span class="op">$</span><span class="va">lisa_p</span> <span class="op">&lt;-</span> <span class="va">lisa</span><span class="op">[</span>, <span class="fl">5</span><span class="op">]</span>  <span class="co"># p-value</span></span>
+<span></span>
+<span><span class="co"># Classify clusters (simplified)</span></span>
+<span><span class="va">districts</span><span class="op">$</span><span class="va">cluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>  <span class="va">districts</span><span class="op">$</span><span class="va">lisa_p</span> <span class="op">&gt;</span> <span class="fl">0.05</span> <span class="op">~</span> <span class="st">"Not significant"</span>,</span>
+<span>  <span class="va">districts</span><span class="op">$</span><span class="va">synthetic_rate</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">synthetic_rate</span><span class="op">)</span> <span class="op">&amp;</span></span>
+<span>    <span class="va">districts</span><span class="op">$</span><span class="va">lisa_i</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"High-High"</span>,</span>
+<span>  <span class="va">districts</span><span class="op">$</span><span class="va">synthetic_rate</span> <span class="op">&lt;</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">synthetic_rate</span><span class="op">)</span> <span class="op">&amp;</span></span>
+<span>    <span class="va">districts</span><span class="op">$</span><span class="va">lisa_i</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"Low-Low"</span>,</span>
+<span>  <span class="va">districts</span><span class="op">$</span><span class="va">lisa_i</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"Outlier"</span>,</span>
+<span>  <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Other"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Map the clusters</span></span>
+<span><span class="fu"><a href="../reference/pak_map.html">pak_map</a></span><span class="op">(</span><span class="va">districts</span>, fill <span class="op">=</span> <span class="st">"cluster"</span>, title <span class="op">=</span> <span class="st">"Spatial Clusters"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="hotspot-detection-getis-ord-gi">Hotspot detection (Getis-Ord Gi*)<a class="anchor" aria-label="anchor" href="#hotspot-detection-getis-ord-gi"></a>
+</h2>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate Gi* for the synthetic data</span></span>
+<span><span class="va">gi_star</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/spdep/reference/localG.html" class="external-link">localG</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">synthetic_rate</span>, <span class="va">w</span><span class="op">$</span><span class="va">listw</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">districts</span><span class="op">$</span><span class="va">gi_star</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">gi_star</span><span class="op">)</span></span>
+<span><span class="va">districts</span><span class="op">$</span><span class="va">hotspot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">gi_star</span> <span class="op">&gt;</span> <span class="fl">1.96</span>, <span class="st">"Hotspot"</span>,</span>
+<span>                            <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">gi_star</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">1.96</span>, <span class="st">"Coldspot"</span>, <span class="st">"Not significant"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/pak_map.html">pak_map</a></span><span class="op">(</span><span class="va">districts</span>, fill <span class="op">=</span> <span class="st">"hotspot"</span>, title <span class="op">=</span> <span class="st">"Hotspots (p &lt; 0.05)"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="disputed-boundary-handling">Disputed boundary handling<a class="anchor" aria-label="anchor" href="#disputed-boundary-handling"></a>
+</h2>
+<p>The Line of Control creates analytical ambiguity.
+<code><a href="../reference/pak_neighbors.html">pak_neighbors()</a></code> makes your decision explicit:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Exclude (default) — GB/AJK get nearest neighbour fallback</span></span>
+<span><span class="va">w_exclude</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pak_neighbors.html">pak_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"exclude"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Include — treat disputed boundaries as shared</span></span>
+<span><span class="va">w_include</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pak_neighbors.html">pak_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"include"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Flag — document which units are affected</span></span>
+<span><span class="va">w_flag</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pak_neighbors.html">pak_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"flag"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">w_flag</span><span class="op">$</span><span class="va">boundary_note</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="complete-workflow-example">Complete workflow example<a class="anchor" aria-label="anchor" href="#complete-workflow-example"></a>
+</h2>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Get data</span></span>
+<span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Build weights with explicit dispute handling</span></span>
+<span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pak_neighbors.html">pak_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"exclude"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 3. Attach your real case data (replace with your own)</span></span>
+<span><span class="co"># districts &lt;- pak_join(districts, your_case_data, by = "district_code")</span></span>
+<span></span>
+<span><span class="co"># 4. Calculate rates (example)</span></span>
+<span><span class="co"># districts &lt;- districts |&gt;</span></span>
+<span><span class="co">#   mutate(rate = cases / population * 100000)</span></span>
+<span></span>
+<span><span class="co"># 5. Test for spatial autocorrelation</span></span>
+<span><span class="co"># moran.test(districts$rate, w$listw)</span></span>
+<span></span>
+<span><span class="co"># 6. Identify clusters</span></span>
+<span><span class="co"># lisa &lt;- localmoran(districts$rate, w$listw)</span></span>
+<span><span class="co"># districts$lisa_cluster &lt;- attr(lisa, "quadr")$mean</span></span>
+<span></span>
+<span><span class="co"># 7. Map results</span></span>
+<span><span class="co"># pak_map(districts, fill = "lisa_cluster")</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<ul>
+<li>Bivand, R. S., Pebesma, E., &amp; Gomez-Rubio, V. (2013).
+<em>Applied spatial data analysis with R</em>. Springer.</li>
+<li>OCHA Pakistan. (2023). <em>COD-AB Administrative
+Boundaries</em>.</li>
+</ul>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 

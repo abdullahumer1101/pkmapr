@@ -37,7 +37,7 @@ geometry.
 # \donttest{
   pak <- get_country()
 #> ℹ Downloading pak_country_simplified.gpkg
-#> ✔ Downloading pak_country_simplified.gpkg [185ms]
+#> ✔ Downloading pak_country_simplified.gpkg [160ms]
 #> 
   plot(sf::st_geometry(pak))
 
