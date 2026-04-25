@@ -1,6 +1,6 @@
 Package: pkmapr
 Title: Pakistan Administrative Boundaries Toolkit
-Version: 0.1.0
+Version: 0.1.1
 Authors@R:
     person("Abdullah Umer", email = "abdullahumer1101@gmail.com",
            role = c("aut", "cre"),
