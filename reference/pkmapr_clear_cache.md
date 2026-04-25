@@ -17,7 +17,7 @@ NULL, invisibly.
 
 ``` r
 pkmapr_clear_cache()
-#> Warning: cannot remove file '/tmp/RtmpwVvxc9/bslib-9fb06ca8b38545299edd6f7aec8cc523', reason 'Directory not empty'
-#> Warning: cannot remove file '/tmp/RtmpwVvxc9/downlit', reason 'Directory not empty'
+#> Warning: cannot remove file '/tmp/RtmpeeAhIv/bslib-6b280c012ef0e602e0d8ef690e12db2e', reason 'Directory not empty'
+#> Warning: cannot remove file '/tmp/RtmpeeAhIv/downlit', reason 'Directory not empty'
 #> Removed 11 cached file(s).
 ```
