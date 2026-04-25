@@ -10,12 +10,12 @@
 Source:
 [`DESCRIPTION`](https://github.com/abdullahumer1101/pkmapr/blob/main/DESCRIPTION)
 
-Abdullah Umer (2026). *pkmapr: Access and Analyse Pakistan
-Administrative Boundary Data*. R package version 0.1.0,
+Abdullah Umer (2026). *pkmapr: Pakistan Administrative Boundaries
+Toolkit*. R package version 0.1.0,
 <https://abdullahumer1101.github.io/pkmapr>.
 
     @Manual{,
-      title = {pkmapr: Access and Analyse Pakistan Administrative Boundary Data},
+      title = {pkmapr: Pakistan Administrative Boundaries Toolkit},
       author = {{Abdullah Umer}},
       year = {2026},
       note = {R package version 0.1.0},
