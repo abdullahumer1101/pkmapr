@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19769542.svg)](https://doi.org/10.5281/zenodo.19769542)
 <!-- badges: end -->
 
-**pkmapr** (pronounced *Pak Mapper*) provides a clean, tidy interface to
+**pkmapr** (pronounced *P-K-Mapper*) provides a clean, tidy interface to
 Pakistan's official administrative boundary data from
 [OCHA/HDX](https://data.humdata.org/dataset/cod-ab-pak). It downloads and
 caches geometries at country, province, district, and tehsil level as `sf`
