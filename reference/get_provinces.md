@@ -36,8 +36,8 @@ geometry.
 ``` r
 # \donttest{
   provinces <- get_provinces()
-#> ℹ Downloading pak_provinces_simplified.gpkg
-#> ✔ Downloading pak_provinces_simplified.gpkg [76ms]
+#> ℹ Downloading pk_provinces_simplified.gpkg
+#> ✔ Downloading pk_provinces_simplified.gpkg [174ms]
 #> 
 # }
 ```

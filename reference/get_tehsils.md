@@ -51,8 +51,8 @@ tehsil_code, area_km2, geometry.
 ``` r
 # \donttest{
   sindh_tehsils  <- get_tehsils(province = "Sindh")
-#> ℹ Downloading pak_tehsils_simplified.gpkg
-#> ✔ Downloading pak_tehsils_simplified.gpkg [124ms]
+#> ℹ Downloading pk_tehsils_simplified.gpkg
+#> ✔ Downloading pk_tehsils_simplified.gpkg [172ms]
 #> 
   lahore_tehsils <- get_tehsils(district = "Lahore")
 # }
