@@ -1,9 +1,6 @@
 # NA
 
-## Thanks for helping with pkmapr
-
-Whether you’re fixing a bug, adding a feature, or reporting an issue —
-contributions are welcome.
+## All contributions are welcome.
 
 ### Found a bug?
 
@@ -24,7 +21,7 @@ to see.
 4.  Run devtools::check()
 5.  Push and open a Pull Request
 
-I’ll review within a few days.
+I’ll review soon as possible.
 
 ### Questions?
 
@@ -32,4 +29,4 @@ Open an issue with the label “question” or just ask.
 
 ------------------------------------------------------------------------
 
-Thanks for being here.
+Thanks for helping improve pkmapr.
