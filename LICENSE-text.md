@@ -1,4 +1,6 @@
 # License
 
     YEAR: 2026
-    COPYRIGHT HOLDER: pkmapr authors
+    COPYRIGHT HOLDER:
+
+    Abdullah Umer, pkmapr Open-Source R Project

@@ -19,7 +19,7 @@ get_provinces(simplified = TRUE, crs = 4326, refresh = FALSE)
 
   Integer EPSG code. Default 4326 (WGS84). Use 32642 for distance and
   area calculations. See
-  [`pak_crs_suggest()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_crs_suggest.md)
+  [`pk_crs_suggest()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_crs_suggest.md)
   for guidance.
 
 - refresh:
@@ -37,7 +37,7 @@ geometry.
 # \donttest{
   provinces <- get_provinces()
 #> ℹ Downloading pk_provinces_simplified.gpkg
-#> ✔ Downloading pk_provinces_simplified.gpkg [174ms]
+#> ✔ Downloading pk_provinces_simplified.gpkg [226ms]
 #> 
 # }
 ```

@@ -1,7 +1,5 @@
 # pkmapr: Pakistan Administrative Boundaries Toolkit
 
-`{r, include = FALSE} knitr::opts_chunk$set( collapse = TRUE, comment = "#>", fig.path = "man/figures/README-", out.width = "100%" )`
-
 **pkmapr** (pronounced *P-K-Mapper*) provides a clean, tidy interface to
 Pakistan’s official administrative boundary data from
 [OCHA/HDX](https://data.humdata.org/dataset/cod-ab-pak). It downloads
@@ -27,16 +25,16 @@ install.packages("pkmapr", repos = "https://abdullahumer1101.r-universe.dev")
 library(pkmapr)
 
 # Get province boundaries and map them
-get_provinces() |> pak_map(title = "Pakistan provinces")
+get_provinces() |> pk_map(title = "Pakistan provinces")
 
 # Look up official names before joining
-pak_dictionary("districts", province = "Punjab")
+pk_dictionary("districts", province = "Punjab")
 
 # Join your data and map
 my_data <- data.frame(district_code = "PK603", value = 42)
 get_districts() |>
-  pak_join(my_data, by = "district_code") |>
-  pak_map(fill = "value", title = "My data")
+  pk_join(my_data, by = "district_code") |>
+  pk_map(fill = "value", title = "My data")
 ```
 
 ## Key functions
@@ -44,13 +42,13 @@ get_districts() |>
 | Function                                                                                                                                                                                                                                                                                                                                                           | What it does                                                               |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | [`get_country()`](https://abdullahumer1101.github.io/pkmapr/reference/get_country.md), [`get_provinces()`](https://abdullahumer1101.github.io/pkmapr/reference/get_provinces.md), [`get_districts()`](https://abdullahumer1101.github.io/pkmapr/reference/get_districts.md), [`get_tehsils()`](https://abdullahumer1101.github.io/pkmapr/reference/get_tehsils.md) | Download boundary geometries as `sf` objects                               |
-| [`pak_dictionary()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_dictionary.md)                                                                                                                                                                                                                                                                        | Look up official names and PBS codes                                       |
-| [`pak_join()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_join.md)                                                                                                                                                                                                                                                                                    | Join data to geometries with unmatched-row warnings                        |
-| [`pak_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_neighbors.md)                                                                                                                                                                                                                                                                          | Build spatial weights for `spdep` with Pakistan-specific boundary handling |
-| [`pak_crs_suggest()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_crs_suggest.md)                                                                                                                                                                                                                                                                      | Recommend the right projected CRS for your extent                          |
-| [`pak_map()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_map.md), [`pak_map_interactive()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_map_interactive.md)                                                                                                                                                                               | Quick static and interactive maps                                          |
-| [`pak_centroid()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_centroid.md), [`pak_buffer()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_buffer.md), [`pak_distance()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_distance.md)                                                                                              | Geometric operations in km                                                 |
-| [`pak_points_in()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_points_in.md)                                                                                                                                                                                                                                                                          | Assign GPS points to administrative units                                  |
+| [`pk_dictionary()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_dictionary.md)                                                                                                                                                                                                                                                                          | Look up official names and PBS codes                                       |
+| [`pk_join()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_join.md)                                                                                                                                                                                                                                                                                      | Join data to geometries with unmatched-row warnings                        |
+| [`pk_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_neighbors.md)                                                                                                                                                                                                                                                                            | Build spatial weights for `spdep` with Pakistan-specific boundary handling |
+| [`pk_crs_suggest()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_crs_suggest.md)                                                                                                                                                                                                                                                                        | Recommend the right projected CRS for your extent                          |
+| [`pk_map()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_map.md), [`pk_map_interactive()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_map_interactive.md)                                                                                                                                                                                   | Quick static and interactive maps                                          |
+| [`pk_centroid()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_centroid.md), [`pk_buffer()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_buffer.md), [`pk_distance()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_distance.md)                                                                                                    | Geometric operations in km                                                 |
+| [`pk_points_in()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_points_in.md)                                                                                                                                                                                                                                                                            | Assign GPS points to administrative units                                  |
 
 ## Data source
 
