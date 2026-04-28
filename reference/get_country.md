@@ -34,12 +34,8 @@ geometry.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   pk <- get_country()
-#> ℹ Downloading pk_country_simplified.gpkg
-#> ✔ Downloading pk_country_simplified.gpkg [286ms]
-#> 
   plot(sf::st_geometry(pk))
-
-# }
+}
 ```

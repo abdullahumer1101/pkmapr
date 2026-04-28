@@ -22,8 +22,7 @@ A leaflet object.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   pk_basemap()
-
-{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}],"fitBounds":[23.5,60.9,37.1,77.8,[]]},"evals":[],"jsHooks":[]}# }
+}
 ```

@@ -28,7 +28,7 @@ or
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   bb <- pk_bbox("Lahore", level = "district")
-# }
+}
 ```

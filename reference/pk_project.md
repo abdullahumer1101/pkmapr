@@ -28,8 +28,8 @@ The sf object reprojected to the specified CRS.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   districts <- get_districts()
   projected <- pk_project(districts)
-# }
+}
 ```

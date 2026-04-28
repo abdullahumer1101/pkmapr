@@ -12,12 +12,3 @@ pkmapr_clear_cache()
 ## Value
 
 NULL, invisibly.
-
-## Examples
-
-``` r
-pkmapr_clear_cache()
-#> Warning: cannot remove file '/tmp/RtmpjlCcTZ/bslib-c00c2dcff2a64cc060feac6cd88f9913', reason 'Directory not empty'
-#> Warning: cannot remove file '/tmp/RtmpjlCcTZ/downlit', reason 'Directory not empty'
-#> Removed 11 cached file(s).
-```

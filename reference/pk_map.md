@@ -36,10 +36,8 @@ A ggplot object.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   pk_map(get_provinces())
-
   pk_map(get_provinces(), fill = "area_km2", title = "Province areas")
-
-# }
+}
 ```

@@ -42,26 +42,8 @@ metres.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   pk_crs_suggest(get_country())
-#> $epsg
-#> [1] 102025
-#> 
-#> $name
-#> [1] "Asia South Albers Equal Area Conic (ESRI:102025)"
-#> 
-#> $rationale
-#> [1] "Extent covers a large portion of Pakistan; Albers Equal Area Conic is recommended by OCHA for national-level Pakistan analyses and minimises area distortion across the full country."
-#> 
   pk_crs_suggest(get_districts(province = "Balochistan"))
-#> $epsg
-#> [1] 102025
-#> 
-#> $name
-#> [1] "Asia South Albers Equal Area Conic (ESRI:102025)"
-#> 
-#> $rationale
-#> [1] "Extent covers a large portion of Pakistan; Albers Equal Area Conic is recommended by OCHA for national-level Pakistan analyses and minimises area distortion across the full country."
-#> 
-# }
+}
 ```
