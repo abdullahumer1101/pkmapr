@@ -1,7 +1,7 @@
 # Extract centroids from an sf object
 
-Returns polygon centroids as a point sf object with all attribute
-columns preserved, in the same CRS as the input.
+Returns polygon centroids as a point sf object with only geometry
+(attributes are dropped to avoid warnings about constant attributes).
 
 ## Usage
 
@@ -25,6 +25,5 @@ An sf point object in the same CRS as input.
 # \donttest{
   districts <- get_districts()
   centres   <- pk_centroid(districts)
-#> Warning: st_centroid assumes attributes are constant over geometries
 # }
 ```

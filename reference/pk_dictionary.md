@@ -48,7 +48,7 @@ A tibble.
 # \donttest{
   pk_dictionary("provinces")
 #> ℹ Downloading pk_dictionary.csv
-#> ✔ Downloading pk_dictionary.csv [232ms]
+#> ✔ Downloading pk_dictionary.csv [170ms]
 #> 
 #> # A tibble: 7 × 2
 #>   province_name      province_code
