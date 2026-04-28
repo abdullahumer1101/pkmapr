@@ -33,8 +33,8 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/epidemiology-pkmapr.html">Epidemiological Analysis with pkmapr</a></li>
-    <li><a class="dropdown-item" href="../articles/intro-to-pkmapr.html">intro-to-pkmapr</a></li>
+<li><a class="dropdown-item" href="../articles/epidemiology-pkmapr.html">Epidemiology with pkmapr</a></li>
+    <li><a class="dropdown-item" href="../articles/intro-to-pkmapr.html">Introduction to pkmapr</a></li>
     <li><a class="dropdown-item" href="../articles/spatial-analysis-pkmapr.html">Spatial Analysis with pkmapr</a></li>
   </ul>
 </li>
@@ -71,7 +71,8 @@
 <div class="section level2">
 <h2 id="centroids">Centroids<a class="anchor" aria-label="anchor" href="#centroids"></a>
 </h2>
-<p>Convert polygons to points for labeling or distance calculations:</p>
+<p>Convert polygons to points for labeling and/or distance
+calculations:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">centroids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pk_centroid.html">pk_centroid</a></span><span class="op">(</span><span class="va">districts</span><span class="op">)</span></span>
@@ -148,26 +149,14 @@ km):</p>
 <div class="section level2">
 <h2 id="choose-the-right-crs">Choose the right CRS<a class="anchor" aria-label="anchor" href="#choose-the-right-crs"></a>
 </h2>
-<p>WGS84 (default) measures in degrees — use projected CRS for real
-measurements:</p>
+<p>WGS84 (default) measures in degrees, for measurements using projected
+CRS:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Recommended CRS for your data's extent</span></span>
 <span><span class="fu"><a href="../reference/pk_crs_suggest.html">pk_crs_suggest</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_districts.html">get_districts</a></span><span class="op">(</span>province <span class="op">=</span> <span class="st">"Punjab"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Reproject for metric operations</span></span>
 <span><span class="va">districts_utm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pk_project.html">pk_project</a></span><span class="op">(</span><span class="va">districts</span>, crs <span class="op">=</span> <span class="fl">32642</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
-</h2>
-<ul>
-<li>
-<code><a href="../articles/epidemiology-pkmapr.html">vignette("epidemiology-pkmapr")</a></code> for spatial statistics
-and clustering</li>
-<li>
-<code><a href="../articles/intro-to-pkmapr.html">vignette("intro-to-pkmapr")</a></code> for basic mapping and
-joins</li>
-</ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

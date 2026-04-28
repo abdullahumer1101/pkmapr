@@ -21,10 +21,10 @@ pkmapr_cache_info()
 #>                                      file size_mb
 #> 1  bslib-c00c2dcff2a64cc060feac6cd88f9913    0.00
 #> 2                                 downlit    0.00
-#> 3                        file1e541166111d    0.00
-#> 4                        file1e5414ed5bf4    0.00
-#> 5                        file1e546012da4c    0.00
-#> 6                         file1e549e3ebd1    0.00
+#> 3                        file1e2b392c6af2    0.00
+#> 4                        file1e2b3a611dbf    0.00
+#> 5                        file1e2b4bd214b6    0.00
+#> 6                        file1e2b6cd2c1f8    0.00
 #> 7              pk_country_simplified.gpkg    0.10
 #> 8                       pk_dictionary.csv    0.04
 #> 9            pk_districts_simplified.gpkg    0.38

@@ -37,7 +37,7 @@ geometry.
 # \donttest{
   pk <- get_provinces()
 #> ℹ Downloading pk_provinces_simplified.gpkg
-#> ✔ Downloading pk_provinces_simplified.gpkg [154ms]
+#> ✔ Downloading pk_provinces_simplified.gpkg [181ms]
 #> 
   plot(sf::st_geometry(pk))
 
