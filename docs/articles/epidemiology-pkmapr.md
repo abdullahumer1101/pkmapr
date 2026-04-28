@@ -12,14 +12,14 @@ Gilgit-Baltistan and Azad Kashmir share no land boundaries with other
 provinces. Under standard contiguity rules, they would have zero
 neighbours — breaking most spatial statistics.
 
-[`pak_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_neighbors.md)
+[`pk_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_neighbors.md)
 handles this automatically.
 
 ## Build spatial weights
 
 ``` r
 districts <- get_districts()
-w <- pak_neighbors(districts, disputed = "exclude")
+w <- pk_neighbors(districts, disputed = "exclude")
 ```
 
 The returned object contains: - `w$nb`: neighbours list - `w$listw`:
@@ -70,7 +70,10 @@ districts$cluster <- case_when(
 )
 
 # Map the clusters
-pak_map(districts, fill = "cluster", title = "Spatial Clusters")
+ggplot2::ggplot(districts) +
+  ggplot2::geom_sf(ggplot2::aes(fill = cluster)) +
+  ggplot2::theme_void() +
+  ggplot2::labs(title = "Spatial Clusters")
 ```
 
 ## Hotspot detection (Getis-Ord Gi\*)
@@ -83,24 +86,24 @@ districts$gi_star <- as.numeric(gi_star)
 districts$hotspot <- ifelse(districts$gi_star > 1.96, "Hotspot",
                             ifelse(districts$gi_star < -1.96, "Coldspot", "Not significant"))
 
-pak_map(districts, fill = "hotspot", title = "Hotspots (p < 0.05)")
+pk_map(districts, fill = "hotspot", title = "Hotspots (p < 0.05)")
 ```
 
 ## Disputed boundary handling
 
 The Line of Control creates analytical ambiguity.
-[`pak_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_neighbors.md)
+[`pk_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_neighbors.md)
 makes your decision explicit:
 
 ``` r
 # Exclude (default) — GB/AJK get nearest neighbour fallback
-w_exclude <- pak_neighbors(districts, disputed = "exclude")
+w_exclude <- pk_neighbors(districts, disputed = "exclude")
 
 # Include — treat disputed boundaries as shared
-w_include <- pak_neighbors(districts, disputed = "include")
+w_include <- pk_neighbors(districts, disputed = "include")
 
 # Flag — document which units are affected
-w_flag <- pak_neighbors(districts, disputed = "flag")
+w_flag <- pk_neighbors(districts, disputed = "flag")
 print(w_flag$boundary_note)
 ```
 
@@ -111,10 +114,10 @@ print(w_flag$boundary_note)
 districts <- get_districts()
 
 # 2. Build weights with explicit dispute handling
-w <- pak_neighbors(districts, disputed = "exclude")
+w <- pk_neighbors(districts, disputed = "exclude")
 
 # 3. Attach your real case data (replace with your own)
-# districts <- pak_join(districts, your_case_data, by = "district_code")
+# districts <- pk_join(districts, your_case_data, by = "district_code")
 
 # 4. Calculate rates (example)
 # districts <- districts |>
@@ -128,7 +131,7 @@ w <- pak_neighbors(districts, disputed = "exclude")
 # districts$lisa_cluster <- attr(lisa, "quadr")$mean
 
 # 7. Map results
-# pak_map(districts, fill = "lisa_cluster")
+# pk_map(districts, fill = "lisa_cluster")
 ```
 
 ## References

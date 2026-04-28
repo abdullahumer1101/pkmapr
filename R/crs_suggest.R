@@ -18,10 +18,10 @@
 #' @export
 #' @examples
 #' \donttest{
-#'   pak_crs_suggest(get_country())
-#'   pak_crs_suggest(get_districts(province = "Balochistan"))
+#'   pk_crs_suggest(get_country())
+#'   pk_crs_suggest(get_districts(province = "Balochistan"))
 #' }
-pak_crs_suggest <- function(x) {
+pk_crs_suggest <- function(x) {
 
   bbox       <- sf::st_bbox(sf::st_transform(x, 4326))
   lon_centre <- (bbox["xmin"] + bbox["xmax"]) / 2

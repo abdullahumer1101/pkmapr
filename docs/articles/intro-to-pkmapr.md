@@ -24,7 +24,7 @@ Get province boundaries and create a quick map:
 
 ``` r
 provinces <- get_provinces()
-pak_map(provinces)
+pk_map(provinces)
 ```
 
 ## Look up names before joining
@@ -33,13 +33,13 @@ Always check official names before filtering or joining:
 
 ``` r
 # All provinces with their codes
-pak_dictionary("provinces")
+pk_dictionary("provinces")
 
 # Districts in Punjab
-pak_dictionary("districts", province = "Punjab")
+pk_dictionary("districts", province = "Punjab")
 
 # Tehsils in Lahore district
-pak_dictionary("tehsils", district = "Lahore")
+pk_dictionary("tehsils", district = "Lahore")
 ```
 
 ## Join your own data
@@ -54,16 +54,16 @@ my_data <- data.frame(
 )
 
 districts <- get_districts() |>
-  pak_join(my_data, by = "district_code")
+  pk_join(my_data, by = "district_code")
 
 # Map the result
-pak_map(districts, fill = "value", title = "My Values")
+pk_map(districts, fill = "value", title = "My Values")
 ```
 
 ## Interactive maps
 
 ``` r
-pak_map_interactive(districts, 
+pk_map_interactive(districts, 
                     fill = "value",
                     popup = c("district_name", "value"))
 ```

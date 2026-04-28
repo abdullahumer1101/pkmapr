@@ -28,10 +28,10 @@ Convert polygons to points for labeling or distance calculations:
 
 ```r
 districts <- get_districts()
-centroids <- pak_centroid(districts)
+centroids <- pk_centroid(districts)
 
 # Map districts with centroid points
-pak_map(districts) +
+pk_map(districts) +
   ggplot2::geom_sf(data = centroids, color = "red", size = 0.5)
 ```
 
@@ -44,9 +44,9 @@ Create buffer zones around administrative units (distances in km):
 lahore <- get_districts(province = "Punjab") |>
   filter(district_name == "Lahore")
 
-lahore_buffer <- pak_buffer(lahore, dist_km = 10)
+lahore_buffer <- pk_buffer(lahore, dist_km = 10)
 
-pak_map(lahore_buffer, title = "Lahore buffer") +
+pk_map(lahore_buffer, title = "Lahore buffer") +
   ggplot2::geom_sf(data = lahore, fill = "red", alpha = 0.5)
 ```
 
@@ -57,13 +57,13 @@ Compute distances between units:
 ```r
 # Distance matrix between provinces (centroid to centroid)
 provinces <- get_provinces()
-dist_matrix <- pak_distance(provinces, provinces)
+dist_matrix <- pk_distance(provinces, provinces)
 
 # Distance from each province to Karachi
 karachi <- get_districts(province = "Sindh") |>
   filter(district_name == "Karachi")
 
-distances <- pak_distance(provinces, karachi)
+distances <- pk_distance(provinces, karachi)
 ```
 
 ## Point-in-polygon
@@ -80,7 +80,7 @@ facilities <- data.frame(
   sf::st_as_sf(coords = c("lon", "lat"), crs = 4326)
 
 # Assign to districts
-facilities_with_district <- pak_points_in(facilities, districts)
+facilities_with_district <- pk_points_in(facilities, districts)
 
 # View result
 facilities_with_district |>
@@ -95,12 +95,12 @@ Aggregate finer units to coarser levels:
 ```r
 # Dissolve tehsils to district level
 tehsils <- get_tehsils()
-districts_from_tehsils <- pak_union(tehsils, by = "district_name")
+districts_from_tehsils <- pk_union(tehsils, by = "district_name")
 
 # Compare area
 original_districts <- get_districts()
-pak_area(original_districts)
-pak_area(districts_from_tehsils)  # Should be similar
+pk_area(original_districts)
+pk_area(districts_from_tehsils)  # Should be similar
 ```
 
 ## Choose the right CRS
@@ -109,10 +109,10 @@ WGS84 (default) measures in degrees — use projected CRS for real measurements:
 
 ```r
 # Recommended CRS for your data's extent
-pak_crs_suggest(get_districts(province = "Punjab"))
+pk_crs_suggest(get_districts(province = "Punjab"))
 
 # Reproject for metric operations
-districts_utm <- pak_project(districts, crs = 32642)
+districts_utm <- pk_project(districts, crs = 32642)
 ```
 
 ## Next steps

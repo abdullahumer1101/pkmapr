@@ -17,8 +17,8 @@ NULL, invisibly.
 
 ``` r
 pkmapr_clear_cache()
-#> Warning: cannot remove file 'C:\Users\abdul\AppData\Local\Temp\RtmpG4J0jF/Rf45cc3da94bca', reason 'Permission denied'
-#> Warning: cannot remove file 'C:\Users\abdul\AppData\Local\Temp\RtmpG4J0jF/bslib-4fc2f69b3ab5aab986c84d53124598a7', reason 'Permission denied'
-#> Warning: cannot remove file 'C:\Users\abdul\AppData\Local\Temp\RtmpG4J0jF/downlit', reason 'Permission denied'
-#> Removed 14 cached file(s).
+#> Warning: cannot remove file 'C:\Users\abdul\AppData\Local\Temp\RtmpMNCiud/Rf52a824534159', reason 'Permission denied'
+#> Warning: cannot remove file 'C:\Users\abdul\AppData\Local\Temp\RtmpMNCiud/bslib-2703b592db09c07656d706c37c87dd9a', reason 'Permission denied'
+#> Warning: cannot remove file 'C:\Users\abdul\AppData\Local\Temp\RtmpMNCiud/downlit', reason 'Permission denied'
+#> Removed 9 cached file(s).
 ```

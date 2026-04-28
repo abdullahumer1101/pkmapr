@@ -1,6 +1,7 @@
 Package: pkmapr
 Title: Pakistan Administrative Boundaries Toolkit
 Version: 0.1.1
+Depends: R (>= 4.1.0)
 Authors@R:
     person("Abdullah Umer", email = "abdullahumer1101@gmail.com",
            role = c("aut", "cre"),
@@ -13,7 +14,7 @@ Description: Provides a tidy interface to Pakistan's official administrative
     utilities for geographic dictionary lookup, coordinate reference
     system selection, spatial measurement, and neighbour structure
     construction for use with spdep, ggplot2, leaflet, and related packages.
-License: MIT + file LICENSE
+License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3

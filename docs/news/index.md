@@ -1,5 +1,5 @@
 # Changelog
 
-## pkmapr 0.1.0
+## pkmapr 0.1.1
 
 - Initial release.

@@ -35,7 +35,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/epidemiology-pkmapr.html">Epidemiological Analysis with pkmapr</a></li>
     <li><a class="dropdown-item" href="../articles/intro-to-pkmapr.html">intro-to-pkmapr</a></li>
-    <li><a class="dropdown-item" href="../articles/spatial-analysis-pkmapr.html">Introduction to pkmapr</a></li>
+    <li><a class="dropdown-item" href="../articles/spatial-analysis-pkmapr.html">Spatial Analysis with pkmapr</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -77,14 +77,14 @@
 <p>Gilgit-Baltistan and Azad Kashmir share no land boundaries with other
 provinces. Under standard contiguity rules, they would have zero
 neighbours — breaking most spatial statistics.</p>
-<p><code><a href="../reference/pak_neighbors.html">pak_neighbors()</a></code> handles this automatically.</p>
+<p><code><a href="../reference/pk_neighbors.html">pk_neighbors()</a></code> handles this automatically.</p>
 </div>
 <div class="section level2">
 <h2 id="build-spatial-weights">Build spatial weights<a class="anchor" aria-label="anchor" href="#build-spatial-weights"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pak_neighbors.html">pak_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"exclude"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pk_neighbors.html">pk_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"exclude"</span><span class="op">)</span></span></code></pre></div>
 <p>The returned object contains: - <code>w$nb</code>: neighbours list -
 <code>w$listw</code>: row-standardised weights (ready for spdep)</p>
 </div>
@@ -132,7 +132,10 @@ neighbours — breaking most spatial statistics.</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Map the clusters</span></span>
-<span><span class="fu"><a href="../reference/pak_map.html">pak_map</a></span><span class="op">(</span><span class="va">districts</span>, fill <span class="op">=</span> <span class="st">"cluster"</span>, title <span class="op">=</span> <span class="st">"Spatial Clusters"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">districts</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">cluster</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Spatial Clusters"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="hotspot-detection-getis-ord-gi">Hotspot detection (Getis-Ord Gi*)<a class="anchor" aria-label="anchor" href="#hotspot-detection-getis-ord-gi"></a>
@@ -145,22 +148,22 @@ neighbours — breaking most spatial statistics.</p>
 <span><span class="va">districts</span><span class="op">$</span><span class="va">hotspot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">gi_star</span> <span class="op">&gt;</span> <span class="fl">1.96</span>, <span class="st">"Hotspot"</span>,</span>
 <span>                            <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">gi_star</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">1.96</span>, <span class="st">"Coldspot"</span>, <span class="st">"Not significant"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/pak_map.html">pak_map</a></span><span class="op">(</span><span class="va">districts</span>, fill <span class="op">=</span> <span class="st">"hotspot"</span>, title <span class="op">=</span> <span class="st">"Hotspots (p &lt; 0.05)"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/pk_map.html">pk_map</a></span><span class="op">(</span><span class="va">districts</span>, fill <span class="op">=</span> <span class="st">"hotspot"</span>, title <span class="op">=</span> <span class="st">"Hotspots (p &lt; 0.05)"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="disputed-boundary-handling">Disputed boundary handling<a class="anchor" aria-label="anchor" href="#disputed-boundary-handling"></a>
 </h2>
 <p>The Line of Control creates analytical ambiguity.
-<code><a href="../reference/pak_neighbors.html">pak_neighbors()</a></code> makes your decision explicit:</p>
+<code><a href="../reference/pk_neighbors.html">pk_neighbors()</a></code> makes your decision explicit:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Exclude (default) — GB/AJK get nearest neighbour fallback</span></span>
-<span><span class="va">w_exclude</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pak_neighbors.html">pak_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"exclude"</span><span class="op">)</span></span>
+<span><span class="va">w_exclude</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pk_neighbors.html">pk_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"exclude"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Include — treat disputed boundaries as shared</span></span>
-<span><span class="va">w_include</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pak_neighbors.html">pak_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"include"</span><span class="op">)</span></span>
+<span><span class="va">w_include</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pk_neighbors.html">pk_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"include"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Flag — document which units are affected</span></span>
-<span><span class="va">w_flag</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pak_neighbors.html">pak_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"flag"</span><span class="op">)</span></span>
+<span><span class="va">w_flag</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pk_neighbors.html">pk_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"flag"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">w_flag</span><span class="op">$</span><span class="va">boundary_note</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -171,10 +174,10 @@ neighbours — breaking most spatial statistics.</p>
 <span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 2. Build weights with explicit dispute handling</span></span>
-<span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pak_neighbors.html">pak_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"exclude"</span><span class="op">)</span></span>
+<span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pk_neighbors.html">pk_neighbors</a></span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"exclude"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 3. Attach your real case data (replace with your own)</span></span>
-<span><span class="co"># districts &lt;- pak_join(districts, your_case_data, by = "district_code")</span></span>
+<span><span class="co"># districts &lt;- pk_join(districts, your_case_data, by = "district_code")</span></span>
 <span></span>
 <span><span class="co"># 4. Calculate rates (example)</span></span>
 <span><span class="co"># districts &lt;- districts |&gt;</span></span>
@@ -188,7 +191,7 @@ neighbours — breaking most spatial statistics.</p>
 <span><span class="co"># districts$lisa_cluster &lt;- attr(lisa, "quadr")$mean</span></span>
 <span></span>
 <span><span class="co"># 7. Map results</span></span>
-<span><span class="co"># pak_map(districts, fill = "lisa_cluster")</span></span></code></pre></div>
+<span><span class="co"># pk_map(districts, fill = "lisa_cluster")</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>

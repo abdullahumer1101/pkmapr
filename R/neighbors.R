@@ -38,12 +38,12 @@
 #' @examples
 #' \donttest{
 #'   districts <- get_districts()
-#'   w <- pak_neighbors(districts)
+#'   w <- pk_neighbors(districts)
 #'
 #'   # Pass directly to spdep
 #'   # spdep::moran.test(districts$area_km2, w$listw)
 #' }
-pak_neighbors <- function(x,
+pk_neighbors <- function(x,
                           style    = c("queen", "rook", "knn"),
                           k        = NULL,
                           disputed = c("exclude", "include", "flag")) {

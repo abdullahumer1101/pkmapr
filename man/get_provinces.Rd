@@ -11,7 +11,7 @@ get_provinces(simplified = TRUE, crs = 4326, refresh = FALSE)
 (default TRUE) or full resolution for precise analysis (FALSE).}
 
 \item{crs}{Integer EPSG code. Default 4326 (WGS84). Use 32642 for
-distance and area calculations. See \code{\link[=pak_crs_suggest]{pak_crs_suggest()}} for guidance.}
+distance and area calculations. See \code{\link[=pk_crs_suggest]{pk_crs_suggest()}} for guidance.}
 
 \item{refresh}{Logical. Force re-download even if cached. Default FALSE.}
 }

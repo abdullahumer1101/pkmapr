@@ -20,7 +20,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/epidemiology-pkmapr.html">Epidemiological Analysis with pkmapr</a></li>
     <li><a class="dropdown-item" href="../articles/intro-to-pkmapr.html">intro-to-pkmapr</a></li>
-    <li><a class="dropdown-item" href="../articles/spatial-analysis-pkmapr.html">Introduction to pkmapr</a></li>
+    <li><a class="dropdown-item" href="../articles/spatial-analysis-pkmapr.html">Spatial Analysis with pkmapr</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -56,23 +56,18 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">pkmapr_cache_info</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Cache directory: <a href="file://C:\Users\abdul\AppData\Local\Temp\RtmpG4J0jF"><span style="color: #0000BB;">C:\Users\abdul\AppData\Local\Temp\RtmpG4J0jF</span></a></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 14 file(s), 1.4 MB total</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                      file size_mb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           Rf45cc3ea2384    0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  bslib-4fc2f69b3ab5aab986c84d53124598a7    0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                 downlit    0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                        file45cc18425448    0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                        file45cc3aee6438    0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                        file45cc6baa4048    0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7                         file45cc72fb735    0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8                        file45cc79106e33    0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9                        file45cc7b8e29c5    0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10            pak_country_simplified.gpkg    0.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     pak_dictionary.csv    0.04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12          pak_districts_simplified.gpkg    0.38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13          pak_provinces_simplified.gpkg    0.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14            pak_tehsils_simplified.gpkg    0.70</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Cache directory: <a href="file://C:\Users\abdul\AppData\Local\Temp\RtmpMNCiud"><span style="color: #0000BB;">C:\Users\abdul\AppData\Local\Temp\RtmpMNCiud</span></a></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 9 file(s), 1.3 MB total</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                     file size_mb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          Rf52a85d7145c    0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 bslib-2703b592db09c07656d706c37c87dd9a    0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                downlit    0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                       file52a821ae2f67    0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                       file52a87ef4235a    0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6            pak_country_simplified.gpkg    0.10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7          pak_districts_simplified.gpkg    0.38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8          pak_provinces_simplified.gpkg    0.12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9            pak_tehsils_simplified.gpkg    0.70</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

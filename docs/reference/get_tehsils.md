@@ -34,7 +34,7 @@ get_tehsils(
 
   Integer EPSG code. Default 4326 (WGS84). Use 32642 for distance and
   area calculations. See
-  [`pak_crs_suggest()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_crs_suggest.md)
+  [`pk_crs_suggest()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_crs_suggest.md)
   for guidance.
 
 - refresh:
@@ -52,7 +52,7 @@ tehsil_code, area_km2, geometry.
 # \donttest{
   sindh_tehsils  <- get_tehsils(province = "Sindh")
 #> ℹ Downloading pak_tehsils_simplified.gpkg
-#> ✔ Downloading pak_tehsils_simplified.gpkg [2.1s]
+#> ✔ Downloading pak_tehsils_simplified.gpkg [1.3s]
 #> 
   lahore_tehsils <- get_tehsils(district = "Lahore")
 # }

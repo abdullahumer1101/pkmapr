@@ -12,11 +12,11 @@
 #' @export
 #' @examples
 #' \donttest{
-#'   pak_map(get_provinces())
-#'   pak_map(get_provinces(), fill = "area_km2", title = "Province areas")
+#'   pk_map(get_provinces())
+#'   pk_map(get_provinces(), fill = "area_km2", title = "Province areas")
 #' }
-pak_map <- function(x, fill = NULL, title = NULL, ...) {
-  rlang::check_installed("ggplot2", reason = "to use pak_map()")
+pk_map <- function(x, fill = NULL, title = NULL, ...) {
+  rlang::check_installed("ggplot2", reason = "to use pk_map()")
 
   if (is.null(fill)) {
     p <- ggplot2::ggplot(x) +
@@ -45,12 +45,12 @@ pak_map <- function(x, fill = NULL, title = NULL, ...) {
 #' @export
 #' @examples
 #' \donttest{
-#'   pak_map_interactive(get_districts(),
+#'   pk_map_interactive(get_districts(),
 #'                       fill  = "area_km2",
 #'                       popup = c("district_name", "area_km2"))
 #' }
-pak_map_interactive <- function(x, fill = NULL, popup = NULL, ...) {
-  rlang::check_installed("leaflet", reason = "to use pak_map_interactive()")
+pk_map_interactive <- function(x, fill = NULL, popup = NULL, ...) {
+  rlang::check_installed("leaflet", reason = "to use pk_map_interactive()")
   x <- sf::st_transform(x, 4326)
 
   m <- leaflet::leaflet(x) |>
@@ -89,10 +89,10 @@ pak_map_interactive <- function(x, fill = NULL, popup = NULL, ...) {
 #' @export
 #' @examples
 #' \donttest{
-#'   pak_basemap()
+#'   pk_basemap()
 #' }
-pak_basemap <- function(provider = "CartoDB.Positron") {
-  rlang::check_installed("leaflet", reason = "to use pak_basemap()")
+pk_basemap <- function(provider = "CartoDB.Positron") {
+  rlang::check_installed("leaflet", reason = "to use pk_basemap()")
   leaflet::leaflet() |>
     leaflet::addProviderTiles(provider) |>
     leaflet::fitBounds(lng1 = 60.9, lat1 = 23.5,

@@ -10,40 +10,40 @@
   : Get Pakistan province boundaries
 - [`get_tehsils()`](https://abdullahumer1101.github.io/pkmapr/reference/get_tehsils.md)
   : Get Pakistan tehsil boundaries
-- [`pak_area()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_area.md)
-  : Recalculate area in km² for an sf object
-- [`pak_basemap()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_basemap.md)
-  : Leaflet basemap centred on Pakistan
-- [`pak_bbox()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_bbox.md)
-  : Get a bounding box for a named administrative unit
-- [`pak_buffer()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_buffer.md)
-  : Create buffers around sf geometries in km
-- [`pak_centroid()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_centroid.md)
-  : Extract centroids from an sf object
-- [`pak_crs_suggest()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_crs_suggest.md)
-  : Suggest an appropriate projected CRS for a Pakistan sf object
-- [`pak_dictionary()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_dictionary.md)
-  : Look up Pakistan administrative unit names and codes
-- [`pak_distance()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_distance.md)
-  : Compute distances between two sf objects in km
-- [`pak_intersect()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_intersect.md)
-  : Intersect two sf objects
-- [`pak_join()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_join.md)
-  : Join data to a pkmapr sf object with match checking
-- [`pak_map()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_map.md)
-  : Quick choropleth map of a pkmapr sf object
-- [`pak_map_interactive()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_map_interactive.md)
-  : Interactive choropleth map of a pkmapr sf object
-- [`pak_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_neighbors.md)
-  : Construct a spatial neighbours list for Pakistan administrative
-  units
-- [`pak_points_in()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_points_in.md)
-  : Assign points to administrative units (point-in-polygon)
-- [`pak_project()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_project.md)
-  : Project an sf object to a Pakistan-appropriate CRS
-- [`pak_union()`](https://abdullahumer1101.github.io/pkmapr/reference/pak_union.md)
-  : Dissolve sf polygons by a grouping column
 - [`pkmapr_cache_info()`](https://abdullahumer1101.github.io/pkmapr/reference/pkmapr_cache_info.md)
   : Show pkmapr cache information
 - [`pkmapr_clear_cache()`](https://abdullahumer1101.github.io/pkmapr/reference/pkmapr_clear_cache.md)
   : Clear the pkmapr cache
+- [`pk_area()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_area.md)
+  : Recalculate area in km² for an sf object
+- [`pk_basemap()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_basemap.md)
+  : Leaflet basemap centred on Pakistan
+- [`pk_bbox()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_bbox.md)
+  : Get a bounding box for a named administrative unit
+- [`pk_buffer()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_buffer.md)
+  : Create buffers around sf geometries in km
+- [`pk_centroid()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_centroid.md)
+  : Extract centroids from an sf object
+- [`pk_crs_suggest()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_crs_suggest.md)
+  : Suggest an appropriate projected CRS for a Pakistan sf object
+- [`pk_dictionary()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_dictionary.md)
+  : Look up Pakistan administrative unit names and codes
+- [`pk_distance()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_distance.md)
+  : Compute distances between two sf objects in km
+- [`pk_intersect()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_intersect.md)
+  : Intersect two sf objects
+- [`pk_join()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_join.md)
+  : Join data to a pkmapr sf object with match checking
+- [`pk_map()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_map.md)
+  : Quick choropleth map of a pkmapr sf object
+- [`pk_map_interactive()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_map_interactive.md)
+  : Interactive choropleth map of a pkmapr sf object
+- [`pk_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_neighbors.md)
+  : Construct a spatial neighbours list for Pakistan administrative
+  units
+- [`pk_points_in()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_points_in.md)
+  : Assign points to administrative units (point-in-polygon)
+- [`pk_project()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_project.md)
+  : Project an sf object to a Pakistan-appropriate CRS
+- [`pk_union()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_union.md)
+  : Dissolve sf polygons by a grouping column

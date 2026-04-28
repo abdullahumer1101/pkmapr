@@ -1,4 +1,4 @@
-# Data release version — update when new processed data is released
+# Data release version
 PKMAPR_DATA_VERSION <- "v2023.2"
 
 # Base URL for GitHub Releases

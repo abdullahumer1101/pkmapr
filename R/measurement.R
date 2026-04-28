@@ -9,9 +9,9 @@
 #' @examples
 #' \donttest{
 #'   districts <- get_districts()
-#'   districts <- pak_area(districts)
+#'   districts <- pk_area(districts)
 #' }
-pak_area <- function(x) {
+pk_area <- function(x) {
   projected  <- sf::st_transform(x, 32642)
   x$area_km2 <- as.numeric(sf::st_area(projected)) / 1e6
   x
@@ -30,9 +30,9 @@ pak_area <- function(x) {
 #' @examples
 #' \donttest{
 #'   provinces <- get_provinces()
-#'   d <- pak_distance(provinces, provinces)
+#'   d <- pk_distance(provinces, provinces)
 #' }
-pak_distance <- function(x, y, by = c("centroid", "edge")) {
+pk_distance <- function(x, y, by = c("centroid", "edge")) {
   by <- rlang::arg_match(by)
   if (by == "centroid") {
     x <- sf::st_centroid(sf::st_transform(x, 32642))
@@ -55,9 +55,9 @@ pak_distance <- function(x, y, by = c("centroid", "edge")) {
 #' @examples
 #' \donttest{
 #'   districts <- get_districts()
-#'   centres   <- pak_centroid(districts)
+#'   centres   <- pk_centroid(districts)
 #' }
-pak_centroid <- function(x) {
+pk_centroid <- function(x) {
   original_crs <- sf::st_crs(x)
   sf::st_transform(sf::st_centroid(x), original_crs)
 }
@@ -71,9 +71,9 @@ pak_centroid <- function(x) {
 #' @export
 #' @examples
 #' \donttest{
-#'   bb <- pak_bbox("Lahore", level = "district")
+#'   bb <- pk_bbox("Lahore", level = "district")
 #' }
-pak_bbox <- function(name, level = c("province", "district", "tehsil")) {
+pk_bbox <- function(name, level = c("province", "district", "tehsil")) {
   level  <- rlang::arg_match(level)
   getter <- switch(level,
                    province = get_provinces,
@@ -98,8 +98,8 @@ pak_bbox <- function(name, level = c("province", "district", "tehsil")) {
 #' @examples
 #' \donttest{
 #'   districts <- get_districts()
-#'   projected <- pak_project(districts)
+#'   projected <- pk_project(districts)
 #' }
-pak_project <- function(x, crs = 32642) {
+pk_project <- function(x, crs = 32642) {
   sf::st_transform(x, crs)
 }

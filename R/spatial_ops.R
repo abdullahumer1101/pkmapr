@@ -12,9 +12,9 @@
 #' @examples
 #' \donttest{
 #'   districts <- get_districts()
-#'   # pak_points_in(my_health_facilities, districts)
+#'   # pk_points_in(my_health_facilities, districts)
 #' }
-pak_points_in <- function(points, polygons, return_all = TRUE) {
+pk_points_in <- function(points, polygons, return_all = TRUE) {
   points <- sf::st_transform(points, sf::st_crs(polygons))
   sf::st_join(points, polygons, join = sf::st_within, left = return_all)
 }
@@ -31,9 +31,9 @@ pak_points_in <- function(points, polygons, return_all = TRUE) {
 #' @examples
 #' \donttest{
 #'   districts <- get_districts()
-#'   buffered  <- pak_buffer(districts, dist_km = 10)
+#'   buffered  <- pk_buffer(districts, dist_km = 10)
 #' }
-pak_buffer <- function(x, dist_km) {
+pk_buffer <- function(x, dist_km) {
   original_crs <- sf::st_crs(x)
   buffered     <- sf::st_buffer(sf::st_transform(x, 32642), dist = dist_km * 1000)
   sf::st_transform(buffered, original_crs)
@@ -51,15 +51,15 @@ pak_buffer <- function(x, dist_km) {
 #' @examples
 #' \donttest{
 #'   tehsils     <- get_tehsils()
-#'   by_district <- pak_union(tehsils, by = "district_name")
+#'   by_district <- pk_union(tehsils, by = "district_name")
 #' }
 
-pak_union <- function(x, by) {
+pk_union <- function(x, by) {
   x <- sf::st_make_valid(x)
   result <- x |>
     dplyr::group_by(.data[[by]]) |>
     dplyr::summarise(.groups = "drop")
-  pak_area(result)
+  pk_area(result)
 }
 
 #' Intersect two sf objects
@@ -71,6 +71,6 @@ pak_union <- function(x, by) {
 #' @param y An sf object.
 #' @return An sf object of the intersection in the CRS of x.
 #' @export
-pak_intersect <- function(x, y) {
+pk_intersect <- function(x, y) {
   sf::st_intersection(x, sf::st_transform(y, sf::st_crs(x)))
 }

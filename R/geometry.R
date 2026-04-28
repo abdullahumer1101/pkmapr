@@ -17,7 +17,7 @@ filter_by_name <- function(data, value, column) {
     level <- gsub("_name", "", column)
     cli::cli_abort(c(
       "{level} {.val {value}} not found.",
-      "i" = "Run {.code pak_dictionary('{level}s')} to see valid names.",
+      "i" = "Run {.code pk_dictionary('{level}s')} to see valid names.",
       "i" = "Names are case-sensitive and must match exactly."
     ))
   }
@@ -29,7 +29,7 @@ filter_by_name <- function(data, value, column) {
 #' @param simplified Logical. Return simplified geometry for fast plotting
 #'   (default TRUE) or full resolution for precise analysis (FALSE).
 #' @param crs Integer EPSG code. Default 4326 (WGS84). Use 32642 for
-#'   distance and area calculations. See [pak_crs_suggest()] for guidance.
+#'   distance and area calculations. See [pk_crs_suggest()] for guidance.
 #' @param refresh Logical. Force re-download even if cached. Default FALSE.
 #' @return An sf object with columns: country_name, country_code,
 #'   area_km2, geometry.
@@ -60,7 +60,7 @@ get_provinces <- function(simplified = TRUE, crs = 4326, refresh = FALSE) {
 #' Get Pakistan district boundaries
 #'
 #' @param province Character. Filter to one province by exact name.
-#'   Run \code{pak_dictionary("provinces")} to see valid names.
+#'   Run \code{pk_dictionary("provinces")} to see valid names.
 #'   NULL (default) returns all districts.
 #' @inheritParams get_country
 #' @return An sf object with columns: province_name, district_name,

@@ -2,7 +2,7 @@
 #'
 #' Returns a tibble of official administrative unit names and PBS geocodes
 #' from the OCHA/HDX source. Use this to find the exact names and codes
-#' expected by geometry functions and \code{pak_join()} before attempting
+#' expected by geometry functions and \code{pk_join()} before attempting
 #' joins or filters.
 #'
 #' @param level Character. Administrative level. One of "provinces",
@@ -16,12 +16,12 @@
 #' @export
 #' @examples
 #' \donttest{
-#'   pak_dictionary("provinces")
-#'   pak_dictionary("districts", province = "Punjab")
-#'   pak_dictionary("tehsils", district = "Lahore")
-#'   pak_dictionary("tehsils", province = "Sindh")
+#'   pk_dictionary("provinces")
+#'   pk_dictionary("districts", province = "Punjab")
+#'   pk_dictionary("tehsils", district = "Lahore")
+#'   pk_dictionary("tehsils", province = "Sindh")
 #' }
-pak_dictionary <- function(level    = c("provinces", "districts", "tehsils"),
+pk_dictionary <- function(level    = c("provinces", "districts", "tehsils"),
                            province = NULL,
                            district = NULL,
                            refresh  = FALSE) {
