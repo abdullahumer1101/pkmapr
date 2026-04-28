@@ -1,4 +1,4 @@
-# Epidemiological Analysis with pkmapr
+# Epidemiology with pkmapr
 
 ``` r
 library(pkmapr)

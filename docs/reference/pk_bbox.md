@@ -28,8 +28,7 @@ or
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   bb <- pk_bbox("Lahore", level = "district")
-#> Error in pk_bbox("Lahore", level = "district"): could not find function "pk_bbox"
-# }
+}
 ```

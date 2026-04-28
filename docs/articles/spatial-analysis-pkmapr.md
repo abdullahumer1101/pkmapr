@@ -7,7 +7,7 @@ library(dplyr)
 
 ## Centroids
 
-Convert polygons to points for labeling or distance calculations:
+Convert polygons to points for labeling and/or distance calculations:
 
 ``` r
 districts <- get_districts()
@@ -88,8 +88,8 @@ pk_area(districts_from_tehsils)  # Should be similar
 
 ## Choose the right CRS
 
-WGS84 (default) measures in degrees — use projected CRS for real
-measurements:
+WGS84 (default) measures in degrees, for measurements using projected
+CRS:
 
 ``` r
 # Recommended CRS for your data's extent
@@ -98,10 +98,3 @@ pk_crs_suggest(get_districts(province = "Punjab"))
 # Reproject for metric operations
 districts_utm <- pk_project(districts, crs = 32642)
 ```
-
-## Next steps
-
-- [`vignette("epidemiology-pkmapr")`](https://abdullahumer1101.github.io/pkmapr/articles/epidemiology-pkmapr.md)
-  for spatial statistics and clustering
-- [`vignette("intro-to-pkmapr")`](https://abdullahumer1101.github.io/pkmapr/articles/intro-to-pkmapr.md)
-  for basic mapping and joins

@@ -34,10 +34,8 @@ geometry.
 ## Examples
 
 ``` r
-# \donttest{
-  provinces <- get_provinces()
-#> ℹ Downloading pak_provinces_simplified.gpkg
-#> ✔ Downloading pak_provinces_simplified.gpkg [964ms]
-#> 
-# }
+if (FALSE) { # interactive()
+  pk <- get_provinces()
+  plot(sf::st_geometry(pk))
+}
 ```

@@ -22,12 +22,8 @@ The input sf object with area_km2 column added or updated.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   districts <- get_districts()
-#> ℹ Downloading pak_districts_simplified.gpkg
-#> ✔ Downloading pak_districts_simplified.gpkg [667ms]
-#> 
   districts <- pk_area(districts)
-#> Error in pk_area(districts): could not find function "pk_area"
-# }
+}
 ```

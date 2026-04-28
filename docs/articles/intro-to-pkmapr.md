@@ -1,4 +1,4 @@
-# intro-to-pkmapr
+# Introduction to pkmapr
 
 ``` r
 library(pkmapr)
@@ -12,7 +12,7 @@ Install pkmapr from GitHub:
 remotes::install_github("abdullahumer1101/pkmapr")
 ```
 
-Once R-Universe is ready:
+Or:
 
 ``` r
 # install.packages("pkmapr", repos = "https://abdullahumer1101.r-universe.dev")

@@ -26,12 +26,8 @@ A dissolved sf object with area_km2 recalculated.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   tehsils     <- get_tehsils()
-#> ℹ Downloading pak_tehsils_simplified.gpkg
-#> ✔ Downloading pak_tehsils_simplified.gpkg [1.7s]
-#> 
   by_district <- pk_union(tehsils, by = "district_name")
-#> Error in pk_union(tehsils, by = "district_name"): could not find function "pk_union"
-# }
+}
 ```

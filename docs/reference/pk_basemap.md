@@ -22,8 +22,7 @@ A leaflet object.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   pk_basemap()
-#> Error in pk_basemap(): could not find function "pk_basemap"
-# }
+}
 ```

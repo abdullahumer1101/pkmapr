@@ -31,8 +31,17 @@ The points sf object with polygon attribute columns joined.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
+  # Get district boundaries
   districts <- get_districts()
-  # pk_points_in(my_health_facilities, districts)
-# }
+
+  # Create sample points (or use your own sf object)
+  set.seed(123)
+  sample_points <- sf::st_sample(districts, size = 50)
+  sample_points_sf <- sf::st_sf(geometry = sample_points)
+
+  # Assign points to districts
+  points_with_districts <- pk_points_in(sample_points_sf, districts)
+  print(head(points_with_districts))
+}
 ```

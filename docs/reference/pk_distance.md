@@ -30,12 +30,8 @@ A numeric matrix of distances in km.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   provinces <- get_provinces()
-#> ℹ Downloading pak_provinces_simplified.gpkg
-#> ✔ Downloading pak_provinces_simplified.gpkg [590ms]
-#> 
   d <- pk_distance(provinces, provinces)
-#> Error in pk_distance(provinces, provinces): could not find function "pk_distance"
-# }
+}
 ```

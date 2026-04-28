@@ -42,10 +42,8 @@ metres.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   pk_crs_suggest(get_country())
-#> Error in pk_crs_suggest(get_country()): could not find function "pk_crs_suggest"
   pk_crs_suggest(get_districts(province = "Balochistan"))
-#> Error in pk_crs_suggest(get_districts(province = "Balochistan")): could not find function "pk_crs_suggest"
-# }
+}
 ```

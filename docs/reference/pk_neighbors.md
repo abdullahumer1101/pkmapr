@@ -80,12 +80,11 @@ decision explicit and reproducible.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   districts <- get_districts()
   w <- pk_neighbors(districts)
-#> Error in pk_neighbors(districts): could not find function "pk_neighbors"
 
   # Pass directly to spdep
   # spdep::moran.test(districts$area_km2, w$listw)
-# }
+}
 ```

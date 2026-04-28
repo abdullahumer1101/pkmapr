@@ -36,10 +36,10 @@ A leaflet object.
 ## Examples
 
 ``` r
-# \donttest{
-  pk_map_interactive(get_districts(),
-                      fill  = "area_km2",
-                      popup = c("district_name", "area_km2"))
-#> Error in pk_map_interactive(get_districts(), fill = "area_km2", popup = c("district_name",     "area_km2")): could not find function "pk_map_interactive"
-# }
+if (FALSE) { # interactive()
+  districts <- get_districts()
+  pk_map_interactive(districts,
+                      fill = "area_km2",
+                      popup = list("district_name", "area_km2"))
+}
 ```

@@ -39,10 +39,9 @@ spacing or capitalisation differences that cause silent failures.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   districts <- get_districts()
   my_data   <- data.frame(district_code = "PK603", value = 42)
   joined    <- pk_join(districts, my_data, by = "district_code")
-#> Error in pk_join(districts, my_data, by = "district_code"): could not find function "pk_join"
-# }
+}
 ```

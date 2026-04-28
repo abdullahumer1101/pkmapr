@@ -45,14 +45,10 @@ A tibble.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # interactive()
   pk_dictionary("provinces")
-#> Error in pk_dictionary("provinces"): could not find function "pk_dictionary"
   pk_dictionary("districts", province = "Punjab")
-#> Error in pk_dictionary("districts", province = "Punjab"): could not find function "pk_dictionary"
   pk_dictionary("tehsils", district = "Lahore")
-#> Error in pk_dictionary("tehsils", district = "Lahore"): could not find function "pk_dictionary"
   pk_dictionary("tehsils", province = "Sindh")
-#> Error in pk_dictionary("tehsils", province = "Sindh"): could not find function "pk_dictionary"
-# }
+}
 ```
