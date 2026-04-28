@@ -25,8 +25,9 @@ can be extended with standard leaflet functions.
 }
 \examples{
 \donttest{
-  pk_map_interactive(get_districts(),
-                      fill  = "area_km2",
-                      popup = c("district_name", "area_km2"))
+  districts <- get_districts()
+  pk_map_interactive(districts,
+                      fill = "area_km2",
+                      popup = list("district_name", "area_km2"))
 }
 }

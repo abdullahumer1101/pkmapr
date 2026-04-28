@@ -13,8 +13,8 @@ pk_centroid(x)
 An sf point object in the same CRS as input.
 }
 \description{
-Returns polygon centroids as a point sf object with all attribute
-columns preserved, in the same CRS as the input.
+Returns polygon centroids as a point sf object with only geometry
+(attributes are dropped to avoid warnings about constant attributes).
 }
 \examples{
 \donttest{

@@ -46,8 +46,8 @@ pk_distance <- function(x, y, by = c("centroid", "edge")) {
 
 #' Extract centroids from an sf object
 #'
-#' Returns polygon centroids as a point sf object with all attribute
-#' columns preserved, in the same CRS as the input.
+#' Returns polygon centroids as a point sf object with only geometry
+#' (attributes are dropped to avoid warnings about constant attributes).
 #'
 #' @param x An sf object with polygon geometries.
 #' @return An sf point object in the same CRS as input.
@@ -59,7 +59,8 @@ pk_distance <- function(x, y, by = c("centroid", "edge")) {
 #' }
 pk_centroid <- function(x) {
   original_crs <- sf::st_crs(x)
-  sf::st_transform(sf::st_centroid(x), original_crs)
+  centroids <- sf::st_centroid(sf::st_geometry(x))
+  sf::st_transform(centroids, original_crs)
 }
 
 #' Get a bounding box for a named administrative unit

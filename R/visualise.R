@@ -45,12 +45,19 @@ pk_map <- function(x, fill = NULL, title = NULL, ...) {
 #' @export
 #' @examples
 #' \donttest{
-#'   pk_map_interactive(get_districts(),
-#'                       fill  = "area_km2",
-#'                       popup = c("district_name", "area_km2"))
+#'   districts <- get_districts()
+#'   pk_map_interactive(districts,
+#'                       fill = "area_km2",
+#'                       popup = list("district_name", "area_km2"))
 #' }
 pk_map_interactive <- function(x, fill = NULL, popup = NULL, ...) {
   rlang::check_installed("leaflet", reason = "to use pk_map_interactive()")
+
+  # Convert popup to list if it's a character vector (avoids jsonlite warning)
+  if (!is.null(popup) && is.character(popup)) {
+    popup <- as.list(popup)
+  }
+
   x <- sf::st_transform(x, 4326)
 
   m <- leaflet::leaflet(x) |>
@@ -60,7 +67,7 @@ pk_map_interactive <- function(x, fill = NULL, popup = NULL, ...) {
     pal        <- leaflet::colorNumeric("viridis", domain = x[[fill]],
                                         na.color = "#808080")
     popup_html <- if (!is.null(popup)) {
-      apply(sf::st_drop_geometry(x)[, popup, drop = FALSE], 1,
+      apply(sf::st_drop_geometry(x)[, unlist(popup), drop = FALSE], 1,
             function(row) paste(names(row), row, sep = ": ",
                                 collapse = "<br>"))
     } else NULL

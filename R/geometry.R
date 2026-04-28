@@ -36,8 +36,8 @@ filter_by_name <- function(data, value, column) {
 #' @export
 #' @examples
 #' \donttest{
-#'   pak <- get_country()
-#'   plot(sf::st_geometry(pak))
+#'   pk <- get_country()
+#'   plot(sf::st_geometry(pk))
 #' }
 get_country <- function(simplified = TRUE, crs = 4326, refresh = FALSE) {
   load_geometry("country", simplified, crs, refresh)
@@ -51,7 +51,8 @@ get_country <- function(simplified = TRUE, crs = 4326, refresh = FALSE) {
 #' @export
 #' @examples
 #' \donttest{
-#'   provinces <- get_provinces()
+#'   pk <- get_provinces()
+#'   plot(sf::st_geometry(pk))
 #' }
 get_provinces <- function(simplified = TRUE, crs = 4326, refresh = FALSE) {
   load_geometry("provinces", simplified, crs, refresh)

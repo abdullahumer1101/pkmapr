@@ -24,7 +24,7 @@ Get Pakistan national boundary
 }
 \examples{
 \donttest{
-  pak <- get_country()
-  plot(sf::st_geometry(pak))
+  pk <- get_country()
+  plot(sf::st_geometry(pk))
 }
 }

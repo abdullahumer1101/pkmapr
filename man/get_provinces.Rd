@@ -24,6 +24,7 @@ Get Pakistan province boundaries
 }
 \examples{
 \donttest{
-  provinces <- get_provinces()
+  pk <- get_provinces()
+  plot(sf::st_geometry(pk))
 }
 }
