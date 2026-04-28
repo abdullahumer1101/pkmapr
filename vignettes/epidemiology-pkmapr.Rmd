@@ -1,5 +1,5 @@
 ---
-title: "Epidemiological Analysis with pkmapr"
+title: "Epidemiology with pkmapr"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Epidemiological Analysis with pkmapr}
