@@ -6,11 +6,9 @@
 #' @param x An sf object with polygon geometries.
 #' @return The input sf object with area_km2 column added or updated.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   districts <- get_districts()
 #'   districts <- pk_area(districts)
-#' }
 pk_area <- function(x) {
   projected  <- sf::st_transform(x, 32642)
   x$area_km2 <- as.numeric(sf::st_area(projected)) / 1e6
@@ -27,11 +25,9 @@ pk_area <- function(x) {
 #'   distances. "edge" for nearest-point-on-boundary distances.
 #' @return A numeric matrix of distances in km.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   provinces <- get_provinces()
 #'   d <- pk_distance(provinces, provinces)
-#' }
 pk_distance <- function(x, y, by = c("centroid", "edge")) {
   by <- rlang::arg_match(by)
   if (by == "centroid") {
@@ -52,11 +48,9 @@ pk_distance <- function(x, y, by = c("centroid", "edge")) {
 #' @param x An sf object with polygon geometries.
 #' @return An sf point object in the same CRS as input.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   districts <- get_districts()
 #'   centres   <- pk_centroid(districts)
-#' }
 pk_centroid <- function(x) {
   original_crs <- sf::st_crs(x)
   centroids <- sf::st_centroid(sf::st_geometry(x))
@@ -70,10 +64,8 @@ pk_centroid <- function(x) {
 #' @return A bbox object for use with \code{ggplot2::coord_sf()} or
 #'   \code{leaflet::fitBounds()}.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   bb <- pk_bbox("Lahore", level = "district")
-#' }
 pk_bbox <- function(name, level = c("province", "district", "tehsil")) {
   level  <- rlang::arg_match(level)
   getter <- switch(level,
@@ -96,11 +88,9 @@ pk_bbox <- function(name, level = c("province", "district", "tehsil")) {
 #' @param crs Integer EPSG code. Default 32642 (WGS84 / UTM Zone 42N).
 #' @return The sf object reprojected to the specified CRS.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   districts <- get_districts()
 #'   projected <- pk_project(districts)
-#' }
 pk_project <- function(x, crs = 32642) {
   sf::st_transform(x, crs)
 }

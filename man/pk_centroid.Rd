@@ -17,8 +17,8 @@ Returns polygon centroids as a point sf object with only geometry
 (attributes are dropped to avoid warnings about constant attributes).
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   districts <- get_districts()
   centres   <- pk_centroid(districts)
-}
+\dontshow{\}) # examplesIf}
 }

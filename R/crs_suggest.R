@@ -16,11 +16,9 @@
 #'     \item{rationale}{One-sentence explanation of the recommendation.}
 #'   }
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   pk_crs_suggest(get_country())
 #'   pk_crs_suggest(get_districts(province = "Balochistan"))
-#' }
 pk_crs_suggest <- function(x) {
 
   bbox       <- sf::st_bbox(sf::st_transform(x, 4326))

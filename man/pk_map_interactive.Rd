@@ -24,10 +24,10 @@ Produces an interactive leaflet map. Returns a leaflet object that
 can be extended with standard leaflet functions.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   districts <- get_districts()
   pk_map_interactive(districts,
                       fill = "area_km2",
                       popup = list("district_name", "area_km2"))
-}
+\dontshow{\}) # examplesIf}
 }

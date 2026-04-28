@@ -14,17 +14,15 @@
 #' @param refresh Logical. Force re-download. Default FALSE.
 #' @return A tibble.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   pk_dictionary("provinces")
 #'   pk_dictionary("districts", province = "Punjab")
 #'   pk_dictionary("tehsils", district = "Lahore")
 #'   pk_dictionary("tehsils", province = "Sindh")
-#' }
 pk_dictionary <- function(level    = c("provinces", "districts", "tehsils"),
-                           province = NULL,
-                           district = NULL,
-                           refresh  = FALSE) {
+                          province = NULL,
+                          district = NULL,
+                          refresh  = FALSE) {
 
   level      <- rlang::arg_match(level)
   local_path <- pkmapr_download(PKMAPR_FILES$dictionary, refresh = refresh)

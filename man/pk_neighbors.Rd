@@ -56,11 +56,11 @@ decision explicit and reproducible.
 }
 
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   districts <- get_districts()
   w <- pk_neighbors(districts)
 
   # Pass directly to spdep
   # spdep::moran.test(districts$area_km2, w$listw)
-}
+\dontshow{\}) # examplesIf}
 }

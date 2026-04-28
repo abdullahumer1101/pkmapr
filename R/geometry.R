@@ -34,11 +34,9 @@ filter_by_name <- function(data, value, column) {
 #' @return An sf object with columns: country_name, country_code,
 #'   area_km2, geometry.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   pk <- get_country()
 #'   plot(sf::st_geometry(pk))
-#' }
 get_country <- function(simplified = TRUE, crs = 4326, refresh = FALSE) {
   load_geometry("country", simplified, crs, refresh)
 }
@@ -49,11 +47,9 @@ get_country <- function(simplified = TRUE, crs = 4326, refresh = FALSE) {
 #' @return An sf object with columns: province_name, province_code,
 #'   area_km2, geometry.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   pk <- get_provinces()
 #'   plot(sf::st_geometry(pk))
-#' }
 get_provinces <- function(simplified = TRUE, crs = 4326, refresh = FALSE) {
   load_geometry("provinces", simplified, crs, refresh)
 }
@@ -67,11 +63,9 @@ get_provinces <- function(simplified = TRUE, crs = 4326, refresh = FALSE) {
 #' @return An sf object with columns: province_name, district_name,
 #'   district_code, area_km2, geometry.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   all_districts    <- get_districts()
 #'   punjab_districts <- get_districts(province = "Punjab")
-#' }
 get_districts <- function(province   = NULL,
                           simplified = TRUE,
                           crs        = 4326,
@@ -92,11 +86,9 @@ get_districts <- function(province   = NULL,
 #' @return An sf object with columns: province_name, district_name,
 #'   tehsil_name, tehsil_code, area_km2, geometry.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   sindh_tehsils  <- get_tehsils(province = "Sindh")
 #'   lahore_tehsils <- get_tehsils(district = "Lahore")
-#' }
 get_tehsils <- function(district   = NULL,
                         province   = NULL,
                         simplified = TRUE,

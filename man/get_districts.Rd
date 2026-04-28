@@ -27,8 +27,8 @@ district_code, area_km2, geometry.
 Get Pakistan district boundaries
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   all_districts    <- get_districts()
   punjab_districts <- get_districts(province = "Punjab")
-}
+\dontshow{\}) # examplesIf}
 }

@@ -19,8 +19,8 @@ Merges polygons sharing the same value in a grouping column and
 recalculates area_km2.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   tehsils     <- get_tehsils()
   by_district <- pk_union(tehsils, by = "district_name")
-}
+\dontshow{\}) # examplesIf}
 }

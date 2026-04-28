@@ -13,12 +13,10 @@
 #' @param by Character. Column name present in both spatial and data.
 #' @return The spatial sf object with data columns joined.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   districts <- get_districts()
 #'   my_data   <- data.frame(district_code = "PK603", value = 42)
 #'   joined    <- pk_join(districts, my_data, by = "district_code")
-#' }
 pk_join <- function(spatial, data, by) {
   unmatched <- setdiff(data[[by]], spatial[[by]])
   if (length(unmatched) > 0) {

@@ -22,7 +22,7 @@ For each point in \code{points}, identifies which polygon it falls
 within and joins that polygon's attributes to the point record.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   # Get district boundaries
   districts <- get_districts()
 
@@ -34,5 +34,5 @@ within and joins that polygon's attributes to the point record.
   # Assign points to districts
   points_with_districts <- pk_points_in(sample_points_sf, districts)
   print(head(points_with_districts))
-}
+\dontshow{\}) # examplesIf}
 }

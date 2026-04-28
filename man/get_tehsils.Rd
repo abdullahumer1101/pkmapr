@@ -36,8 +36,8 @@ tehsil_name, tehsil_code, area_km2, geometry.
 Get Pakistan tehsil boundaries
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   sindh_tehsils  <- get_tehsils(province = "Sindh")
   lahore_tehsils <- get_tehsils(district = "Lahore")
-}
+\dontshow{\}) # examplesIf}
 }

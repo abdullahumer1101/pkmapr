@@ -23,8 +23,8 @@ area_km2, geometry.
 Get Pakistan province boundaries
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   pk <- get_provinces()
   plot(sf::st_geometry(pk))
-}
+\dontshow{\}) # examplesIf}
 }

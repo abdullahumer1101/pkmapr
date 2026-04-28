@@ -19,8 +19,8 @@ Reprojects to UTM Zone 42N internally so buffer distances are
 in kilometres, then returns buffers in the original CRS.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   districts <- get_districts()
   buffered  <- pk_buffer(districts, dist_km = 10)
-}
+\dontshow{\}) # examplesIf}
 }

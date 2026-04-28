@@ -23,8 +23,8 @@ area_km2, geometry.
 Get Pakistan national boundary
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   pk <- get_country()
   plot(sf::st_geometry(pk))
-}
+\dontshow{\}) # examplesIf}
 }

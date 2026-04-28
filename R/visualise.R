@@ -10,11 +10,9 @@
 #' @param ... Additional arguments passed to \code{ggplot2::geom_sf()}.
 #' @return A ggplot object.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   pk_map(get_provinces())
 #'   pk_map(get_provinces(), fill = "area_km2", title = "Province areas")
-#' }
 pk_map <- function(x, fill = NULL, title = NULL, ...) {
   rlang::check_installed("ggplot2", reason = "to use pk_map()")
 
@@ -43,13 +41,11 @@ pk_map <- function(x, fill = NULL, title = NULL, ...) {
 #' @param ... Additional arguments passed to \code{leaflet::addPolygons()}.
 #' @return A leaflet object.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   districts <- get_districts()
 #'   pk_map_interactive(districts,
 #'                       fill = "area_km2",
 #'                       popup = list("district_name", "area_km2"))
-#' }
 pk_map_interactive <- function(x, fill = NULL, popup = NULL, ...) {
   rlang::check_installed("leaflet", reason = "to use pk_map_interactive()")
 
@@ -94,10 +90,8 @@ pk_map_interactive <- function(x, fill = NULL, popup = NULL, ...) {
 #' @param provider Character. Tile provider. Default "CartoDB.Positron".
 #' @return A leaflet object.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   pk_basemap()
-#' }
 pk_basemap <- function(provider = "CartoDB.Positron") {
   rlang::check_installed("leaflet", reason = "to use pk_basemap()")
   leaflet::leaflet() |>

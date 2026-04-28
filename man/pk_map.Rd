@@ -24,8 +24,8 @@ Produces a ggplot2 map for rapid exploratory visualisation.
 Returns a ggplot object that can be extended with standard ggplot2 layers.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   pk_map(get_provinces())
   pk_map(get_provinces(), fill = "area_km2", title = "Province areas")
-}
+\dontshow{\}) # examplesIf}
 }

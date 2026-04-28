@@ -12,6 +12,3 @@ A data frame of cached files and sizes, returned invisibly.
 \description{
 Displays the cache directory location and lists files currently stored.
 }
-\examples{
-pkmapr_cache_info()
-}

@@ -19,7 +19,7 @@ A bbox object for use with \code{ggplot2::coord_sf()} or
 Get a bounding box for a named administrative unit
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   bb <- pk_bbox("Lahore", level = "district")
-}
+\dontshow{\}) # examplesIf}
 }

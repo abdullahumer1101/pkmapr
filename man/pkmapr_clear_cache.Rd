@@ -13,6 +13,3 @@ NULL, invisibly.
 Deletes all locally cached files. They will be re-downloaded on the
 next function call.
 }
-\examples{
-pkmapr_clear_cache()
-}

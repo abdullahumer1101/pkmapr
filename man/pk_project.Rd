@@ -20,8 +20,8 @@ of UTM Zone 42N, appropriate for most Pakistan analyses requiring
 accurate distance, area, or buffer operations.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   districts <- get_districts()
   projected <- pk_project(districts)
-}
+\dontshow{\}) # examplesIf}
 }

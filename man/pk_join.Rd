@@ -27,9 +27,9 @@ wherever possible. Codes are stable identifiers; names can have minor
 spacing or capitalisation differences that cause silent failures.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   districts <- get_districts()
   my_data   <- data.frame(district_code = "PK603", value = 42)
   joined    <- pk_join(districts, my_data, by = "district_code")
-}
+\dontshow{\}) # examplesIf}
 }

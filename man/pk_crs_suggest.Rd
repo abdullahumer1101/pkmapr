@@ -28,8 +28,8 @@ Using WGS84 (EPSG:4326) for distance, area, or buffer operations produces
 inaccurate results as it measures in degrees rather than metres.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   pk_crs_suggest(get_country())
   pk_crs_suggest(get_districts(province = "Balochistan"))
-}
+\dontshow{\}) # examplesIf}
 }

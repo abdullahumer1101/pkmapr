@@ -33,10 +33,10 @@ expected by geometry functions and \code{pk_join()} before attempting
 joins or filters.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   pk_dictionary("provinces")
   pk_dictionary("districts", province = "Punjab")
   pk_dictionary("tehsils", district = "Lahore")
   pk_dictionary("tehsils", province = "Sindh")
-}
+\dontshow{\}) # examplesIf}
 }

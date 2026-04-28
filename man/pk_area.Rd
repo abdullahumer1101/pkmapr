@@ -17,8 +17,8 @@ Computes accurate areas by reprojecting to UTM Zone 42N before
 measurement. Returns the input object with area_km2 added or updated.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   districts <- get_districts()
   districts <- pk_area(districts)
-}
+\dontshow{\}) # examplesIf}
 }

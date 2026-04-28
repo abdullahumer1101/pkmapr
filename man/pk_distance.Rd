@@ -21,8 +21,8 @@ A numeric matrix of distances in km.
 Reprojects internally to UTM Zone 42N for accurate metric distances.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   provinces <- get_provinces()
   d <- pk_distance(provinces, provinces)
-}
+\dontshow{\}) # examplesIf}
 }

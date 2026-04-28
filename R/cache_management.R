@@ -21,8 +21,6 @@ mask_user_path <- function(path) {
 #'
 #' @return A data frame of cached files and sizes, returned invisibly.
 #' @export
-#' @examples
-#' pkmapr_cache_info()
 pkmapr_cache_info <- function() {
   cache_dir <- pkmapr_cache_dir()
   files     <- list.files(cache_dir, full.names = TRUE)
@@ -58,8 +56,6 @@ pkmapr_cache_info <- function() {
 #'
 #' @return NULL, invisibly.
 #' @export
-#' @examples
-#' pkmapr_clear_cache()
 pkmapr_clear_cache <- function() {
   cache_dir <- pkmapr_cache_dir()
   files     <- list.files(cache_dir, full.names = TRUE)

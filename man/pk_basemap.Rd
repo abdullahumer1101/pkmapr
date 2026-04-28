@@ -17,7 +17,7 @@ Returns a leaflet map pre-zoomed to Pakistan's extent as a starting
 point for building custom interactive maps.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   pk_basemap()
-}
+\dontshow{\}) # examplesIf}
 }

@@ -9,8 +9,7 @@
 #'   attributes (TRUE, default) or drop them (FALSE).
 #' @return The points sf object with polygon attribute columns joined.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   # Get district boundaries
 #'   districts <- get_districts()
 #'
@@ -22,7 +21,6 @@
 #'   # Assign points to districts
 #'   points_with_districts <- pk_points_in(sample_points_sf, districts)
 #'   print(head(points_with_districts))
-#' }
 pk_points_in <- function(points, polygons, return_all = TRUE) {
   points <- sf::st_transform(points, sf::st_crs(polygons))
   sf::st_join(points, polygons, join = sf::st_within, left = return_all)
@@ -37,11 +35,9 @@ pk_points_in <- function(points, polygons, return_all = TRUE) {
 #' @param dist_km Numeric. Buffer distance in kilometres.
 #' @return An sf object with buffered geometries in the same CRS as input.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   districts <- get_districts()
 #'   buffered  <- pk_buffer(districts, dist_km = 10)
-#' }
 pk_buffer <- function(x, dist_km) {
   original_crs <- sf::st_crs(x)
   buffered     <- sf::st_buffer(sf::st_transform(x, 32642), dist = dist_km * 1000)
@@ -57,11 +53,9 @@ pk_buffer <- function(x, dist_km) {
 #' @param by Character. Column name to group by.
 #' @return A dissolved sf object with area_km2 recalculated.
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   tehsils     <- get_tehsils()
 #'   by_district <- pk_union(tehsils, by = "district_name")
-#' }
 
 pk_union <- function(x, by) {
   x <- sf::st_make_valid(x)

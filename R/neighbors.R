@@ -35,18 +35,16 @@
 #'     \item{boundary_note}{Character. Present only when disputed = "flag".}
 #'   }
 #' @export
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()
 #'   districts <- get_districts()
 #'   w <- pk_neighbors(districts)
 #'
 #'   # Pass directly to spdep
 #'   # spdep::moran.test(districts$area_km2, w$listw)
-#' }
 pk_neighbors <- function(x,
-                          style    = c("queen", "rook", "knn"),
-                          k        = NULL,
-                          disputed = c("exclude", "include", "flag")) {
+                         style    = c("queen", "rook", "knn"),
+                         k        = NULL,
+                         disputed = c("exclude", "include", "flag")) {
 
   style    <- rlang::arg_match(style)
   disputed <- rlang::arg_match(disputed)
