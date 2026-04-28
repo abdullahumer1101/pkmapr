@@ -18,7 +18,8 @@ authors:
 repository: https://github.com/abdullahumer1101/pkmapr
 repository-code: https://github.com/abdullahumer1101/pkmapr
 url: https://abdullahumer1101.github.io/pkmapr
-doi: 10.5281/zenodo.19769542
+#concept doi, version-specific doi available at zenodo
+#doi: 10.5281/zenodo.19769542
 keywords:
   - Pakistan
   - GIS
