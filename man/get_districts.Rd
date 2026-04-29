@@ -8,8 +8,8 @@ get_districts(province = NULL, simplified = TRUE, crs = 4326, refresh = FALSE)
 }
 \arguments{
 \item{province}{Character. Filter to one province by exact name.
-Run \code{pk_dictionary("provinces")} to see valid names.
-NULL (default) returns all districts.}
+Matching is case-insensitive. Run \code{pk_dictionary("provinces")}
+to see valid names. NULL (default) returns all districts.}
 
 \item{simplified}{Logical. Return simplified geometry for fast plotting
 (default TRUE) or full resolution for precise analysis (FALSE).}
@@ -30,5 +30,6 @@ Get Pakistan district boundaries
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   all_districts    <- get_districts()
   punjab_districts <- get_districts(province = "Punjab")
+  punjab_districts <- get_districts(province = "punjab")  # Case-insensitive
 \dontshow{\}) # examplesIf}
 }

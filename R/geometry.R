@@ -12,13 +12,20 @@ load_geometry <- function(level, simplified, crs, refresh) {
 #' Internal filter with informative error
 #' @noRd
 filter_by_name <- function(data, value, column) {
-  result <- dplyr::filter(data, .data[[column]] == value)
+  # Case-insensitive matching with whitespace trimming
+  value_lower <- tolower(trimws(value))
+  data_lower <- tolower(data[[column]])
+
+  result <- data[data_lower == value_lower, ]
+
   if (nrow(result) == 0) {
     level <- gsub("_name", "", column)
+    # Get up to 5 valid options for the error message
+    valid_options <- unique(data[[column]])[1:min(5, length(unique(data[[column]])))]
     cli::cli_abort(c(
       "{level} {.val {value}} not found.",
-      "i" = "Run {.code pk_dictionary('{level}s')} to see valid names.",
-      "i" = "Names are case-sensitive and must match exactly."
+      "i" = "Valid options include: {.val {valid_options}}",
+      "i" = "Matching is case-insensitive. Check spelling or whitespace."
     ))
   }
   result
@@ -57,8 +64,8 @@ get_provinces <- function(simplified = TRUE, crs = 4326, refresh = FALSE) {
 #' Get Pakistan district boundaries
 #'
 #' @param province Character. Filter to one province by exact name.
-#'   Run \code{pk_dictionary("provinces")} to see valid names.
-#'   NULL (default) returns all districts.
+#'   Matching is case-insensitive. Run \code{pk_dictionary("provinces")}
+#'   to see valid names. NULL (default) returns all districts.
 #' @inheritParams get_country
 #' @return An sf object with columns: province_name, district_name,
 #'   district_code, area_km2, geometry.
@@ -66,6 +73,7 @@ get_provinces <- function(simplified = TRUE, crs = 4326, refresh = FALSE) {
 #' @examplesIf interactive()
 #'   all_districts    <- get_districts()
 #'   punjab_districts <- get_districts(province = "Punjab")
+#'   punjab_districts <- get_districts(province = "punjab")  # Case-insensitive
 get_districts <- function(province   = NULL,
                           simplified = TRUE,
                           crs        = 4326,
@@ -77,18 +85,20 @@ get_districts <- function(province   = NULL,
 
 #' Get Pakistan tehsil boundaries
 #'
-#' @param district Character. Filter to one district by exact name. NULL
-#'   returns all. If both district and province are supplied, district
-#'   takes precedence.
+#' @param district Character. Filter to one district by exact name.
+#'   Matching is case-insensitive. NULL returns all.
 #' @param province Character. Filter to one province by exact name.
-#'   NULL returns all.
+#'   Matching is case-insensitive. NULL returns all.
+#'   If both district and province are supplied, district takes precedence.
 #' @inheritParams get_country
 #' @return An sf object with columns: province_name, district_name,
 #'   tehsil_name, tehsil_code, area_km2, geometry.
 #' @export
 #' @examplesIf interactive()
 #'   sindh_tehsils  <- get_tehsils(province = "Sindh")
+#'   sindh_tehsils  <- get_tehsils(province = "sindh")  # Case-insensitive
 #'   lahore_tehsils <- get_tehsils(district = "Lahore")
+#'   lahore_tehsils <- get_tehsils(district = "lahore")  # Case-insensitive
 get_tehsils <- function(district   = NULL,
                         province   = NULL,
                         simplified = TRUE,

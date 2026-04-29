@@ -1,6 +1,6 @@
 Package: pkmapr
 Title: Pakistan Administrative Boundaries Toolkit
-Version: 0.2.0
+Version: 0.3.0
 Depends: R (>= 4.1.0)
 Authors@R:
     person("Abdullah Umer", email = "abdullahumer1101@gmail.com",
@@ -25,7 +25,7 @@ Imports:
     rlang,
     cli,
     spdep,
-    readr
+    jsonlite 
 Suggests:
     ggplot2,
     leaflet,
@@ -34,6 +34,7 @@ Suggests:
     testthat (>= 3.0.0),
     tmap,
     knitr,
+    readr,
     rmarkdown,
     spelling
 VignetteBuilder: knitr

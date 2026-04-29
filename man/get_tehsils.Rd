@@ -13,12 +13,12 @@ get_tehsils(
 )
 }
 \arguments{
-\item{district}{Character. Filter to one district by exact name. NULL
-returns all. If both district and province are supplied, district
-takes precedence.}
+\item{district}{Character. Filter to one district by exact name.
+Matching is case-insensitive. NULL returns all.}
 
 \item{province}{Character. Filter to one province by exact name.
-NULL returns all.}
+Matching is case-insensitive. NULL returns all.
+If both district and province are supplied, district takes precedence.}
 
 \item{simplified}{Logical. Return simplified geometry for fast plotting
 (default TRUE) or full resolution for precise analysis (FALSE).}
@@ -38,6 +38,8 @@ Get Pakistan tehsil boundaries
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   sindh_tehsils  <- get_tehsils(province = "Sindh")
+  sindh_tehsils  <- get_tehsils(province = "sindh")  # Case-insensitive
   lahore_tehsils <- get_tehsils(district = "Lahore")
+  lahore_tehsils <- get_tehsils(district = "lahore")  # Case-insensitive
 \dontshow{\}) # examplesIf}
 }
