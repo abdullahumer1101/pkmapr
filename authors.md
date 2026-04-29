@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/abdullahumer1101/pkmapr/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/abdullahumer1101/pkmapr/blob/v0.3.0/DESCRIPTION)
 
 Abdullah Umer (2026). *pkmapr: Pakistan Administrative Boundaries
 Toolkit*. R package version 0.3.0,
