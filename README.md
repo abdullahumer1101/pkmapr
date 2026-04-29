@@ -9,6 +9,7 @@ coverage](https://codecov.io/gh/abdullahumer1101/pkmapr/graph/badge.svg)](https:
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19769542.svg)](https://doi.org/10.5281/zenodo.19769542)
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Version](https://img.shields.io/badge/version-0.3.0-orange.svg)](https://github.com/abdullahumer1101/pkmapr/releases)
 <!-- badges: end -->
 
 **pkmapr** (pronounced *P-K-Mapper*) provides a clean, tidy interface to
@@ -32,41 +33,16 @@ install.packages("pkmapr", repos = "https://abdullahumer1101.r-universe.dev")
 
 ## Quick start
 
-``` r
-library(pkmapr)
+See [Introduction to pkmapr](https://abdullahumer1101.github.io/pkmapr/articles/intro-to-pkmapr.html).
 
-# Get province boundaries and map them
-get_provinces() |> pk_map(title = "Pakistan provinces")
+## Functions
 
-# Look up official names before joining
-pk_dictionary("districts", province = "Punjab")
-
-# Join your data and map
-my_data <- data.frame(district_code = "PK603", value = 42)
-get_districts() |>
-  pk_join(my_data, by = "district_code") |>
-  pk_map(fill = "value", title = "My data")
-```
-
-## Key functions
-
-| Function | What it does |
-|----|----|
-| `get_country()`, `get_provinces()`, `get_districts()`, `get_tehsils()` | Download boundary geometries as `sf` objects |
-| `pk_dictionary()` | Look up official names and PBS codes |
-| `pk_join()` | Join data to geometries with unmatched-row warnings |
-| `pk_neighbors()` | Build spatial weights for `spdep` with Pakistan-specific boundary handling |
-| `pk_crs_suggest()` | Recommend the right projected CRS for your extent |
-| `pk_map()`, `pk_map_interactive()` | Quick static and interactive maps |
-| `pk_centroid()`, `pk_buffer()`, `pk_distance()` | Geometric operations in km |
-| `pk_points_in()` | Assign GPS points to administrative units |
+Full documentation for all functions is available in the 
+[package reference](https://abdullahumer1101.github.io/pkmapr/reference/index.html).
 
 ## Data source
 
-Boundaries are sourced from the [OCHA Pakistan
-COD-AB](https://data.humdata.org/dataset/cod-ab-pak), covering country,
-province, district, and tehsil levels (577 tehsil features). Data are
-released under CC BY licence.
+Boundaries are sourced from the [OCHA Pakistan COD-AB](https://data.humdata.org/dataset/cod-ab-pak), covering country, province, district, and tehsil levels (577 tehsil features). Data are released under CC BY licence.
 
 ## Citation
 

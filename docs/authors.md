@@ -11,13 +11,13 @@ Source:
 [`DESCRIPTION`](https://github.com/abdullahumer1101/pkmapr/blob/HEAD/DESCRIPTION)
 
 Abdullah Umer (2026). *pkmapr: Pakistan Administrative Boundaries
-Toolkit*. R package version 0.2.0,
+Toolkit*. R package version 0.3.0,
 <https://abdullahumer1101.github.io/pkmapr>.
 
     @Manual{,
       title = {pkmapr: Pakistan Administrative Boundaries Toolkit},
       author = {{Abdullah Umer}},
       year = {2026},
-      note = {R package version 0.2.0},
+      note = {R package version 0.3.0},
       url = {https://abdullahumer1101.github.io/pkmapr},
     }

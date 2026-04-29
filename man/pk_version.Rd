@@ -16,5 +16,7 @@ Invisibly, a list with installed and latest versions.
 Check package version and update status
 }
 \examples{
+\donttest{
 pk_version()
+}
 }

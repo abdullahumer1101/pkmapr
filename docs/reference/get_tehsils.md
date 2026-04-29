@@ -18,12 +18,14 @@ get_tehsils(
 
 - district:
 
-  Character. Filter to one district by exact name. NULL returns all. If
-  both district and province are supplied, district takes precedence.
+  Character. Filter to one district by exact name. Matching is
+  case-insensitive. NULL returns all.
 
 - province:
 
-  Character. Filter to one province by exact name. NULL returns all.
+  Character. Filter to one province by exact name. Matching is
+  case-insensitive. NULL returns all. If both district and province are
+  supplied, district takes precedence.
 
 - simplified:
 
@@ -51,6 +53,8 @@ tehsil_code, area_km2, geometry.
 ``` r
 if (FALSE) { # interactive()
   sindh_tehsils  <- get_tehsils(province = "Sindh")
+  sindh_tehsils  <- get_tehsils(province = "sindh")  # Case-insensitive
   lahore_tehsils <- get_tehsils(district = "Lahore")
+  lahore_tehsils <- get_tehsils(district = "lahore")  # Case-insensitive
 }
 ```

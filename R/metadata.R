@@ -5,7 +5,9 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' pk_version()
+#' }
 pk_version <- function(quiet = FALSE) {
   installed <- as.character(utils::packageVersion("pkmapr"))
 

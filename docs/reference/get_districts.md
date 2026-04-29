@@ -12,9 +12,9 @@ get_districts(province = NULL, simplified = TRUE, crs = 4326, refresh = FALSE)
 
 - province:
 
-  Character. Filter to one province by exact name. Run
-  `pk_dictionary("provinces")` to see valid names. NULL (default)
-  returns all districts.
+  Character. Filter to one province by exact name. Matching is
+  case-insensitive. Run `pk_dictionary("provinces")` to see valid names.
+  NULL (default) returns all districts.
 
 - simplified:
 
@@ -43,5 +43,6 @@ area_km2, geometry.
 if (FALSE) { # interactive()
   all_districts    <- get_districts()
   punjab_districts <- get_districts(province = "Punjab")
+  punjab_districts <- get_districts(province = "punjab")  # Case-insensitive
 }
 ```
