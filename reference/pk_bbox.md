@@ -25,6 +25,13 @@ A bbox object for use with
 or
 [`leaflet::fitBounds()`](https://rstudio.github.io/leaflet/reference/map-methods.html).
 
+## Note
+
+If you see an error like `object 'xxx' not found` when using this
+function, the issue is likely in your data preparation, not `pk_bbox()`.
+Test the function directly: `pk_bbox("Punjab", level = "province")`. If
+that works, check that your data has the expected column names.
+
 ## Examples
 
 ``` r
