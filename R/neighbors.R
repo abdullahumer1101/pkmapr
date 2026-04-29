@@ -5,9 +5,7 @@
 #' complexities including non-contiguous units and disputed boundaries.
 #'
 #' @section Pakistan-specific handling:
-#' Gilgit-Baltistan and Azad Kashmir share no land boundaries with other
-#' provinces and would receive zero neighbours under standard contiguity
-#' rules, breaking most spatial statistics. The \code{disputed} argument
+#' Gilgit-Baltistan and Azad Kashmir might break most spatial statistics. The \code{disputed} argument
 #' controls how the Line of Control and special administrative boundaries
 #' flagged in the OCHA source data are treated, making the analytical
 #' decision explicit and reproducible.
@@ -39,8 +37,8 @@
 #'   districts <- get_districts()
 #'   w <- pk_neighbors(districts)
 #'
-#'   # Pass directly to spdep
-#'   # spdep::moran.test(districts$area_km2, w$listw)
+#'   # Calculate Moran's I using spdep
+#'   moran_result <- spdep::moran.test(districts$area_km2, w$listw)
 pk_neighbors <- function(x,
                          style    = c("queen", "rook", "knn"),
                          k        = NULL,

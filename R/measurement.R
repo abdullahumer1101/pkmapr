@@ -63,6 +63,10 @@ pk_centroid <- function(x) {
 #' @param level Character. One of "province", "district", or "tehsil".
 #' @return A bbox object for use with \code{ggplot2::coord_sf()} or
 #'   \code{leaflet::fitBounds()}.
+#' @note If you see an error like `object 'xxx' not found` when using this
+#' function, the issue is likely in your data preparation, not `pk_bbox()`.
+#' Test the function directly: `pk_bbox("Punjab", level = "province")`.
+#' If that works, check that your data has the expected column names.
 #' @export
 #' @examplesIf interactive()
 #'   bb <- pk_bbox("Lahore", level = "district")

@@ -1,10 +1,7 @@
 # Join data to a pkmapr sf object with match checking
 
-Performs a left join and warns explicitly when values in your data do
-not match any administrative code, naming the unmatched values and
-directing to
-[`pk_dictionary()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_dictionary.md)
-for resolution.
+Performs a left join. Join by code columns (e.g. district_code) rather
+than name columns wherever possible.
 
 ## Usage
 
@@ -30,11 +27,13 @@ pk_join(spatial, data, by)
 
 The spatial sf object with data columns joined.
 
-## Details
+## Note
 
-Join by code columns (e.g. district_code) rather than name columns
-wherever possible. Codes are stable identifiers; names can have minor
-spacing or capitalisation differences that cause silent failures.
+After joining, always inspect `names(result)` to check for column name
+conflicts. If your data shares column names with the spatial object
+(e.g., `province_name`, `district_name`), both versions will be
+preserved with `.x` and `.y` suffixes. Rename or select the appropriate
+columns before further analysis.
 
 ## Examples
 

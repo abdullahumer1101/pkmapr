@@ -1,12 +1,13 @@
 #' Join data to a pkmapr sf object with match checking
 #'
-#' Performs a left join and warns explicitly when values in your data
-#' do not match any administrative code, naming the unmatched values
-#' and directing to \code{pk_dictionary()} for resolution.
+#' Performs a left join. Join by code columns (e.g. district_code) rather than name columns
+#' wherever possible.
 #'
-#' Join by code columns (e.g. district_code) rather than name columns
-#' wherever possible. Codes are stable identifiers; names can have minor
-#' spacing or capitalisation differences that cause silent failures.
+#' @note After joining, always inspect `names(result)` to check for column name
+#' conflicts. If your data shares column names with the spatial object (e.g.,
+#' `province_name`, `district_name`), both versions will be preserved with
+#' `.x` and `.y` suffixes. Rename or select the appropriate columns before
+#' further analysis.
 #'
 #' @param spatial An sf object from a pkmapr geometry function.
 #' @param data A data frame to join.

@@ -18,6 +18,12 @@ A bbox object for use with \code{ggplot2::coord_sf()} or
 \description{
 Get a bounding box for a named administrative unit
 }
+\note{
+If you see an error like \verb{object 'xxx' not found} when using this
+function, the issue is likely in your data preparation, not \code{pk_bbox()}.
+Test the function directly: \code{pk_bbox("Punjab", level = "province")}.
+If that works, check that your data has the expected column names.
+}
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
   bb <- pk_bbox("Lahore", level = "district")

@@ -17,14 +17,15 @@ pk_join(spatial, data, by)
 The spatial sf object with data columns joined.
 }
 \description{
-Performs a left join and warns explicitly when values in your data
-do not match any administrative code, naming the unmatched values
-and directing to \code{pk_dictionary()} for resolution.
+Performs a left join. Join by code columns (e.g. district_code) rather than name columns
+wherever possible.
 }
-\details{
-Join by code columns (e.g. district_code) rather than name columns
-wherever possible. Codes are stable identifiers; names can have minor
-spacing or capitalisation differences that cause silent failures.
+\note{
+After joining, always inspect \code{names(result)} to check for column name
+conflicts. If your data shares column names with the spatial object (e.g.,
+\code{province_name}, \code{district_name}), both versions will be preserved with
+\code{.x} and \code{.y} suffixes. Rename or select the appropriate columns before
+further analysis.
 }
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
