@@ -73,74 +73,12 @@
 <div class="section level2">
 <h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://abdullahumer1101.github.io/pkmapr">pkmapr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get province boundaries and map them</span></span>
-<span><span class="fu"><a href="reference/get_provinces.html">get_provinces</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/pk_map.html">pk_map</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Pakistan provinces"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Look up official names before joining</span></span>
-<span><span class="fu"><a href="reference/pk_dictionary.html">pk_dictionary</a></span><span class="op">(</span><span class="st">"districts"</span>, province <span class="op">=</span> <span class="st">"Punjab"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Join your data and map</span></span>
-<span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>district_code <span class="op">=</span> <span class="st">"PK603"</span>, value <span class="op">=</span> <span class="fl">42</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="reference/pk_join.html">pk_join</a></span><span class="op">(</span><span class="va">my_data</span>, by <span class="op">=</span> <span class="st">"district_code"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="reference/pk_map.html">pk_map</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"value"</span>, title <span class="op">=</span> <span class="st">"My data"</span><span class="op">)</span></span></code></pre></div>
+<p>See <a href="https://abdullahumer1101.github.io/pkmapr/articles/intro-to-pkmapr.html">Introduction to pkmapr</a>.</p>
 </div>
 <div class="section level2">
-<h2 id="key-functions">Key functions<a class="anchor" aria-label="anchor" href="#key-functions"></a>
+<h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
 </h2>
-<table class="table">
-<colgroup>
-<col width="50%">
-<col width="50%">
-</colgroup>
-<thead><tr class="header">
-<th>Function</th>
-<th>What it does</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>
-<code><a href="reference/get_country.html">get_country()</a></code>, <code><a href="reference/get_provinces.html">get_provinces()</a></code>, <code><a href="reference/get_districts.html">get_districts()</a></code>, <code><a href="reference/get_tehsils.html">get_tehsils()</a></code>
-</td>
-<td>Download boundary geometries as <code>sf</code> objects</td>
-</tr>
-<tr class="even">
-<td><code><a href="reference/pk_dictionary.html">pk_dictionary()</a></code></td>
-<td>Look up official names and PBS codes</td>
-</tr>
-<tr class="odd">
-<td><code><a href="reference/pk_join.html">pk_join()</a></code></td>
-<td>Join data to geometries with unmatched-row warnings</td>
-</tr>
-<tr class="even">
-<td><code><a href="reference/pk_neighbors.html">pk_neighbors()</a></code></td>
-<td>Build spatial weights for <code>spdep</code> with Pakistan-specific boundary handling</td>
-</tr>
-<tr class="odd">
-<td><code><a href="reference/pk_crs_suggest.html">pk_crs_suggest()</a></code></td>
-<td>Recommend the right projected CRS for your extent</td>
-</tr>
-<tr class="even">
-<td>
-<code><a href="reference/pk_map.html">pk_map()</a></code>, <code><a href="reference/pk_map_interactive.html">pk_map_interactive()</a></code>
-</td>
-<td>Quick static and interactive maps</td>
-</tr>
-<tr class="odd">
-<td>
-<code><a href="reference/pk_centroid.html">pk_centroid()</a></code>, <code><a href="reference/pk_buffer.html">pk_buffer()</a></code>, <code><a href="reference/pk_distance.html">pk_distance()</a></code>
-</td>
-<td>Geometric operations in km</td>
-</tr>
-<tr class="even">
-<td><code><a href="reference/pk_points_in.html">pk_points_in()</a></code></td>
-<td>Assign GPS points to administrative units</td>
-</tr>
-</tbody>
-</table>
+<p>Full documentation for all functions is available in the <a href="https://abdullahumer1101.github.io/pkmapr/reference/index.html">package reference</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="data-source">Data source<a class="anchor" aria-label="anchor" href="#data-source"></a>
@@ -150,7 +88,7 @@
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"pkmapr"</span><span class="op">)</span></span></code></pre></div>
 <p>Or cite directly:</p>
 <blockquote>
@@ -202,6 +140,7 @@
 <li><a href="https://app.codecov.io/gh/abdullahumer1101/pkmapr" class="external-link"><img src="https://codecov.io/gh/abdullahumer1101/pkmapr/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://doi.org/10.5281/zenodo.19769542" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19769542.svg" alt="DOI"></a></li>
 <li><a href="https://www.gnu.org/licenses/gpl-3.0" class="external-link"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></li>
+<li><a href="https://github.com/abdullahumer1101/pkmapr/releases" class="external-link"><img src="https://img.shields.io/badge/version-0.3.0-orange.svg" alt="Version"></a></li>
 </ul>
 </div>
 
