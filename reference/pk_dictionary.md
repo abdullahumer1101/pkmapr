@@ -1,54 +1,49 @@
-# Look up Pakistan administrative unit names and codes
+# Pakistan Administrative Boundaries Dictionary
 
-Returns a tibble of official administrative unit names and PBS geocodes
-from the OCHA/HDX source. Use this to find the exact names and codes
-expected by geometry functions and
-[`pk_join()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_join.md)
-before attempting joins or filters.
+Search and explore administrative names and codes for Pakistan.
 
 ## Usage
 
 ``` r
-pk_dictionary(
-  level = c("provinces", "districts", "tehsils"),
-  province = NULL,
-  district = NULL,
-  refresh = FALSE
-)
+pk_dictionary(level = NULL, name = NULL, code = NULL)
 ```
 
 ## Arguments
 
 - level:
 
-  Character. Administrative level. One of "provinces", "districts", or
-  "tehsils".
+  Character. One of: "provinces", "districts", "tehsils". NULL (default)
+  returns all levels.
 
-- province:
+- name:
 
-  Character. Filter to a specific province. Applies when level is
-  "districts" or "tehsils". NULL returns all.
+  Character. Filter by partial name (case-insensitive).
 
-- district:
+- code:
 
-  Character. Filter to a specific district. Applies when level is
-  "tehsils". NULL returns all.
-
-- refresh:
-
-  Logical. Force re-download. Default FALSE.
+  Character. Filter by partial P-code (case-insensitive).
 
 ## Value
 
-A tibble.
+A data frame with columns: name, level, code, parent.
+
+## Case Insensitivity
+
+All matching in `pk_dictionary()` is **case-insensitive**. "Lahore",
+"lahore", and "LAHORE" all return the same results.
 
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
-  pk_dictionary("provinces")
-  pk_dictionary("districts", province = "Punjab")
-  pk_dictionary("tehsils", district = "Lahore")
-  pk_dictionary("tehsils", province = "Sindh")
-}
+if (FALSE) { # \dontrun{
+  # All provinces
+  pk_dictionary(level = "provinces")
+
+  # Case-insensitive search for districts containing "lahore"
+  pk_dictionary(level = "districts", name = "lahore")
+  pk_dictionary(level = "districts", name = "LAHORE")  # Same result
+
+  # Search by code
+  pk_dictionary(code = "PK6")
+} # }
 ```

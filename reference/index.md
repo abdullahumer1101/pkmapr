@@ -23,7 +23,7 @@
 - [`pk_crs_suggest()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_crs_suggest.md)
   : Suggest an appropriate projected CRS for a Pakistan sf object
 - [`pk_dictionary()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_dictionary.md)
-  : Look up Pakistan administrative unit names and codes
+  : Pakistan Administrative Boundaries Dictionary
 - [`pk_distance()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_distance.md)
   : Compute distances between two sf objects in km
 - [`pk_intersect()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_intersect.md)
@@ -41,8 +41,12 @@
   : Assign points to administrative units (point-in-polygon)
 - [`pk_project()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_project.md)
   : Project an sf object to a Pakistan-appropriate CRS
+- [`pk_search()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_search.md)
+  : Search Across All Administrative Levels
 - [`pk_union()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_union.md)
   : Dissolve sf polygons by a grouping column
+- [`pk_version()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_version.md)
+  : Check package version and update status
 - [`pkmapr_cache_info()`](https://abdullahumer1101.github.io/pkmapr/reference/pkmapr_cache_info.md)
   : Show pkmapr cache information
 - [`pkmapr_clear_cache()`](https://abdullahumer1101.github.io/pkmapr/reference/pkmapr_clear_cache.md)

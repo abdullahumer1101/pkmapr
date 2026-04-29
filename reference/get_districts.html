@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pkmapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,8 +54,8 @@
 
 <dl><dt id="arg-province">province<a class="anchor" aria-label="anchor" href="#arg-province"></a></dt>
 <dd><p>Character. Filter to one province by exact name.
-Run <code>pk_dictionary("provinces")</code> to see valid names.
-NULL (default) returns all districts.</p></dd>
+Matching is case-insensitive. Run <code>pk_dictionary("provinces")</code>
+to see valid names. NULL (default) returns all districts.</p></dd>
 
 
 <dt id="arg-simplified">simplified<a class="anchor" aria-label="anchor" href="#arg-simplified"></a></dt>
@@ -83,6 +83,7 @@ district_code, area_km2, geometry.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># interactive()</span></span></span>
 <span class="r-in"><span>  <span class="va">all_districts</span>    <span class="op">&lt;-</span> <span class="fu">get_districts</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">punjab_districts</span> <span class="op">&lt;-</span> <span class="fu">get_districts</span><span class="op">(</span>province <span class="op">=</span> <span class="st">"Punjab"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">punjab_districts</span> <span class="op">&lt;-</span> <span class="fu">get_districts</span><span class="op">(</span>province <span class="op">=</span> <span class="st">"punjab"</span><span class="op">)</span>  <span class="co"># Case-insensitive</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
