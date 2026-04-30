@@ -12,6 +12,7 @@ measurement, and neighbour structure construction for use with `spdep`,
 ## Installation
 
 ``` r
+
 # GitHub
 remotes::install_github("abdullahumer1101/pkmapr")
 
@@ -39,6 +40,7 @@ released under CC BY licence.
 ## Citation
 
 ``` r
+
 citation("pkmapr")
 ```
 
