@@ -1,5 +1,10 @@
 # Changelog
 
+## pkmapr v1.0.0
+
+- Testing edge cases.
+- First stable release.
+
 ## pkmapr v0.3.0
 
 - New functions:
@@ -24,4 +29,4 @@
 
 ## pkmapr 0.1.1
 
-- Initial stable release.
+- Initial release.
