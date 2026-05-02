@@ -1,3 +1,7 @@
+# pkmapr v1.0.0
+* Testing edge cases. 
+* First stable release. 
+
 # pkmapr v0.3.0
 
 * New functions: `pk_version()` checks installed version against latest GitHub release, `pk_search()` searches across all admin levels with optional fuzzy matching
@@ -14,4 +18,4 @@
 
 # pkmapr 0.1.1
 
-* Initial stable release.
+* Initial release.
