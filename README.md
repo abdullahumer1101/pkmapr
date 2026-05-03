@@ -53,7 +53,7 @@ get_districts() |>
 
 | Function | What it does |
 |----|----|
-| `get_country()`, `get_provinces()`, `get_districts()`, `get_tehsils()` | Download boundary geometries as `sf` objects |
+| `get_country()`, `get_provinces()`, `get_districts()`, `get_tehsils()` | Get boundary geometries as `sf` objects |
 | `pk_dictionary()` | Look up official names and PBS codes |
 | `pk_join()` | Join data to geometries with unmatched-row warnings |
 | `pk_neighbors()` | Build spatial weights for `spdep` with Pakistan-specific boundary handling |
