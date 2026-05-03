@@ -597,8 +597,8 @@ Type 'q()' to quit R.
 > ## No test: 
 > pk_version()
 Installed version: 1.0.0 
-Latest version:    1.0.0 
-You have the latest version
+Latest version:    1.1.0 
+Update available! Run: remotes::install_github('abdullahumer1101/pkmapr')
 > ## End(No test)
 > 
 > 
@@ -610,7 +610,7 @@ You have the latest version
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.62 0 1.63 NA NA 
+Time elapsed:  0.55 0.16 1.78 NA NA 
 > grDevices::dev.off()
 null device 
           1 

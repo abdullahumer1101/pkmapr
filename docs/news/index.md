@@ -1,5 +1,14 @@
 # Changelog
 
+## pkmapr v1.1.0
+
+- Removed `simplified` parameter (data is now always the simplified
+  version)
+- Removed `refresh` parameter (data is now embedded in the package, no
+  downloading)
+- Removed `pkmapr_cache_info()` and `pkmapr_clear_cache()`
+- Package size reduced
+
 ## pkmapr v1.0.0
 
 - Testing edge cases.
@@ -27,6 +36,6 @@
 - Expanded test coverage for core functions.
 - Improved vignettes and function documentation.
 
-## pkmapr 0.1.1
+## pkmapr 0.1.
 
 - Initial release.

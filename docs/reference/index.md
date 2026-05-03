@@ -10,10 +10,6 @@
   : Get Pakistan province boundaries
 - [`get_tehsils()`](https://abdullahumer1101.github.io/pkmapr/reference/get_tehsils.md)
   : Get Pakistan tehsil boundaries
-- [`pkmapr_cache_info()`](https://abdullahumer1101.github.io/pkmapr/reference/pkmapr_cache_info.md)
-  : Show pkmapr cache information
-- [`pkmapr_clear_cache()`](https://abdullahumer1101.github.io/pkmapr/reference/pkmapr_clear_cache.md)
-  : Clear the pkmapr cache
 - [`pk_area()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_area.md)
   : Recalculate area in km² for an sf object
 - [`pk_basemap()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_basemap.md)
