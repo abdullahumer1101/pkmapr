@@ -59,9 +59,9 @@ United Nations Office for the Coordination of Humanitarian Affairs
 
 Useful links:
 
-- [Package website](https://abdullahumer1101.github.io/pkmapr)
+- [Package website](https://abdullahumer1101.github.io/pkmapr/)
 
-- [Source code](https://github.com/abdullahumer1101/pkmapr)
+- [Source code](https://github.com/abdullahumer1101/pkmapr/)
 
 - [Bug reports](https://github.com/abdullahumer1101/pkmapr/issues)
 
