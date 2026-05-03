@@ -1,13 +1,18 @@
 # Changelog
 
+## pkmapr v1.1.1
+
+- No functional changes.
+- Added single quote marks to programs in description.
+
 ## pkmapr v1.1.0
 
 - Removed `simplified` parameter (data is now always the simplified
-  version)
+  version).
 - Removed `refresh` parameter (data is now embedded in the package, no
-  downloading)
-- Removed `pkmapr_cache_info()` and `pkmapr_clear_cache()`
-- Package size reduced
+  downloading).
+- Removed `pkmapr_cache_info()` and `pkmapr_clear_cache()`.
+- Package size reduced.
 
 ## pkmapr v1.0.0
 
