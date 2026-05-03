@@ -5,15 +5,10 @@ Get Pakistan province boundaries
 ## Usage
 
 ``` r
-get_provinces(simplified = TRUE, crs = 4326, refresh = FALSE)
+get_provinces(crs = 4326)
 ```
 
 ## Arguments
-
-- simplified:
-
-  Logical. Return simplified geometry for fast plotting (default TRUE)
-  or full resolution for precise analysis (FALSE).
 
 - crs:
 
@@ -21,10 +16,6 @@ get_provinces(simplified = TRUE, crs = 4326, refresh = FALSE)
   area calculations. See
   [`pk_crs_suggest()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_crs_suggest.md)
   for guidance.
-
-- refresh:
-
-  Logical. Force re-download even if cached. Default FALSE.
 
 ## Value
 

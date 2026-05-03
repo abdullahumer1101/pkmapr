@@ -120,10 +120,6 @@ Or cite directly:
   : Dissolve sf polygons by a grouping column
 - [`pk_version()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_version.md)
   : Check package version and update status
-- [`pkmapr_cache_info()`](https://abdullahumer1101.github.io/pkmapr/reference/pkmapr_cache_info.md)
-  : Show pkmapr cache information
-- [`pkmapr_clear_cache()`](https://abdullahumer1101.github.io/pkmapr/reference/pkmapr_clear_cache.md)
-  : Clear the pkmapr cache
 
 # Articles
 
