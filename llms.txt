@@ -43,7 +43,7 @@ get_districts() |>
 
 | Function | What it does |
 |----|----|
-| [`get_country()`](https://abdullahumer1101.github.io/pkmapr/reference/get_country.md), [`get_provinces()`](https://abdullahumer1101.github.io/pkmapr/reference/get_provinces.md), [`get_districts()`](https://abdullahumer1101.github.io/pkmapr/reference/get_districts.md), [`get_tehsils()`](https://abdullahumer1101.github.io/pkmapr/reference/get_tehsils.md) | Download boundary geometries as `sf` objects |
+| [`get_country()`](https://abdullahumer1101.github.io/pkmapr/reference/get_country.md), [`get_provinces()`](https://abdullahumer1101.github.io/pkmapr/reference/get_provinces.md), [`get_districts()`](https://abdullahumer1101.github.io/pkmapr/reference/get_districts.md), [`get_tehsils()`](https://abdullahumer1101.github.io/pkmapr/reference/get_tehsils.md) | Get boundary geometries as `sf` objects |
 | [`pk_dictionary()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_dictionary.md) | Look up official names and PBS codes |
 | [`pk_join()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_join.md) | Join data to geometries with unmatched-row warnings |
 | [`pk_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_neighbors.md) | Build spatial weights for `spdep` with Pakistan-specific boundary handling |
