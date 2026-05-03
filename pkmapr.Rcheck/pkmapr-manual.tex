@@ -1,0 +1,1045 @@
+\nonstopmode{}
+\documentclass[a4paper]{book}
+\usepackage[times,inconsolata,hyper]{Rd}
+\usepackage{makeidx}
+\makeatletter\@ifl@t@r\fmtversion{2018/04/01}{}{\usepackage[utf8]{inputenc}}\makeatother
+% \usepackage{graphicx} % @USE GRAPHICX@
+\makeindex{}
+\begin{document}
+\chapter*{}
+\begin{center}
+{\textbf{\huge Package `pkmapr'}}
+\par\bigskip{\large \today}
+\end{center}
+\ifthenelse{\boolean{Rd@use@hyper}}{\hypersetup{pdftitle = {pkmapr: Pakistan Spatial Data Toolkit}}}{}
+\ifthenelse{\boolean{Rd@use@hyper}}{\hypersetup{pdfauthor = {Abdullah Umer}}}{}
+\begin{description}
+\raggedright{}
+\item[Title]\AsIs{Pakistan Spatial Data Toolkit}
+\item[Version]\AsIs{1.0.0}
+\item[Depends]\AsIs{R (>= 4.1.0)}
+\item[Description]\AsIs{Provides a tidy interface to Pakistan's official administrative
+boundary data from the United Nations Office for the Coordination of
+Humanitarian Affairs (OCHA). Downloads and caches spatial data at
+country, province, district, and tehsil levels as sf objects
+compatible with the tidyverse and geospatial ecosystem. Includes
+utilities for geographic dictionary lookup, coordinate reference
+system selection, spatial measurement, and neighbour structure
+construction for use with spdep, ggplot2, leaflet, and related packages.}
+\item[License]\AsIs{GPL-3 + file LICENSE}
+\item[Encoding]\AsIs{UTF-8}
+\item[Roxygen]\AsIs{list(markdown = TRUE)}
+\item[RoxygenNote]\AsIs{7.3.3}
+\item[Imports]\AsIs{sf, httr2, dplyr, rlang, cli, spdep, jsonlite}
+\item[Suggests]\AsIs{ggplot2, leaflet, rmapshaper, httptest2, testthat (>= 3.0.0),
+tmap, knitr, readr, rmarkdown, spelling}
+\item[VignetteBuilder]\AsIs{knitr}
+\item[URL]\AsIs{}\url{https://abdullahumer1101.github.io/pkmapr}\AsIs{,
+}\url{https://github.com/abdullahumer1101/pkmapr}\AsIs{}
+\item[BugReports]\AsIs{}\url{https://github.com/abdullahumer1101/pkmapr/issues}\AsIs{}
+\item[NeedsCompilation]\AsIs{no}
+\item[Author]\AsIs{Abdullah Umer [aut, cre] (ORCID:
+<}\url{https://orcid.org/0009-0008-4082-8394}\AsIs{>)}
+\item[Maintainer]\AsIs{Abdullah Umer }\email{abdullahumer1101@gmail.com}\AsIs{}
+\end{description}
+\Rdcontents{Contents}
+\HeaderA{get\_country}{Get Pakistan national boundary}{get.Rul.country}
+%
+\begin{Description}
+Get Pakistan national boundary
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+get_country(crs = 4326)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{crs}] Integer EPSG code. Default 4326 (WGS84). Use 32642 for
+distance and area calculations. See \code{\LinkA{pk\_crs\_suggest()}{pk.Rul.crs.Rul.suggest}} for guidance.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+An sf object with columns: country\_name, country\_code,
+area\_km2, geometry.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  pk <- get_country()
+  plot(sf::st_geometry(pk))
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{get\_districts}{Get Pakistan district boundaries}{get.Rul.districts}
+%
+\begin{Description}
+Get Pakistan district boundaries
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+get_districts(province = NULL, crs = 4326)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{province}] Character. Filter to one province by exact name.
+Matching is case-insensitive. Run \code{pk\_dictionary("provinces")}
+to see valid names. NULL (default) returns all districts.
+
+\item[\code{crs}] Integer EPSG code. Default 4326 (WGS84). Use 32642 for
+distance and area calculations. See \code{\LinkA{pk\_crs\_suggest()}{pk.Rul.crs.Rul.suggest}} for guidance.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+An sf object with columns: province\_name, district\_name,
+district\_code, area\_km2, geometry.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  all_districts    <- get_districts()
+  punjab_districts <- get_districts(province = "Punjab")
+  punjab_districts <- get_districts(province = "punjab")  # Case-insensitive
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{get\_provinces}{Get Pakistan province boundaries}{get.Rul.provinces}
+%
+\begin{Description}
+Get Pakistan province boundaries
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+get_provinces(crs = 4326)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{crs}] Integer EPSG code. Default 4326 (WGS84). Use 32642 for
+distance and area calculations. See \code{\LinkA{pk\_crs\_suggest()}{pk.Rul.crs.Rul.suggest}} for guidance.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+An sf object with columns: province\_name, province\_code,
+area\_km2, geometry.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  pk <- get_provinces()
+  plot(sf::st_geometry(pk))
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{get\_tehsils}{Get Pakistan tehsil boundaries}{get.Rul.tehsils}
+%
+\begin{Description}
+Get Pakistan tehsil boundaries
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+get_tehsils(district = NULL, province = NULL, crs = 4326)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{district}] Character. Filter to one district by exact name.
+Matching is case-insensitive. NULL returns all.
+
+\item[\code{province}] Character. Filter to one province by exact name.
+Matching is case-insensitive. NULL returns all.
+If both district and province are supplied, district takes precedence.
+
+\item[\code{crs}] Integer EPSG code. Default 4326 (WGS84). Use 32642 for
+distance and area calculations. See \code{\LinkA{pk\_crs\_suggest()}{pk.Rul.crs.Rul.suggest}} for guidance.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+An sf object with columns: province\_name, district\_name,
+tehsil\_name, tehsil\_code, area\_km2, geometry.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  sindh_tehsils  <- get_tehsils(province = "Sindh")
+  sindh_tehsils  <- get_tehsils(province = "sindh")  # Case-insensitive
+  lahore_tehsils <- get_tehsils(district = "Lahore")
+  lahore_tehsils <- get_tehsils(district = "lahore")  # Case-insensitive
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pkmapr}{pkmapr: Pakistan Spatial Data Toolkit}{pkmapr}
+\aliasA{pkmapr-package}{pkmapr}{pkmapr.Rdash.package}
+\keyword{internal}{pkmapr}
+%
+\begin{Description}
+Provides a tidy interface to Pakistan's official administrative
+boundary data from the United Nations Office for the Coordination of
+Humanitarian Affairs (OCHA). Downloads and caches spatial data at
+country, province, district, and tehsil levels as \code{sf} objects
+compatible with the tidyverse and geospatial ecosystem.
+\end{Description}
+%
+\begin{Section}{Key functions}
+
+\begin{description}
+
+\item[Data loading] 
+\code{\LinkA{get\_districts}{get.Rul.districts}}, \code{\LinkA{get\_tehsils}{get.Rul.tehsils}},
+\code{\LinkA{get\_provinces}{get.Rul.provinces}}, \code{\LinkA{get\_country}{get.Rul.country}}:
+Download administrative boundaries at different levels.
+
+\item[Lookup] 
+\code{\LinkA{pk\_dictionary}{pk.Rul.dictionary}}:
+Look up official names and PBS geocodes.
+
+\item[Joining] 
+\code{\LinkA{pk\_join}{pk.Rul.join}}:
+Join external data with administrative units, with match checking.
+
+\item[Spatial weights] 
+\code{\LinkA{pk\_neighbors}{pk.Rul.neighbors}}:
+Build spatial weights for spdep and spatialreg.
+
+\item[Visualisation] 
+\code{\LinkA{pk\_map}{pk.Rul.map}}, \code{\LinkA{pk\_map\_interactive}{pk.Rul.map.Rul.interactive}}:
+Quick choropleth maps with ggplot2 or leaflet.
+
+
+\end{description}
+
+\end{Section}
+%
+\begin{Section}{Package options}
+
+\code{pkmapr} uses the following global options:
+\begin{description}
+
+\item[\code{pkmapr\_use\_cache}] 
+Logical. If \code{TRUE}, caches downloaded data in a persistent
+user directory. Default \code{FALSE} (uses temporary directory).
+
+\item[\code{pkmapr\_refresh}] 
+Logical. Re-download data even if cached copy exists.
+Default \code{FALSE}.
+
+
+\end{description}
+
+\end{Section}
+%
+\begin{Author}
+\strong{Maintainer}: Abdullah Umer \email{abdullahumer1101@gmail.com} (\Rhref{https://orcid.org/0009-0008-4082-8394}{ORCID})
+
+\end{Author}
+%
+\begin{References}
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA).
+Pakistan Administrative Boundaries. \url{https://data.humdata.org/}
+\end{References}
+%
+\begin{SeeAlso}
+Useful links:
+\begin{itemize}
+
+\item{} \Rhref{https://abdullahumer1101.github.io/pkmapr}{Package website}
+\item{} \Rhref{https://github.com/abdullahumer1101/pkmapr}{Source code}
+\item{} \Rhref{https://github.com/abdullahumer1101/pkmapr/issues}{Bug reports}
+
+\end{itemize}
+
+\end{SeeAlso}
+\HeaderA{pkmapr-deprecated}{Deprecated functions in pkmapr}{pkmapr.Rdash.deprecated}
+\aliasA{pak\_area}{pkmapr-deprecated}{pak.Rul.area}
+\aliasA{pak\_basemap}{pkmapr-deprecated}{pak.Rul.basemap}
+\aliasA{pak\_bbox}{pkmapr-deprecated}{pak.Rul.bbox}
+\aliasA{pak\_buffer}{pkmapr-deprecated}{pak.Rul.buffer}
+\aliasA{pak\_centroid}{pkmapr-deprecated}{pak.Rul.centroid}
+\aliasA{pak\_crs\_suggest}{pkmapr-deprecated}{pak.Rul.crs.Rul.suggest}
+\aliasA{pak\_dictionary}{pkmapr-deprecated}{pak.Rul.dictionary}
+\aliasA{pak\_distance}{pkmapr-deprecated}{pak.Rul.distance}
+\aliasA{pak\_intersect}{pkmapr-deprecated}{pak.Rul.intersect}
+\aliasA{pak\_join}{pkmapr-deprecated}{pak.Rul.join}
+\aliasA{pak\_map}{pkmapr-deprecated}{pak.Rul.map}
+\aliasA{pak\_map\_interactive}{pkmapr-deprecated}{pak.Rul.map.Rul.interactive}
+\aliasA{pak\_neighbors}{pkmapr-deprecated}{pak.Rul.neighbors}
+\aliasA{pak\_points\_in}{pkmapr-deprecated}{pak.Rul.points.Rul.in}
+\aliasA{pak\_project}{pkmapr-deprecated}{pak.Rul.project}
+\aliasA{pak\_union}{pkmapr-deprecated}{pak.Rul.union}
+\keyword{internal}{pkmapr-deprecated}
+%
+\begin{Description}
+These functions are deprecated and will be removed in a future version.
+Please use the new \code{pk\_*} functions instead.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pak_crs_suggest(...)
+
+pak_dictionary(...)
+
+pak_join(...)
+
+pak_area(...)
+
+pak_distance(...)
+
+pak_centroid(...)
+
+pak_bbox(...)
+
+pak_project(...)
+
+pak_neighbors(...)
+
+pak_points_in(...)
+
+pak_buffer(...)
+
+pak_union(...)
+
+pak_intersect(...)
+
+pak_map(...)
+
+pak_map_interactive(...)
+
+pak_basemap(...)
+\end{verbatim}
+\end{Usage}
+\HeaderA{pk\_area}{Recalculate area in km² for an sf object}{pk.Rul.area}
+%
+\begin{Description}
+Computes accurate areas by reprojecting to UTM Zone 42N before
+measurement. Returns the input object with area\_km2 added or updated.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_area(x)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] An sf object with polygon geometries.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+The input sf object with area\_km2 column added or updated.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  districts <- get_districts()
+  districts <- pk_area(districts)
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_basemap}{Leaflet basemap centred on Pakistan}{pk.Rul.basemap}
+%
+\begin{Description}
+Returns a leaflet map pre-zoomed to Pakistan's extent as a starting
+point for building custom interactive maps.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_basemap(provider = "CartoDB.Positron")
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{provider}] Character. Tile provider. Default "CartoDB.Positron".
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A leaflet object.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  pk_basemap()
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_bbox}{Get a bounding box for a named administrative unit}{pk.Rul.bbox}
+%
+\begin{Description}
+Get a bounding box for a named administrative unit
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_bbox(name, level = c("province", "district", "tehsil"))
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{name}] Character. Name of the administrative unit.
+
+\item[\code{level}] Character. One of "province", "district", or "tehsil".
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A bbox object for use with \code{ggplot2::coord\_sf()} or
+\code{leaflet::fitBounds()}.
+\end{Value}
+%
+\begin{Note}
+If you see an error like \AsIs{\texttt{object 'xxx' not found}} when using this
+function, the issue is likely in your data preparation, not \code{pk\_bbox()}.
+Test the function directly: \code{pk\_bbox("Punjab", level = "province")}.
+If that works, check that your data has the expected column names.
+\end{Note}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  bb <- pk_bbox("Lahore", level = "district")
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_buffer}{Create buffers around sf geometries in km}{pk.Rul.buffer}
+%
+\begin{Description}
+Reprojects to UTM Zone 42N internally so buffer distances are
+in kilometres, then returns buffers in the original CRS.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_buffer(x, dist_km)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] An sf object.
+
+\item[\code{dist\_km}] Numeric. Buffer distance in kilometres.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+An sf object with buffered geometries in the same CRS as input.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  districts <- get_districts()
+  buffered  <- pk_buffer(districts, dist_km = 10)
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_centroid}{Extract centroids from an sf object}{pk.Rul.centroid}
+%
+\begin{Description}
+Returns polygon centroids as a point sf object with only geometry
+(attributes are dropped to avoid warnings about constant attributes).
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_centroid(x)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] An sf object with polygon geometries.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+An sf point object in the same CRS as input.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  districts <- get_districts()
+  centres   <- pk_centroid(districts)
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_crs\_suggest}{Suggest an appropriate projected CRS for a Pakistan sf object}{pk.Rul.crs.Rul.suggest}
+%
+\begin{Description}
+Examines the geographic extent of an sf object and recommends the most
+appropriate projected coordinate reference system for metric operations.
+Pakistan spans UTM zones 41N, 42N, and 43N; national-level analyses
+benefit from an equal-area projection.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_crs_suggest(x)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] An sf object.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Details}
+Using WGS84 (EPSG:4326) for distance, area, or buffer operations produces
+inaccurate results as it measures in degrees rather than metres.
+\end{Details}
+%
+\begin{Value}
+A named list:
+\begin{description}
+
+\item[epsg] Integer EPSG code for the recommended CRS.
+\item[name] Human-readable CRS name.
+\item[rationale] One-sentence explanation of the recommendation.
+
+\end{description}
+
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  pk_crs_suggest(get_country())
+  pk_crs_suggest(get_districts(province = "Balochistan"))
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_dictionary}{Pakistan Administrative Boundaries Dictionary}{pk.Rul.dictionary}
+%
+\begin{Description}
+Search and explore administrative names and codes for Pakistan.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_dictionary(level = NULL, name = NULL, code = NULL)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{level}] Character. One of: "provinces", "districts", "tehsils".
+NULL (default) returns all levels.
+
+\item[\code{name}] Character. Filter by partial name (case-insensitive).
+
+\item[\code{code}] Character. Filter by partial P-code (case-insensitive).
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A data frame with columns: name, level, code, parent.
+\end{Value}
+%
+\begin{Section}{Case Insensitivity}
+
+All matching in \code{pk\_dictionary()} is \strong{case-insensitive}.
+"Lahore", "lahore", and "LAHORE" all return the same results.
+\end{Section}
+%
+\begin{Examples}
+\begin{ExampleCode}
+## Not run: 
+  # All provinces
+  pk_dictionary(level = "provinces")
+
+  # Case-insensitive search for districts containing "lahore"
+  pk_dictionary(level = "districts", name = "lahore")
+  pk_dictionary(level = "districts", name = "LAHORE")  # Same result
+
+  # Search by code
+  pk_dictionary(code = "PK6")
+
+## End(Not run)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_distance}{Compute distances between two sf objects in km}{pk.Rul.distance}
+%
+\begin{Description}
+Reprojects internally to UTM Zone 42N for accurate metric distances.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_distance(x, y, by = c("centroid", "edge"))
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] An sf object.
+
+\item[\code{y}] An sf object.
+
+\item[\code{by}] Character. "centroid" (default) for centroid-to-centroid
+distances. "edge" for nearest-point-on-boundary distances.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A numeric matrix of distances in km.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  provinces <- get_provinces()
+  d <- pk_distance(provinces, provinces)
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_intersect}{Intersect two sf objects}{pk.Rul.intersect}
+%
+\begin{Description}
+Returns the geometric intersection of two sf objects with CRS
+alignment handled automatically.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_intersect(x, y)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] An sf object.
+
+\item[\code{y}] An sf object.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+An sf object of the intersection in the CRS of x.
+\end{Value}
+\HeaderA{pk\_join}{Join data to a pkmapr sf object with match checking}{pk.Rul.join}
+%
+\begin{Description}
+Performs a left join. Join by code columns (e.g. district\_code) rather than name columns
+wherever possible.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_join(spatial, data, by)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{spatial}] An sf object from a pkmapr geometry function.
+
+\item[\code{data}] A data frame to join.
+
+\item[\code{by}] Character. Column name present in both spatial and data.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+The spatial sf object with data columns joined.
+\end{Value}
+%
+\begin{Note}
+After joining, always inspect \code{names(result)} to check for column name
+conflicts. If your data shares column names with the spatial object (e.g.,
+\code{province\_name}, \code{district\_name}), both versions will be preserved with
+\code{.x} and \code{.y} suffixes. Rename or select the appropriate columns before
+further analysis.
+\end{Note}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  districts <- get_districts()
+  my_data   <- data.frame(district_code = "PK603", value = 42)
+  joined    <- pk_join(districts, my_data, by = "district_code")
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_map}{Quick choropleth map of a pkmapr sf object}{pk.Rul.map}
+%
+\begin{Description}
+Produces a ggplot2 map for rapid exploratory visualisation.
+Returns a ggplot object that can be extended with standard ggplot2 layers.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_map(x, fill = NULL, title = NULL, ...)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] An sf object.
+
+\item[\code{fill}] Character. Column name to use as fill variable. NULL (default)
+produces an outline map.
+
+\item[\code{title}] Character. Map title. NULL for no title.
+
+\item[\code{...}] Additional arguments passed to \code{ggplot2::geom\_sf()}.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A ggplot object.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  pk_map(get_provinces())
+  pk_map(get_provinces(), fill = "area_km2", title = "Province areas")
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_map\_interactive}{Interactive choropleth map of a pkmapr sf object}{pk.Rul.map.Rul.interactive}
+%
+\begin{Description}
+Produces an interactive leaflet map. Returns a leaflet object that
+can be extended with standard leaflet functions.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_map_interactive(x, fill = NULL, popup = NULL, ...)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] An sf object.
+
+\item[\code{fill}] Character. Column name for choropleth fill. NULL produces
+an outline map.
+
+\item[\code{popup}] Character vector. Column names to display in click popups.
+
+\item[\code{...}] Additional arguments passed to \code{leaflet::addPolygons()}.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A leaflet object.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  districts <- get_districts()
+  pk_map_interactive(districts,
+                      fill = "area_km2",
+                      popup = list("district_name", "area_km2"))
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_neighbors}{Construct a spatial neighbours list for Pakistan administrative units}{pk.Rul.neighbors}
+%
+\begin{Description}
+Builds a contiguity or distance-based spatial neighbours structure
+for direct use with spdep and spatialreg. Handles Pakistan-specific
+complexities including non-contiguous units and disputed boundaries.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_neighbors(
+  x,
+  style = c("queen", "rook", "knn"),
+  k = NULL,
+  disputed = c("exclude", "include", "flag")
+)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] An sf object with polygon geometries.
+
+\item[\code{style}] Character. Neighbour definition: "queen" (shared boundary
+point, default), "rook" (shared edge), or "knn" (k nearest centroids).
+
+\item[\code{k}] Integer. Number of nearest neighbours. Required when
+\code{style = "knn"}.
+
+\item[\code{disputed}] Character. Treatment of non-contiguous units and
+disputed boundaries:
+\begin{description}
+
+\item[exclude] Default. Non-contiguous units receive one nearest
+neighbour as fallback. An informative message identifies affected units.
+\item[include] Treat all boundaries as normal shared boundaries.
+\item[flag] Include all boundaries but add a boundary\_note element
+to the result documenting which units are affected.
+
+\end{description}
+
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A named list:
+\begin{description}
+
+\item[nb] A spdep nb object.
+\item[listw] A row-standardised spdep listw object, ready for
+\code{spdep::moran.test()}, \code{spdep::localMoran()},
+\code{spatialreg::lagsarlm()}, and related functions.
+\item[boundary\_note] Character. Present only when disputed = "flag".
+
+\end{description}
+
+\end{Value}
+%
+\begin{Section}{Pakistan-specific handling}
+
+Gilgit-Baltistan and Azad Kashmir might break most spatial statistics. The \code{disputed} argument
+controls how the Line of Control and special administrative boundaries
+flagged in the OCHA source data are treated, making the analytical
+decision explicit and reproducible.
+\end{Section}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  districts <- get_districts()
+  w <- pk_neighbors(districts)
+
+  # Calculate Moran's I using spdep
+  moran_result <- spdep::moran.test(districts$area_km2, w$listw)
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_points\_in}{Assign points to administrative units (point-in-polygon)}{pk.Rul.points.Rul.in}
+%
+\begin{Description}
+For each point in \code{points}, identifies which polygon it falls
+within and joins that polygon's attributes to the point record.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_points_in(points, polygons, return_all = TRUE)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{points}] An sf object with point geometries.
+
+\item[\code{polygons}] An sf object with polygon geometries.
+
+\item[\code{return\_all}] Logical. Keep unmatched points with NA polygon
+attributes (TRUE, default) or drop them (FALSE).
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+The points sf object with polygon attribute columns joined.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  # Get district boundaries
+  districts <- get_districts()
+
+  # Create sample points (or use your own sf object)
+  set.seed(123)
+  sample_points <- sf::st_sample(districts, size = 50)
+  sample_points_sf <- sf::st_sf(geometry = sample_points)
+
+  # Assign points to districts
+  points_with_districts <- pk_points_in(sample_points_sf, districts)
+  print(head(points_with_districts))
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_project}{Project an sf object to a Pakistan-appropriate CRS}{pk.Rul.project}
+%
+\begin{Description}
+Convenience wrapper around \code{sf::st\_transform()} with a default
+of UTM Zone 42N, appropriate for most Pakistan analyses requiring
+accurate distance, area, or buffer operations.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_project(x, crs = 32642)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] An sf object.
+
+\item[\code{crs}] Integer EPSG code. Default 32642 (WGS84 / UTM Zone 42N).
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+The sf object reprojected to the specified CRS.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  districts <- get_districts()
+  projected <- pk_project(districts)
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_search}{Search Across All Administrative Levels}{pk.Rul.search}
+%
+\begin{Description}
+Search for administrative units by partial name or code across
+all levels (provinces, districts, tehsils).
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_search(query, fuzzy = FALSE)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{query}] Character. Search term (partial match, case-insensitive).
+
+\item[\code{fuzzy}] Logical. If TRUE, uses fuzzy matching for typos.
+Default FALSE. Warning: Fuzzy matching can be slower and may
+return unexpected matches for short or common queries.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A data frame with columns: name, level, code, parent.
+\end{Value}
+%
+\begin{Section}{Case Insensitivity}
+
+All matching in \code{pk\_search()} is \strong{case-insensitive} by default.
+"Lahore", "lahore", and "LAHORE" all return the same results.
+\end{Section}
+%
+\begin{Section}{Fuzzy Matching}
+
+When \code{fuzzy = TRUE}, the function uses approximate string matching
+to handle typos and spelling variations. For example, "lahor" will
+match "Lahore". This is useful for interactive exploration but
+may return unexpected results for ambiguous queries.
+\end{Section}
+%
+\begin{Examples}
+\begin{ExampleCode}
+## Not run: 
+  # Case-insensitive search
+  pk_search("lahore")   # Returns Lahore district and tehsils
+  pk_search("LAHORE")   # Same result
+
+  # Fuzzy search for misspelled "lahore"
+  pk_search("lahor", fuzzy = TRUE)
+  pk_search("lahre", fuzzy = TRUE)
+
+  # Search by code
+  pk_search("PK6")
+
+## End(Not run)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_union}{Dissolve sf polygons by a grouping column}{pk.Rul.union}
+%
+\begin{Description}
+Merges polygons sharing the same value in a grouping column and
+recalculates area\_km2.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_union(x, by)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] An sf object.
+
+\item[\code{by}] Character. Column name to group by.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A dissolved sf object with area\_km2 recalculated.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+  tehsils     <- get_tehsils()
+  by_district <- pk_union(tehsils, by = "district_name")
+
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{pk\_version}{Check package version and update status}{pk.Rul.version}
+%
+\begin{Description}
+Check package version and update status
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+pk_version(quiet = FALSE)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{quiet}] Logical. If FALSE (default), prints to console.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+Invisibly, a list with installed and latest versions.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+pk_version()
+
+\end{ExampleCode}
+\end{Examples}
+\printindex{}
+\end{document}

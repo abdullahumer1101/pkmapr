@@ -1,0 +1,29 @@
+get_country             Get Pakistan national boundary
+get_districts           Get Pakistan district boundaries
+get_provinces           Get Pakistan province boundaries
+get_tehsils             Get Pakistan tehsil boundaries
+pk_area                 Recalculate area in km² for an sf object
+pk_basemap              Leaflet basemap centred on Pakistan
+pk_bbox                 Get a bounding box for a named administrative
+                        unit
+pk_buffer               Create buffers around sf geometries in km
+pk_centroid             Extract centroids from an sf object
+pk_crs_suggest          Suggest an appropriate projected CRS for a
+                        Pakistan sf object
+pk_dictionary           Pakistan Administrative Boundaries Dictionary
+pk_distance             Compute distances between two sf objects in km
+pk_intersect            Intersect two sf objects
+pk_join                 Join data to a pkmapr sf object with match
+                        checking
+pk_map                  Quick choropleth map of a pkmapr sf object
+pk_map_interactive      Interactive choropleth map of a pkmapr sf
+                        object
+pk_neighbors            Construct a spatial neighbours list for
+                        Pakistan administrative units
+pk_points_in            Assign points to administrative units
+                        (point-in-polygon)
+pk_project              Project an sf object to a Pakistan-appropriate
+                        CRS
+pk_search               Search Across All Administrative Levels
+pk_union                Dissolve sf polygons by a grouping column
+pk_version              Check package version and update status

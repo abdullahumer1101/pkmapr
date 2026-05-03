@@ -1,6 +1,6 @@
 Package: pkmapr
 Title: Pakistan Spatial Data Toolkit
-Version: 1.0.0
+Version: 1.1.0
 Depends: R (>= 4.1.0)
 Authors@R:
     person("Abdullah Umer", email = "abdullahumer1101@gmail.com",
@@ -20,7 +20,6 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Imports:
     sf,
-    httr2,
     dplyr,
     rlang,
     cli,
@@ -38,6 +37,6 @@ Suggests:
     rmarkdown,
     spelling
 VignetteBuilder: knitr
-URL: https://abdullahumer1101.github.io/pkmapr,
-    https://github.com/abdullahumer1101/pkmapr
+URL: https://abdullahumer1101.github.io/pkmapr/,
+    https://github.com/abdullahumer1101/pkmapr/
 BugReports: https://github.com/abdullahumer1101/pkmapr/issues
