@@ -51,8 +51,8 @@
 #' @seealso
 #' Useful links:
 #' \itemize{
-#'   \item \href{https://abdullahumer1101.github.io/pkmapr}{Package website}
-#'   \item \href{https://github.com/abdullahumer1101/pkmapr}{Source code}
+#'   \item \href{https://abdullahumer1101.github.io/pkmapr/}{Package website}
+#'   \item \href{https://github.com/abdullahumer1101/pkmapr/}{Source code}
 #'   \item \href{https://github.com/abdullahumer1101/pkmapr/issues}{Bug reports}
 #' }
 #'
