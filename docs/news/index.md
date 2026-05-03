@@ -6,7 +6,10 @@
   version)
 - Removed `refresh` parameter (data is now embedded in the package, no
   downloading)
-- Removed `pkmapr_cache_info()` and `pkmapr_clear_cache()`
+- Removed
+  [`pkmapr_cache_info()`](https://abdullahumer1101.github.io/pkmapr/reference/pkmapr_cache_info.html)
+  and
+  [`pkmapr_clear_cache()`](https://abdullahumer1101.github.io/pkmapr/reference/pkmapr_clear_cache.html)
 - Package size reduced
 
 ## pkmapr v1.0.0
