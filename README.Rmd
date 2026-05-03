@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# pkmapr: Pakistan Administrative Boundaries Toolkit
+# pkmapr: Pakistan Spatial Data Toolkit
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/abdullahumer1101/pkmapr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/abdullahumer1101/pkmapr/actions/workflows/R-CMD-check.yaml)

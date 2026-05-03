@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "To cite package 'pkmapr' in publications use:"
 type: software
 license: GPL-3.0-only
-title: "pkmapr: Pakistan Administrative Boundaries Toolkit"
+title: "pkmapr: Pakistan Spatial Data Toolkit"
 version: 1.0.0
 abstract: "Provides a tidy interface to Pakistan's official administrative boundary data from OCHA. Downloads and caches spatial data at country, province, district, and tehsil levels as sf objects."
 authors:
@@ -14,7 +14,7 @@ repository-code: "https://github.com/abdullahumer1101/pkmapr"
 url: "https://abdullahumer1101.github.io/pkmapr"
 preferred-citation:
   type: software
-  title: "pkmapr: Pakistan Administrative Boundaries Toolkit"
+  title: "pkmapr: Pakistan Spatial Data Toolkit"
   version: 1.0.0
   date-released: 2026-04-29
   authors:

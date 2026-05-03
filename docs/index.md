@@ -1,4 +1,4 @@
-# pkmapr: Pakistan Administrative Boundaries Toolkit
+# pkmapr: Pakistan Spatial Data Toolkit
 
 **pkmapr** (pronounced *P-K-Mapper*) provides a clean, tidy interface to
 Pakistan’s official administrative boundary data from
@@ -44,5 +44,5 @@ citation("pkmapr")
 
 Or cite directly:
 
-> Umer, A. (2025). pkmapr: Pakistan Administrative Boundaries Toolkit.
+> Umer, A. (2025). pkmapr: Pakistan Spatial Data Toolkit.
 > <https://doi.org/10.5281/zenodo.19769542>

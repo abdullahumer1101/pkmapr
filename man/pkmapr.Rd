@@ -4,7 +4,7 @@
 \name{pkmapr}
 \alias{pkmapr-package}
 \alias{pkmapr}
-\title{pkmapr: Pakistan Administrative Boundaries Toolkit}
+\title{pkmapr: Pakistan Spatial Data Toolkit}
 \description{
 Provides a tidy interface to Pakistan's official administrative
 boundary data from the United Nations Office for the Coordination of

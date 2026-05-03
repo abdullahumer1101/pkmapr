@@ -1,5 +1,5 @@
 Package: pkmapr
-Title: Pakistan Administrative Boundaries Toolkit
+Title: Pakistan Spatial Data Toolkit
 Version: 1.0.0
 Depends: R (>= 4.1.0)
 Authors@R:
