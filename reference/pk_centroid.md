@@ -22,8 +22,6 @@ An sf point object in the same CRS as input.
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
   districts <- get_districts()
   centres   <- pk_centroid(districts)
-}
 ```

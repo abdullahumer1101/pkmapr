@@ -26,8 +26,6 @@ An sf object with buffered geometries in the same CRS as input.
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
   districts <- get_districts()
   buffered  <- pk_buffer(districts, dist_km = 10)
-}
 ```

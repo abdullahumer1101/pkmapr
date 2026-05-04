@@ -36,10 +36,8 @@ tehsil_code, area_km2, geometry.
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
   sindh_tehsils  <- get_tehsils(province = "Sindh")
   sindh_tehsils  <- get_tehsils(province = "sindh")  # Case-insensitive
   lahore_tehsils <- get_tehsils(district = "Lahore")
   lahore_tehsils <- get_tehsils(district = "lahore")  # Case-insensitive
-}
 ```

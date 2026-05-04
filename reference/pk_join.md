@@ -38,9 +38,7 @@ columns before further analysis.
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
   districts <- get_districts()
   my_data   <- data.frame(district_code = "PK603", value = 42)
   joined    <- pk_join(districts, my_data, by = "district_code")
-}
 ```

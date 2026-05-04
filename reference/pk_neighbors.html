@@ -39,7 +39,7 @@ complexities including non-contiguous units and disputed boundaries."><meta name
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Construct a spatial neighbours list for Pakistan administrative units</h1>
-      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/main/R/neighbors.R" class="external-link"><code>R/neighbors.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/HEAD/R/neighbors.R" class="external-link"><code>R/neighbors.R</code></a></small>
       <div class="d-none name"><code>pk_neighbors.Rd</code></div>
     </div>
 
@@ -102,7 +102,7 @@ to the result documenting which units are affected.</p></dd>
 <dt>listw</dt>
 <dd><p>A row-standardised spdep listw object, ready for
 <code><a href="https://r-spatial.github.io/spdep/reference/moran.test.html" class="external-link">spdep::moran.test()</a></code>, <code>spdep::localMoran()</code>,
-<code>spatialreg::lagsarlm()</code>, and related functions.</p></dd>
+<code><a href="https://r-spatial.github.io/spatialreg/reference/ML_models.html" class="external-link">spatialreg::lagsarlm()</a></code>, and related functions.</p></dd>
 
 <dt>boundary_note</dt>
 <dd><p>Character. Present only when disputed = "flag".</p></dd>
@@ -121,13 +121,11 @@ decision explicit and reproducible.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># interactive()</span></span></span>
-<span class="r-in"><span>  <span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">w</span> <span class="op">&lt;-</span> <span class="fu">pk_neighbors</span><span class="op">(</span><span class="va">districts</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Calculate Moran's I using spdep</span></span></span>
 <span class="r-in"><span>  <span class="va">moran_result</span> <span class="op">&lt;-</span> <span class="fu">spdep</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/spdep/reference/moran.test.html" class="external-link">moran.test</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">area_km2</span>, <span class="va">w</span><span class="op">$</span><span class="va">listw</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

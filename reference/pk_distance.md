@@ -30,8 +30,8 @@ A numeric matrix of distances in km.
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
   provinces <- get_provinces()
   d <- pk_distance(provinces, provinces)
-}
+#> Warning: st_centroid assumes attributes are constant over geometries
+#> Warning: st_centroid assumes attributes are constant over geometries
 ```

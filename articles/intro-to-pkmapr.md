@@ -1,7 +1,6 @@
 # Introduction to pkmapr
 
 ``` r
-
 library(pkmapr)
 ```
 
@@ -10,14 +9,12 @@ library(pkmapr)
 Install pkmapr from GitHub:
 
 ``` r
-
 remotes::install_github("abdullahumer1101/pkmapr")
 ```
 
 Or:
 
 ``` r
-
 # install.packages("pkmapr", repos = "https://abdullahumer1101.r-universe.dev")
 ```
 
@@ -26,7 +23,6 @@ Or:
 Get province boundaries and create a quick map:
 
 ``` r
-
 provinces <- get_provinces()
 pk_map(provinces)
 ```
@@ -36,7 +32,6 @@ pk_map(provinces)
 Always check official names before filtering or joining:
 
 ``` r
-
 # All provinces with their codes
 pk_dictionary("provinces")
 
@@ -50,7 +45,6 @@ pk_dictionary("tehsils", district = "Lahore")
 ## Join your own data
 
 ``` r
-
 library(dplyr)
 
 # Example: district-level data
@@ -69,7 +63,6 @@ pk_map(districts, fill = "value", title = "My Values")
 ## Interactive maps
 
 ``` r
-
 pk_map_interactive(districts, 
                     fill = "value",
                     popup = c("district_name", "value"))

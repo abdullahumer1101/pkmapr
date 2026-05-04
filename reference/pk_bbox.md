@@ -35,7 +35,6 @@ that works, check that your data has the expected column names.
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
   bb <- pk_bbox("Lahore", level = "district")
-}
+#> Error in getter(simplified = TRUE): unused argument (simplified = TRUE)
 ```

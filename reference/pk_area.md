@@ -22,8 +22,6 @@ The input sf object with area_km2 column added or updated.
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
   districts <- get_districts()
   districts <- pk_area(districts)
-}
 ```

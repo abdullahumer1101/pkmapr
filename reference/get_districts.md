@@ -31,9 +31,7 @@ area_km2, geometry.
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
   all_districts    <- get_districts()
   punjab_districts <- get_districts(province = "Punjab")
   punjab_districts <- get_districts(province = "punjab")  # Case-insensitive
-}
 ```

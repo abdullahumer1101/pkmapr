@@ -60,8 +60,9 @@ A named list:
 
   A row-standardised spdep listw object, ready for
   [`spdep::moran.test()`](https://r-spatial.github.io/spdep/reference/moran.test.html),
-  `spdep::localMoran()`, `spatialreg::lagsarlm()`, and related
-  functions.
+  `spdep::localMoran()`,
+  [`spatialreg::lagsarlm()`](https://r-spatial.github.io/spatialreg/reference/ML_models.html),
+  and related functions.
 
 - boundary_note:
 
@@ -77,11 +78,9 @@ making the analytical decision explicit and reproducible.
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
   districts <- get_districts()
   w <- pk_neighbors(districts)
 
   # Calculate Moran's I using spdep
   moran_result <- spdep::moran.test(districts$area_km2, w$listw)
-}
 ```

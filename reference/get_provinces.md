@@ -25,8 +25,6 @@ geometry.
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
   pk <- get_provinces()
   plot(sf::st_geometry(pk))
-}
 ```
