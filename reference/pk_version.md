@@ -23,7 +23,7 @@ Invisibly, a list with installed and latest versions.
 ``` r
 # \donttest{
 pk_version()
-#> Installed version: 1.1.1 
+#> Installed version: 1.2.0 
 #> Latest version:    1.1.0 
 #> Update available! Run: remotes::install_github('abdullahumer1101/pkmapr')
 # }
