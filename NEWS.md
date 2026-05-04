@@ -1,3 +1,7 @@
+# pkmapr v1.2.0
+* Added extensive tests
+* Test coverage now at ~80%
+
 # pkmapr v1.1.1
 - No functional changes.
 - Added single quote marks to programs in description. 
