@@ -1,0 +1,745 @@
+level,province_name,province_code,district_name,district_code,tehsil_name,tehsil_code
+district,Azad Kashmir,NA,Bagh,PK101,NA,NA
+district,Azad Kashmir,NA,Bhimber,PK102,NA,NA
+district,Azad Kashmir,NA,Haveli,PK104,NA,NA
+district,Azad Kashmir,NA,Jhelum Valley,PK103,NA,NA
+district,Azad Kashmir,NA,Kotli,PK105,NA,NA
+district,Azad Kashmir,NA,Mirpur,PK106,NA,NA
+district,Azad Kashmir,NA,Muzaffarabad,PK107,NA,NA
+district,Azad Kashmir,NA,Neelum,PK108,NA,NA
+district,Azad Kashmir,NA,Poonch,PK109,NA,NA
+district,Azad Kashmir,NA,Sudhnoti,PK110,NA,NA
+district,Balochistan,NA,Awaran,PK201,NA,NA
+district,Balochistan,NA,Barkhan,PK202,NA,NA
+district,Balochistan,NA,Chagai,PK203,NA,NA
+district,Balochistan,NA,Chaman,PK235,NA,NA
+district,Balochistan,NA,Dera Bugti,PK204,NA,NA
+district,Balochistan,NA,Duki,PK234,NA,NA
+district,Balochistan,NA,Gwadar,PK205,NA,NA
+district,Balochistan,NA,Harnai,PK206,NA,NA
+district,Balochistan,NA,Jaffarabad,PK207,NA,NA
+district,Balochistan,NA,Jhal Magsi,PK208,NA,NA
+district,Balochistan,NA,Kachhi,PK209,NA,NA
+district,Balochistan,NA,Kalat,PK210,NA,NA
+district,Balochistan,NA,Kech,PK211,NA,NA
+district,Balochistan,NA,Kharan,PK212,NA,NA
+district,Balochistan,NA,Khuzdar,PK213,NA,NA
+district,Balochistan,NA,Killa Abdullah,PK214,NA,NA
+district,Balochistan,NA,Killa Saifullah,PK215,NA,NA
+district,Balochistan,NA,Kohlu,PK216,NA,NA
+district,Balochistan,NA,Lasbela,PK217,NA,NA
+district,Balochistan,NA,Lehri,PK218,NA,NA
+district,Balochistan,NA,Loralai,PK219,NA,NA
+district,Balochistan,NA,Mastung,PK220,NA,NA
+district,Balochistan,NA,Musakhel,PK221,NA,NA
+district,Balochistan,NA,Nasirabad,PK222,NA,NA
+district,Balochistan,NA,Nushki,PK223,NA,NA
+district,Balochistan,NA,Panjgur,PK224,NA,NA
+district,Balochistan,NA,Pishin,PK225,NA,NA
+district,Balochistan,NA,Quetta,PK226,NA,NA
+district,Balochistan,NA,Shaheed Sikandarabad,PK233,NA,NA
+district,Balochistan,NA,Sherani,PK227,NA,NA
+district,Balochistan,NA,Sibi,PK228,NA,NA
+district,Balochistan,NA,Sohbatpur,PK229,NA,NA
+district,Balochistan,NA,Washuk,PK230,NA,NA
+district,Balochistan,NA,Zhob,PK231,NA,NA
+district,Balochistan,NA,Ziarat,PK232,NA,NA
+district,Gilgit Baltistan,NA,Astore,PK301,NA,NA
+district,Gilgit Baltistan,NA,Darel,PK311,NA,NA
+district,Gilgit Baltistan,NA,Diamir,PK302,NA,NA
+district,Gilgit Baltistan,NA,Ghanche,PK303,NA,NA
+district,Gilgit Baltistan,NA,Ghizer,PK304,NA,NA
+district,Gilgit Baltistan,NA,Gilgit,PK305,NA,NA
+district,Gilgit Baltistan,NA,Gupis-Yasin,PK313,NA,NA
+district,Gilgit Baltistan,NA,Hunza,PK306,NA,NA
+district,Gilgit Baltistan,NA,Kharmang,PK309,NA,NA
+district,Gilgit Baltistan,NA,Nagar,PK308,NA,NA
+district,Gilgit Baltistan,NA,Rondu,PK314,NA,NA
+district,Gilgit Baltistan,NA,Shigar,PK310,NA,NA
+district,Gilgit Baltistan,NA,Skardu,PK307,NA,NA
+district,Gilgit Baltistan,NA,Tangir,PK312,NA,NA
+district,Islamabad,NA,Islamabad,PK401,NA,NA
+district,Khyber Pakhtunkhwa,NA,Abbottabad,PK501,NA,NA
+district,Khyber Pakhtunkhwa,NA,Bajaur,PK502,NA,NA
+district,Khyber Pakhtunkhwa,NA,Bannu,PK503,NA,NA
+district,Khyber Pakhtunkhwa,NA,Batagram,PK504,NA,NA
+district,Khyber Pakhtunkhwa,NA,Buner,PK505,NA,NA
+district,Khyber Pakhtunkhwa,NA,Charsadda,PK506,NA,NA
+district,Khyber Pakhtunkhwa,NA,Chitral Lower,PK507,NA,NA
+district,Khyber Pakhtunkhwa,NA,Chitral Upper,PK508,NA,NA
+district,Khyber Pakhtunkhwa,NA,D. I. Khan,PK509,NA,NA
+district,Khyber Pakhtunkhwa,NA,Hangu,PK510,NA,NA
+district,Khyber Pakhtunkhwa,NA,Haripur,PK511,NA,NA
+district,Khyber Pakhtunkhwa,NA,Karak,PK512,NA,NA
+district,Khyber Pakhtunkhwa,NA,Khyber,PK513,NA,NA
+district,Khyber Pakhtunkhwa,NA,Kohat,PK514,NA,NA
+district,Khyber Pakhtunkhwa,NA,Kohistan Lower,PK515,NA,NA
+district,Khyber Pakhtunkhwa,NA,Kohistan Upper,PK516,NA,NA
+district,Khyber Pakhtunkhwa,NA,Kolai Palas Kohistan,PK517,NA,NA
+district,Khyber Pakhtunkhwa,NA,Kurram,PK518,NA,NA
+district,Khyber Pakhtunkhwa,NA,Lakki Marwat,PK519,NA,NA
+district,Khyber Pakhtunkhwa,NA,Lower Dir,PK520,NA,NA
+district,Khyber Pakhtunkhwa,NA,Malakand,PK521,NA,NA
+district,Khyber Pakhtunkhwa,NA,Mansehra,PK522,NA,NA
+district,Khyber Pakhtunkhwa,NA,Mardan,PK523,NA,NA
+district,Khyber Pakhtunkhwa,NA,Mohmand,PK524,NA,NA
+district,Khyber Pakhtunkhwa,NA,North Waziristan,PK525,NA,NA
+district,Khyber Pakhtunkhwa,NA,Nowshera,PK526,NA,NA
+district,Khyber Pakhtunkhwa,NA,Orakzai,PK527,NA,NA
+district,Khyber Pakhtunkhwa,NA,Peshawar,PK528,NA,NA
+district,Khyber Pakhtunkhwa,NA,Shangla,PK529,NA,NA
+district,Khyber Pakhtunkhwa,NA,South Waziristan,PK530,NA,NA
+district,Khyber Pakhtunkhwa,NA,Swabi,PK531,NA,NA
+district,Khyber Pakhtunkhwa,NA,Swat,PK532,NA,NA
+district,Khyber Pakhtunkhwa,NA,Tank,PK533,NA,NA
+district,Khyber Pakhtunkhwa,NA,Tor Ghar,PK534,NA,NA
+district,Khyber Pakhtunkhwa,NA,Upper Dir,PK535,NA,NA
+district,Punjab,NA,Attock,PK601,NA,NA
+district,Punjab,NA,Bahawalnagar,PK602,NA,NA
+district,Punjab,NA,Bahawalpur,PK603,NA,NA
+district,Punjab,NA,Bhakkar,PK604,NA,NA
+district,Punjab,NA,Chakwal,PK605,NA,NA
+district,Punjab,NA,Chiniot,PK606,NA,NA
+district,Punjab,NA,Dera Ghazi Khan,PK607,NA,NA
+district,Punjab,NA,Faisalabad,PK608,NA,NA
+district,Punjab,NA,Gujranwala,PK609,NA,NA
+district,Punjab,NA,Gujrat,PK610,NA,NA
+district,Punjab,NA,Hafizabad,PK611,NA,NA
+district,Punjab,NA,Jhang,PK612,NA,NA
+district,Punjab,NA,Jhelum,PK613,NA,NA
+district,Punjab,NA,Kasur,PK614,NA,NA
+district,Punjab,NA,Khanewal,PK615,NA,NA
+district,Punjab,NA,Khushab,PK616,NA,NA
+district,Punjab,NA,Lahore,PK617,NA,NA
+district,Punjab,NA,Leiah,PK618,NA,NA
+district,Punjab,NA,Lodhran,PK619,NA,NA
+district,Punjab,NA,Mandi Bahauddin,PK620,NA,NA
+district,Punjab,NA,Mianwali,PK621,NA,NA
+district,Punjab,NA,Multan,PK622,NA,NA
+district,Punjab,NA,Muzaffargarh,PK623,NA,NA
+district,Punjab,NA,Nankana Sahib,PK624,NA,NA
+district,Punjab,NA,Narowal,PK625,NA,NA
+district,Punjab,NA,Okara,PK626,NA,NA
+district,Punjab,NA,Pakpattan,PK627,NA,NA
+district,Punjab,NA,Rahim Yar Khan,PK628,NA,NA
+district,Punjab,NA,Rajanpur,PK629,NA,NA
+district,Punjab,NA,Rawalpindi,PK630,NA,NA
+district,Punjab,NA,Sahiwal,PK631,NA,NA
+district,Punjab,NA,Sargodha,PK632,NA,NA
+district,Punjab,NA,Sheikhupura,PK633,NA,NA
+district,Punjab,NA,Sialkot,PK634,NA,NA
+district,Punjab,NA,Toba Tek Singh,PK635,NA,NA
+district,Punjab,NA,Vehari,PK636,NA,NA
+district,Sindh,NA,Badin,PK701,NA,NA
+district,Sindh,NA,Central Karachi,PK702,NA,NA
+district,Sindh,NA,Dadu,PK703,NA,NA
+district,Sindh,NA,East Karachi,PK704,NA,NA
+district,Sindh,NA,Ghotki,PK705,NA,NA
+district,Sindh,NA,Hyderabad,PK706,NA,NA
+district,Sindh,NA,Jacobabad,PK707,NA,NA
+district,Sindh,NA,Jamshoro,PK708,NA,NA
+district,Sindh,NA,Kambar Shahdad Kot,PK709,NA,NA
+district,Sindh,NA,Kashmore,PK710,NA,NA
+district,Sindh,NA,Khairpur,PK711,NA,NA
+district,Sindh,NA,Korangi Karachi,PK712,NA,NA
+district,Sindh,NA,Larkana,PK713,NA,NA
+district,Sindh,NA,Malir Karachi,PK714,NA,NA
+district,Sindh,NA,Matiari,PK715,NA,NA
+district,Sindh,NA,Mirpur Khas,PK716,NA,NA
+district,Sindh,NA,Naushahro Feroze,PK717,NA,NA
+district,Sindh,NA,Sanghar,PK718,NA,NA
+district,Sindh,NA,Shaheed Benazir Abad,PK719,NA,NA
+district,Sindh,NA,Shikarpur,PK720,NA,NA
+district,Sindh,NA,South Karachi,PK721,NA,NA
+district,Sindh,NA,Sujawal,PK722,NA,NA
+district,Sindh,NA,Sukkur,PK723,NA,NA
+district,Sindh,NA,Tando Allahyar,PK724,NA,NA
+district,Sindh,NA,Tando Muhammad Khan,PK725,NA,NA
+district,Sindh,NA,Tharparkar,PK726,NA,NA
+district,Sindh,NA,Thatta,PK727,NA,NA
+district,Sindh,NA,Umer Kot,PK728,NA,NA
+district,Sindh,NA,West Karachi,PK729,NA,NA
+province,Azad Kashmir,PK1,NA,NA,NA,NA
+province,Balochistan,PK2,NA,NA,NA,NA
+province,Gilgit Baltistan,PK3,NA,NA,NA,NA
+province,Islamabad,PK4,NA,NA,NA,NA
+province,Khyber Pakhtunkhwa,PK5,NA,NA,NA,NA
+province,Punjab,PK6,NA,NA,NA,NA
+province,Sindh,PK7,NA,NA,NA,NA
+tehsil,Azad Kashmir,NA,Bagh,NA,Bagh,PK10101
+tehsil,Azad Kashmir,NA,Bagh,NA,Dhir Kot,PK10102
+tehsil,Azad Kashmir,NA,Bagh,NA,Harighel,PK10103
+tehsil,Azad Kashmir,NA,Bhimber,NA,Barnala,PK10201
+tehsil,Azad Kashmir,NA,Bhimber,NA,Bhimber,PK10202
+tehsil,Azad Kashmir,NA,Bhimber,NA,Samahni,PK10203
+tehsil,Azad Kashmir,NA,Haveli,NA,Haveli,PK10401
+tehsil,Azad Kashmir,NA,Haveli,NA,Khurshid Abad,PK10402
+tehsil,Azad Kashmir,NA,Haveli,NA,Mumtazabad,PK10403
+tehsil,Azad Kashmir,NA,Jhelum Valley,NA,Chikar,PK10301
+tehsil,Azad Kashmir,NA,Jhelum Valley,NA,Hattian,PK10302
+tehsil,Azad Kashmir,NA,Jhelum Valley,NA,Leepa,PK10303
+tehsil,Azad Kashmir,NA,Kotli,NA,Charhoi,PK10501
+tehsil,Azad Kashmir,NA,Kotli,NA,Dulliya Jattan,PK10502
+tehsil,Azad Kashmir,NA,Kotli,NA,Fatehpur Thakiala,PK10503
+tehsil,Azad Kashmir,NA,Kotli,NA,Khui Ratta,PK10504
+tehsil,Azad Kashmir,NA,Kotli,NA,Kotli,PK10505
+tehsil,Azad Kashmir,NA,Kotli,NA,Sehnsa,PK10506
+tehsil,Azad Kashmir,NA,Mirpur,NA,Dadyal,PK10601
+tehsil,Azad Kashmir,NA,Mirpur,NA,Mirpur,PK10602
+tehsil,Azad Kashmir,NA,Muzaffarabad,NA,Muzaffarabad,PK10701
+tehsil,Azad Kashmir,NA,Muzaffarabad,NA,Naseerabad,PK10702
+tehsil,Azad Kashmir,NA,Neelum,NA,Athmuqam,PK10801
+tehsil,Azad Kashmir,NA,Neelum,NA,Sharda,PK10802
+tehsil,Azad Kashmir,NA,Poonch,NA,Abbaspur,PK10901
+tehsil,Azad Kashmir,NA,Poonch,NA,Hajira,PK10902
+tehsil,Azad Kashmir,NA,Poonch,NA,Rawalakot,PK10903
+tehsil,Azad Kashmir,NA,Poonch,NA,Thorar,PK10904
+tehsil,Azad Kashmir,NA,Sudhnoti,NA,Baluch,PK11001
+tehsil,Azad Kashmir,NA,Sudhnoti,NA,Mong,PK11002
+tehsil,Azad Kashmir,NA,Sudhnoti,NA,Pallandari,PK11003
+tehsil,Azad Kashmir,NA,Sudhnoti,NA,Tarar Khal,PK11004
+tehsil,Balochistan,NA,Awaran,NA,Awaran,PK20101
+tehsil,Balochistan,NA,Awaran,NA,Gishekore,PK20104
+tehsil,Balochistan,NA,Awaran,NA,Jhal Jhao,PK20102
+tehsil,Balochistan,NA,Awaran,NA,Mashkai,PK20103
+tehsil,Balochistan,NA,Barkhan,NA,Barkhan,PK20201
+tehsil,Balochistan,NA,Barkhan,NA,Rakhni,PK20202
+tehsil,Balochistan,NA,Chagai,NA,Chagai,PK20304
+tehsil,Balochistan,NA,Chagai,NA,Dalbandin,PK20301
+tehsil,Balochistan,NA,Chagai,NA,Nokkundi,PK20302
+tehsil,Balochistan,NA,Chagai,NA,Taftan,PK20303
+tehsil,Balochistan,NA,Chaman,NA,Chaman,PK23501
+tehsil,Balochistan,NA,Dera Bugti,NA,Dera Bugti,PK20401
+tehsil,Balochistan,NA,Dera Bugti,NA,Phelawagh,PK20402
+tehsil,Balochistan,NA,Dera Bugti,NA,Sui,PK20403
+tehsil,Balochistan,NA,Duki,NA,Duki,PK23401
+tehsil,Balochistan,NA,Gwadar,NA,Gwadar,PK20501
+tehsil,Balochistan,NA,Gwadar,NA,Jiwani,PK20502
+tehsil,Balochistan,NA,Gwadar,NA,Ormara,PK20503
+tehsil,Balochistan,NA,Gwadar,NA,Pasni,PK20504
+tehsil,Balochistan,NA,Gwadar,NA,Sunster,PK20505
+tehsil,Balochistan,NA,Harnai,NA,Harnai,PK20601
+tehsil,Balochistan,NA,Harnai,NA,Shahrigh,PK20602
+tehsil,Balochistan,NA,Jaffarabad,NA,Gandakha,PK20701
+tehsil,Balochistan,NA,Jaffarabad,NA,Jhat Pat,PK20702
+tehsil,Balochistan,NA,Jaffarabad,NA,Usta Mohammad,PK20703
+tehsil,Balochistan,NA,Jhal Magsi,NA,Gandawa,PK20801
+tehsil,Balochistan,NA,Jhal Magsi,NA,Jhal Magsi,PK20802
+tehsil,Balochistan,NA,Kachhi,NA,Balanari,PK20904
+tehsil,Balochistan,NA,Kachhi,NA,Dhadar,PK20901
+tehsil,Balochistan,NA,Kachhi,NA,Khattan,PK20905
+tehsil,Balochistan,NA,Kachhi,NA,Mach,PK20902
+tehsil,Balochistan,NA,Kachhi,NA,Sanni,PK20903
+tehsil,Balochistan,NA,Kalat,NA,Kalat,PK21001
+tehsil,Balochistan,NA,Kalat,NA,Khaliqabad,PK21002
+tehsil,Balochistan,NA,Kech,NA,Buleda,PK21101
+tehsil,Balochistan,NA,Kech,NA,Dasht,PK21102
+tehsil,Balochistan,NA,Kech,NA,Kech (Turbat),PK21103
+tehsil,Balochistan,NA,Kech,NA,Mand,PK21104
+tehsil,Balochistan,NA,Kech,NA,Tump,PK21105
+tehsil,Balochistan,NA,Kharan,NA,Kharan,PK21201
+tehsil,Balochistan,NA,Kharan,NA,Sar Kharan,PK21202
+tehsil,Balochistan,NA,Kharan,NA,Tomulk,PK21203
+tehsil,Balochistan,NA,Khuzdar,NA,Khuzdar,PK21301
+tehsil,Balochistan,NA,Khuzdar,NA,Mola,PK21302
+tehsil,Balochistan,NA,Khuzdar,NA,Naal,PK21303
+tehsil,Balochistan,NA,Khuzdar,NA,Wadh,PK21304
+tehsil,Balochistan,NA,Khuzdar,NA,Zehri,PK21305
+tehsil,Balochistan,NA,Killa Abdullah,NA,Dobandi,PK21402
+tehsil,Balochistan,NA,Killa Abdullah,NA,Gulistan,PK21403
+tehsil,Balochistan,NA,Killa Abdullah,NA,Killa Abdullah,PK21404
+tehsil,Balochistan,NA,Killa Saifullah,NA,Killa Saifullah,PK21501
+tehsil,Balochistan,NA,Killa Saifullah,NA,Muslim Bagh,PK21502
+tehsil,Balochistan,NA,Kohlu,NA,Kahan,PK21601
+tehsil,Balochistan,NA,Kohlu,NA,Kohlu,PK21602
+tehsil,Balochistan,NA,Kohlu,NA,Mawand,PK21603
+tehsil,Balochistan,NA,Lasbela,NA,Bela,PK21701
+tehsil,Balochistan,NA,Lasbela,NA,Dureji,PK21702
+tehsil,Balochistan,NA,Lasbela,NA,Gaddani,PK21703
+tehsil,Balochistan,NA,Lasbela,NA,Hub,PK21704
+tehsil,Balochistan,NA,Lasbela,NA,Kanraj,PK21705
+tehsil,Balochistan,NA,Lasbela,NA,Lairi,PK21709
+tehsil,Balochistan,NA,Lasbela,NA,Lakhra,PK21708
+tehsil,Balochistan,NA,Lasbela,NA,Sonmiani,PK21706
+tehsil,Balochistan,NA,Lasbela,NA,Uthal,PK21707
+tehsil,Balochistan,NA,Lehri,NA,Bhag,PK21801
+tehsil,Balochistan,NA,Lehri,NA,Lehri,PK21802
+tehsil,Balochistan,NA,Loralai,NA,Loralai,PK21901
+tehsil,Balochistan,NA,Loralai,NA,Mekhtar,PK21902
+tehsil,Balochistan,NA,Mastung,NA,Dasht Spenzend,PK22001
+tehsil,Balochistan,NA,Mastung,NA,Kirdgap,PK22002
+tehsil,Balochistan,NA,Mastung,NA,Mastung,PK22003
+tehsil,Balochistan,NA,Musakhel,NA,Drug,PK22101
+tehsil,Balochistan,NA,Musakhel,NA,Kingri,PK22102
+tehsil,Balochistan,NA,Musakhel,NA,Musakhel,PK22103
+tehsil,Balochistan,NA,Nasirabad,NA,Chattar,PK22201
+tehsil,Balochistan,NA,Nasirabad,NA,Dera Murad Jamali,PK22202
+tehsil,Balochistan,NA,Nasirabad,NA,Tamboo,PK22203
+tehsil,Balochistan,NA,Nushki,NA,Nushki,PK22301
+tehsil,Balochistan,NA,Panjgur,NA,Gichk,PK22404
+tehsil,Balochistan,NA,Panjgur,NA,Gowargo,PK22401
+tehsil,Balochistan,NA,Panjgur,NA,Jaheen Parome,PK22402
+tehsil,Balochistan,NA,Panjgur,NA,Panjgur,PK22403
+tehsil,Balochistan,NA,Pishin,NA,Barshore,PK22501
+tehsil,Balochistan,NA,Pishin,NA,Huramzai,PK22502
+tehsil,Balochistan,NA,Pishin,NA,Karezat,PK22503
+tehsil,Balochistan,NA,Pishin,NA,Pishin,PK22504
+tehsil,Balochistan,NA,Pishin,NA,Saranan,PK22505
+tehsil,Balochistan,NA,Quetta,NA,Panjpai,PK22601
+tehsil,Balochistan,NA,Quetta,NA,Quetta City,PK22602
+tehsil,Balochistan,NA,Quetta,NA,Quetta Saddar,PK22603
+tehsil,Balochistan,NA,Shaheed Sikandarabad,NA,Surab,PK23301
+tehsil,Balochistan,NA,Sherani,NA,Sherani,PK22701
+tehsil,Balochistan,NA,Sibi,NA,Sibi,PK22801
+tehsil,Balochistan,NA,Sohbatpur,NA,Sohbatpur,PK22901
+tehsil,Balochistan,NA,Washuk,NA,Basima,PK23002
+tehsil,Balochistan,NA,Washuk,NA,Mashkhel,PK23001
+tehsil,Balochistan,NA,Washuk,NA,Nag,PK23004
+tehsil,Balochistan,NA,Washuk,NA,Shaogari,PK23005
+tehsil,Balochistan,NA,Washuk,NA,Washuk,PK23003
+tehsil,Balochistan,NA,Zhob,NA,Kakar Khurasan,PK23101
+tehsil,Balochistan,NA,Zhob,NA,Zhob,PK23102
+tehsil,Balochistan,NA,Ziarat,NA,Sinjawi,PK23201
+tehsil,Balochistan,NA,Ziarat,NA,Ziarat,PK23202
+tehsil,Gilgit Baltistan,NA,Astore,NA,Astore,PK30101
+tehsil,Gilgit Baltistan,NA,Astore,NA,Shounter,PK30102
+tehsil,Gilgit Baltistan,NA,Darel,NA,Darel,PK31101
+tehsil,Gilgit Baltistan,NA,Diamir,NA,Chilas,PK30201
+tehsil,Gilgit Baltistan,NA,Ghanche,NA,Daghoni,PK30301
+tehsil,Gilgit Baltistan,NA,Ghanche,NA,Khaplu,PK30302
+tehsil,Gilgit Baltistan,NA,Ghanche,NA,Mashabbrum,PK30303
+tehsil,Gilgit Baltistan,NA,Ghizer,NA,Ishkoman,PK30401
+tehsil,Gilgit Baltistan,NA,Ghizer,NA,Punial,PK30402
+tehsil,Gilgit Baltistan,NA,Gilgit,NA,Gilgit,PK30501
+tehsil,Gilgit Baltistan,NA,Gupis-Yasin,NA,Gupis,PK31301
+tehsil,Gilgit Baltistan,NA,Gupis-Yasin,NA,Phandar,PK31302
+tehsil,Gilgit Baltistan,NA,Gupis-Yasin,NA,Yasin,PK31303
+tehsil,Gilgit Baltistan,NA,Hunza,NA,Ali Abad,PK30601
+tehsil,Gilgit Baltistan,NA,Hunza,NA,Gojal,PK30602
+tehsil,Gilgit Baltistan,NA,Kharmang,NA,Gultari,PK30901
+tehsil,Gilgit Baltistan,NA,Kharmang,NA,Kharmang,PK30902
+tehsil,Gilgit Baltistan,NA,Nagar,NA,Nagar,PK30801
+tehsil,Gilgit Baltistan,NA,Nagar,NA,Sikandar Abad,PK30802
+tehsil,Gilgit Baltistan,NA,Rondu,NA,Rondu,PK31401
+tehsil,Gilgit Baltistan,NA,Shigar,NA,Shigar,PK31001
+tehsil,Gilgit Baltistan,NA,Skardu,NA,Gamba,PK30701
+tehsil,Gilgit Baltistan,NA,Skardu,NA,Skardu,PK30702
+tehsil,Gilgit Baltistan,NA,Tangir,NA,Tangir,PK31201
+tehsil,Islamabad,NA,Islamabad,NA,Islamabad,PK40101
+tehsil,Khyber Pakhtunkhwa,NA,Abbottabad,NA,Abbottabad,PK50101
+tehsil,Khyber Pakhtunkhwa,NA,Abbottabad,NA,Havelian,PK50102
+tehsil,Khyber Pakhtunkhwa,NA,Abbottabad,NA,Lora,PK50103
+tehsil,Khyber Pakhtunkhwa,NA,Abbottabad,NA,Lower Tanawal,PK50104
+tehsil,Khyber Pakhtunkhwa,NA,Bajaur,NA,Bar Chamarkand,PK50201
+tehsil,Khyber Pakhtunkhwa,NA,Bajaur,NA,Barang,PK50202
+tehsil,Khyber Pakhtunkhwa,NA,Bajaur,NA,Khar,PK50203
+tehsil,Khyber Pakhtunkhwa,NA,Bajaur,NA,Mamund,PK50204
+tehsil,Khyber Pakhtunkhwa,NA,Bajaur,NA,Nawagai,PK50205
+tehsil,Khyber Pakhtunkhwa,NA,Bajaur,NA,Salarzai,PK50206
+tehsil,Khyber Pakhtunkhwa,NA,Bajaur,NA,Utman Khel,PK50207
+tehsil,Khyber Pakhtunkhwa,NA,Bannu,NA,Baka Khel,PK50302
+tehsil,Khyber Pakhtunkhwa,NA,Bannu,NA,Bannu,PK50301
+tehsil,Khyber Pakhtunkhwa,NA,Bannu,NA,Domel,PK50303
+tehsil,Khyber Pakhtunkhwa,NA,Bannu,NA,Kakki,PK50304
+tehsil,Khyber Pakhtunkhwa,NA,Bannu,NA,Miryan,PK50305
+tehsil,Khyber Pakhtunkhwa,NA,Bannu,NA,Wazir,PK50306
+tehsil,Khyber Pakhtunkhwa,NA,Batagram,NA,Allai,PK50401
+tehsil,Khyber Pakhtunkhwa,NA,Batagram,NA,Batagram,PK50402
+tehsil,Khyber Pakhtunkhwa,NA,Buner,NA,Daggar,PK50501
+tehsil,Khyber Pakhtunkhwa,NA,Buner,NA,Gagra,PK50502
+tehsil,Khyber Pakhtunkhwa,NA,Buner,NA,Khado Khel,PK50503
+tehsil,Khyber Pakhtunkhwa,NA,Buner,NA,Mandanr,PK50504
+tehsil,Khyber Pakhtunkhwa,NA,Charsadda,NA,Charsadda,PK50601
+tehsil,Khyber Pakhtunkhwa,NA,Charsadda,NA,Shabqadar,PK50602
+tehsil,Khyber Pakhtunkhwa,NA,Charsadda,NA,Tangi,PK50603
+tehsil,Khyber Pakhtunkhwa,NA,Chitral Lower,NA,Chitral,PK50701
+tehsil,Khyber Pakhtunkhwa,NA,Chitral Lower,NA,Drosh,PK50702
+tehsil,Khyber Pakhtunkhwa,NA,Chitral Lower,NA,Lotkoh,PK50703
+tehsil,Khyber Pakhtunkhwa,NA,Chitral Upper,NA,Mastuj,PK50801
+tehsil,Khyber Pakhtunkhwa,NA,Chitral Upper,NA,Mulkhow,PK50802
+tehsil,Khyber Pakhtunkhwa,NA,D. I. Khan,NA,D. I. Khan,PK50901
+tehsil,Khyber Pakhtunkhwa,NA,D. I. Khan,NA,Daraban,PK50902
+tehsil,Khyber Pakhtunkhwa,NA,D. I. Khan,NA,Darazinda,PK50906
+tehsil,Khyber Pakhtunkhwa,NA,D. I. Khan,NA,Kulachi,PK50903
+tehsil,Khyber Pakhtunkhwa,NA,D. I. Khan,NA,Paharpur,PK50904
+tehsil,Khyber Pakhtunkhwa,NA,D. I. Khan,NA,Paroa,PK50905
+tehsil,Khyber Pakhtunkhwa,NA,Hangu,NA,Hangu,PK51001
+tehsil,Khyber Pakhtunkhwa,NA,Hangu,NA,Tall,PK51002
+tehsil,Khyber Pakhtunkhwa,NA,Haripur,NA,Ghazi,PK51101
+tehsil,Khyber Pakhtunkhwa,NA,Haripur,NA,Haripur,PK51102
+tehsil,Khyber Pakhtunkhwa,NA,Haripur,NA,Khanpur,PK51103
+tehsil,Khyber Pakhtunkhwa,NA,Karak,NA,Banda Daud Shah,PK51201
+tehsil,Khyber Pakhtunkhwa,NA,Karak,NA,Karak,PK51202
+tehsil,Khyber Pakhtunkhwa,NA,Karak,NA,Takht-E-Nasrati,PK51203
+tehsil,Khyber Pakhtunkhwa,NA,Khyber,NA,Bara,PK51301
+tehsil,Khyber Pakhtunkhwa,NA,Khyber,NA,Jamrud,PK51302
+tehsil,Khyber Pakhtunkhwa,NA,Khyber,NA,Landi Kotal,PK51303
+tehsil,Khyber Pakhtunkhwa,NA,Khyber,NA,Mulagori,PK51304
+tehsil,Khyber Pakhtunkhwa,NA,Kohat,NA,Darra Adam Khel,PK51404
+tehsil,Khyber Pakhtunkhwa,NA,Kohat,NA,Gumbat,PK51403
+tehsil,Khyber Pakhtunkhwa,NA,Kohat,NA,Kohat,PK51401
+tehsil,Khyber Pakhtunkhwa,NA,Kohat,NA,Lachi,PK51402
+tehsil,Khyber Pakhtunkhwa,NA,Kohistan Lower,NA,Bankad,PK51502
+tehsil,Khyber Pakhtunkhwa,NA,Kohistan Lower,NA,Pattan,PK51501
+tehsil,Khyber Pakhtunkhwa,NA,Kohistan Upper,NA,Dassu,PK51601
+tehsil,Khyber Pakhtunkhwa,NA,Kohistan Upper,NA,Harban Basha,PK51603
+tehsil,Khyber Pakhtunkhwa,NA,Kohistan Upper,NA,Kandia,PK51602
+tehsil,Khyber Pakhtunkhwa,NA,Kohistan Upper,NA,Seo,PK51604
+tehsil,Khyber Pakhtunkhwa,NA,Kolai Palas Kohistan,NA,Battera Kolai,PK51702
+tehsil,Khyber Pakhtunkhwa,NA,Kolai Palas Kohistan,NA,Palas,PK51701
+tehsil,Khyber Pakhtunkhwa,NA,Kurram,NA,Central Kurram,PK51801
+tehsil,Khyber Pakhtunkhwa,NA,Kurram,NA,Lower Kurram,PK51802
+tehsil,Khyber Pakhtunkhwa,NA,Kurram,NA,Upper Kurram,PK51803
+tehsil,Khyber Pakhtunkhwa,NA,Lakki Marwat,NA,Bettani,PK51903
+tehsil,Khyber Pakhtunkhwa,NA,Lakki Marwat,NA,Lakki Marwat,PK51901
+tehsil,Khyber Pakhtunkhwa,NA,Lakki Marwat,NA,Sarai Naurang,PK51902
+tehsil,Khyber Pakhtunkhwa,NA,Lower Dir,NA,Adenzai,PK52001
+tehsil,Khyber Pakhtunkhwa,NA,Lower Dir,NA,Balambat,PK52002
+tehsil,Khyber Pakhtunkhwa,NA,Lower Dir,NA,Lalqila,PK52003
+tehsil,Khyber Pakhtunkhwa,NA,Lower Dir,NA,Munda,PK52004
+tehsil,Khyber Pakhtunkhwa,NA,Lower Dir,NA,Samarbagh,PK52005
+tehsil,Khyber Pakhtunkhwa,NA,Lower Dir,NA,Timergara,PK52006
+tehsil,Khyber Pakhtunkhwa,NA,Malakand,NA,Bat Khela,PK52101
+tehsil,Khyber Pakhtunkhwa,NA,Malakand,NA,Dargai,PK52102
+tehsil,Khyber Pakhtunkhwa,NA,Mansehra,NA,Baffa Pakhal,PK52204
+tehsil,Khyber Pakhtunkhwa,NA,Mansehra,NA,Bala Kot,PK52201
+tehsil,Khyber Pakhtunkhwa,NA,Mansehra,NA,Darband,PK52205
+tehsil,Khyber Pakhtunkhwa,NA,Mansehra,NA,Mansehra,PK52202
+tehsil,Khyber Pakhtunkhwa,NA,Mansehra,NA,Oghi,PK52203
+tehsil,Khyber Pakhtunkhwa,NA,Mardan,NA,Garhi Kapura,PK52305
+tehsil,Khyber Pakhtunkhwa,NA,Mardan,NA,Katlang,PK52301
+tehsil,Khyber Pakhtunkhwa,NA,Mardan,NA,Mardan,PK52302
+tehsil,Khyber Pakhtunkhwa,NA,Mardan,NA,Rustam,PK52304
+tehsil,Khyber Pakhtunkhwa,NA,Mardan,NA,Takht Bhai,PK52303
+tehsil,Khyber Pakhtunkhwa,NA,Mohmand,NA,Ambar,PK52401
+tehsil,Khyber Pakhtunkhwa,NA,Mohmand,NA,Baizai,PK52402
+tehsil,Khyber Pakhtunkhwa,NA,Mohmand,NA,Halimzai,PK52403
+tehsil,Khyber Pakhtunkhwa,NA,Mohmand,NA,Khwazai,PK52404
+tehsil,Khyber Pakhtunkhwa,NA,Mohmand,NA,Pandiali,PK52405
+tehsil,Khyber Pakhtunkhwa,NA,Mohmand,NA,Prang Ghar,PK52406
+tehsil,Khyber Pakhtunkhwa,NA,Mohmand,NA,Safi,PK52407
+tehsil,Khyber Pakhtunkhwa,NA,Mohmand,NA,Yaka Ghund,PK52408
+tehsil,Khyber Pakhtunkhwa,NA,North Waziristan,NA,Data Khel,PK52501
+tehsil,Khyber Pakhtunkhwa,NA,North Waziristan,NA,Dossali,PK52502
+tehsil,Khyber Pakhtunkhwa,NA,North Waziristan,NA,Garyum,PK52503
+tehsil,Khyber Pakhtunkhwa,NA,North Waziristan,NA,Ghulam Khan,PK52504
+tehsil,Khyber Pakhtunkhwa,NA,North Waziristan,NA,Mir Ali,PK52505
+tehsil,Khyber Pakhtunkhwa,NA,North Waziristan,NA,Miran Shah,PK52506
+tehsil,Khyber Pakhtunkhwa,NA,North Waziristan,NA,Razmak,PK52507
+tehsil,Khyber Pakhtunkhwa,NA,North Waziristan,NA,Shawal,PK52510
+tehsil,Khyber Pakhtunkhwa,NA,North Waziristan,NA,Shewa,PK52508
+tehsil,Khyber Pakhtunkhwa,NA,North Waziristan,NA,Spinwam,PK52509
+tehsil,Khyber Pakhtunkhwa,NA,Nowshera,NA,Jehangira,PK52603
+tehsil,Khyber Pakhtunkhwa,NA,Nowshera,NA,Nowshera,PK52601
+tehsil,Khyber Pakhtunkhwa,NA,Nowshera,NA,Pabbi,PK52602
+tehsil,Khyber Pakhtunkhwa,NA,Orakzai,NA,Central Orakzai,PK52701
+tehsil,Khyber Pakhtunkhwa,NA,Orakzai,NA,Ismailzai,PK52702
+tehsil,Khyber Pakhtunkhwa,NA,Orakzai,NA,Lower Orakzai,PK52703
+tehsil,Khyber Pakhtunkhwa,NA,Orakzai,NA,Upper Orakzai,PK52704
+tehsil,Khyber Pakhtunkhwa,NA,Peshawar,NA,Hassan Khel,PK52805
+tehsil,Khyber Pakhtunkhwa,NA,Peshawar,NA,Town-I,PK52801
+tehsil,Khyber Pakhtunkhwa,NA,Peshawar,NA,Town-Ii,PK52802
+tehsil,Khyber Pakhtunkhwa,NA,Peshawar,NA,Town-Iii,PK52803
+tehsil,Khyber Pakhtunkhwa,NA,Peshawar,NA,Town-Iv,PK52804
+tehsil,Khyber Pakhtunkhwa,NA,Shangla,NA,Alpuri,PK52901
+tehsil,Khyber Pakhtunkhwa,NA,Shangla,NA,Bisham,PK52902
+tehsil,Khyber Pakhtunkhwa,NA,Shangla,NA,Chakisar,PK52903
+tehsil,Khyber Pakhtunkhwa,NA,Shangla,NA,Makhuzai,PK52904
+tehsil,Khyber Pakhtunkhwa,NA,Shangla,NA,Martoong,PK52905
+tehsil,Khyber Pakhtunkhwa,NA,Shangla,NA,Puran,PK52906
+tehsil,Khyber Pakhtunkhwa,NA,South Waziristan,NA,Birmal,PK53001
+tehsil,Khyber Pakhtunkhwa,NA,South Waziristan,NA,Ladha,PK53002
+tehsil,Khyber Pakhtunkhwa,NA,South Waziristan,NA,Makin,PK53003
+tehsil,Khyber Pakhtunkhwa,NA,South Waziristan,NA,Sararogha,PK53004
+tehsil,Khyber Pakhtunkhwa,NA,South Waziristan,NA,Serwakai,PK53005
+tehsil,Khyber Pakhtunkhwa,NA,South Waziristan,NA,Tiarza,PK53006
+tehsil,Khyber Pakhtunkhwa,NA,South Waziristan,NA,Toi Khulla,PK53007
+tehsil,Khyber Pakhtunkhwa,NA,South Waziristan,NA,Wana,PK53008
+tehsil,Khyber Pakhtunkhwa,NA,Swabi,NA,Lahor,PK53101
+tehsil,Khyber Pakhtunkhwa,NA,Swabi,NA,Razar,PK53104
+tehsil,Khyber Pakhtunkhwa,NA,Swabi,NA,Swabi,PK53102
+tehsil,Khyber Pakhtunkhwa,NA,Swabi,NA,Topi,PK53103
+tehsil,Khyber Pakhtunkhwa,NA,Swat,NA,Babuzai,PK53201
+tehsil,Khyber Pakhtunkhwa,NA,Swat,NA,Bahrain,PK53202
+tehsil,Khyber Pakhtunkhwa,NA,Swat,NA,Barikot,PK53203
+tehsil,Khyber Pakhtunkhwa,NA,Swat,NA,Charbagh,PK53204
+tehsil,Khyber Pakhtunkhwa,NA,Swat,NA,Kabal,PK53205
+tehsil,Khyber Pakhtunkhwa,NA,Swat,NA,Kalam,PK53206
+tehsil,Khyber Pakhtunkhwa,NA,Swat,NA,Khwaza Khela,PK53207
+tehsil,Khyber Pakhtunkhwa,NA,Swat,NA,Matta Kharirai,PK53208
+tehsil,Khyber Pakhtunkhwa,NA,Swat,NA,Matta Sebujni,PK53209
+tehsil,Khyber Pakhtunkhwa,NA,Tank,NA,Jandola,PK53302
+tehsil,Khyber Pakhtunkhwa,NA,Tank,NA,Tank,PK53301
+tehsil,Khyber Pakhtunkhwa,NA,Tor Ghar,NA,Judba,PK53401
+tehsil,Khyber Pakhtunkhwa,NA,Tor Ghar,NA,Khander,PK53402
+tehsil,Khyber Pakhtunkhwa,NA,Upper Dir,NA,Barawal,PK53501
+tehsil,Khyber Pakhtunkhwa,NA,Upper Dir,NA,Dir,PK53502
+tehsil,Khyber Pakhtunkhwa,NA,Upper Dir,NA,Kalkot,PK53503
+tehsil,Khyber Pakhtunkhwa,NA,Upper Dir,NA,Khall,PK53504
+tehsil,Khyber Pakhtunkhwa,NA,Upper Dir,NA,Larjam,PK53507
+tehsil,Khyber Pakhtunkhwa,NA,Upper Dir,NA,Shrengal,PK53505
+tehsil,Khyber Pakhtunkhwa,NA,Upper Dir,NA,Wari,PK53506
+tehsil,Punjab,NA,Attock,NA,Attock,PK60101
+tehsil,Punjab,NA,Attock,NA,Fateh Jang,PK60102
+tehsil,Punjab,NA,Attock,NA,Hasan Abdal,PK60103
+tehsil,Punjab,NA,Attock,NA,Hazro,PK60104
+tehsil,Punjab,NA,Attock,NA,Jand,PK60105
+tehsil,Punjab,NA,Attock,NA,Pindi Gheb,PK60106
+tehsil,Punjab,NA,Bahawalnagar,NA,Bahawalnagar,PK60201
+tehsil,Punjab,NA,Bahawalnagar,NA,Chishtian,PK60202
+tehsil,Punjab,NA,Bahawalnagar,NA,Fort Abbas,PK60203
+tehsil,Punjab,NA,Bahawalnagar,NA,Haroonabad,PK60204
+tehsil,Punjab,NA,Bahawalnagar,NA,Minchinabad,PK60205
+tehsil,Punjab,NA,Bahawalpur,NA,Ahmadpur East,PK60301
+tehsil,Punjab,NA,Bahawalpur,NA,Bahawalpur,PK60302
+tehsil,Punjab,NA,Bahawalpur,NA,Hasilpur,PK60303
+tehsil,Punjab,NA,Bahawalpur,NA,Khairpur Tamewali,PK60304
+tehsil,Punjab,NA,Bahawalpur,NA,Yazman,PK60305
+tehsil,Punjab,NA,Bhakkar,NA,Bhakkar,PK60401
+tehsil,Punjab,NA,Bhakkar,NA,Darya Khan,PK60402
+tehsil,Punjab,NA,Bhakkar,NA,Kalur Kot,PK60403
+tehsil,Punjab,NA,Bhakkar,NA,Mankera,PK60404
+tehsil,Punjab,NA,Chakwal,NA,Chakwal,PK60501
+tehsil,Punjab,NA,Chakwal,NA,Choa Saidan Shah,PK60502
+tehsil,Punjab,NA,Chakwal,NA,Kallar Kahar,PK60503
+tehsil,Punjab,NA,Chakwal,NA,Tala Gang,PK60504
+tehsil,Punjab,NA,Chiniot,NA,Bhawana,PK60601
+tehsil,Punjab,NA,Chiniot,NA,Chiniot,PK60602
+tehsil,Punjab,NA,Chiniot,NA,Lalian,PK60603
+tehsil,Punjab,NA,Dera Ghazi Khan,NA,D.G Khan (Tribal Area),PK60701
+tehsil,Punjab,NA,Dera Ghazi Khan,NA,Dera Ghazi Khan,PK60702
+tehsil,Punjab,NA,Dera Ghazi Khan,NA,Kot Chatta,PK60703
+tehsil,Punjab,NA,Dera Ghazi Khan,NA,Taunsa,PK60704
+tehsil,Punjab,NA,Faisalabad,NA,Chak Jhumra,PK60801
+tehsil,Punjab,NA,Faisalabad,NA,Faisalabad City,PK60802
+tehsil,Punjab,NA,Faisalabad,NA,Faisalabad Sadar,PK60803
+tehsil,Punjab,NA,Faisalabad,NA,Jaranwala,PK60804
+tehsil,Punjab,NA,Faisalabad,NA,Summundri,PK60805
+tehsil,Punjab,NA,Faisalabad,NA,Tandlian Wala,PK60806
+tehsil,Punjab,NA,Gujranwala,NA,Gujranwala,PK60901
+tehsil,Punjab,NA,Gujranwala,NA,Kamoke,PK60902
+tehsil,Punjab,NA,Gujranwala,NA,Nowshera Virkan,PK60903
+tehsil,Punjab,NA,Gujranwala,NA,Wazirabad,PK60904
+tehsil,Punjab,NA,Gujrat,NA,Gujrat,PK61001
+tehsil,Punjab,NA,Gujrat,NA,Kharian,PK61002
+tehsil,Punjab,NA,Gujrat,NA,Sarai Alamgir,PK61003
+tehsil,Punjab,NA,Hafizabad,NA,Hafizabad,PK61101
+tehsil,Punjab,NA,Hafizabad,NA,Pindi Bhattian,PK61102
+tehsil,Punjab,NA,Jhang,NA,Ahmadpur Sial,PK61201
+tehsil,Punjab,NA,Jhang,NA,Athara Hazari,PK61204
+tehsil,Punjab,NA,Jhang,NA,Jhang,PK61202
+tehsil,Punjab,NA,Jhang,NA,Shorkot,PK61203
+tehsil,Punjab,NA,Jhelum,NA,Dina,PK61301
+tehsil,Punjab,NA,Jhelum,NA,Jhelum,PK61302
+tehsil,Punjab,NA,Jhelum,NA,Pind Dadan Khan,PK61303
+tehsil,Punjab,NA,Jhelum,NA,Sohawa,PK61304
+tehsil,Punjab,NA,Kasur,NA,Chunian,PK61401
+tehsil,Punjab,NA,Kasur,NA,Kasur,PK61402
+tehsil,Punjab,NA,Kasur,NA,Kot Radha Kishen,PK61403
+tehsil,Punjab,NA,Kasur,NA,Pattoki,PK61404
+tehsil,Punjab,NA,Khanewal,NA,Jahanian,PK61501
+tehsil,Punjab,NA,Khanewal,NA,Kabirwala,PK61502
+tehsil,Punjab,NA,Khanewal,NA,Khanewal,PK61503
+tehsil,Punjab,NA,Khanewal,NA,Mian Channu,PK61504
+tehsil,Punjab,NA,Khushab,NA,Khushab,PK61601
+tehsil,Punjab,NA,Khushab,NA,Naushera,PK61602
+tehsil,Punjab,NA,Khushab,NA,Noorpur,PK61603
+tehsil,Punjab,NA,Khushab,NA,Quaidabad,PK61604
+tehsil,Punjab,NA,Lahore,NA,Lahore Cantt,PK61701
+tehsil,Punjab,NA,Lahore,NA,Lahore City,PK61702
+tehsil,Punjab,NA,Leiah,NA,Choubara,PK61801
+tehsil,Punjab,NA,Leiah,NA,Karor Lal Esan,PK61802
+tehsil,Punjab,NA,Leiah,NA,Leiah,PK61803
+tehsil,Punjab,NA,Lodhran,NA,Dunyapur,PK61901
+tehsil,Punjab,NA,Lodhran,NA,Kahror Pacca,PK61902
+tehsil,Punjab,NA,Lodhran,NA,Lodhran,PK61903
+tehsil,Punjab,NA,Mandi Bahauddin,NA,Malakwal,PK62001
+tehsil,Punjab,NA,Mandi Bahauddin,NA,Mandi Bahauddin,PK62002
+tehsil,Punjab,NA,Mandi Bahauddin,NA,Phalia,PK62003
+tehsil,Punjab,NA,Mianwali,NA,Isakhel,PK62101
+tehsil,Punjab,NA,Mianwali,NA,Mianwali,PK62102
+tehsil,Punjab,NA,Mianwali,NA,Piplan,PK62103
+tehsil,Punjab,NA,Multan,NA,Jalalpur Pirwala,PK62201
+tehsil,Punjab,NA,Multan,NA,Multan City,PK62202
+tehsil,Punjab,NA,Multan,NA,Multan Saddar,PK62203
+tehsil,Punjab,NA,Multan,NA,Shujabad,PK62204
+tehsil,Punjab,NA,Muzaffargarh,NA,Alipur,PK62301
+tehsil,Punjab,NA,Muzaffargarh,NA,Jatoi,PK62302
+tehsil,Punjab,NA,Muzaffargarh,NA,Kot Addu,PK62303
+tehsil,Punjab,NA,Muzaffargarh,NA,Muzaffargarh,PK62304
+tehsil,Punjab,NA,Nankana Sahib,NA,Nankana Sahib,PK62401
+tehsil,Punjab,NA,Nankana Sahib,NA,Sangla Hill,PK62402
+tehsil,Punjab,NA,Nankana Sahib,NA,Shah Kot,PK62403
+tehsil,Punjab,NA,Narowal,NA,Narowal,PK62501
+tehsil,Punjab,NA,Narowal,NA,Shakargarh,PK62502
+tehsil,Punjab,NA,Narowal,NA,Zafarwal,PK62503
+tehsil,Punjab,NA,Okara,NA,Depalpur,PK62601
+tehsil,Punjab,NA,Okara,NA,Okara,PK62602
+tehsil,Punjab,NA,Okara,NA,Renala Khurd,PK62603
+tehsil,Punjab,NA,Pakpattan,NA,Arif Wala,PK62701
+tehsil,Punjab,NA,Pakpattan,NA,Pakpattan,PK62702
+tehsil,Punjab,NA,Rahim Yar Khan,NA,Khanpur,PK62801
+tehsil,Punjab,NA,Rahim Yar Khan,NA,Liaqatpur,PK62802
+tehsil,Punjab,NA,Rahim Yar Khan,NA,Rahim Yar Khan,PK62803
+tehsil,Punjab,NA,Rahim Yar Khan,NA,Sadiqabad,PK62804
+tehsil,Punjab,NA,Rajanpur,NA,Jampur,PK62901
+tehsil,Punjab,NA,Rajanpur,NA,Rajanpur,PK62902
+tehsil,Punjab,NA,Rajanpur,NA,Rajanpur (Tribal Area),PK62903
+tehsil,Punjab,NA,Rajanpur,NA,Rojhan,PK62904
+tehsil,Punjab,NA,Rawalpindi,NA,Gujar Khan,PK63001
+tehsil,Punjab,NA,Rawalpindi,NA,Kahuta,PK63002
+tehsil,Punjab,NA,Rawalpindi,NA,Kallar Sayaddan,PK63003
+tehsil,Punjab,NA,Rawalpindi,NA,Kotli Sattian,PK63004
+tehsil,Punjab,NA,Rawalpindi,NA,Murree,PK63005
+tehsil,Punjab,NA,Rawalpindi,NA,Rawalpindi,PK63006
+tehsil,Punjab,NA,Rawalpindi,NA,Taxila,PK63007
+tehsil,Punjab,NA,Sahiwal,NA,Chichawatni,PK63101
+tehsil,Punjab,NA,Sahiwal,NA,Sahiwal,PK63102
+tehsil,Punjab,NA,Sargodha,NA,Bhalwal,PK63201
+tehsil,Punjab,NA,Sargodha,NA,Bhera,PK63207
+tehsil,Punjab,NA,Sargodha,NA,Kot Momin,PK63202
+tehsil,Punjab,NA,Sargodha,NA,Sahiwal,PK63203
+tehsil,Punjab,NA,Sargodha,NA,Sargodha,PK63204
+tehsil,Punjab,NA,Sargodha,NA,Shahpur,PK63205
+tehsil,Punjab,NA,Sargodha,NA,Sillanwali,PK63206
+tehsil,Punjab,NA,Sheikhupura,NA,Ferozewala,PK63301
+tehsil,Punjab,NA,Sheikhupura,NA,Muridke,PK63302
+tehsil,Punjab,NA,Sheikhupura,NA,Safdarabad,PK63303
+tehsil,Punjab,NA,Sheikhupura,NA,Sharak Pur,PK63304
+tehsil,Punjab,NA,Sheikhupura,NA,Sheikhupura,PK63305
+tehsil,Punjab,NA,Sialkot,NA,Daska,PK63401
+tehsil,Punjab,NA,Sialkot,NA,Pasrur,PK63402
+tehsil,Punjab,NA,Sialkot,NA,Sambrial,PK63403
+tehsil,Punjab,NA,Sialkot,NA,Sialkot,PK63404
+tehsil,Punjab,NA,Toba Tek Singh,NA,Gojra,PK63501
+tehsil,Punjab,NA,Toba Tek Singh,NA,Kamalia,PK63502
+tehsil,Punjab,NA,Toba Tek Singh,NA,Pir Mahal,PK63504
+tehsil,Punjab,NA,Toba Tek Singh,NA,Toba Tek Singh,PK63503
+tehsil,Punjab,NA,Vehari,NA,Burewala,PK63601
+tehsil,Punjab,NA,Vehari,NA,Mailsi,PK63602
+tehsil,Punjab,NA,Vehari,NA,Vehari,PK63603
+tehsil,Sindh,NA,Badin,NA,Badin,PK70101
+tehsil,Sindh,NA,Badin,NA,Matli,PK70102
+tehsil,Sindh,NA,Badin,NA,Shaheed Fazil Rahu,PK70103
+tehsil,Sindh,NA,Badin,NA,Talhar,PK70104
+tehsil,Sindh,NA,Badin,NA,Tando Bago,PK70105
+tehsil,Sindh,NA,Central Karachi,NA,Gulberg Town,PK70201
+tehsil,Sindh,NA,Central Karachi,NA,Liaqatabad Town,PK70202
+tehsil,Sindh,NA,Central Karachi,NA,New Karachi Town,PK70203
+tehsil,Sindh,NA,Central Karachi,NA,North Nazimabad Town,PK70204
+tehsil,Sindh,NA,Dadu,NA,Dadu,PK70301
+tehsil,Sindh,NA,Dadu,NA,Johi,PK70302
+tehsil,Sindh,NA,Dadu,NA,Khairpur Nathan Shah,PK70303
+tehsil,Sindh,NA,Dadu,NA,Mehar,PK70304
+tehsil,Sindh,NA,East Karachi,NA,Gulshan Iqbal Town,PK70401
+tehsil,Sindh,NA,East Karachi,NA,Jamshaid Town,PK70402
+tehsil,Sindh,NA,Ghotki,NA,Daharki,PK70501
+tehsil,Sindh,NA,Ghotki,NA,Ghotki,PK70502
+tehsil,Sindh,NA,Ghotki,NA,Khangarh,PK70503
+tehsil,Sindh,NA,Ghotki,NA,Mirpur Mathelo,PK70504
+tehsil,Sindh,NA,Ghotki,NA,Ubauro,PK70505
+tehsil,Sindh,NA,Hyderabad,NA,Hyderabad,PK70601
+tehsil,Sindh,NA,Hyderabad,NA,Hyderabad City,PK70602
+tehsil,Sindh,NA,Hyderabad,NA,Latifabad,PK70603
+tehsil,Sindh,NA,Hyderabad,NA,Qasimabad,PK70604
+tehsil,Sindh,NA,Jacobabad,NA,Garhi Khairo,PK70701
+tehsil,Sindh,NA,Jacobabad,NA,Jacobabad,PK70702
+tehsil,Sindh,NA,Jacobabad,NA,Thul,PK70703
+tehsil,Sindh,NA,Jamshoro,NA,Kotri,PK70801
+tehsil,Sindh,NA,Jamshoro,NA,Manjhand,PK70802
+tehsil,Sindh,NA,Jamshoro,NA,Sehwan Sharif,PK70803
+tehsil,Sindh,NA,Jamshoro,NA,Thano Bula Khan,PK70804
+tehsil,Sindh,NA,Kambar Shahdad Kot,NA,Meero Khan,PK70901
+tehsil,Sindh,NA,Kambar Shahdad Kot,NA,Nasir Abad,PK70902
+tehsil,Sindh,NA,Kambar Shahdad Kot,NA,Qambar Ali Khan,PK70903
+tehsil,Sindh,NA,Kambar Shahdad Kot,NA,Qubo Saeed Khan,PK70904
+tehsil,Sindh,NA,Kambar Shahdad Kot,NA,Shahdad Kot,PK70905
+tehsil,Sindh,NA,Kambar Shahdad Kot,NA,Sijawal Junejo,PK70906
+tehsil,Sindh,NA,Kambar Shahdad Kot,NA,Warah,PK70907
+tehsil,Sindh,NA,Kashmore,NA,Kandh Kot,PK71001
+tehsil,Sindh,NA,Kashmore,NA,Kashmore,PK71002
+tehsil,Sindh,NA,Kashmore,NA,Tangwani,PK71003
+tehsil,Sindh,NA,Khairpur,NA,Faiz Ganj,PK71101
+tehsil,Sindh,NA,Khairpur,NA,Gambat,PK71102
+tehsil,Sindh,NA,Khairpur,NA,Khairpur,PK71103
+tehsil,Sindh,NA,Khairpur,NA,Kingri,PK71104
+tehsil,Sindh,NA,Khairpur,NA,Kot Diji,PK71105
+tehsil,Sindh,NA,Khairpur,NA,Nara,PK71106
+tehsil,Sindh,NA,Khairpur,NA,Sobho Dero,PK71107
+tehsil,Sindh,NA,Khairpur,NA,Thari Meer Wah,PK71108
+tehsil,Sindh,NA,Korangi Karachi,NA,Korangi Town,PK71201
+tehsil,Sindh,NA,Korangi Karachi,NA,Landhi Town,PK71202
+tehsil,Sindh,NA,Korangi Karachi,NA,Shah Faisal Town,PK71203
+tehsil,Sindh,NA,Larkana,NA,Baqrani,PK71301
+tehsil,Sindh,NA,Larkana,NA,Dokri,PK71302
+tehsil,Sindh,NA,Larkana,NA,Larkana,PK71303
+tehsil,Sindh,NA,Larkana,NA,Rato Dero,PK71304
+tehsil,Sindh,NA,Malir Karachi,NA,Bin Qasim Town,PK71401
+tehsil,Sindh,NA,Malir Karachi,NA,Gadap Town,PK71402
+tehsil,Sindh,NA,Malir Karachi,NA,Malir Town,PK71403
+tehsil,Sindh,NA,Matiari,NA,Hala,PK71501
+tehsil,Sindh,NA,Matiari,NA,Matiari,PK71502
+tehsil,Sindh,NA,Matiari,NA,Saeedabad,PK71503
+tehsil,Sindh,NA,Mirpur Khas,NA,Digri,PK71601
+tehsil,Sindh,NA,Mirpur Khas,NA,Hussain Bux Muree,PK71602
+tehsil,Sindh,NA,Mirpur Khas,NA,Jhudo,PK71603
+tehsil,Sindh,NA,Mirpur Khas,NA,Kot Ghulam Muhammad,PK71604
+tehsil,Sindh,NA,Mirpur Khas,NA,Mirpur Khas,PK71605
+tehsil,Sindh,NA,Mirpur Khas,NA,Shuja Abad,PK71606
+tehsil,Sindh,NA,Mirpur Khas,NA,Sindhri,PK71607
+tehsil,Sindh,NA,Naushahro Feroze,NA,Bhiria,PK71701
+tehsil,Sindh,NA,Naushahro Feroze,NA,Kandiaro,PK71702
+tehsil,Sindh,NA,Naushahro Feroze,NA,Mehrab Pur,PK71703
+tehsil,Sindh,NA,Naushahro Feroze,NA,Moro,PK71704
+tehsil,Sindh,NA,Naushahro Feroze,NA,Naushahro Feroze,PK71705
+tehsil,Sindh,NA,Sanghar,NA,Jam Nawaz Ali,PK71801
+tehsil,Sindh,NA,Sanghar,NA,Khipro,PK71802
+tehsil,Sindh,NA,Sanghar,NA,Sanghar,PK71803
+tehsil,Sindh,NA,Sanghar,NA,Shahdadpur,PK71804
+tehsil,Sindh,NA,Sanghar,NA,Sinjhoro,PK71805
+tehsil,Sindh,NA,Sanghar,NA,Tando Adam,PK71806
+tehsil,Sindh,NA,Shaheed Benazir Abad,NA,Daulat Pur,PK71901
+tehsil,Sindh,NA,Shaheed Benazir Abad,NA,Daur,PK71902
+tehsil,Sindh,NA,Shaheed Benazir Abad,NA,Nawabshah,PK71903
+tehsil,Sindh,NA,Shaheed Benazir Abad,NA,Sakrand,PK71904
+tehsil,Sindh,NA,Shikarpur,NA,Garhi Yasin,PK72001
+tehsil,Sindh,NA,Shikarpur,NA,Khanpur,PK72002
+tehsil,Sindh,NA,Shikarpur,NA,Lakhi,PK72003
+tehsil,Sindh,NA,Shikarpur,NA,Shikarpur,PK72004
+tehsil,Sindh,NA,South Karachi,NA,Kemari Town,PK72101
+tehsil,Sindh,NA,South Karachi,NA,Liyari Town,PK72102
+tehsil,Sindh,NA,South Karachi,NA,Saddar Town,PK72103
+tehsil,Sindh,NA,Sujawal,NA,Jati,PK72201
+tehsil,Sindh,NA,Sujawal,NA,Kharo Chan,PK72202
+tehsil,Sindh,NA,Sujawal,NA,Mirpur Bathoro,PK72203
+tehsil,Sindh,NA,Sujawal,NA,Shah Bunder,PK72204
+tehsil,Sindh,NA,Sujawal,NA,Sujawal,PK72205
+tehsil,Sindh,NA,Sukkur,NA,New Sukkur,PK72301
+tehsil,Sindh,NA,Sukkur,NA,Pano Aqil,PK72302
+tehsil,Sindh,NA,Sukkur,NA,Rohri,PK72303
+tehsil,Sindh,NA,Sukkur,NA,Salehpat,PK72304
+tehsil,Sindh,NA,Sukkur,NA,Sukkur,PK72305
+tehsil,Sindh,NA,Tando Allahyar,NA,Chamber,PK72401
+tehsil,Sindh,NA,Tando Allahyar,NA,Jhando Mari,PK72402
+tehsil,Sindh,NA,Tando Allahyar,NA,Tando Allahyar,PK72403
+tehsil,Sindh,NA,Tando Muhammad Khan,NA,Bulri Shah Karim,PK72501
+tehsil,Sindh,NA,Tando Muhammad Khan,NA,Tando Ghulam Hyder,PK72502
+tehsil,Sindh,NA,Tando Muhammad Khan,NA,Tando Muhammad Khan,PK72503
+tehsil,Sindh,NA,Tharparkar,NA,Chachro,PK72601
+tehsil,Sindh,NA,Tharparkar,NA,Dahli,PK72602
+tehsil,Sindh,NA,Tharparkar,NA,Diplo,PK72603
+tehsil,Sindh,NA,Tharparkar,NA,Islam Kot,PK72604
+tehsil,Sindh,NA,Tharparkar,NA,Kaloi,PK72607
+tehsil,Sindh,NA,Tharparkar,NA,Mithi,PK72605
+tehsil,Sindh,NA,Tharparkar,NA,Nagar Parkar,PK72606
+tehsil,Sindh,NA,Thatta,NA,Ghorabari,PK72701
+tehsil,Sindh,NA,Thatta,NA,Keti Bunder,PK72702
+tehsil,Sindh,NA,Thatta,NA,Mirpur Sakro,PK72703
+tehsil,Sindh,NA,Thatta,NA,Thatta,PK72704
+tehsil,Sindh,NA,Umer Kot,NA,Kunri,PK72801
+tehsil,Sindh,NA,Umer Kot,NA,Pithoro,PK72802
+tehsil,Sindh,NA,Umer Kot,NA,Samaro,PK72803
+tehsil,Sindh,NA,Umer Kot,NA,Umer Kot,PK72804
+tehsil,Sindh,NA,West Karachi,NA,Baldia Town,PK72901
+tehsil,Sindh,NA,West Karachi,NA,Orangi Town,PK72902
+tehsil,Sindh,NA,West Karachi,NA,Site Town,PK72903
