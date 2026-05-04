@@ -2,3 +2,6 @@ url: https://abdullahumer1101.github.io/pkmapr/
 template:
   bootstrap: 5
   bootswatch: slate
+  includes:
+    in_header: |
+      <meta name="google-site-verification" content="g3XYDIHI4F1mvCqYwYiMzfYuzHzMGRecH8MepMQ89YA" />
