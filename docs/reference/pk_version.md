@@ -23,8 +23,8 @@ Invisibly, a list with installed and latest versions.
 ``` r
 # \donttest{
 pk_version()
-#> Installed version: 1.1.0 
-#> Latest version:    1.1.0 
+#> Installed version: 1.2.0 
+#> Latest version:    1.2.0 
 #> You have the latest version
 # }
 ```

@@ -1,4 +1,5 @@
 url: https://abdullahumer1101.github.io/pkmapr/
 template:
   bootstrap: 5
-  bootswatch: lux
+  bootswatch: slate
+  assets: pkgdown
