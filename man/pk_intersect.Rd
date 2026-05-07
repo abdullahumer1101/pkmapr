@@ -12,9 +12,19 @@ pk_intersect(x, y)
 \item{y}{An sf object.}
 }
 \value{
-An sf object of the intersection in the CRS of x.
+Returns an sf object containing the geometric intersection of \code{x} and \code{y}:
+\item{geometry}{Points, lines, or polygons where \code{x} and \code{y} overlap}
+\item{...}{All attribute columns from both \code{x} and \code{y} (with suffixes if names conflict)}
+
+The output CRS matches \code{x}. Empty geometries (no intersection) are dropped.
+Output represents areas/features common to both input layers.
 }
 \description{
 Returns the geometric intersection of two sf objects with CRS
 alignment handled automatically.
+}
+\examples{
+districts <- get_districts()
+buffered <- pk_buffer(districts, dist_km = 10)
+intersected <- pk_intersect(districts, buffered)
 }

@@ -12,15 +12,20 @@ pk_union(x, by)
 \item{by}{Character. Column name to group by.}
 }
 \value{
-A dissolved sf object with area_km2 recalculated.
+Returns a dissolved sf object (class "sf" and "data.frame") with:
+\item{geometry}{MULTIPOLYGON geometries created by merging adjacent polygons}
+\item{by_column}{The unique grouping values (one row per group)}
+\item{area_km2}{Recalculated area in square kilometres for each dissolved polygon}
+
+Polygons that are not spatially adjacent but share the same group value
+will become MULTIPOLYGON objects. Invalid geometries are repaired automatically
+using \code{sf::st_make_valid()}.
 }
 \description{
 Merges polygons sharing the same value in a grouping column and
 recalculates area_km2.
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  tehsils     <- get_tehsils()
-  by_district <- pk_union(tehsils, by = "district_name")
-\dontshow{\}) # examplesIf}
+tehsils <- get_tehsils()
+by_district <- pk_union(tehsils, by = "district_name")
 }

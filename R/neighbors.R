@@ -5,10 +5,10 @@
 #' complexities including non-contiguous units and disputed boundaries.
 #'
 #' @section Pakistan-specific handling:
-#' Gilgit-Baltistan and Azad Kashmir might break most spatial statistics. The \code{disputed} argument
-#' controls how the Line of Control and special administrative boundaries
-#' flagged in the OCHA source data are treated, making the analytical
-#' decision explicit and reproducible.
+#' Gilgit-Baltistan and Azad Kashmir might break some spatial statistics.
+#' The \code{disputed} argument controls how the Line of Control and
+#' special administrative boundaries flagged in the OCHA source data are
+#' treated, offering better control over analytical decisions.
 #'
 #' @param x An sf object with polygon geometries.
 #' @param style Character. Neighbour definition: "queen" (shared boundary
@@ -24,21 +24,42 @@
 #'     \item{flag}{Include all boundaries but add a boundary_note element
 #'       to the result documenting which units are affected.}
 #'   }
-#' @return A named list:
-#'   \describe{
-#'     \item{nb}{A spdep nb object.}
-#'     \item{listw}{A row-standardised spdep listw object, ready for
-#'       \code{spdep::moran.test()}, \code{spdep::localMoran()},
-#'       \code{spatialreg::lagsarlm()}, and related functions.}
-#'     \item{boundary_note}{Character. Present only when disputed = "flag".}
-#'   }
+#' @return Returns a named list (class "list") with the following:
+#'   \item{nb}{An spdep nb object (class "nb") containing the neighbour
+#'     relationships. Each element is an integer vector of neighbour indices.}
+#'   \item{listw}{A row-standardised spdep listw object (class "listw"),
+#'     ready for \code{spdep::moran.test()}, \code{spdep::localMoran()},
+#'     \code{spatialreg::lagsarlm()}, and related spatial analysis functions.
+#'     The weights are row-standardized (style = "W") with zero.policy = TRUE.}
+#'   \item{boundary_note}{Character string. Present only when
+#'     \code{disputed = "flag"}. Contains documentation of which units
+#'     involve disputed or special administrative boundaries.}
+#'
+#'   The output is a complete spatial weights structure for
+#'   use in spatial autocorrelation tests (Moran's I), local indicators of
+#'   spatial association (LISA), and spatial regression models (SAR, SEM, etc.).
+#'   The \code{nb} defines the neighbour graph; the \code{listw}
+#'   provides the row-standardized weights matrix.
 #' @export
-#' @examplesIf interactive()
+#' @examples
+#' \donttest{
 #'   districts <- get_districts()
 #'   w <- pk_neighbors(districts)
 #'
 #'   # Calculate Moran's I using spdep
 #'   moran_result <- spdep::moran.test(districts$area_km2, w$listw)
+#'   print(moran_result)
+#'
+#'   # Queen contiguity (default)
+#'   w_queen <- pk_neighbors(districts, style = "queen")
+#'
+#'   # K-nearest neighbours (k=5)
+#'   w_knn <- pk_neighbors(districts, style = "knn", k = 5)
+#'
+#'   # Flag disputed boundaries for documentation
+#'   w_flagged <- pk_neighbors(districts, disputed = "flag")
+#'   if (!is.null(w_flagged$boundary_note)) cat(w_flagged$boundary_note)
+#' }
 pk_neighbors <- function(x,
                          style    = c("queen", "rook", "knn"),
                          k        = NULL,

@@ -10,15 +10,19 @@ pk_centroid(x)
 \item{x}{An sf object with polygon geometries.}
 }
 \value{
-An sf point object in the same CRS as input.
+Returns an sf point object (class "sf") with:
+\item{geometry}{Point geometries representing the centroids of input polygons}
+
+Centroids represent the geometric center of each polygon, useful for
+point-based visualisation, distance calculations, or as nodes for
+spatial network analysis.
 }
 \description{
 Returns polygon centroids as a point sf object with only geometry
 (attributes are dropped to avoid warnings about constant attributes).
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  districts <- get_districts()
-  centres   <- pk_centroid(districts)
-\dontshow{\}) # examplesIf}
+districts <- get_districts()
+centres <- pk_centroid(districts)
+plot(centres)
 }

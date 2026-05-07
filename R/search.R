@@ -10,21 +10,27 @@
 #'   NULL (default) returns all levels.
 #' @param name Character. Filter by partial name (case-insensitive).
 #' @param code Character. Filter by partial P-code (case-insensitive).
-#' @return A data frame with columns: name, level, code, parent.
+#' @return Returns a data frame (class "data.frame") with the following columns:
+#'   \item{name}{Administrative unit name (e.g., "Lahore")}
+#'   \item{level}{Administrative level: "provinces", "districts", or "tehsils"}
+#'   \item{code}{P-code (unique identifier for the administrative unit)}
+#'   \item{parent}{Parent administrative unit (province for districts, district for tehsils)}
+#'
+#'   The output represents a searchable dictionary of all administrative units
+#'   in Pakistan. Use this function to explore available units, find codes,
+#'   or validate input for other pkmapr functions.
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#'   # All provinces
-#'   pk_dictionary(level = "provinces")
+#' # All provinces
+#' pk_dictionary(level = "provinces")
 #'
-#'   # Case-insensitive search for districts containing "lahore"
-#'   pk_dictionary(level = "districts", name = "lahore")
-#'   pk_dictionary(level = "districts", name = "LAHORE")  # Same result
+#' # Case-insensitive search for districts containing "lahore"
+#' pk_dictionary(level = "districts", name = "lahore")
+#' pk_dictionary(level = "districts", name = "LAHORE")  # Same result
 #'
-#'   # Search by code
-#'   pk_dictionary(code = "PK6")
-#' }
+#' # Search by code
+#' pk_dictionary(code = "PK6")
 pk_dictionary <- function(level = NULL, name = NULL, code = NULL) {
   # Load internal dictionary
   dict <- build_dictionary_from_geometry()
@@ -72,22 +78,29 @@ pk_dictionary <- function(level = NULL, name = NULL, code = NULL) {
 #' @param fuzzy Logical. If TRUE, uses fuzzy matching for typos.
 #'   Default FALSE. Warning: Fuzzy matching can be slower and may
 #'   return unexpected matches for short or common queries.
-#' @return A data frame with columns: name, level, code, parent.
+#' @return Returns a data frame (class "data.frame") with the following columns:
+#'   \item{name}{Matching administrative unit name(s)}
+#'   \item{level}{Administrative level of each match}
+#'   \item{code}{P-code of each match}
+#'   \item{parent}{Parent unit of each match}
+#'
+#'   The output represents all administrative units that match the search query.
+#'   When no matches are found, returns invisible NULL with a warning message.
+#'   When fuzzy matching is enabled, the output may include approximate matches
+#'   that could be useful for handling typos or spelling variations.
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#'   # Case-insensitive search
-#'   pk_search("lahore")   # Returns Lahore district and tehsils
-#'   pk_search("LAHORE")   # Same result
+#' # Case-insensitive search
+#' pk_search("lahore")   # Returns Lahore district and tehsils
+#' pk_search("LAHORE")   # Same result
 #'
-#'   # Fuzzy search for misspelled "lahore"
-#'   pk_search("lahor", fuzzy = TRUE)
-#'   pk_search("lahre", fuzzy = TRUE)
+#' # Fuzzy search for misspelled "lahore"
+#' pk_search("lahor", fuzzy = TRUE)
+#' pk_search("lahre", fuzzy = TRUE)
 #'
-#'   # Search by code
-#'   pk_search("PK6")
-#' }
+#' # Search by code
+#' pk_search("PK6")
 pk_search <- function(query, fuzzy = FALSE) {
   dict <- build_dictionary_from_geometry()
 

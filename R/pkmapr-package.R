@@ -59,6 +59,7 @@
 #' @docType package
 #' @name pkmapr
 #' @keywords internal
+#' @return No return value, called for package documentation and namespace management.
 "_PACKAGE"
 
 ## usethis namespace: start

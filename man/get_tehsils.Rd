@@ -18,17 +18,32 @@ If both district and province are supplied, district takes precedence.}
 distance and area calculations. See \code{\link[=pk_crs_suggest]{pk_crs_suggest()}} for guidance.}
 }
 \value{
-An sf object with columns: province_name, district_name,
-tehsil_name, tehsil_code, area_km2, geometry.
+Returns an sf object (class "sf" and "data.frame") with:
+\item{province_name}{Character. Parent province name}
+\item{district_name}{Character. Parent district name}
+\item{tehsil_name}{Character. Tehsil name}
+\item{tehsil_code}{Character. Unique tehsil identifier code}
+\item{area_km2}{Numeric. Area in square kilometres for each tehsil}
+\item{geometry}{MULTIPOLYGON. Tehsil boundary geometries}
+
+The output represents the finest available administrative boundaries
+in pkmapr, suitable for high-resolution spatial analysis, local-level
+mapping, and joining with tehsil-level census or survey data.
 }
 \description{
 Get Pakistan tehsil boundaries
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  sindh_tehsils  <- get_tehsils(province = "Sindh")
-  sindh_tehsils  <- get_tehsils(province = "sindh")  # Case-insensitive
-  lahore_tehsils <- get_tehsils(district = "Lahore")
-  lahore_tehsils <- get_tehsils(district = "lahore")  # Case-insensitive
-\dontshow{\}) # examplesIf}
+# All tehsils
+all_tehsils <- get_tehsils()
+
+# Filter to Sindh province
+sindh_tehsils <- get_tehsils(province = "Sindh")
+sindh_tehsils <- get_tehsils(province = "sindh")  # Case-insensitive
+
+# Filter to Lahore district
+lahore_tehsils <- get_tehsils(district = "Lahore")
+lahore_tehsils <- get_tehsils(district = "lahore")  # Case-insensitive
+
+plot(sf::st_geometry(lahore_tehsils))
 }

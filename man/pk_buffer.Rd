@@ -12,15 +12,18 @@ pk_buffer(x, dist_km)
 \item{dist_km}{Numeric. Buffer distance in kilometres.}
 }
 \value{
-An sf object with buffered geometries in the same CRS as input.
+Returns an sf object with the same attributes as \code{x} but with
+geometries transformed to buffers of radius \code{dist_km} kilometres.
+
+The output CRS is identical to the input CRS (reprojected back from UTM
+Zone 42N after buffering). This ensures buffers are circular in projected
+space with accurate kilometre distances.
 }
 \description{
 Reprojects to UTM Zone 42N internally so buffer distances are
 in kilometres, then returns buffers in the original CRS.
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  districts <- get_districts()
-  buffered  <- pk_buffer(districts, dist_km = 10)
-\dontshow{\}) # examplesIf}
+districts <- get_districts()
+buffered <- pk_buffer(districts, dist_km = 10)
 }

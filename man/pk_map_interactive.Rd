@@ -17,17 +17,29 @@ an outline map.}
 \item{...}{Additional arguments passed to \code{leaflet::addPolygons()}.}
 }
 \value{
-A leaflet object.
+Returns a leaflet object (class "leaflet" and "htmlwidget")
+representing an interactive web map.
+
+When \code{fill = NULL}, the output shows polygon outlines only.
+
+When a \code{fill} variable is provided, the output renders polygons with:
+\item{fillColor}{Color-coded by the fill variable using the viridis palette}
+\item{fillOpacity}{0.7 (semi-transparent for layer visibility)}
+\item{color}{White borders for polygon boundaries}
+\item{popup}{HTML popups showing selected attributes on click}
+
+The map includes a legend for the fill variable and uses the
+CartoDB.Positron tile provider as the basemap.
 }
 \description{
 Produces an interactive leaflet map. Returns a leaflet object that
 can be extended with standard leaflet functions.
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  districts <- get_districts()
-  pk_map_interactive(districts,
-                      fill = "area_km2",
-                      popup = list("district_name", "area_km2"))
-\dontshow{\}) # examplesIf}
+\donttest{
+districts <- get_districts()
+pk_map_interactive(districts,
+                   fill = "area_km2",
+                   popup = c("district_name", "area_km2"))
+}
 }

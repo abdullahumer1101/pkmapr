@@ -10,15 +10,16 @@ pk_area(x)
 \item{x}{An sf object with polygon geometries.}
 }
 \value{
-The input sf object with area_km2 column added or updated.
+Returns the input sf object (class "sf" and "data.frame") with the
+\item{area_km2}{Numeric column added or updated, representing the area
+of each polygon in square kilometres.}
 }
 \description{
 Computes accurate areas by reprojecting to UTM Zone 42N before
 measurement. Returns the input object with area_km2 added or updated.
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  districts <- get_districts()
-  districts <- pk_area(districts)
-\dontshow{\}) # examplesIf}
+districts <- get_districts()
+districts <- pk_area(districts)
+head(districts$area_km2)
 }

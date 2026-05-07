@@ -1,6 +1,6 @@
 Package: pkmapr
 Title: Pakistan Spatial Data Toolkit
-Version: 1.2.0
+Version: 1.2.1
 Depends: R (>= 4.1.0)
 Authors@R:
     person("Abdullah Umer", email = "abdullahumer1101@gmail.com",

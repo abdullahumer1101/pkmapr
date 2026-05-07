@@ -12,7 +12,11 @@ pk_project(x, crs = 32642)
 \item{crs}{Integer EPSG code. Default 32642 (WGS84 / UTM Zone 42N).}
 }
 \value{
-The sf object reprojected to the specified CRS.
+Returns the sf object reprojected to the specified CRS.
+The output has the same attributes and geometry type as the input,
+but coordinates are transformed to the new projection. UTM Zone 42N
+(EPSG:32642) preserves distances and areas accurately across most
+but not all of Pakistan.
 }
 \description{
 Convenience wrapper around \code{sf::st_transform()} with a default
@@ -20,8 +24,7 @@ of UTM Zone 42N, appropriate for most Pakistan analyses requiring
 accurate distance, area, or buffer operations.
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  districts <- get_districts()
-  projected <- pk_project(districts)
-\dontshow{\}) # examplesIf}
+districts <- get_districts()
+projected <- pk_project(districts)
+sf::st_crs(projected)$epsg  # Should be 32642
 }

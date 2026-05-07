@@ -15,16 +15,27 @@ to see valid names. NULL (default) returns all districts.}
 distance and area calculations. See \code{\link[=pk_crs_suggest]{pk_crs_suggest()}} for guidance.}
 }
 \value{
-An sf object with columns: province_name, district_name,
-district_code, area_km2, geometry.
+Returns an sf object (class "sf" and "data.frame") with:
+\item{province_name}{Character. Parent province name}
+\item{district_name}{Character. District name}
+\item{district_code}{Character. Unique district identifier code (e.g., "PK603")}
+\item{area_km2}{Numeric. Area in square kilometres for each district}
+\item{geometry}{MULTIPOLYGON. District boundary geometries}
+
+When \code{province} is specified, the output contains only districts
+within that province. The output represents administrative boundaries
+at the district level.
 }
 \description{
 Get Pakistan district boundaries
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  all_districts    <- get_districts()
-  punjab_districts <- get_districts(province = "Punjab")
-  punjab_districts <- get_districts(province = "punjab")  # Case-insensitive
-\dontshow{\}) # examplesIf}
+# All districts
+all_districts <- get_districts()
+
+# Filter to Punjab province (case-insensitive)
+punjab_districts <- get_districts(province = "Punjab")
+punjab_districts <- get_districts(province = "punjab")  # Same result
+
+plot(sf::st_geometry(punjab_districts))
 }

@@ -10,14 +10,26 @@ pk_basemap(provider = "CartoDB.Positron")
 \item{provider}{Character. Tile provider. Default "CartoDB.Positron".}
 }
 \value{
-A leaflet object.
+Returns a leaflet object (class "leaflet" and "htmlwidget")
+with the following configuration:
+\item{Provider tiles}{Specified tile provider (default: CartoDB.Positron)}
+\item{Bounds}{Pre-zoomed to Pakistan's extent:
+longitude 60.9°E to 77.8°E, latitude 23.5°N to 37.1°N}
+
+The output is a fully customizable leaflet basemap ready for adding
+layers (e.g., administrative boundaries, point data, markers).
+Use this as a starting point for building custom interactive maps.
 }
 \description{
 Returns a leaflet map pre-zoomed to Pakistan's extent as a starting
 point for building custom interactive maps.
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  pk_basemap()
-\dontshow{\}) # examplesIf}
+\donttest{
+# Default basemap with CartoDB.Positron tiles
+pk_basemap()
+
+# Alternative tile provider
+pk_basemap(provider = "OpenStreetMap")
+}
 }

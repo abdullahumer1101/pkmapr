@@ -1,7 +1,9 @@
 #' Join data to a pkmapr sf object with match checking
 #'
-#' Performs a left join. Join by code columns (e.g. district_code) rather than name columns
-#' wherever possible.
+#' Performs a left join of external data to a pkmapr spatial object,
+#' with automatic validation of matching keys. Uses code columns
+#' (e.g., district_code, tehsil_code, province_code) wherever possible to
+#' ensure reliable joins even when names change or have spelling variations.
 #'
 #' @note After joining, always inspect `names(result)` to check for column name
 #' conflicts. If your data shares column names with the spatial object (e.g.,
@@ -9,15 +11,37 @@
 #' `.x` and `.y` suffixes. Rename or select the appropriate columns before
 #' further analysis.
 #'
-#' @param spatial An sf object from a pkmapr geometry function.
-#' @param data A data frame to join.
+#' @param spatial An sf object from a pkmapr geometry function (e.g.,
+#'   `get_districts()`, `get_tehsils()`, `get_provinces()`).
+#' @param data A data frame to join. Must contain the column specified in `by`.
 #' @param by Character. Column name present in both spatial and data.
-#' @return The spatial sf object with data columns joined.
+#'   Recommended to use code columns (`district_code`, `tehsil_code`,
+#'   `province_code`) rather than name columns for more reliable matching.
+#' @return Returns the spatial sf object (class "sf" and "data.frame") with
+#'   all columns from `data` joined to the matching rows.
+#'
+#'   The output preserves:
+#'   \item{geometry}{The original spatial geometries unchanged}
+#'   \item{spatial_attributes}{All original columns from the spatial object}
+#'   \item{data_columns}{All columns from `data` appended to matching rows}
+#'
+#'   Rows in `data` that do not match any spatial unit generate a warning
+#'   and receive NA values for spatial attributes in the joined result.
+#'   Rows in the spatial object that have no match in `data` retain their
+#'   original attributes but receive NA for the joined data columns.
+#'
 #' @export
-#' @examplesIf interactive()
-#'   districts <- get_districts()
-#'   my_data   <- data.frame(district_code = "PK603", value = 42)
-#'   joined    <- pk_join(districts, my_data, by = "district_code")
+#' @examples
+#' districts <- get_districts()
+#' my_data <- data.frame(district_code = "PK603", value = 42)
+#' joined <- pk_join(districts, my_data, by = "district_code")
+#' print(names(joined))
+#'
+#' # Example with missing match (generates warning)
+#' \donttest{
+#'   bad_data <- data.frame(district_code = c("PK603", "INVALID_CODE"), value = c(42, 99))
+#'   joined_bad <- pk_join(districts, bad_data, by = "district_code")
+#' }
 pk_join <- function(spatial, data, by) {
   unmatched <- setdiff(data[[by]], spatial[[by]])
   if (length(unmatched) > 0) {

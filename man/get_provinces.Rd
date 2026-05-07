@@ -11,15 +11,20 @@ get_provinces(crs = 4326)
 distance and area calculations. See \code{\link[=pk_crs_suggest]{pk_crs_suggest()}} for guidance.}
 }
 \value{
-An sf object with columns: province_name, province_code,
-area_km2, geometry.
+Returns an sf object (class "sf" and "data.frame") with:
+\item{province_name}{Character. Name of the province (e.g., "Punjab", "Sindh")}
+\item{province_code}{Character. Unique province identifier code}
+\item{area_km2}{Numeric. Area in square kilometres for each province}
+\item{geometry}{MULTIPOLYGON. Province boundary geometries}
+
+The output represents the administrative boundaries of Pakistan's
+provinces and territories.
 }
 \description{
 Get Pakistan province boundaries
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  pk <- get_provinces()
-  plot(sf::st_geometry(pk))
-\dontshow{\}) # examplesIf}
+provinces <- get_provinces()
+plot(sf::st_geometry(provinces))
+head(provinces)
 }

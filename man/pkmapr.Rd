@@ -5,6 +5,9 @@
 \alias{pkmapr-package}
 \alias{pkmapr}
 \title{pkmapr: Pakistan Spatial Data Toolkit}
+\value{
+No return value, called for package documentation and namespace management.
+}
 \description{
 Provides a tidy interface to Pakistan's official administrative
 boundary data from the United Nations Office for the Coordination of

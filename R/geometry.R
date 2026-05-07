@@ -1,8 +1,9 @@
 #' Geometry loader
 #' @noRd
+#' @return No return value, called internally for side effects.
 load_geometry <- function(level, crs) {
 
-    filenames <- list(
+  filenames <- list(
     country   = "pk_country.gpkg",
     provinces = "pk_provinces.gpkg",
     districts = "pk_districts.gpkg",
@@ -22,10 +23,8 @@ load_geometry <- function(level, crs) {
          call. = FALSE)
   }
 
-  # Read  data
   result <- sf::st_read(file_path, quiet = TRUE)
 
-  # Transform CRS if needed
   if (!is.na(crs) && crs != 4326) {
     result <- sf::st_transform(result, crs)
   }
@@ -35,6 +34,7 @@ load_geometry <- function(level, crs) {
 
 #' Internal filter
 #' @noRd
+#' @return No return value, called internally for side effects.
 filter_by_name <- function(data, value, column) {
   # Case-insensitive matching + trimming whitespace
   value_lower <- tolower(trimws(value))
@@ -44,7 +44,6 @@ filter_by_name <- function(data, value, column) {
 
   if (nrow(result) == 0) {
     level <- gsub("_name", "", column)
-    # Get up to 5 valid options for the error message
     valid_options <- unique(data[[column]])[1:min(5, length(unique(data[[column]])))]
     cli::cli_abort(c(
       "{level} {.val {value}} not found.",
@@ -55,16 +54,22 @@ filter_by_name <- function(data, value, column) {
   result
 }
 
-#' Get Pakistan national boundary
+#' Get national boundary for Pakistan.
 #'
 #' @param crs Integer EPSG code. Default 4326 (WGS84). Use 32642 for
 #'   distance and area calculations. See [pk_crs_suggest()] for guidance.
-#' @return An sf object with columns: country_name, country_code,
-#'   area_km2, geometry.
+#' @return Returns an sf object (class "sf" and "data.frame") with:
+#'   \item{country_name}{Character. Name of the country ("Pakistan")}
+#'   \item{country_code}{Character. ISO country code}
+#'   \item{area_km2}{Numeric. Area in square kilometres}
+#'   \item{geometry}{MULTIPOLYGON. The national boundary geometry}
+#'
+#'   The output represents the complete national boundary of Pakistan.
 #' @export
-#' @examplesIf interactive()
-#'   pk <- get_country()
-#'   plot(sf::st_geometry(pk))
+#' @examples
+#' pakistan <- get_country()
+#' plot(sf::st_geometry(pakistan))
+#' print(pakistan$area_km2)
 get_country <- function(crs = 4326) {
   load_geometry("country", crs)
 }
@@ -73,12 +78,19 @@ get_country <- function(crs = 4326) {
 #'
 #' @param crs Integer EPSG code. Default 4326 (WGS84). Use 32642 for
 #'   distance and area calculations. See [pk_crs_suggest()] for guidance.
-#' @return An sf object with columns: province_name, province_code,
-#'   area_km2, geometry.
+#' @return Returns an sf object (class "sf" and "data.frame") with:
+#'   \item{province_name}{Character. Name of the province (e.g., "Punjab", "Sindh")}
+#'   \item{province_code}{Character. Unique province identifier code}
+#'   \item{area_km2}{Numeric. Area in square kilometres for each province}
+#'   \item{geometry}{MULTIPOLYGON. Province boundary geometries}
+#'
+#'   The output represents the administrative boundaries of Pakistan's
+#'   provinces and territories.
 #' @export
-#' @examplesIf interactive()
-#'   pk <- get_provinces()
-#'   plot(sf::st_geometry(pk))
+#' @examples
+#' provinces <- get_provinces()
+#' plot(sf::st_geometry(provinces))
+#' head(provinces)
 get_provinces <- function(crs = 4326) {
   load_geometry("provinces", crs)
 }
@@ -90,13 +102,26 @@ get_provinces <- function(crs = 4326) {
 #'   to see valid names. NULL (default) returns all districts.
 #' @param crs Integer EPSG code. Default 4326 (WGS84). Use 32642 for
 #'   distance and area calculations. See [pk_crs_suggest()] for guidance.
-#' @return An sf object with columns: province_name, district_name,
-#'   district_code, area_km2, geometry.
+#' @return Returns an sf object (class "sf" and "data.frame") with:
+#'   \item{province_name}{Character. Parent province name}
+#'   \item{district_name}{Character. District name}
+#'   \item{district_code}{Character. Unique district identifier code (e.g., "PK603")}
+#'   \item{area_km2}{Numeric. Area in square kilometres for each district}
+#'   \item{geometry}{MULTIPOLYGON. District boundary geometries}
+#'
+#'   When `province` is specified, the output contains only districts
+#'   within that province. The output represents administrative boundaries
+#'   at the district level.
 #' @export
-#' @examplesIf interactive()
-#'   all_districts    <- get_districts()
-#'   punjab_districts <- get_districts(province = "Punjab")
-#'   punjab_districts <- get_districts(province = "punjab")  # Case-insensitive
+#' @examples
+#' # All districts
+#' all_districts <- get_districts()
+#'
+#' # Filter to Punjab province (case-insensitive)
+#' punjab_districts <- get_districts(province = "Punjab")
+#' punjab_districts <- get_districts(province = "punjab")  # Same result
+#'
+#' plot(sf::st_geometry(punjab_districts))
 get_districts <- function(province = NULL, crs = 4326) {
   result <- load_geometry("districts", crs)
   if (!is.null(province)) {
@@ -114,14 +139,31 @@ get_districts <- function(province = NULL, crs = 4326) {
 #'   If both district and province are supplied, district takes precedence.
 #' @param crs Integer EPSG code. Default 4326 (WGS84). Use 32642 for
 #'   distance and area calculations. See [pk_crs_suggest()] for guidance.
-#' @return An sf object with columns: province_name, district_name,
-#'   tehsil_name, tehsil_code, area_km2, geometry.
+#' @return Returns an sf object (class "sf" and "data.frame") with:
+#'   \item{province_name}{Character. Parent province name}
+#'   \item{district_name}{Character. Parent district name}
+#'   \item{tehsil_name}{Character. Tehsil name}
+#'   \item{tehsil_code}{Character. Unique tehsil identifier code}
+#'   \item{area_km2}{Numeric. Area in square kilometres for each tehsil}
+#'   \item{geometry}{MULTIPOLYGON. Tehsil boundary geometries}
+#'
+#'   The output represents the finest available administrative boundaries
+#'   in pkmapr, suitable for high-resolution spatial analysis, local-level
+#'   mapping, and joining with tehsil-level census or survey data.
 #' @export
-#' @examplesIf interactive()
-#'   sindh_tehsils  <- get_tehsils(province = "Sindh")
-#'   sindh_tehsils  <- get_tehsils(province = "sindh")  # Case-insensitive
-#'   lahore_tehsils <- get_tehsils(district = "Lahore")
-#'   lahore_tehsils <- get_tehsils(district = "lahore")  # Case-insensitive
+#' @examples
+#' # All tehsils
+#' all_tehsils <- get_tehsils()
+#'
+#' # Filter to Sindh province
+#' sindh_tehsils <- get_tehsils(province = "Sindh")
+#' sindh_tehsils <- get_tehsils(province = "sindh")  # Case-insensitive
+#'
+#' # Filter to Lahore district
+#' lahore_tehsils <- get_tehsils(district = "Lahore")
+#' lahore_tehsils <- get_tehsils(district = "lahore")  # Case-insensitive
+#'
+#' plot(sf::st_geometry(lahore_tehsils))
 get_tehsils <- function(district = NULL, province = NULL, crs = 4326) {
   result <- load_geometry("tehsils", crs)
   if (!is.null(district)) {

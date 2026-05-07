@@ -39,5 +39,5 @@ citation("pkmapr")
 
 Or cite directly:
 
-> Umer, A. (2025). pkmapr: Pakistan Spatial Data Toolkit.
+> Umer, A. (2026). pkmapr: Pakistan Spatial Data Toolkit.
 > <https://doi.org/10.5281/zenodo.19769542>

@@ -1,11 +1,11 @@
-# R/deprecated.R
 #' Deprecated functions in pkmapr
 #'
-#' These functions are deprecated and will be removed in a future version.
+#' These functions were deprecated.
 #' Please use the new \code{pk_*} functions instead.
 #'
 #' @name pkmapr-deprecated
 #' @keywords internal
+#' @return No return value, called for side effects (deprecation warnings).
 NULL
 
 #' @rdname pkmapr-deprecated

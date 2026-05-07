@@ -1,5 +1,3 @@
-#' Quick choropleth map of a pkmapr sf object
-#'
 #' Produces a ggplot2 map for rapid exploratory visualisation.
 #' Returns a ggplot object that can be extended with standard ggplot2 layers.
 #'
@@ -8,11 +6,25 @@
 #'   produces an outline map.
 #' @param title Character. Map title. NULL for no title.
 #' @param ... Additional arguments passed to \code{ggplot2::geom_sf()}.
-#' @return A ggplot object.
+#' @return Returns a ggplot object (class "gg" and "ggplot") representing
+#'   a choropleth map.
+#'
+#'   When `fill = NULL`, the output is an outline map with grey90 fill
+#'   and white borders, useful for context or reference.
+#'
+#'   When a `fill` variable is provided, the output uses a viridis color
+#'   scale with automatic legend, for visualizing spatial distributions
+#'   of continuous variables (e.g., area, population, density).
+#'
+#'   The returned ggplot object can be extended with additional layers,
+#'   themes, or scales using standard ggplot2 syntax.
 #' @export
-#' @examplesIf interactive()
-#'   pk_map(get_provinces())
-#'   pk_map(get_provinces(), fill = "area_km2", title = "Province areas")
+#' @examples
+#' # Outline map of provinces
+#' pk_map(get_provinces())
+#'
+#' # Choropleth map with fill variable
+#' pk_map(get_provinces(), fill = "area_km2", title = "Province areas")
 pk_map <- function(x, fill = NULL, title = NULL, ...) {
   rlang::check_installed("ggplot2", reason = "to use pk_map()")
 
@@ -39,13 +51,27 @@ pk_map <- function(x, fill = NULL, title = NULL, ...) {
 #'   an outline map.
 #' @param popup Character vector. Column names to display in click popups.
 #' @param ... Additional arguments passed to \code{leaflet::addPolygons()}.
-#' @return A leaflet object.
+#' @return Returns a leaflet object (class "leaflet" and "htmlwidget")
+#'   representing an interactive web map.
+#'
+#'   When `fill = NULL`, the output shows polygon outlines only.
+#'
+#'   When a `fill` variable is provided, the output renders polygons with:
+#'   \item{fillColor}{Color-coded by the fill variable using the viridis palette}
+#'   \item{fillOpacity}{0.7 (semi-transparent for layer visibility)}
+#'   \item{color}{White borders for polygon boundaries}
+#'   \item{popup}{HTML popups showing selected attributes on click}
+#'
+#'   The map includes a legend for the fill variable and uses the
+#'   CartoDB.Positron tile provider as the basemap.
 #' @export
-#' @examplesIf interactive()
-#'   districts <- get_districts()
-#'   pk_map_interactive(districts,
-#'                       fill = "area_km2",
-#'                       popup = list("district_name", "area_km2"))
+#' @examples
+#' \donttest{
+#' districts <- get_districts()
+#' pk_map_interactive(districts,
+#'                    fill = "area_km2",
+#'                    popup = c("district_name", "area_km2"))
+#' }
 pk_map_interactive <- function(x, fill = NULL, popup = NULL, ...) {
   rlang::check_installed("leaflet", reason = "to use pk_map_interactive()")
 
@@ -88,10 +114,24 @@ pk_map_interactive <- function(x, fill = NULL, popup = NULL, ...) {
 #' point for building custom interactive maps.
 #'
 #' @param provider Character. Tile provider. Default "CartoDB.Positron".
-#' @return A leaflet object.
+#' @return Returns a leaflet object (class "leaflet" and "htmlwidget")
+#'   with the following configuration:
+#'   \item{Provider tiles}{Specified tile provider (default: CartoDB.Positron)}
+#'   \item{Bounds}{Pre-zoomed to Pakistan's extent:
+#'     longitude 60.9°E to 77.8°E, latitude 23.5°N to 37.1°N}
+#'
+#'   The output is a fully customizable leaflet basemap ready for adding
+#'   layers (e.g., administrative boundaries, point data, markers).
+#'   Use this as a starting point for building custom interactive maps.
 #' @export
-#' @examplesIf interactive()
-#'   pk_basemap()
+#' @examples
+#' \donttest{
+#' # Default basemap with CartoDB.Positron tiles
+#' pk_basemap()
+#'
+#' # Alternative tile provider
+#' pk_basemap(provider = "OpenStreetMap")
+#' }
 pk_basemap <- function(provider = "CartoDB.Positron") {
   rlang::check_installed("leaflet", reason = "to use pk_basemap()")
   leaflet::leaflet() |>

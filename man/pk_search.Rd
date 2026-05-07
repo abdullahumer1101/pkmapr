@@ -14,7 +14,16 @@ Default FALSE. Warning: Fuzzy matching can be slower and may
 return unexpected matches for short or common queries.}
 }
 \value{
-A data frame with columns: name, level, code, parent.
+Returns a data frame (class "data.frame") with the following columns:
+\item{name}{Matching administrative unit name(s)}
+\item{level}{Administrative level of each match}
+\item{code}{P-code of each match}
+\item{parent}{Parent unit of each match}
+
+The output represents all administrative units that match the search query.
+When no matches are found, returns invisible NULL with a warning message.
+When fuzzy matching is enabled, the output may include approximate matches
+that could be useful for handling typos or spelling variations.
 }
 \description{
 Search for administrative units by partial name or code across
@@ -35,16 +44,14 @@ may return unexpected results for ambiguous queries.
 }
 
 \examples{
-\dontrun{
-  # Case-insensitive search
-  pk_search("lahore")   # Returns Lahore district and tehsils
-  pk_search("LAHORE")   # Same result
+# Case-insensitive search
+pk_search("lahore")   # Returns Lahore district and tehsils
+pk_search("LAHORE")   # Same result
 
-  # Fuzzy search for misspelled "lahore"
-  pk_search("lahor", fuzzy = TRUE)
-  pk_search("lahre", fuzzy = TRUE)
+# Fuzzy search for misspelled "lahore"
+pk_search("lahor", fuzzy = TRUE)
+pk_search("lahre", fuzzy = TRUE)
 
-  # Search by code
-  pk_search("PK6")
-}
+# Search by code
+pk_search("PK6")
 }

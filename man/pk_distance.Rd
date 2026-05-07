@@ -15,14 +15,22 @@ pk_distance(x, y, by = c("centroid", "edge"))
 distances. "edge" for nearest-point-on-boundary distances.}
 }
 \value{
-A numeric matrix of distances in km.
+Returns a numeric matrix (class "matrix") of distances in kilometres,
+with dimensions \code{nrow(x)} by \code{nrow(y)}.
+
+When \code{by = "centroid"}, distances are measured between polygon
+centroids. When \code{by = "edge"}, distances are measured between the
+closest points on polygon boundaries. The output represents the
+shortest straight-line distance between features.
 }
 \description{
 Reprojects internally to UTM Zone 42N for accurate metric distances.
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  provinces <- get_provinces()
-  d <- pk_distance(provinces, provinces)
-\dontshow{\}) # examplesIf}
+provinces <- get_provinces()
+d <- pk_distance(provinces, provinces)
+print(d)
+
+# Edge-to-edge distances
+d_edge <- pk_distance(provinces, provinces, by = "edge")
 }

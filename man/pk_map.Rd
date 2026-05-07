@@ -2,7 +2,8 @@
 % Please edit documentation in R/visualise.R
 \name{pk_map}
 \alias{pk_map}
-\title{Quick choropleth map of a pkmapr sf object}
+\title{Produces a ggplot2 map for rapid exploratory visualisation.
+Returns a ggplot object that can be extended with standard ggplot2 layers.}
 \usage{
 pk_map(x, fill = NULL, title = NULL, ...)
 }
@@ -17,15 +18,27 @@ produces an outline map.}
 \item{...}{Additional arguments passed to \code{ggplot2::geom_sf()}.}
 }
 \value{
-A ggplot object.
+Returns a ggplot object (class "gg" and "ggplot") representing
+a choropleth map.
+
+When \code{fill = NULL}, the output is an outline map with grey90 fill
+and white borders, useful for context or reference.
+
+When a \code{fill} variable is provided, the output uses a viridis color
+scale with automatic legend, for visualizing spatial distributions
+of continuous variables (e.g., area, population, density).
+
+The returned ggplot object can be extended with additional layers,
+themes, or scales using standard ggplot2 syntax.
 }
 \description{
 Produces a ggplot2 map for rapid exploratory visualisation.
 Returns a ggplot object that can be extended with standard ggplot2 layers.
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  pk_map(get_provinces())
-  pk_map(get_provinces(), fill = "area_km2", title = "Province areas")
-\dontshow{\}) # examplesIf}
+# Outline map of provinces
+pk_map(get_provinces())
+
+# Choropleth map with fill variable
+pk_map(get_provinces(), fill = "area_km2", title = "Province areas")
 }

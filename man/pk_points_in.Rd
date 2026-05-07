@@ -15,24 +15,31 @@ pk_points_in(points, polygons, return_all = TRUE)
 attributes (TRUE, default) or drop them (FALSE).}
 }
 \value{
-The points sf object with polygon attribute columns joined.
+Returns an sf object of the same class as \code{points} with:
+\item{geometry}{Point geometries (unchanged)}
+\item{...}{Attribute columns from \code{polygons} joined to matching points}
+
+Points that fall outside all polygons receive NA values for all polygon
+attributes when \code{return_all = TRUE}. When \code{return_all = FALSE}, such points
+are removed entirely.
+
+The output represents point locations with their containing administrative
+unit attributes attached, allowing spatial aggregations and unit-based analyses.
 }
 \description{
 For each point in \code{points}, identifies which polygon it falls
 within and joins that polygon's attributes to the point record.
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  # Get district boundaries
-  districts <- get_districts()
+# Get district boundaries
+districts <- get_districts()
 
-  # Create sample points (or use your own sf object)
-  set.seed(123)
-  sample_points <- sf::st_sample(districts, size = 50)
-  sample_points_sf <- sf::st_sf(geometry = sample_points)
+# Create sample points (or use your own sf object)
+set.seed(123)
+sample_points <- sf::st_sample(districts, size = 50)
+sample_points_sf <- sf::st_sf(geometry = sample_points)
 
-  # Assign points to districts
-  points_with_districts <- pk_points_in(sample_points_sf, districts)
-  print(head(points_with_districts))
-\dontshow{\}) # examplesIf}
+# Assign points to districts
+points_with_districts <- pk_points_in(sample_points_sf, districts)
+print(head(points_with_districts))
 }

@@ -52,8 +52,11 @@ pak_map_interactive(...)
 
 pak_basemap(...)
 }
+\value{
+No return value, called for side effects (deprecation warnings).
+}
 \description{
-These functions are deprecated and will be removed in a future version.
+These functions were deprecated.
 Please use the new \code{pk_*} functions instead.
 }
 \keyword{internal}

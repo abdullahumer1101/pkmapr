@@ -2,7 +2,7 @@
 % Please edit documentation in R/geometry.R
 \name{get_country}
 \alias{get_country}
-\title{Get Pakistan national boundary}
+\title{Get national boundary for Pakistan.}
 \usage{
 get_country(crs = 4326)
 }
@@ -11,15 +11,19 @@ get_country(crs = 4326)
 distance and area calculations. See \code{\link[=pk_crs_suggest]{pk_crs_suggest()}} for guidance.}
 }
 \value{
-An sf object with columns: country_name, country_code,
-area_km2, geometry.
+Returns an sf object (class "sf" and "data.frame") with:
+\item{country_name}{Character. Name of the country ("Pakistan")}
+\item{country_code}{Character. ISO country code}
+\item{area_km2}{Numeric. Area in square kilometres}
+\item{geometry}{MULTIPOLYGON. The national boundary geometry}
+
+The output represents the complete national boundary of Pakistan.
 }
 \description{
-Get Pakistan national boundary
+Get national boundary for Pakistan.
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-  pk <- get_country()
-  plot(sf::st_geometry(pk))
-\dontshow{\}) # examplesIf}
+pakistan <- get_country()
+plot(sf::st_geometry(pakistan))
+print(pakistan$area_km2)
 }
