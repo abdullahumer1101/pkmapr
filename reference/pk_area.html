@@ -9,7 +9,7 @@ measurement. Returns the input object with area_km2 added or updated."><meta nam
 
     <a class="navbar-brand me-2" href="../index.html">pkmapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,7 @@ measurement. Returns the input object with area_km2 added or updated."><meta nam
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Recalculate area in km² for an sf object</h1>
-      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/HEAD/R/measurement.R" class="external-link"><code>R/measurement.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/main/R/measurement.R" class="external-link"><code>R/measurement.R</code></a></small>
       <div class="d-none name"><code>pk_area.Rd</code></div>
     </div>
 
@@ -61,13 +61,19 @@ measurement. Returns the input object with area_km2 added or updated.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The input sf object with area_km2 column added or updated.</p>
-    </div>
+    <p>Returns the input sf object (class "sf" and "data.frame") with the</p>
+<dl><dt>area_km2</dt>
+<dd><p>Numeric column added or updated, representing the area
+of each polygon in square kilometres.</p></dd>
+
+</dl></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu">pk_area</span><span class="op">(</span><span class="va">districts</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu">pk_area</span><span class="op">(</span><span class="va">districts</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">area_km2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  692.5272 1210.7768  682.8134  550.2982 1612.3079  898.8126</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

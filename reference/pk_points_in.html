@@ -9,7 +9,7 @@ within and joins that polygon's attributes to the point record."><meta name="goo
 
     <a class="navbar-brand me-2" href="../index.html">pkmapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,7 @@ within and joins that polygon's attributes to the point record."><meta name="goo
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Assign points to administrative units (point-in-polygon)</h1>
-      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/HEAD/R/spatial_ops.R" class="external-link"><code>R/spatial_ops.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/main/R/spatial_ops.R" class="external-link"><code>R/spatial_ops.R</code></a></small>
       <div class="d-none name"><code>pk_points_in.Rd</code></div>
     </div>
 
@@ -70,22 +70,34 @@ attributes (TRUE, default) or drop them (FALSE).</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The points sf object with polygon attribute columns joined.</p>
+    <p>Returns an sf object of the same class as <code>points</code> with:</p>
+<dl><dt>geometry</dt>
+<dd><p>Point geometries (unchanged)</p></dd>
+
+<dt>...</dt>
+<dd><p>Attribute columns from <code>polygons</code> joined to matching points</p></dd>
+
+
+</dl><p>Points that fall outside all polygons receive NA values for all polygon
+attributes when <code>return_all = TRUE</code>. When <code>return_all = FALSE</code>, such points
+are removed entirely.</p>
+<p>The output represents point locations with their containing administrative
+unit attributes attached, allowing spatial aggregations and unit-based analyses.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="co"># Get district boundaries</span></span></span>
-<span class="r-in"><span>  <span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Get district boundaries</span></span></span>
+<span class="r-in"><span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Create sample points (or use your own sf object)</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">sample_points</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_sample.html" class="external-link">st_sample</a></span><span class="op">(</span><span class="va">districts</span>, size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">sample_points_sf</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">st_sf</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="va">sample_points</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Create sample points (or use your own sf object)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sample_points</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_sample.html" class="external-link">st_sample</a></span><span class="op">(</span><span class="va">districts</span>, size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sample_points_sf</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">st_sf</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="va">sample_points</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Assign points to districts</span></span></span>
-<span class="r-in"><span>  <span class="va">points_with_districts</span> <span class="op">&lt;-</span> <span class="fu">pk_points_in</span><span class="op">(</span><span class="va">sample_points_sf</span>, <span class="va">districts</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">points_with_districts</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Assign points to districts</span></span></span>
+<span class="r-in"><span><span class="va">points_with_districts</span> <span class="op">&lt;-</span> <span class="fu">pk_points_in</span><span class="op">(</span><span class="va">sample_points_sf</span>, <span class="va">districts</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">points_with_districts</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 6 features and 4 fields</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POINT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>

@@ -8,15 +8,15 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/abdullahumer1101/pkmapr/blob/HEAD/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/abdullahumer1101/pkmapr/blob/main/DESCRIPTION)
 
 Abdullah Umer (2026). *pkmapr: Pakistan Spatial Data Toolkit*. R package
-version 1.2.0, <https://abdullahumer1101.github.io/pkmapr/>.
+version 1.2.1, <https://abdullahumer1101.github.io/pkmapr/>.
 
     @Manual{,
       title = {pkmapr: Pakistan Spatial Data Toolkit},
       author = {{Abdullah Umer}},
       year = {2026},
-      note = {R package version 1.2.0},
+      note = {R package version 1.2.1},
       url = {https://abdullahumer1101.github.io/pkmapr/},
     }

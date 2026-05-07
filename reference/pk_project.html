@@ -11,7 +11,7 @@ accurate distance, area, or buffer operations."><meta name="google-site-verifica
 
     <a class="navbar-brand me-2" href="../index.html">pkmapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@ accurate distance, area, or buffer operations."><meta name="google-site-verifica
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Project an sf object to a Pakistan-appropriate CRS</h1>
-      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/HEAD/R/measurement.R" class="external-link"><code>R/measurement.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/main/R/measurement.R" class="external-link"><code>R/measurement.R</code></a></small>
       <div class="d-none name"><code>pk_project.Rd</code></div>
     </div>
 
@@ -68,13 +68,19 @@ accurate distance, area, or buffer operations.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The sf object reprojected to the specified CRS.</p>
+    <p>Returns the sf object reprojected to the specified CRS.
+The output has the same attributes and geometry type as the input,
+but coordinates are transformed to the new projection. UTM Zone 42N
+(EPSG:32642) preserves distances and areas accurately across most
+but not all of Pakistan.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">projected</span> <span class="op">&lt;-</span> <span class="fu">pk_project</span><span class="op">(</span><span class="va">districts</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">projected</span> <span class="op">&lt;-</span> <span class="fu">pk_project</span><span class="op">(</span><span class="va">districts</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">projected</span><span class="op">)</span><span class="op">$</span><span class="va">epsg</span>  <span class="co"># Should be 32642</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32642</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -11,7 +11,7 @@ complexities including non-contiguous units and disputed boundaries."><meta name
 
     <a class="navbar-brand me-2" href="../index.html">pkmapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@ complexities including non-contiguous units and disputed boundaries."><meta name
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Construct a spatial neighbours list for Pakistan administrative units</h1>
-      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/HEAD/R/neighbors.R" class="external-link"><code>R/neighbors.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/main/R/neighbors.R" class="external-link"><code>R/neighbors.R</code></a></small>
       <div class="d-none name"><code>pk_neighbors.Rd</code></div>
     </div>
 
@@ -96,36 +96,72 @@ to the result documenting which units are affected.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A named list:</p><dl><dt>nb</dt>
-<dd><p>A spdep nb object.</p></dd>
+    <p>Returns a named list (class "list") with the following:</p>
+<dl><dt>nb</dt>
+<dd><p>An spdep nb object (class "nb") containing the neighbour
+relationships. Each element is an integer vector of neighbour indices.</p></dd>
 
 <dt>listw</dt>
-<dd><p>A row-standardised spdep listw object, ready for
-<code><a href="https://r-spatial.github.io/spdep/reference/moran.test.html" class="external-link">spdep::moran.test()</a></code>, <code>spdep::localMoran()</code>,
-<code><a href="https://r-spatial.github.io/spatialreg/reference/ML_models.html" class="external-link">spatialreg::lagsarlm()</a></code>, and related functions.</p></dd>
+<dd><p>A row-standardised spdep listw object (class "listw"),
+ready for <code><a href="https://r-spatial.github.io/spdep/reference/moran.test.html" class="external-link">spdep::moran.test()</a></code>, <code>spdep::localMoran()</code>,
+<code>spatialreg::lagsarlm()</code>, and related spatial analysis functions.
+The weights are row-standardized (style = "W") with zero.policy = TRUE.</p></dd>
 
 <dt>boundary_note</dt>
-<dd><p>Character. Present only when disputed = "flag".</p></dd>
+<dd><p>Character string. Present only when
+<code>disputed = "flag"</code>. Contains documentation of which units
+involve disputed or special administrative boundaries.</p></dd>
 
 
-</dl></div>
+</dl><p>The output is a complete spatial weights structure for
+use in spatial autocorrelation tests (Moran's I), local indicators of
+spatial association (LISA), and spatial regression models (SAR, SEM, etc.).
+The <code>nb</code> defines the neighbour graph; the <code>listw</code>
+provides the row-standardized weights matrix.</p>
+    </div>
     <div class="section level2">
     <h2 id="pakistan-specific-handling">Pakistan-specific handling<a class="anchor" aria-label="anchor" href="#pakistan-specific-handling"></a></h2>
 
 
-<p>Gilgit-Baltistan and Azad Kashmir might break most spatial statistics. The <code>disputed</code> argument
-controls how the Line of Control and special administrative boundaries
-flagged in the OCHA source data are treated, making the analytical
-decision explicit and reproducible.</p>
+<p>Gilgit-Baltistan and Azad Kashmir might break some spatial statistics.
+The <code>disputed</code> argument controls how the Line of Control and
+special administrative boundaries flagged in the OCHA source data are
+treated, offering better control over analytical decisions.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span>  <span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">w</span> <span class="op">&lt;-</span> <span class="fu">pk_neighbors</span><span class="op">(</span><span class="va">districts</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Calculate Moran's I using spdep</span></span></span>
 <span class="r-in"><span>  <span class="va">moran_result</span> <span class="op">&lt;-</span> <span class="fu">spdep</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/spdep/reference/moran.test.html" class="external-link">moran.test</a></span><span class="op">(</span><span class="va">districts</span><span class="op">$</span><span class="va">area_km2</span>, <span class="va">w</span><span class="op">$</span><span class="va">listw</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">moran_result</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	Moran I test under randomisation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> data:  districts$area_km2  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> weights: w$listw    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Moran I statistic standard deviate = 9.7714, p-value &lt; 2.2e-16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> alternative hypothesis: greater</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sample estimates:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Moran I statistic       Expectation          Variance </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.455579101      -0.006289308       0.002234218 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># Queen contiguity (default)</span></span></span>
+<span class="r-in"><span>  <span class="va">w_queen</span> <span class="op">&lt;-</span> <span class="fu">pk_neighbors</span><span class="op">(</span><span class="va">districts</span>, style <span class="op">=</span> <span class="st">"queen"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># K-nearest neighbours (k=5)</span></span></span>
+<span class="r-in"><span>  <span class="va">w_knn</span> <span class="op">&lt;-</span> <span class="fu">pk_neighbors</span><span class="op">(</span><span class="va">districts</span>, style <span class="op">=</span> <span class="st">"knn"</span>, k <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>st_centroid assumes attributes are constant over geometries</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># Flag disputed boundaries for documentation</span></span></span>
+<span class="r-in"><span>  <span class="va">w_flagged</span> <span class="op">&lt;-</span> <span class="fu">pk_neighbors</span><span class="op">(</span><span class="va">districts</span>, disputed <span class="op">=</span> <span class="st">"flag"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">w_flagged</span><span class="op">$</span><span class="va">boundary_note</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">w_flagged</span><span class="op">$</span><span class="va">boundary_note</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

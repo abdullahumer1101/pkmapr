@@ -12,6 +12,7 @@ measurement, and neighbour structure construction for use with `spdep`,
 ## Installation
 
 ``` r
+
 # GitHub
 remotes::install_github("abdullahumer1101/pkmapr")
 
@@ -22,10 +23,11 @@ install.packages("pkmapr", repos = "https://abdullahumer1101.r-universe.dev")
 ## Citation
 
 ``` r
+
 citation("pkmapr")
 ```
 
 Or cite directly:
 
-> Umer, A. (2025). pkmapr: Pakistan Spatial Data Toolkit.
+> Umer, A. (2026). pkmapr: Pakistan Spatial Data Toolkit.
 > <https://doi.org/10.5281/zenodo.19769542>

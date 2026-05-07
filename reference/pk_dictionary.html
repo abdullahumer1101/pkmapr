@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pkmapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Pakistan Administrative Boundaries Dictionary</h1>
-      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/HEAD/R/search.R" class="external-link"><code>R/search.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/main/R/search.R" class="external-link"><code>R/search.R</code></a></small>
       <div class="d-none name"><code>pk_dictionary.Rd</code></div>
     </div>
 
@@ -67,7 +67,23 @@ NULL (default) returns all levels.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A data frame with columns: name, level, code, parent.</p>
+    <p>Returns a data frame (class "data.frame") with the following columns:</p>
+<dl><dt>name</dt>
+<dd><p>Administrative unit name (e.g., "Lahore")</p></dd>
+
+<dt>level</dt>
+<dd><p>Administrative level: "provinces", "districts", or "tehsils"</p></dd>
+
+<dt>code</dt>
+<dd><p>P-code (unique identifier for the administrative unit)</p></dd>
+
+<dt>parent</dt>
+<dd><p>Parent administrative unit (province for districts, district for tehsils)</p></dd>
+
+
+</dl><p>The output represents a searchable dictionary of all administrative units
+in Pakistan. Use this function to explore available units, find codes,
+or validate input for other pkmapr functions.</p>
     </div>
     <div class="section level2">
     <h2 id="case-insensitivity">Case Insensitivity<a class="anchor" aria-label="anchor" href="#case-insensitivity"></a></h2>
@@ -79,17 +95,204 @@ NULL (default) returns all levels.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span>  <span class="co"># All provinces</span></span></span>
-<span class="r-in"><span>  <span class="fu">pk_dictionary</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"provinces"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># All provinces</span></span></span>
+<span class="r-in"><span><span class="fu">pk_dictionary</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"provinces"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 name     level code parent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1       Azad Kashmir provinces  PK1   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        Balochistan provinces  PK2   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   Gilgit Baltistan provinces  PK3   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4          Islamabad provinces  PK4   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 Khyber Pakhtunkhwa provinces  PK5   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6             Punjab provinces  PK6   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7              Sindh provinces  PK7   &lt;NA&gt;</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Case-insensitive search for districts containing "lahore"</span></span></span>
-<span class="r-in"><span>  <span class="fu">pk_dictionary</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"districts"</span>, name <span class="op">=</span> <span class="st">"lahore"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="fu">pk_dictionary</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"districts"</span>, name <span class="op">=</span> <span class="st">"LAHORE"</span><span class="op">)</span>  <span class="co"># Same result</span></span></span>
+<span class="r-in"><span><span class="co"># Case-insensitive search for districts containing "lahore"</span></span></span>
+<span class="r-in"><span><span class="fu">pk_dictionary</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"districts"</span>, name <span class="op">=</span> <span class="st">"lahore"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     name     level  code parent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Lahore districts PK617 Punjab</span>
+<span class="r-in"><span><span class="fu">pk_dictionary</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"districts"</span>, name <span class="op">=</span> <span class="st">"LAHORE"</span><span class="op">)</span>  <span class="co"># Same result</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     name     level  code parent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Lahore districts PK617 Punjab</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Search by code</span></span></span>
-<span class="r-in"><span>  <span class="fu">pk_dictionary</span><span class="op">(</span>code <span class="op">=</span> <span class="st">"PK6"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="co"># Search by code</span></span></span>
+<span class="r-in"><span><span class="fu">pk_dictionary</span><span class="op">(</span>code <span class="op">=</span> <span class="st">"PK6"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       name     level    code          parent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                   Punjab provinces     PK6            &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                   Attock districts   PK601          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3             Bahawalnagar districts   PK602          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4               Bahawalpur districts   PK603          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                  Bhakkar districts   PK604          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                  Chakwal districts   PK605          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                  Chiniot districts   PK606          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8          Dera Ghazi Khan districts   PK607          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9               Faisalabad districts   PK608          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10              Gujranwala districts   PK609          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                  Gujrat districts   PK610          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12               Hafizabad districts   PK611          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                   Jhang districts   PK612          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                  Jhelum districts   PK613          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                   Kasur districts   PK614          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16                Khanewal districts   PK615          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                 Khushab districts   PK616          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                  Lahore districts   PK617          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19                   Leiah districts   PK618          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20                 Lodhran districts   PK619          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21         Mandi Bahauddin districts   PK620          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22                Mianwali districts   PK621          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23                  Multan districts   PK622          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24            Muzaffargarh districts   PK623          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25           Nankana Sahib districts   PK624          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26                 Narowal districts   PK625          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27                   Okara districts   PK626          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28               Pakpattan districts   PK627          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29          Rahim Yar Khan districts   PK628          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30                Rajanpur districts   PK629          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31              Rawalpindi districts   PK630          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32                 Sahiwal districts   PK631          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33                Sargodha districts   PK632          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34             Sheikhupura districts   PK633          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35                 Sialkot districts   PK634          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36          Toba Tek Singh districts   PK635          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37                  Vehari districts   PK636          Punjab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38                  Attock   tehsils PK60101          Attock</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39              Fateh Jang   tehsils PK60102          Attock</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40             Hasan Abdal   tehsils PK60103          Attock</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41                   Hazro   tehsils PK60104          Attock</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42                    Jand   tehsils PK60105          Attock</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43              Pindi Gheb   tehsils PK60106          Attock</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44            Bahawalnagar   tehsils PK60201    Bahawalnagar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45               Chishtian   tehsils PK60202    Bahawalnagar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46              Fort Abbas   tehsils PK60203    Bahawalnagar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47              Haroonabad   tehsils PK60204    Bahawalnagar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48             Minchinabad   tehsils PK60205    Bahawalnagar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49           Ahmadpur East   tehsils PK60301      Bahawalpur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50              Bahawalpur   tehsils PK60302      Bahawalpur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51                Hasilpur   tehsils PK60303      Bahawalpur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52       Khairpur Tamewali   tehsils PK60304      Bahawalpur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53                  Yazman   tehsils PK60305      Bahawalpur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54                 Bhakkar   tehsils PK60401         Bhakkar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55              Darya Khan   tehsils PK60402         Bhakkar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56               Kalur Kot   tehsils PK60403         Bhakkar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57                 Mankera   tehsils PK60404         Bhakkar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58                 Chakwal   tehsils PK60501         Chakwal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59        Choa Saidan Shah   tehsils PK60502         Chakwal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60            Kallar Kahar   tehsils PK60503         Chakwal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61               Tala Gang   tehsils PK60504         Chakwal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62                 Bhawana   tehsils PK60601         Chiniot</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63                 Chiniot   tehsils PK60602         Chiniot</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64                  Lalian   tehsils PK60603         Chiniot</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65  D.G Khan (Tribal Area)   tehsils PK60701 Dera Ghazi Khan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66         Dera Ghazi Khan   tehsils PK60702 Dera Ghazi Khan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67              Kot Chatta   tehsils PK60703 Dera Ghazi Khan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68                  Taunsa   tehsils PK60704 Dera Ghazi Khan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69             Chak Jhumra   tehsils PK60801      Faisalabad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70         Faisalabad City   tehsils PK60802      Faisalabad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71        Faisalabad Sadar   tehsils PK60803      Faisalabad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72               Jaranwala   tehsils PK60804      Faisalabad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73               Summundri   tehsils PK60805      Faisalabad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74           Tandlian Wala   tehsils PK60806      Faisalabad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75              Gujranwala   tehsils PK60901      Gujranwala</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76                  Kamoke   tehsils PK60902      Gujranwala</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77         Nowshera Virkan   tehsils PK60903      Gujranwala</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78               Wazirabad   tehsils PK60904      Gujranwala</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79                  Gujrat   tehsils PK61001          Gujrat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80                 Kharian   tehsils PK61002          Gujrat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81           Sarai Alamgir   tehsils PK61003          Gujrat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82               Hafizabad   tehsils PK61101       Hafizabad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83          Pindi Bhattian   tehsils PK61102       Hafizabad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84           Ahmadpur Sial   tehsils PK61201           Jhang</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85                   Jhang   tehsils PK61202           Jhang</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86                 Shorkot   tehsils PK61203           Jhang</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87           Athara Hazari   tehsils PK61204           Jhang</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88                    Dina   tehsils PK61301          Jhelum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89                  Jhelum   tehsils PK61302          Jhelum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90         Pind Dadan Khan   tehsils PK61303          Jhelum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91                  Sohawa   tehsils PK61304          Jhelum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92                 Chunian   tehsils PK61401           Kasur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93                   Kasur   tehsils PK61402           Kasur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94        Kot Radha Kishen   tehsils PK61403           Kasur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95                 Pattoki   tehsils PK61404           Kasur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96                Jahanian   tehsils PK61501        Khanewal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97               Kabirwala   tehsils PK61502        Khanewal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98                Khanewal   tehsils PK61503        Khanewal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99             Mian Channu   tehsils PK61504        Khanewal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100                Khushab   tehsils PK61601         Khushab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 101               Naushera   tehsils PK61602         Khushab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 102                Noorpur   tehsils PK61603         Khushab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 103              Quaidabad   tehsils PK61604         Khushab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 104           Lahore Cantt   tehsils PK61701          Lahore</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105            Lahore City   tehsils PK61702          Lahore</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 106               Choubara   tehsils PK61801           Leiah</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 107         Karor Lal Esan   tehsils PK61802           Leiah</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 108                  Leiah   tehsils PK61803           Leiah</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 109               Dunyapur   tehsils PK61901         Lodhran</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 110           Kahror Pacca   tehsils PK61902         Lodhran</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 111                Lodhran   tehsils PK61903         Lodhran</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112               Malakwal   tehsils PK62001 Mandi Bahauddin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113        Mandi Bahauddin   tehsils PK62002 Mandi Bahauddin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114                 Phalia   tehsils PK62003 Mandi Bahauddin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115                Isakhel   tehsils PK62101        Mianwali</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116               Mianwali   tehsils PK62102        Mianwali</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117                 Piplan   tehsils PK62103        Mianwali</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118       Jalalpur Pirwala   tehsils PK62201          Multan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 119            Multan City   tehsils PK62202          Multan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120          Multan Saddar   tehsils PK62203          Multan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 121               Shujabad   tehsils PK62204          Multan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 122                 Alipur   tehsils PK62301    Muzaffargarh</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 123                  Jatoi   tehsils PK62302    Muzaffargarh</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124               Kot Addu   tehsils PK62303    Muzaffargarh</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 125           Muzaffargarh   tehsils PK62304    Muzaffargarh</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 126          Nankana Sahib   tehsils PK62401   Nankana Sahib</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 127            Sangla Hill   tehsils PK62402   Nankana Sahib</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 128               Shah Kot   tehsils PK62403   Nankana Sahib</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 129                Narowal   tehsils PK62501         Narowal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 130             Shakargarh   tehsils PK62502         Narowal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 131               Zafarwal   tehsils PK62503         Narowal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 132               Depalpur   tehsils PK62601           Okara</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 133                  Okara   tehsils PK62602           Okara</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 134           Renala Khurd   tehsils PK62603           Okara</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 135              Arif Wala   tehsils PK62701       Pakpattan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 136              Pakpattan   tehsils PK62702       Pakpattan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 137                Khanpur   tehsils PK62801  Rahim Yar Khan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 138              Liaqatpur   tehsils PK62802  Rahim Yar Khan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 139         Rahim Yar Khan   tehsils PK62803  Rahim Yar Khan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140              Sadiqabad   tehsils PK62804  Rahim Yar Khan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 141                 Jampur   tehsils PK62901        Rajanpur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 142               Rajanpur   tehsils PK62902        Rajanpur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 143 Rajanpur (Tribal Area)   tehsils PK62903        Rajanpur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144                 Rojhan   tehsils PK62904        Rajanpur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145             Gujar Khan   tehsils PK63001      Rawalpindi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 146                 Kahuta   tehsils PK63002      Rawalpindi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 147        Kallar Sayaddan   tehsils PK63003      Rawalpindi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 148          Kotli Sattian   tehsils PK63004      Rawalpindi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 149                 Murree   tehsils PK63005      Rawalpindi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 150             Rawalpindi   tehsils PK63006      Rawalpindi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 151                 Taxila   tehsils PK63007      Rawalpindi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 152            Chichawatni   tehsils PK63101         Sahiwal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 153                Sahiwal   tehsils PK63102         Sahiwal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 154                Bhalwal   tehsils PK63201        Sargodha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 155              Kot Momin   tehsils PK63202        Sargodha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 156                Sahiwal   tehsils PK63203        Sargodha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 157               Sargodha   tehsils PK63204        Sargodha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 158                Shahpur   tehsils PK63205        Sargodha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 159             Sillanwali   tehsils PK63206        Sargodha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 160                  Bhera   tehsils PK63207        Sargodha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 161             Ferozewala   tehsils PK63301     Sheikhupura</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 162                Muridke   tehsils PK63302     Sheikhupura</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 163             Safdarabad   tehsils PK63303     Sheikhupura</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 164             Sharak Pur   tehsils PK63304     Sheikhupura</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 165            Sheikhupura   tehsils PK63305     Sheikhupura</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 166                  Daska   tehsils PK63401         Sialkot</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 167                 Pasrur   tehsils PK63402         Sialkot</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168               Sambrial   tehsils PK63403         Sialkot</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 169                Sialkot   tehsils PK63404         Sialkot</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 170                  Gojra   tehsils PK63501  Toba Tek Singh</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 171                Kamalia   tehsils PK63502  Toba Tek Singh</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 172         Toba Tek Singh   tehsils PK63503  Toba Tek Singh</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173              Pir Mahal   tehsils PK63504  Toba Tek Singh</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 174               Burewala   tehsils PK63601          Vehari</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 175                 Mailsi   tehsils PK63602          Vehari</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 176                 Vehari   tehsils PK63603          Vehari</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

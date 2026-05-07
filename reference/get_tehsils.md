@@ -30,14 +30,49 @@ get_tehsils(district = NULL, province = NULL, crs = 4326)
 
 ## Value
 
-An sf object with columns: province_name, district_name, tehsil_name,
-tehsil_code, area_km2, geometry.
+Returns an sf object (class "sf" and "data.frame") with:
+
+- province_name:
+
+  Character. Parent province name
+
+- district_name:
+
+  Character. Parent district name
+
+- tehsil_name:
+
+  Character. Tehsil name
+
+- tehsil_code:
+
+  Character. Unique tehsil identifier code
+
+- area_km2:
+
+  Numeric. Area in square kilometres for each tehsil
+
+- geometry:
+
+  MULTIPOLYGON. Tehsil boundary geometries
+
+The output represents the finest available administrative boundaries in
+pkmapr, suitable for high-resolution spatial analysis, local-level
+mapping, and joining with tehsil-level census or survey data.
 
 ## Examples
 
 ``` r
-  sindh_tehsils  <- get_tehsils(province = "Sindh")
-  sindh_tehsils  <- get_tehsils(province = "sindh")  # Case-insensitive
-  lahore_tehsils <- get_tehsils(district = "Lahore")
-  lahore_tehsils <- get_tehsils(district = "lahore")  # Case-insensitive
+# All tehsils
+all_tehsils <- get_tehsils()
+
+# Filter to Sindh province
+sindh_tehsils <- get_tehsils(province = "Sindh")
+sindh_tehsils <- get_tehsils(province = "sindh")  # Case-insensitive
+
+# Filter to Lahore district
+lahore_tehsils <- get_tehsils(district = "Lahore")
+lahore_tehsils <- get_tehsils(district = "lahore")  # Case-insensitive
+
+plot(sf::st_geometry(lahore_tehsils))
 ```

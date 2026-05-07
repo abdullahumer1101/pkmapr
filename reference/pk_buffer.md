@@ -21,11 +21,16 @@ pk_buffer(x, dist_km)
 
 ## Value
 
-An sf object with buffered geometries in the same CRS as input.
+Returns an sf object with the same attributes as `x` but with geometries
+transformed to buffers of radius `dist_km` kilometres.
+
+The output CRS is identical to the input CRS (reprojected back from UTM
+Zone 42N after buffering). This ensures buffers are circular in
+projected space with accurate kilometre distances.
 
 ## Examples
 
 ``` r
-  districts <- get_districts()
-  buffered  <- pk_buffer(districts, dist_km = 10)
+districts <- get_districts()
+buffered <- pk_buffer(districts, dist_km = 10)
 ```

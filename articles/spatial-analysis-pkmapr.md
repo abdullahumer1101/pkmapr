@@ -1,6 +1,7 @@
 # Spatial Analysis with pkmapr
 
 ``` r
+
 library(pkmapr)
 library(dplyr)
 ```
@@ -10,6 +11,7 @@ library(dplyr)
 Convert polygons to points for labeling and/or distance calculations:
 
 ``` r
+
 districts <- get_districts()
 centroids <- pk_centroid(districts)
 
@@ -23,6 +25,7 @@ pk_map(districts) +
 Create buffer zones around administrative units (distances in km):
 
 ``` r
+
 # 10km buffer around Lahore district
 lahore <- get_districts(province = "Punjab") |>
   filter(district_name == "Lahore")
@@ -38,6 +41,7 @@ pk_map(lahore_buffer, title = "Lahore buffer") +
 Compute distances between units:
 
 ``` r
+
 # Distance matrix between provinces (centroid to centroid)
 provinces <- get_provinces()
 dist_matrix <- pk_distance(provinces, provinces)
@@ -54,6 +58,7 @@ distances <- pk_distance(provinces, karachi)
 Assign GPS points to administrative units:
 
 ``` r
+
 # Example: health facility locations
 facilities <- data.frame(
   name = c("Hospital A", "Clinic B"),
@@ -76,6 +81,7 @@ facilities_with_district |>
 Aggregate finer units to coarser levels:
 
 ``` r
+
 # Dissolve tehsils to district level
 tehsils <- get_tehsils()
 districts_from_tehsils <- pk_union(tehsils, by = "district_name")
@@ -92,6 +98,7 @@ WGS84 (default) measures in degrees, for measurements using projected
 CRS:
 
 ``` r
+
 # Recommended CRS for your data's extent
 pk_crs_suggest(get_districts(province = "Punjab"))
 

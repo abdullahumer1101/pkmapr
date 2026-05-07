@@ -26,22 +26,38 @@ pk_points_in(points, polygons, return_all = TRUE)
 
 ## Value
 
-The points sf object with polygon attribute columns joined.
+Returns an sf object of the same class as `points` with:
+
+- geometry:
+
+  Point geometries (unchanged)
+
+- ...:
+
+  Attribute columns from `polygons` joined to matching points
+
+Points that fall outside all polygons receive NA values for all polygon
+attributes when `return_all = TRUE`. When `return_all = FALSE`, such
+points are removed entirely.
+
+The output represents point locations with their containing
+administrative unit attributes attached, allowing spatial aggregations
+and unit-based analyses.
 
 ## Examples
 
 ``` r
-  # Get district boundaries
-  districts <- get_districts()
+# Get district boundaries
+districts <- get_districts()
 
-  # Create sample points (or use your own sf object)
-  set.seed(123)
-  sample_points <- sf::st_sample(districts, size = 50)
-  sample_points_sf <- sf::st_sf(geometry = sample_points)
+# Create sample points (or use your own sf object)
+set.seed(123)
+sample_points <- sf::st_sample(districts, size = 50)
+sample_points_sf <- sf::st_sf(geometry = sample_points)
 
-  # Assign points to districts
-  points_with_districts <- pk_points_in(sample_points_sf, districts)
-  print(head(points_with_districts))
+# Assign points to districts
+points_with_districts <- pk_points_in(sample_points_sf, districts)
+print(head(points_with_districts))
 #> Simple feature collection with 6 features and 4 fields
 #> Geometry type: POINT
 #> Dimension:     XY

@@ -9,7 +9,7 @@ point for building custom interactive maps."><!-- dependencies from examples -->
 
     <a class="navbar-brand me-2" href="../index.html">pkmapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,7 @@ point for building custom interactive maps."><!-- dependencies from examples -->
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Leaflet basemap centred on Pakistan</h1>
-      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/HEAD/R/visualise.R" class="external-link"><code>R/visualise.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/main/R/visualise.R" class="external-link"><code>R/visualise.R</code></a></small>
       <div class="d-none name"><code>pk_basemap.Rd</code></div>
     </div>
 
@@ -61,14 +61,33 @@ point for building custom interactive maps.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A leaflet object.</p>
+    <p>Returns a leaflet object (class "leaflet" and "htmlwidget")
+with the following configuration:</p>
+<dl><dt>Provider tiles</dt>
+<dd><p>Specified tile provider (default: CartoDB.Positron)</p></dd>
+
+<dt>Bounds</dt>
+<dd><p>Pre-zoomed to Pakistan's extent:
+longitude 60.9°E to 77.8°E, latitude 23.5°N to 37.1°N</p></dd>
+
+
+</dl><p>The output is a fully customizable leaflet basemap ready for adding
+layers (e.g., administrative boundaries, point data, markers).
+Use this as a starting point for building custom interactive maps.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="fu">pk_basemap</span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># Default basemap with CartoDB.Positron tiles</span></span></span>
+<span class="r-in"><span><span class="fu">pk_basemap</span><span class="op">(</span><span class="op">)</span></span></span>
 <div id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:700px;height:432.632880098888px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}],"fitBounds":[23.5,60.9,37.1,77.8,[]]},"evals":[],"jsHooks":[]}</script></code></pre></div>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}],"fitBounds":[23.5,60.9,37.1,77.8,[]]},"evals":[],"jsHooks":[]}</script><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Alternative tile provider</span></span></span>
+<span class="r-in"><span><span class="fu">pk_basemap</span><span class="op">(</span>provider <span class="op">=</span> <span class="st">"OpenStreetMap"</span><span class="op">)</span></span></span>
+<div id="htmlwidget-e5c8c404fe174e4c81bd" style="width:700px;height:432.632880098888px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e5c8c404fe174e4c81bd">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["OpenStreetMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}],"fitBounds":[23.5,60.9,37.1,77.8,[]]},"evals":[],"jsHooks":[]}</script><span class="r-in"><span><span class="co"># }</span></span></span>
+</code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
