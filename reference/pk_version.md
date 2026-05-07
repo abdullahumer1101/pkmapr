@@ -35,14 +35,13 @@ Returns invisibly a list (class "list") with the following components:
 # \donttest{
 pk_version()
 #> Installed version: 1.2.1 
-#> Latest version:    1.2.0 
-#> Update available! Run: remotes::install_github('abdullahumer1101/pkmapr')
+#> Latest version:    1.2.1 
+#> You have the latest version
 
 # Silent mode for programmatic use
 vers <- pk_version(quiet = TRUE)
 if (!is.na(vers$latest) && vers$installed != vers$latest) {
   message("Update recommended!")
 }
-#> Update recommended!
 # }
 ```

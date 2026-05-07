@@ -1,6 +1,7 @@
 # Epidemiology with pkmapr
 
 ``` r
+
 library(pkmapr)
 library(spdep)
 library(dplyr)
@@ -18,6 +19,7 @@ handles this automatically.
 ## Build spatial weights
 
 ``` r
+
 districts <- get_districts()
 w <- pk_neighbors(districts, disputed = "exclude")
 ```
@@ -28,6 +30,7 @@ row-standardised weights (ready for spdep)
 ## Global Moran’s I (synthetic data)
 
 ``` r
+
 set.seed(2023)
 
 # Create spatially autocorrelated synthetic data
@@ -51,6 +54,7 @@ A significant p-value indicates spatial clustering.
 Identify local clusters and outliers:
 
 ``` r
+
 # Calculate local Moran's I
 lisa <- localmoran(districts$synthetic_rate, w$listw)
 
@@ -79,6 +83,7 @@ ggplot2::ggplot(districts) +
 ## Hotspot detection (Getis-Ord Gi\*)
 
 ``` r
+
 # Calculate Gi* for the synthetic data
 gi_star <- localG(districts$synthetic_rate, w$listw)
 
@@ -96,6 +101,7 @@ The Line of Control creates analytical ambiguity.
 makes your decision explicit:
 
 ``` r
+
 # Exclude (default) — GB/AJK get nearest neighbour fallback
 w_exclude <- pk_neighbors(districts, disputed = "exclude")
 
@@ -110,6 +116,7 @@ print(w_flag$boundary_note)
 ## Complete workflow example
 
 ``` r
+
 # 1. Get data
 districts <- get_districts()
 

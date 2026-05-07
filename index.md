@@ -12,6 +12,7 @@ measurement, and neighbour structure construction for use with `spdep`,
 ## Installation
 
 ``` r
+
 # GitHub
 remotes::install_github("abdullahumer1101/pkmapr")
 
@@ -22,6 +23,7 @@ install.packages("pkmapr", repos = "https://abdullahumer1101.r-universe.dev")
 ## Citation
 
 ``` r
+
 citation("pkmapr")
 ```
 

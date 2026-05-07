@@ -1,21 +1,19 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/404.html</loc></url>
+<url><loc>https://abdullahumer1101.github.io/pkmapr/CONTRIBUTING.html</loc></url>
+<url><loc>https://abdullahumer1101.github.io/pkmapr/LICENSE-text.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/articles/epidemiology-pkmapr.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/articles/index.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/articles/intro-to-pkmapr.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/articles/spatial-analysis-pkmapr.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/authors.html</loc></url>
-<url><loc>https://abdullahumer1101.github.io/pkmapr/CONTRIBUTING.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/index.html</loc></url>
-<url><loc>https://abdullahumer1101.github.io/pkmapr/LICENSE-text.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/news/index.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/reference/get_country.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/reference/get_districts.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/reference/get_provinces.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/reference/get_tehsils.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/reference/index.html</loc></url>
-<url><loc>https://abdullahumer1101.github.io/pkmapr/reference/pkmapr-deprecated.html</loc></url>
-<url><loc>https://abdullahumer1101.github.io/pkmapr/reference/pkmapr.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/reference/pk_area.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/reference/pk_basemap.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/reference/pk_bbox.html</loc></url>
@@ -34,5 +32,7 @@
 <url><loc>https://abdullahumer1101.github.io/pkmapr/reference/pk_search.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/reference/pk_union.html</loc></url>
 <url><loc>https://abdullahumer1101.github.io/pkmapr/reference/pk_version.html</loc></url>
+<url><loc>https://abdullahumer1101.github.io/pkmapr/reference/pkmapr-deprecated.html</loc></url>
+<url><loc>https://abdullahumer1101.github.io/pkmapr/reference/pkmapr.html</loc></url>
 </urlset>
 
