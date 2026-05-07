@@ -61,9 +61,10 @@ Returns a named list (class "list") with the following:
 
   A row-standardised spdep listw object (class "listw"), ready for
   [`spdep::moran.test()`](https://r-spatial.github.io/spdep/reference/moran.test.html),
-  `spdep::localMoran()`, `spatialreg::lagsarlm()`, and related spatial
-  analysis functions. The weights are row-standardized (style = "W")
-  with zero.policy = TRUE.
+  `spdep::localMoran()`,
+  [`spatialreg::lagsarlm()`](https://r-spatial.github.io/spatialreg/reference/ML_models.html),
+  and related spatial analysis functions. The weights are
+  row-standardized (style = "W") with zero.policy = TRUE.
 
 - boundary_note:
 

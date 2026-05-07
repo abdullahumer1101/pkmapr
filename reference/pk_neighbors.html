@@ -39,7 +39,7 @@ complexities including non-contiguous units and disputed boundaries."><meta name
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Construct a spatial neighbours list for Pakistan administrative units</h1>
-      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/main/R/neighbors.R" class="external-link"><code>R/neighbors.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/abdullahumer1101/pkmapr/blob/HEAD/R/neighbors.R" class="external-link"><code>R/neighbors.R</code></a></small>
       <div class="d-none name"><code>pk_neighbors.Rd</code></div>
     </div>
 
@@ -104,7 +104,7 @@ relationships. Each element is an integer vector of neighbour indices.</p></dd>
 <dt>listw</dt>
 <dd><p>A row-standardised spdep listw object (class "listw"),
 ready for <code><a href="https://r-spatial.github.io/spdep/reference/moran.test.html" class="external-link">spdep::moran.test()</a></code>, <code>spdep::localMoran()</code>,
-<code>spatialreg::lagsarlm()</code>, and related spatial analysis functions.
+<code><a href="https://r-spatial.github.io/spatialreg/reference/ML_models.html" class="external-link">spatialreg::lagsarlm()</a></code>, and related spatial analysis functions.
 The weights are row-standardized (style = "W") with zero.policy = TRUE.</p></dd>
 
 <dt>boundary_note</dt>

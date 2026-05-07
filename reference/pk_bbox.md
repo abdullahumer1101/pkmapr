@@ -65,6 +65,8 @@ print(bb)
 # Use with ggplot2
 # \donttest{
   library(ggplot2)
+#> Want to understand how all the pieces fit together? Read R for Data
+#> Science: https://r4ds.hadley.nz/
   districts <- get_districts()
   bb_punjab <- pk_bbox("Punjab", level = "province")
   ggplot() +
