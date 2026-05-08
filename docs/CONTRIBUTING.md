@@ -4,8 +4,8 @@
 
 ### Found a bug?
 
-Open an issue and include: - A reproducible example (use
-reprex::reprex()) - Your sessionInfo() output - What you expected vs
+Open an issue and include: 1. A reproducible example (use
+reprex::reprex()) 2. Your sessionInfo() output 3. What you expected vs
 what happened
 
 ### Have an idea?
@@ -13,7 +13,7 @@ what happened
 Open an issue with the label “enhancement” and describe what you’d like
 to see.
 
-### Want to write code?
+### Development/Maintainence:
 
 1.  Fork the repo
 2.  Create a branch: git checkout -b your-feature-name

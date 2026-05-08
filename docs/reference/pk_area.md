@@ -17,13 +17,18 @@ pk_area(x)
 
 ## Value
 
-The input sf object with area_km2 column added or updated.
+Returns the input sf object (class "sf" and "data.frame") with the
+
+- area_km2:
+
+  Numeric column added or updated, representing the area of each polygon
+  in square kilometres.
 
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
-  districts <- get_districts()
-  districts <- pk_area(districts)
-}
+districts <- get_districts()
+districts <- pk_area(districts)
+head(districts$area_km2)
+#> [1]  692.5272 1210.7768  682.8134  550.2982 1612.3079  898.8126
 ```

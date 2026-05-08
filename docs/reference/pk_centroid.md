@@ -17,13 +17,20 @@ pk_centroid(x)
 
 ## Value
 
-An sf point object in the same CRS as input.
+Returns an sf point object (class "sf") with:
+
+- geometry:
+
+  Point geometries representing the centroids of input polygons
+
+Centroids represent the geometric center of each polygon, useful for
+point-based visualisation, distance calculations, or as nodes for
+spatial network analysis.
 
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
-  districts <- get_districts()
-  centres   <- pk_centroid(districts)
-}
+districts <- get_districts()
+centres <- pk_centroid(districts)
+plot(centres)
 ```

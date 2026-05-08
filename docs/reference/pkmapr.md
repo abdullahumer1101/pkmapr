@@ -6,6 +6,11 @@ Affairs (OCHA). Downloads and caches spatial data at country, province,
 district, and tehsil levels as `sf` objects compatible with the
 tidyverse and geospatial ecosystem.
 
+## Value
+
+No return value, called for package documentation and namespace
+management.
+
 ## Key functions
 
 - Data loading:

@@ -1,6 +1,7 @@
 ^pkmapr\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
+^LICENSE$
 ^README\.Rmd$
 ^README\.html$
 ^\.github$

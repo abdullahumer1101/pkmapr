@@ -9,7 +9,7 @@ within and joins that polygon's attributes to the point record."><meta name="goo
 
     <a class="navbar-brand me-2" href="../index.html">pkmapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,24 +70,53 @@ attributes (TRUE, default) or drop them (FALSE).</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The points sf object with polygon attribute columns joined.</p>
+    <p>Returns an sf object of the same class as <code>points</code> with:</p>
+<dl><dt>geometry</dt>
+<dd><p>Point geometries (unchanged)</p></dd>
+
+<dt>...</dt>
+<dd><p>Attribute columns from <code>polygons</code> joined to matching points</p></dd>
+
+
+</dl><p>Points that fall outside all polygons receive NA values for all polygon
+attributes when <code>return_all = TRUE</code>. When <code>return_all = FALSE</code>, such points
+are removed entirely.</p>
+<p>The output represents point locations with their containing administrative
+unit attributes attached, allowing spatial aggregations and unit-based analyses.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># interactive()</span></span></span>
-<span class="r-in"><span>  <span class="co"># Get district boundaries</span></span></span>
-<span class="r-in"><span>  <span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Get district boundaries</span></span></span>
+<span class="r-in"><span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Create sample points (or use your own sf object)</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">sample_points</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_sample.html" class="external-link">st_sample</a></span><span class="op">(</span><span class="va">districts</span>, size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">sample_points_sf</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">st_sf</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="va">sample_points</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Create sample points (or use your own sf object)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sample_points</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_sample.html" class="external-link">st_sample</a></span><span class="op">(</span><span class="va">districts</span>, size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sample_points_sf</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">st_sf</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="va">sample_points</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Assign points to districts</span></span></span>
-<span class="r-in"><span>  <span class="va">points_with_districts</span> <span class="op">&lt;-</span> <span class="fu">pk_points_in</span><span class="op">(</span><span class="va">sample_points_sf</span>, <span class="va">districts</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">points_with_districts</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="co"># Assign points to districts</span></span></span>
+<span class="r-in"><span><span class="va">points_with_districts</span> <span class="op">&lt;-</span> <span class="fu">pk_points_in</span><span class="op">(</span><span class="va">sample_points_sf</span>, <span class="va">districts</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">points_with_districts</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 6 features and 4 fields</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POINT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 62.62372 ymin: 24.66348 xmax: 72.36706 ymax: 34.91175</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        province_name      district_name district_code  area_km2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1              Sindh Kambar Shahdad Kot         PK709  5595.033</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2              Sindh              Badin         PK701  6569.858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Khyber Pakhtunkhwa               Swat         PK532  5357.166</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4             Punjab    Dera Ghazi Khan         PK607 11761.995</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        Balochistan             Chagai         PK203 44796.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6             Punjab             Multan         PK622  3650.195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    geometry</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 POINT (67.81295 27.68153)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 POINT (68.62067 24.66348)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 POINT (72.36706 34.91175)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 POINT (70.58781 30.12792)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 POINT (62.62372 28.67785)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 POINT (71.73863 30.19152)</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

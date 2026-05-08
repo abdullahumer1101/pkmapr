@@ -9,7 +9,7 @@ alignment handled automatically."><meta name="google-site-verification" content=
 
     <a class="navbar-brand me-2" href="../index.html">pkmapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,9 +65,26 @@ alignment handled automatically.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>An sf object of the intersection in the CRS of x.</p>
+    <p>Returns an sf object containing the geometric intersection of <code>x</code> and <code>y</code>:</p>
+<dl><dt>geometry</dt>
+<dd><p>Points, lines, or polygons where <code>x</code> and <code>y</code> overlap</p></dd>
+
+<dt>...</dt>
+<dd><p>All attribute columns from both <code>x</code> and <code>y</code> (with suffixes if names conflict)</p></dd>
+
+
+</dl><p>The output CRS matches <code>x</code>. Empty geometries (no intersection) are dropped.
+Output represents areas/features common to both input layers.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">buffered</span> <span class="op">&lt;-</span> <span class="fu"><a href="pk_buffer.html">pk_buffer</a></span><span class="op">(</span><span class="va">districts</span>, dist_km <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">intersected</span> <span class="op">&lt;-</span> <span class="fu">pk_intersect</span><span class="op">(</span><span class="va">districts</span>, <span class="va">buffered</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>attribute variables are assumed to be spatially constant throughout all geometries</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

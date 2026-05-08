@@ -25,15 +25,41 @@ get_districts(province = NULL, crs = 4326)
 
 ## Value
 
-An sf object with columns: province_name, district_name, district_code,
-area_km2, geometry.
+Returns an sf object (class "sf" and "data.frame") with:
+
+- province_name:
+
+  Character. Parent province name
+
+- district_name:
+
+  Character. District name
+
+- district_code:
+
+  Character. Unique district identifier code (e.g., "PK603")
+
+- area_km2:
+
+  Numeric. Area in square kilometres for each district
+
+- geometry:
+
+  MULTIPOLYGON. District boundary geometries
+
+When `province` is specified, the output contains only districts within
+that province. The output represents administrative boundaries at the
+district level.
 
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
-  all_districts    <- get_districts()
-  punjab_districts <- get_districts(province = "Punjab")
-  punjab_districts <- get_districts(province = "punjab")  # Case-insensitive
-}
+# All districts
+all_districts <- get_districts()
+
+# Filter to Punjab province (case-insensitive)
+punjab_districts <- get_districts(province = "Punjab")
+punjab_districts <- get_districts(province = "punjab")  # Same result
+
+plot(sf::st_geometry(punjab_districts))
 ```

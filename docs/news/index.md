@@ -1,9 +1,14 @@
 # Changelog
 
+## pkmapr 1.2.1
+
+- Added missing `\value` tags to exported functions.
+- Enhanced documentation with output structure and meaning.
+
 ## pkmapr v1.2.0
 
-- Added extensive tests
-- Test coverage now at ~80%
+- Added extensive tests.
+- Test coverage now at ~80%.
 
 ## pkmapr v1.1.1
 

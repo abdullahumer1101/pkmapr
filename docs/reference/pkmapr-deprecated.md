@@ -1,7 +1,7 @@
 # Deprecated functions in pkmapr
 
-These functions are deprecated and will be removed in a future version.
-Please use the new `pk_*` functions instead.
+These functions were deprecated. Please use the new `pk_*` functions
+instead.
 
 ## Usage
 
@@ -38,3 +38,7 @@ pak_map_interactive(...)
 
 pak_basemap(...)
 ```
+
+## Value
+
+No return value, called for side effects (deprecation warnings).
