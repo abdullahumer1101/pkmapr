@@ -8,76 +8,85 @@ pk_neighbors(
   x,
   style = c("queen", "rook", "knn"),
   k = NULL,
-  disputed = c("exclude", "include", "flag")
+  disputed = c("include", "exclude_both", "exclude_gb", "exclude_ajk")
 )
 }
 \arguments{
-\item{x}{An sf object with polygon geometries.}
+\item{x}{An \code{sf} object with polygon geometries, typically the output of
+\code{get_districts()} or \code{get_provinces()}.}
 
-\item{style}{Character. Neighbour definition: "queen" (shared boundary
-point, default), "rook" (shared edge), or "knn" (k nearest centroids).}
+\item{style}{Character. Neighbour definition: \code{"queen"} (shared boundary
+point, default), \code{"rook"} (shared edge), or \code{"knn"} (k nearest centroids).}
 
 \item{k}{Integer. Number of nearest neighbours. Required when
 \code{style = "knn"}.}
 
-\item{disputed}{Character. Treatment of non-contiguous units and
-disputed boundaries:
+\item{disputed}{Character. Controls whether Gilgit-Baltistan and/or
+Azad Jammu & Kashmir are included in the spatial weights structure:
 \describe{
-\item{exclude}{Default. Non-contiguous units receive one nearest
-neighbour as fallback. An informative message identifies affected units.}
-\item{include}{Treat all boundaries as normal shared boundaries.}
-\item{flag}{Include all boundaries but add a boundary_note element
-to the result documenting which units are affected.}
+\item{\code{"include"}}{Default. Both units are treated as normal
+administrative units and participate in the neighbour graph.}
+\item{\code{"exclude_both"}}{Both GB and AJK are dropped from \code{x} before
+building the weights. The returned \code{data} element contains the
+subsetted \code{sf} object.}
+\item{\code{"exclude_gb"}}{Only Gilgit-Baltistan is dropped.}
+\item{\code{"exclude_ajk"}}{Only Azad Jammu & Kashmir is dropped.}
 }}
 }
 \value{
-Returns a named list (class "list") with the following:
-\item{nb}{An spdep nb object (class "nb") containing the neighbour
+A named list with the following elements:
+\item{\code{nb}}{An \code{spdep} \code{nb} object containing the neighbour
 relationships. Each element is an integer vector of neighbour indices.}
-\item{listw}{A row-standardised spdep listw object (class "listw"),
-ready for \code{spdep::moran.test()}, \code{spdep::localMoran()},
-\code{spatialreg::lagsarlm()}, and related spatial analysis functions.
-The weights are row-standardized (style = "W") with zero.policy = TRUE.}
-\item{boundary_note}{Character string. Present only when
-\code{disputed = "flag"}. Contains documentation of which units
-involve disputed or special administrative boundaries.}
-
-The output is a complete spatial weights structure for
-use in spatial autocorrelation tests (Moran's I), local indicators of
-spatial association (LISA), and spatial regression models (SAR, SEM, etc.).
-The \code{nb} defines the neighbour graph; the \code{listw}
-provides the row-standardized weights matrix.
+\item{\code{listw}}{A row-standardised \code{spdep} \code{listw} object (style = \code{"W"},
+\code{zero.policy = TRUE}), ready for \code{spdep::moran.test()},
+\code{spdep::localmoran()}, \code{spatialreg::lagsarlm()}, and related functions.}
+\item{\code{data}}{The \code{sf} object used to build the weights. Identical to
+the input \code{x} when \code{disputed = "include"}. When any units are excluded
+this is the subsetted \code{sf}, always in row-for-row alignment with \code{nb}
+and \code{listw}. Always use \code{w$data} rather than the original input when
+mapping or attaching analysis results.}
 }
 \description{
 Builds a contiguity or distance-based spatial neighbours structure
-for direct use with spdep and spatialreg. Handles Pakistan-specific
-complexities including non-contiguous units and disputed boundaries.
+for direct use with \code{spdep} and \code{spatialreg}.
 }
-\section{Pakistan-specific handling}{
+\section{Disputed units}{
 
-Gilgit-Baltistan and Azad Kashmir might break some spatial statistics.
-The \code{disputed} argument controls how the Line of Control and
-special administrative boundaries flagged in the OCHA source data are
-treated, offering better control over analytical decisions.
+GB and AJK are present in the OCHA/HDX boundary data and share polygon
+edges with KP and Punjab, so under \code{disputed = "include"} (the default)
+they participate in the neighbour graph as normal administrative units.
+Use \code{"exclude_gb"}, \code{"exclude_ajk"}, or \code{"exclude_both"} to drop one or
+both units before building the weights. The returned \code{data} element is
+always the \code{sf} object actually used to build the weights — identical to
+the input when \code{disputed = "include"}, subsetted otherwise. Always use
+\code{w$data} rather than the original input for all subsequent analysis and
+mapping, regardless of which \code{disputed} option is chosen.
 }
 
 \examples{
 \donttest{
   districts <- get_districts()
-  w <- pk_neighbors(districts)
 
-  # Calculate Moran's I using spdep
-  moran_result <- spdep::moran.test(districts$area_km2, w$listw)
+  # Default: all units included
+  w <- pk_neighbors(districts)
+  moran_result <- spdep::moran.test(w$data$area_km2, w$listw)
   print(moran_result)
 
-  # Queen contiguity (default)
-  w_queen <- pk_neighbors(districts, style = "queen")
+  # Rook contiguity
+  w_rook <- pk_neighbors(districts, style = "rook")
 
-  # K-nearest neighbours (k=5)
+  # K-nearest neighbours (k = 5)
   w_knn <- pk_neighbors(districts, style = "knn", k = 5)
 
-  # Flag disputed boundaries for documentation
-  w_flagged <- pk_neighbors(districts, disputed = "flag")
-  if (!is.null(w_flagged$boundary_note)) cat(w_flagged$boundary_note)
+  # Exclude both GB and AJK for sensitivity analysis
+  w_excl <- pk_neighbors(districts, disputed = "exclude_both")
+  # Use w_excl$data — not the original districts — for subsequent analysis
+  moran_excl <- spdep::moran.test(w_excl$data$area_km2, w_excl$listw)
+
+  # Exclude only Gilgit-Baltistan
+  w_no_gb <- pk_neighbors(districts, disputed = "exclude_gb")
+
+  # Exclude only Azad Jammu & Kashmir
+  w_no_ajk <- pk_neighbors(districts, disputed = "exclude_ajk")
 }
 }

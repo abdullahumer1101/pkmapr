@@ -3,8 +3,11 @@ message: "To cite package 'pkmapr' in publications use:"
 type: software
 license: GPL-3.0-only
 title: "pkmapr: Pakistan Spatial Data Toolkit"
-version: 1.2.1
-abstract: "Provides a tidy interface to Pakistan's official administrative boundary data from OCHA. Downloads and caches spatial data at country, province, district, and tehsil levels as sf objects."
+version: 1.3.0
+abstract: "Provides a tidy interface to Pakistan's official administrative
+  boundary data from OCHA. Spatial data at country, province, district, and
+  tehsil levels are embedded in the package as sf objects compatible with the
+  tidyverse and geospatial ecosystem."
 authors:
   - family-names: Umer
     given-names: Abdullah
@@ -12,11 +15,22 @@ authors:
     orcid: https://orcid.org/0009-0008-4082-8394
 repository-code: "https://github.com/abdullahumer1101/pkmapr"
 url: "https://abdullahumer1101.github.io/pkmapr"
+identifiers:
+  - type: doi
+    value: 10.32614/CRAN.package.pkmapr
+    description: CRAN release
+  - type: doi
+    value: 10.5281/zenodo.19769542
+    description: Zenodo concept DOI
 preferred-citation:
   type: software
   title: "pkmapr: Pakistan Spatial Data Toolkit"
   version: 1.2.1
-  date-released: 2026-05-07
+  date-released: 2026-05-13
+  doi: 10.32614/CRAN.package.pkmapr
+  url: "https://cran.r-project.org/package=pkmapr"
   authors:
     - family-names: Umer
       given-names: Abdullah
+      email: abdullahumer1101@gmail.com
+      orcid: https://orcid.org/0009-0008-4082-8394

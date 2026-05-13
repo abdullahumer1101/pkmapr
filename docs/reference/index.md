@@ -31,8 +31,7 @@
 - [`pk_join()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_join.md)
   : Join data to a pkmapr sf object with match checking
 - [`pk_map()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_map.md)
-  : Produces a ggplot2 map for rapid exploratory visualisation. Returns
-  a ggplot object that can be extended with standard ggplot2 layers.
+  : Produces a ggplot2 map for rapid exploratory visualisation.
 - [`pk_map_interactive()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_map_interactive.md)
   : Interactive choropleth map of a pkmapr sf object
 - [`pk_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_neighbors.md)

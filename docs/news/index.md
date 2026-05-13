@@ -1,48 +1,62 @@
 # Changelog
 
+## pkmapr 1.3.0
+
+- version 1.2.1 is now on CRAN.
+- Redesigned
+  [`pk_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_neighbors.md):
+  the `disputed` argument now accepts `"include"` (default),
+  `"exclude_both"`, `"exclude_gb"`, and `"exclude_ajk"`, giving analysts
+  control over whether GB and AJK participate in the spatial weights
+  structure.
+- [`pk_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_neighbors.md)
+  now returns a `data` element containing the `sf` object used to build
+  the weights, always in row-for-row alignment with `nb` and `listw`.
+- Also polished all three vignettes.
+
 ## pkmapr 1.2.1
+
+CRAN release: 2026-05-13
 
 - Added missing `\value` tags to exported functions.
 - Enhanced documentation with output structure and meaning.
 
-## pkmapr v1.2.0
+## pkmapr 1.2.0
 
-- Added extensive tests.
-- Test coverage now at ~80%.
+- Added extensive tests. Test coverage now at ~80%.
 
-## pkmapr v1.1.1
+## pkmapr 1.1.1
 
 - No functional changes.
-- Added single quote marks to programs in description.
+- Added single quote marks to package names in DESCRIPTION.
 
-## pkmapr v1.1.0
+## pkmapr 1.1.0
 
-- Removed `simplified` parameter (data is now always the simplified
-  version).
-- Removed `refresh` parameter (data is now embedded in the package, no
-  downloading).
+- Removed `simplified` parameter; data is now always the simplified
+  version.
+- Removed `refresh` parameter; data is now embedded in the package with
+  no downloading required.
 - Removed `pkmapr_cache_info()` and `pkmapr_clear_cache()`.
 - Package size reduced.
 
-## pkmapr v1.0.0
+## pkmapr 1.0.0
 
-- Testing edge cases.
 - First stable release.
 
-## pkmapr v0.3.0
+## pkmapr 0.3.0
 
-- New functions:
-  [`pk_version()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_version.md)
-  checks installed version against latest GitHub release,
-  [`pk_search()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_search.md)
-  searches across all admin levels with optional fuzzy matching
-- Enhancements: Province and district filters are now case-insensitive,
-  error messages show valid options when a filter fails, whitespace is
-  automatically trimmed from filter inputs
-- Documentation: Added notes about case insensitivity, fuzzy matching,
-  and also updated examples to show case-insensitive usage
-- Dependencies: Added `jsonlite` to Imports (used by
-  [`pk_version()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_version.md))
+- New function
+  [`pk_version()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_version.md):
+  checks the installed version against the latest GitHub release.
+- New function
+  [`pk_search()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_search.md):
+  searches across all admin levels with optional fuzzy matching.
+- Province and district filters are now case-insensitive.
+- Error messages now show valid options when a filter fails.
+- Whitespace is automatically trimmed from filter inputs.
+- Documentation updated to reflect case-insensitive and fuzzy matching
+  usage.
+- Added `jsonlite` to Imports.
 
 ## pkmapr 0.2.0
 
@@ -51,6 +65,6 @@
 - Expanded test coverage for core functions.
 - Improved vignettes and function documentation.
 
-## pkmapr 0.1.
+## pkmapr 0.1.0
 
 - Initial release.

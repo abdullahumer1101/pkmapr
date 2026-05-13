@@ -1,6 +1,6 @@
 Package: pkmapr
 Title: Pakistan Spatial Data Toolkit
-Version: 1.2.1
+Version: 1.3.0
 Depends: R (>= 4.1.0)
 Authors@R:
     person("Abdullah Umer", email = "abdullahumer1101@gmail.com",
@@ -8,12 +8,12 @@ Authors@R:
            comment = c(ORCID = "0009-0008-4082-8394"))
 Description: Provides a tidy interface to Pakistan's official administrative
     boundary data from the United Nations Office for the Coordination of
-    Humanitarian Affairs (OCHA). Downloads and caches spatial data at
-    country, province, district, and tehsil levels as 'sf' objects
-    compatible with the 'tidyverse' and geospatial ecosystem. Includes
-    utilities for geographic dictionary lookup, coordinate reference
-    system selection, spatial measurement, and neighbour structure
-    construction for use with 'spdep', 'ggplot2', 'leaflet', and related packages.
+    Humanitarian Affairs (OCHA). Spatial data at country, province, district,
+    and tehsil levels are embedded in the package as 'sf' objects compatible
+    with the 'tidyverse' and geospatial ecosystem. Includes utilities for
+    geographic dictionary lookup, coordinate reference system selection,
+    spatial measurement, and neighbour structure construction for use with
+    'spdep', 'ggplot2', 'leaflet', and related packages.
 License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -24,7 +24,7 @@ Imports:
     rlang,
     cli,
     spdep,
-    jsonlite 
+    jsonlite
 Suggests:
     ggplot2,
     leaflet,
@@ -37,6 +37,7 @@ Suggests:
     rmarkdown,
     spelling
 VignetteBuilder: knitr
-URL: https://abdullahumer1101.github.io/pkmapr/,
+URL: https://cran.r-project.org/package=pkmapr,
+    https://abdullahumer1101.github.io/pkmapr/,
     https://github.com/abdullahumer1101/pkmapr/
 BugReports: https://github.com/abdullahumer1101/pkmapr/issues

@@ -2,8 +2,7 @@
 % Please edit documentation in R/visualise.R
 \name{pk_map}
 \alias{pk_map}
-\title{Produces a ggplot2 map for rapid exploratory visualisation.
-Returns a ggplot object that can be extended with standard ggplot2 layers.}
+\title{Produces a ggplot2 map for rapid exploratory visualisation.}
 \usage{
 pk_map(x, fill = NULL, title = NULL, ...)
 }
@@ -33,7 +32,6 @@ themes, or scales using standard ggplot2 syntax.
 }
 \description{
 Produces a ggplot2 map for rapid exploratory visualisation.
-Returns a ggplot object that can be extended with standard ggplot2 layers.
 }
 \examples{
 # Outline map of provinces

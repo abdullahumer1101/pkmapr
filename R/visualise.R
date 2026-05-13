@@ -1,5 +1,4 @@
 #' Produces a ggplot2 map for rapid exploratory visualisation.
-#' Returns a ggplot object that can be extended with standard ggplot2 layers.
 #'
 #' @param x An sf object.
 #' @param fill Character. Column name to use as fill variable. NULL (default)

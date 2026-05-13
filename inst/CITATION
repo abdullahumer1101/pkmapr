@@ -1,0 +1,32 @@
+bibentry(
+  bibtype     = "Manual",
+  title       = "pkmapr: Pakistan Spatial Data Toolkit",
+  author      = person("Abdullah", "Umer",
+                       email   = "abdullahumer1101@gmail.com",
+                       comment = c(ORCID = "0009-0008-4082-8394")),
+  year        = "2026",
+  note        = "R package version 1.2.1",
+  url         = "https://cran.r-project.org/package=pkmapr",
+  doi         = "10.32614/CRAN.package.pkmapr",
+  textVersion = paste(
+    "Umer, A. (2026). pkmapr: Pakistan Spatial Data Toolkit.",
+    "R package version 1.2.1.",
+    "https://doi.org/10.32614/CRAN.package.pkmapr"
+  )
+)
+
+bibentry(
+  bibtype     = "Manual",
+  title       = "pkmapr: Pakistan Spatial Data Toolkit",
+  author      = person("Abdullah", "Umer",
+                       email   = "abdullahumer1101@gmail.com",
+                       comment = c(ORCID = "0009-0008-4082-8394")),
+  year        = "2026",
+  note        = "Development releases archived on Zenodo. Concept DOI.",
+  url         = "https://doi.org/10.5281/zenodo.19769542",
+  doi         = "10.5281/zenodo.19769542",
+  textVersion = paste(
+    "Umer, A. (2026). pkmapr: Pakistan Spatial Data Toolkit.",
+    "Zenodo. https://doi.org/10.5281/zenodo.19769542"
+  )
+)

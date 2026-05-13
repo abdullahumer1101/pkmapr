@@ -21,131 +21,191 @@ library(spdep)
 library(dplyr)
 ```
 
-## The problem: Non-contiguous units
-
-Gilgit-Baltistan and Azad Kashmir share no land boundaries with other provinces. Under standard contiguity rules, they would have zero neighbours — breaking most spatial statistics.
-
-`pk_neighbors()` handles this automatically.
+This vignette shows a full spatial epidemiology workflow using
+`pk_neighbors()` to build spatial weights, test for spatial autocorrelation,
+and identify local clusters across Pakistan's administrative districts.
 
 ## Build spatial weights
 
+`pk_neighbors()` returns three elements in a named list:
+
+- `w$nb`: the `spdep` neighbours list
+- `w$listw`: row-standardised spatial weights, ready for `spdep`
+- `w$data`: the `sf` object used to build the weights (see note below)
+
 ```r
 districts <- get_districts()
-w <- pk_neighbors(districts, disputed = "exclude")
+w <- pk_neighbors(districts)
 ```
 
-The returned object contains:
-- `w$nb`: neighbours list
-- `w$listw`: row-standardised weights (ready for spdep)
+> **Always use `w$data` for subsequent analysis and mapping**, not the original
+> `districts` object. This ensures row alignment between the spatial weights
+> and your data, particularly when units have been excluded via the `disputed`
+> argument.
+
+## Disputed unit handling
+
+Gilgit-Baltistan (GB) and Azad Jammu & Kashmir (AJK) are present in the
+OCHA/HDX boundary data and share polygon edges with KP and Punjab. Under the
+default (`disputed = "include"`) they participate in the neighbour graph as
+normal administrative units.
+
+The `disputed` argument lets analysts explicitly control whether these units
+enter the spatial weights structure, which is useful for sensitivity analysis
+when results may be influenced by their inclusion:
+
+```r
+# Default: all units included
+w_all <- pk_neighbors(districts)
+
+# Exclude both GB and AJK
+w_excl <- pk_neighbors(districts, disputed = "exclude_both")
+
+# Exclude only Gilgit-Baltistan
+w_no_gb <- pk_neighbors(districts, disputed = "exclude_gb")
+
+# Exclude only Azad Jammu & Kashmir
+w_no_ajk <- pk_neighbors(districts, disputed = "exclude_ajk")
+```
+
+When any units are excluded, `w$data` contains the subsetted `sf` object with
+those units removed. Always pass `w$data` to downstream functions:
+
+```r
+w_excl <- pk_neighbors(districts, disputed = "exclude_both")
+
+# Use w_excl$data — not the original districts object
+moran.test(w_excl$data$area_km2, w_excl$listw)
+```
 
 ## Global Moran's I (synthetic data)
+
+The example below generates spatially autocorrelated synthetic data to
+demonstrate the workflow. Replace `districts$synthetic_rate` with your own
+variable — disease incidence rates, prevalence estimates, and so on.
 
 ```r
 set.seed(2023)
 
-# Create spatially autocorrelated synthetic data
-n <- nrow(districts)
-rho <- 0.6
+n     <- nrow(w$data)
+rho   <- 0.6
 W_mat <- listw2mat(w$listw)
-epsilon <- rnorm(n, mean = 50, sd = 10)
-y <- as.numeric(solve(diag(n) - rho * W_mat) %*% epsilon)
 
-districts$synthetic_rate <- y
+epsilon               <- rnorm(n, mean = 50, sd = 10)
+y                     <- as.numeric(solve(diag(n) - rho * W_mat) %*% epsilon)
+w$data$synthetic_rate <- y
 
 # Test for spatial autocorrelation
-moran_result <- moran.test(districts$synthetic_rate, w$listw)
+moran_result <- moran.test(w$data$synthetic_rate, w$listw)
 print(moran_result)
 ```
 
-A significant p-value indicates spatial clustering.
+A significant Moran's I indicates that districts with similar rates tend to
+cluster spatially rather than being arranged at random.
 
 ## Local Indicators of Spatial Association (LISA)
 
-Identify local clusters and outliers:
+LISA identifies local clusters (High-High, Low-Low) and spatial outliers:
 
 ```r
-# Calculate local Moran's I
-lisa <- localmoran(districts$synthetic_rate, w$listw)
+lisa <- localmoran(w$data$synthetic_rate, w$listw)
 
-# Add results to districts
-districts$lisa_i <- lisa[, 1]  # local I
-districts$lisa_p <- lisa[, 5]  # p-value
+w$data$lisa_i <- lisa[, 1]   # local I statistic
+w$data$lisa_p <- lisa[, 5]   # p-value
 
-# Classify clusters (simplified)
-districts$cluster <- case_when(
-  districts$lisa_p > 0.05 ~ "Not significant",
-  districts$synthetic_rate > mean(districts$synthetic_rate) &
-    districts$lisa_i > 0 ~ "High-High",
-  districts$synthetic_rate < mean(districts$synthetic_rate) &
-    districts$lisa_i > 0 ~ "Low-Low",
-  districts$lisa_i < 0 ~ "Outlier",
-  TRUE ~ "Other"
+w$data <- w$data |>
+  mutate(
+    cluster = case_when(
+      lisa_p > 0.05                                          ~ "Not significant",
+      synthetic_rate > mean(synthetic_rate) & lisa_i > 0    ~ "High-High",
+      synthetic_rate < mean(synthetic_rate) & lisa_i > 0    ~ "Low-Low",
+      lisa_i < 0                                             ~ "Outlier",
+      TRUE                                                   ~ "Other"
+    )
+  )
+
+ggplot2::ggplot(w$data) +
+  ggplot2::geom_sf(ggplot2::aes(fill = cluster)) +
+  ggplot2::scale_fill_manual(values = c(
+    "High-High"       = "#d7191c",
+    "Low-Low"         = "#2c7bb6",
+    "Outlier"         = "#fdae61",
+    "Not significant" = "#f0f0f0",
+    "Other"           = "#cccccc"
+  )) +
+  ggplot2::theme_void() +
+  ggplot2::labs(title = "LISA Cluster Map", fill = "Cluster type")
+```
+
+## Hotspot detection (Getis-Ord Gi\*)
+
+Getis-Ord Gi\* identifies statistically significant hotspots and coldspots
+based on the concentration of high or low values:
+
+```r
+gi_star <- localG(w$data$synthetic_rate, w$listw)
+
+w$data$gi_star <- as.numeric(gi_star)
+w$data$hotspot <- case_when(
+  w$data$gi_star >  1.96 ~ "Hotspot",
+  w$data$gi_star < -1.96 ~ "Coldspot",
+  TRUE                   ~ "Not significant"
 )
 
-# Map the clusters
-ggplot2::ggplot(districts) +
-  ggplot2::geom_sf(ggplot2::aes(fill = cluster)) +
-  ggplot2::theme_void() +
-  ggplot2::labs(title = "Spatial Clusters")
+pk_map(w$data, fill = "hotspot", title = "Hotspots (p < 0.05)")
 ```
 
-## Hotspot detection (Getis-Ord Gi*)
+## Sensitivity analysis: disputed units
+
+To assess how much your results depend on the inclusion of GB and AJK, compare
+Moran's I under each treatment:
 
 ```r
-# Calculate Gi* for the synthetic data
-gi_star <- localG(districts$synthetic_rate, w$listw)
+w_all  <- pk_neighbors(districts)
+w_excl <- pk_neighbors(districts, disputed = "exclude_both")
 
-districts$gi_star <- as.numeric(gi_star)
-districts$hotspot <- ifelse(districts$gi_star > 1.96, "Hotspot",
-                            ifelse(districts$gi_star < -1.96, "Coldspot", "Not significant"))
+# Attach the same variable to each subsetted dataset before comparing
+moran_all  <- moran.test(w_all$data$area_km2,  w_all$listw)
+moran_excl <- moran.test(w_excl$data$area_km2, w_excl$listw)
 
-pk_map(districts, fill = "hotspot", title = "Hotspots (p < 0.05)")
+cat("Moran's I (all units):     ", round(moran_all$estimate[1],  4), "\n")
+cat("Moran's I (GB + AJK excl):", round(moran_excl$estimate[1], 4), "\n")
 ```
 
-## Disputed boundary handling
+If results differ materially, report both and document your choice of
+boundary treatment explicitly in your methods section.
 
-The Line of Control creates analytical ambiguity. `pk_neighbors()` makes your decision explicit:
-
-```r
-# Exclude (default) — GB/AJK get nearest neighbour fallback
-w_exclude <- pk_neighbors(districts, disputed = "exclude")
-
-# Include — treat disputed boundaries as shared
-w_include <- pk_neighbors(districts, disputed = "include")
-
-# Flag — document which units are affected
-w_flag <- pk_neighbors(districts, disputed = "flag")
-print(w_flag$boundary_note)
-```
-
-## Complete workflow example
+## Complete workflow
 
 ```r
 # 1. Get data
 districts <- get_districts()
 
-# 2. Build weights with explicit dispute handling
-w <- pk_neighbors(districts, disputed = "exclude")
+# 2. Build spatial weights
+w <- pk_neighbors(districts)
+# or, for sensitivity: pk_neighbors(districts, disputed = "exclude_both")
 
-# 3. Attach your real case data (replace with your own)
-# districts <- pk_join(districts, your_case_data, by = "district_code")
+# 3. Attach your case data — always join to w$data, not districts
+# w$data <- pk_join(w$data, your_case_data, by = "district_code")
 
-# 4. Calculate rates (example)
-# districts <- districts |>
+# 4. Calculate rates
+# w$data <- w$data |>
 #   mutate(rate = cases / population * 100000)
 
 # 5. Test for spatial autocorrelation
-# moran.test(districts$rate, w$listw)
+# moran.test(w$data$rate, w$listw)
 
 # 6. Identify clusters
-# lisa <- localmoran(districts$rate, w$listw)
-# districts$lisa_cluster <- attr(lisa, "quadr")$mean
+# lisa <- localmoran(w$data$rate, w$listw)
+# w$data$lisa_cluster <- attr(lisa, "quadr")$mean
 
 # 7. Map results
-# pk_map(districts, fill = "lisa_cluster")
+# pk_map(w$data, fill = "lisa_cluster")
 ```
 
 ## References
 
-- Bivand, R. S., Pebesma, E., & Gomez-Rubio, V. (2013). *Applied spatial data analysis with R*. Springer.
+- Bivand, R. S., Pebesma, E., & Gomez-Rubio, V. (2013). *Applied spatial data
+  analysis with R*. Springer.
 - OCHA Pakistan. (2023). *COD-AB Administrative Boundaries*.
+  <https://data.humdata.org/dataset/cod-ab-pak>

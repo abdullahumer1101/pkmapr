@@ -1,75 +1,120 @@
 #' Construct a spatial neighbours list for Pakistan administrative units
 #'
 #' Builds a contiguity or distance-based spatial neighbours structure
-#' for direct use with spdep and spatialreg. Handles Pakistan-specific
-#' complexities including non-contiguous units and disputed boundaries.
+#' for direct use with `spdep` and `spatialreg`.
 #'
-#' @section Pakistan-specific handling:
-#' Gilgit-Baltistan and Azad Kashmir might break some spatial statistics.
-#' The \code{disputed} argument controls how the Line of Control and
-#' special administrative boundaries flagged in the OCHA source data are
-#' treated, offering better control over analytical decisions.
+#' @section Disputed units:
+#' GB and AJK are present in the OCHA/HDX boundary data and share polygon
+#' edges with KP and Punjab, so under `disputed = "include"` (the default)
+#' they participate in the neighbour graph as normal administrative units.
+#' Use `"exclude_gb"`, `"exclude_ajk"`, or `"exclude_both"` to drop one or
+#' both units before building the weights. The returned `data` element is
+#' always the `sf` object actually used to build the weights — identical to
+#' the input when `disputed = "include"`, subsetted otherwise. Always use
+#' `w$data` rather than the original input for all subsequent analysis and
+#' mapping, regardless of which `disputed` option is chosen.
 #'
-#' @param x An sf object with polygon geometries.
-#' @param style Character. Neighbour definition: "queen" (shared boundary
-#'   point, default), "rook" (shared edge), or "knn" (k nearest centroids).
+#' @param x An `sf` object with polygon geometries, typically the output of
+#'   `get_districts()` or `get_provinces()`.
+#' @param style Character. Neighbour definition: `"queen"` (shared boundary
+#'   point, default), `"rook"` (shared edge), or `"knn"` (k nearest centroids).
 #' @param k Integer. Number of nearest neighbours. Required when
-#'   \code{style = "knn"}.
-#' @param disputed Character. Treatment of non-contiguous units and
-#'   disputed boundaries:
+#'   `style = "knn"`.
+#' @param disputed Character. Controls whether Gilgit-Baltistan and/or
+#'   Azad Jammu & Kashmir are included in the spatial weights structure:
 #'   \describe{
-#'     \item{exclude}{Default. Non-contiguous units receive one nearest
-#'       neighbour as fallback. An informative message identifies affected units.}
-#'     \item{include}{Treat all boundaries as normal shared boundaries.}
-#'     \item{flag}{Include all boundaries but add a boundary_note element
-#'       to the result documenting which units are affected.}
+#'     \item{`"include"`}{Default. Both units are treated as normal
+#'       administrative units and participate in the neighbour graph.}
+#'     \item{`"exclude_both"`}{Both GB and AJK are dropped from `x` before
+#'       building the weights. The returned `data` element contains the
+#'       subsetted `sf` object.}
+#'     \item{`"exclude_gb"`}{Only Gilgit-Baltistan is dropped.}
+#'     \item{`"exclude_ajk"`}{Only Azad Jammu & Kashmir is dropped.}
 #'   }
-#' @return Returns a named list (class "list") with the following:
-#'   \item{nb}{An spdep nb object (class "nb") containing the neighbour
-#'     relationships. Each element is an integer vector of neighbour indices.}
-#'   \item{listw}{A row-standardised spdep listw object (class "listw"),
-#'     ready for \code{spdep::moran.test()}, \code{spdep::localMoran()},
-#'     \code{spatialreg::lagsarlm()}, and related spatial analysis functions.
-#'     The weights are row-standardized (style = "W") with zero.policy = TRUE.}
-#'   \item{boundary_note}{Character string. Present only when
-#'     \code{disputed = "flag"}. Contains documentation of which units
-#'     involve disputed or special administrative boundaries.}
 #'
-#'   The output is a complete spatial weights structure for
-#'   use in spatial autocorrelation tests (Moran's I), local indicators of
-#'   spatial association (LISA), and spatial regression models (SAR, SEM, etc.).
-#'   The \code{nb} defines the neighbour graph; the \code{listw}
-#'   provides the row-standardized weights matrix.
+#' @return A named list with the following elements:
+#'   \item{`nb`}{An `spdep` `nb` object containing the neighbour
+#'     relationships. Each element is an integer vector of neighbour indices.}
+#'   \item{`listw`}{A row-standardised `spdep` `listw` object (style = `"W"`,
+#'     `zero.policy = TRUE`), ready for `spdep::moran.test()`,
+#'     `spdep::localmoran()`, `spatialreg::lagsarlm()`, and related functions.}
+#'   \item{`data`}{The `sf` object used to build the weights. Identical to
+#'     the input `x` when `disputed = "include"`. When any units are excluded
+#'     this is the subsetted `sf`, always in row-for-row alignment with `nb`
+#'     and `listw`. Always use `w$data` rather than the original input when
+#'     mapping or attaching analysis results.}
+#'
 #' @export
 #' @examples
 #' \donttest{
 #'   districts <- get_districts()
-#'   w <- pk_neighbors(districts)
 #'
-#'   # Calculate Moran's I using spdep
-#'   moran_result <- spdep::moran.test(districts$area_km2, w$listw)
+#'   # Default: all units included
+#'   w <- pk_neighbors(districts)
+#'   moran_result <- spdep::moran.test(w$data$area_km2, w$listw)
 #'   print(moran_result)
 #'
-#'   # Queen contiguity (default)
-#'   w_queen <- pk_neighbors(districts, style = "queen")
+#'   # Rook contiguity
+#'   w_rook <- pk_neighbors(districts, style = "rook")
 #'
-#'   # K-nearest neighbours (k=5)
+#'   # K-nearest neighbours (k = 5)
 #'   w_knn <- pk_neighbors(districts, style = "knn", k = 5)
 #'
-#'   # Flag disputed boundaries for documentation
-#'   w_flagged <- pk_neighbors(districts, disputed = "flag")
-#'   if (!is.null(w_flagged$boundary_note)) cat(w_flagged$boundary_note)
+#'   # Exclude both GB and AJK for sensitivity analysis
+#'   w_excl <- pk_neighbors(districts, disputed = "exclude_both")
+#'   # Use w_excl$data — not the original districts — for subsequent analysis
+#'   moran_excl <- spdep::moran.test(w_excl$data$area_km2, w_excl$listw)
+#'
+#'   # Exclude only Gilgit-Baltistan
+#'   w_no_gb <- pk_neighbors(districts, disputed = "exclude_gb")
+#'
+#'   # Exclude only Azad Jammu & Kashmir
+#'   w_no_ajk <- pk_neighbors(districts, disputed = "exclude_ajk")
 #' }
 pk_neighbors <- function(x,
                          style    = c("queen", "rook", "knn"),
                          k        = NULL,
-                         disputed = c("exclude", "include", "flag")) {
+                         disputed = c("include",
+                                      "exclude_both",
+                                      "exclude_gb",
+                                      "exclude_ajk")) {
 
   style    <- rlang::arg_match(style)
   disputed <- rlang::arg_match(disputed)
 
+#Disputed unit handling
+  prov_col  <- "province_code"
+  gb_codes  <- "PK3"
+  ajk_codes <- "PK1"
+
+  drop_idx <- integer(0)
+
+  if (disputed != "include") {
+    codes <- x[[prov_col]]
+    if (disputed %in% c("exclude_both", "exclude_gb")) {
+      drop_idx <- c(drop_idx, which(codes %in% gb_codes))
+    }
+    if (disputed %in% c("exclude_both", "exclude_ajk")) {
+      drop_idx <- c(drop_idx, which(codes %in% ajk_codes))
+    }
+  }
+
+  if (length(drop_idx) > 0) {
+    n_dropped <- length(drop_idx)
+    name_col  <- grep("_name", names(x), value = TRUE)[1]
+    dropped   <- if (!is.na(name_col)) x[[name_col]][drop_idx] else drop_idx
+    cli::cli_inform(c(
+      "i" = "{n_dropped} unit(s) excluded per {.code disputed = '{disputed}'}:",
+      "i" = "{.val {dropped}}",
+      "i" = "Use {.code w$data} for all subsequent analysis and mapping."
+    ))
+    x <- x[-drop_idx, ]
+  }
+
+#Geometry validation
   x <- sf::st_make_valid(x)
 
+#Neighbour construction
   if (style == "knn") {
     if (is.null(k)) cli::cli_abort("{.arg k} is required when style = 'knn'.")
     coords <- sf::st_coordinates(sf::st_centroid(sf::st_transform(x, 32642)))
@@ -81,44 +126,24 @@ pk_neighbors <- function(x,
 
     if (length(zero_nb) > 0) {
       name_col   <- grep("_name", names(x), value = TRUE)[1]
-      unit_names <- x[[name_col]][zero_nb]
-
-      if (disputed == "exclude") {
-        cli::cli_inform(c(
-          "i" = "{length(zero_nb)} unit(s) have no contiguous neighbours.",
-          "i" = "Affected: {.val {unit_names}}",
-          "i" = "A nearest-neighbour fallback (k=1) has been applied.",
-          "i" = "Use {.code disputed = 'include'} to treat the Line of Control
-                 as a shared boundary, or {.code style = 'knn'} for a
-                 fully distance-based structure."
-        ))
-        coords <- sf::st_coordinates(
-          sf::st_centroid(sf::st_transform(x, 32642))
-        )
-        knn1 <- spdep::knn2nb(spdep::knearneigh(coords, k = 1))
-        for (i in zero_nb) nb[[i]] <- knn1[[i]]
-      }
-    }
-  }
-
-  listw  <- spdep::nb2listw(nb, style = "W", zero.policy = TRUE)
-  result <- list(nb = nb, listw = listw)
-
-  if (disputed == "flag") {
-    code_col    <- grep("_code", names(x), value = TRUE)[1]
-    name_col    <- grep("_name", names(x), value = TRUE)[1]
-    flagged_idx <- which(spdep::card(nb) == 0 |
-                           x[[code_col]] %in% c("PK1", "PK3"))
-    if (length(flagged_idx) > 0) {
-      result$boundary_note <- paste(
-        "The following units involve disputed or special administrative",
-        "boundaries per the OCHA/HDX source:",
-        paste(x[[name_col]][flagged_idx], collapse = ", "),
-        "Spatial statistics involving these units should be interpreted",
-        "with caution and the boundary treatment documented explicitly."
+      unit_names <- if (!is.na(name_col)) x[[name_col]][zero_nb] else zero_nb
+      cli::cli_inform(c(
+        "i" = "{length(zero_nb)} unit(s) have no contiguous neighbours.",
+        "i" = "Affected: {.val {unit_names}}",
+        "i" = "A nearest-neighbour fallback (k = 1) has been applied.",
+        "i" = "Consider using {.code style = 'knn'} for a fully
+               distance-based structure."
+      ))
+      coords <- sf::st_coordinates(
+        sf::st_centroid(sf::st_transform(x, 32642))
       )
+      knn1 <- spdep::knn2nb(spdep::knearneigh(coords, k = 1))
+      for (i in zero_nb) nb[[i]] <- knn1[[i]]
     }
   }
 
-  result
+#Weights matrix
+  listw <- spdep::nb2listw(nb, style = "W", zero.policy = TRUE)
+
+  list(nb = nb, listw = listw, data = x)
 }

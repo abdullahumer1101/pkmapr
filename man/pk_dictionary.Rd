@@ -28,6 +28,11 @@ or validate input for other pkmapr functions.
 \description{
 Search and explore administrative names and codes for Pakistan.
 }
+\note{
+It is recommended to use admin codes, rather than district or tehsil
+names for instance, as some units especially at tehsil level are almost or
+completely similar.
+}
 \section{Case Insensitivity}{
 
 All matching in \code{pk_dictionary()} is \strong{case-insensitive}.

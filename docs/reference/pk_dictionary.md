@@ -48,6 +48,12 @@ The output represents a searchable dictionary of all administrative
 units in Pakistan. Use this function to explore available units, find
 codes, or validate input for other pkmapr functions.
 
+## Note
+
+It is recommended to use admin codes, rather than district or tehsil
+names for instance, as some units especially at tehsil level are almost
+or completely similar.
+
 ## Case Insensitivity
 
 All matching in `pk_dictionary()` is **case-insensitive**. "Lahore",

@@ -29,10 +29,10 @@ sticker(p,
         p_size = 12,
         p_color = "#FFFFFF",
         p_family = "sans",
-        p_x = 0.6,            # Upper-left
-        p_y = 1.3,            # Upper area
-        s_x = 1,               # Map centered
-        s_y = 1,               # Map centered
+        p_x = 0.6,
+        p_y = 1.3,
+        s_x = 1,
+        s_y = 1,
         s_width = 1.4,
         s_height = 1.4,
         h_fill = "#01411C",

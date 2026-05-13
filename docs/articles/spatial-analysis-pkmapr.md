@@ -5,44 +5,52 @@ library(pkmapr)
 library(dplyr)
 ```
 
+This vignette covers the spatial analysis utilities in pkmapr, including
+centroids, buffers, distance calculations, point-in-polygon assignment,
+boundary dissolving, and coordinate reference system selection.
+
 ## Centroids
 
-Convert polygons to points for labeling and/or distance calculations:
+[`pk_centroid()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_centroid.md)
+converts polygon geometries to points, useful for labelling and distance
+calculations:
 
 ``` r
 districts <- get_districts()
 centroids <- pk_centroid(districts)
 
-# Map districts with centroid points
 pk_map(districts) +
   ggplot2::geom_sf(data = centroids, color = "red", size = 0.5)
 ```
 
 ## Buffers
 
-Create buffer zones around administrative units (distances in km):
+[`pk_buffer()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_buffer.md)
+creates buffer zones around administrative units. Distances are
+specified in kilometres:
 
 ``` r
-# 10km buffer around Lahore district
 lahore <- get_districts(province = "Punjab") |>
   filter(district_name == "Lahore")
 
 lahore_buffer <- pk_buffer(lahore, dist_km = 10)
 
-pk_map(lahore_buffer, title = "Lahore buffer") +
+pk_map(lahore_buffer, title = "10 km buffer around Lahore") +
   ggplot2::geom_sf(data = lahore, fill = "red", alpha = 0.5)
 ```
 
 ## Distance calculations
 
-Compute distances between units:
+[`pk_distance()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_distance.md)
+computes centroid-to-centroid distances between two `sf` objects,
+returning a distance matrix:
 
 ``` r
-# Distance matrix between provinces (centroid to centroid)
+# Distance matrix between all provinces
 provinces <- get_provinces()
 dist_matrix <- pk_distance(provinces, provinces)
 
-# Distance from each province to Karachi
+# Distance from each province centroid to Karachi
 karachi <- get_districts(province = "Sindh") |>
   filter(district_name == "Karachi")
 
@@ -51,21 +59,19 @@ distances <- pk_distance(provinces, karachi)
 
 ## Point-in-polygon
 
-Assign GPS points to administrative units:
+[`pk_points_in()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_points_in.md)
+assigns GPS point locations to the administrative unit they fall within:
 
 ``` r
-# Example: health facility locations
 facilities <- data.frame(
   name = c("Hospital A", "Clinic B"),
-  lon = c(74.3, 74.5),
-  lat = c(31.5, 31.6)
+  lon  = c(74.3, 74.5),
+  lat  = c(31.5, 31.6)
 ) |>
   sf::st_as_sf(coords = c("lon", "lat"), crs = 4326)
 
-# Assign to districts
 facilities_with_district <- pk_points_in(facilities, districts)
 
-# View result
 facilities_with_district |>
   sf::st_drop_geometry() |>
   select(name, district_name)
@@ -73,26 +79,31 @@ facilities_with_district |>
 
 ## Dissolve boundaries
 
-Aggregate finer units to coarser levels:
+[`pk_union()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_union.md)
+aggregates finer administrative units to a coarser level by dissolving
+shared boundaries:
 
 ``` r
-# Dissolve tehsils to district level
 tehsils <- get_tehsils()
 districts_from_tehsils <- pk_union(tehsils, by = "district_name")
 
-# Compare area
-original_districts <- get_districts()
-pk_area(original_districts)
-pk_area(districts_from_tehsils)  # Should be similar
+# Areas should be approximately equal
+pk_area(get_districts())
+pk_area(districts_from_tehsils)
 ```
 
-## Choose the right CRS
+## Coordinate reference systems
 
-WGS84 (default) measures in degrees, for measurements using projected
-CRS:
+pkmapr returns data in WGS84 (EPSG:4326) by default, which measures in
+degrees. For metric operations such as area, buffer, and distance
+calculations, a projected CRS is required. Use
+[`pk_crs_suggest()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_crs_suggest.md)
+to get a recommended CRS for your data’s spatial extent, then reproject
+with
+[`pk_project()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_project.md):
 
 ``` r
-# Recommended CRS for your data's extent
+# Get a recommended projected CRS
 pk_crs_suggest(get_districts(province = "Punjab"))
 
 # Reproject for metric operations
