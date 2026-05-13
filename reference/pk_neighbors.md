@@ -1,8 +1,7 @@
 # Construct a spatial neighbours list for Pakistan administrative units
 
 Builds a contiguity or distance-based spatial neighbours structure for
-direct use with spdep and spatialreg. Handles Pakistan-specific
-complexities including non-contiguous units and disputed boundaries.
+direct use with `spdep` and `spatialreg`.
 
 ## Usage
 
@@ -11,7 +10,7 @@ pk_neighbors(
   x,
   style = c("queen", "rook", "knn"),
   k = NULL,
-  disputed = c("exclude", "include", "flag")
+  disputed = c("include", "exclude_both", "exclude_gb", "exclude_ajk")
 )
 ```
 
@@ -19,12 +18,15 @@ pk_neighbors(
 
 - x:
 
-  An sf object with polygon geometries.
+  An `sf` object with polygon geometries, typically the output of
+  [`get_districts()`](https://abdullahumer1101.github.io/pkmapr/reference/get_districts.md)
+  or
+  [`get_provinces()`](https://abdullahumer1101.github.io/pkmapr/reference/get_provinces.md).
 
 - style:
 
-  Character. Neighbour definition: "queen" (shared boundary point,
-  default), "rook" (shared edge), or "knn" (k nearest centroids).
+  Character. Neighbour definition: `"queen"` (shared boundary point,
+  default), `"rook"` (shared edge), or `"knn"` (k nearest centroids).
 
 - k:
 
@@ -32,72 +34,78 @@ pk_neighbors(
 
 - disputed:
 
-  Character. Treatment of non-contiguous units and disputed boundaries:
+  Character. Controls whether Gilgit-Baltistan and/or Azad Jammu &
+  Kashmir are included in the spatial weights structure:
 
-  exclude
+  `"include"`
 
-  :   Default. Non-contiguous units receive one nearest neighbour as
-      fallback. An informative message identifies affected units.
+  :   Default. Both units are treated as normal administrative units and
+      participate in the neighbour graph.
 
-  include
+  `"exclude_both"`
 
-  :   Treat all boundaries as normal shared boundaries.
+  :   Both GB and AJK are dropped from `x` before building the weights.
+      The returned `data` element contains the subsetted `sf` object.
 
-  flag
+  `"exclude_gb"`
 
-  :   Include all boundaries but add a boundary_note element to the
-      result documenting which units are affected.
+  :   Only Gilgit-Baltistan is dropped.
+
+  `"exclude_ajk"`
+
+  :   Only Azad Jammu & Kashmir is dropped.
 
 ## Value
 
-Returns a named list (class "list") with the following:
+A named list with the following elements:
 
-- nb:
+- `nb`:
 
-  An spdep nb object (class "nb") containing the neighbour
-  relationships. Each element is an integer vector of neighbour indices.
+  An `spdep` `nb` object containing the neighbour relationships. Each
+  element is an integer vector of neighbour indices.
 
-- listw:
+- `listw`:
 
-  A row-standardised spdep listw object (class "listw"), ready for
+  A row-standardised `spdep` `listw` object (style = `"W"`,
+  `zero.policy = TRUE`), ready for
   [`spdep::moran.test()`](https://r-spatial.github.io/spdep/reference/moran.test.html),
-  `spdep::localMoran()`, `spatialreg::lagsarlm()`, and related spatial
-  analysis functions. The weights are row-standardized (style = "W")
-  with zero.policy = TRUE.
+  [`spdep::localmoran()`](https://r-spatial.github.io/spdep/reference/localmoran.html),
+  `spatialreg::lagsarlm()`, and related functions.
 
-- boundary_note:
+- `data`:
 
-  Character string. Present only when `disputed = "flag"`. Contains
-  documentation of which units involve disputed or special
-  administrative boundaries.
+  The `sf` object used to build the weights. Identical to the input `x`
+  when `disputed = "include"`. When any units are excluded this is the
+  subsetted `sf`, always in row-for-row alignment with `nb` and `listw`.
+  Always use `w$data` rather than the original input when mapping or
+  attaching analysis results.
 
-The output is a complete spatial weights structure for use in spatial
-autocorrelation tests (Moran's I), local indicators of spatial
-association (LISA), and spatial regression models (SAR, SEM, etc.). The
-`nb` defines the neighbour graph; the `listw` provides the
-row-standardized weights matrix.
+## Disputed units
 
-## Pakistan-specific handling
-
-Gilgit-Baltistan and Azad Kashmir might break some spatial statistics.
-The `disputed` argument controls how the Line of Control and special
-administrative boundaries flagged in the OCHA source data are treated,
-offering better control over analytical decisions.
+GB and AJK are present in the OCHA/HDX boundary data and share polygon
+edges with KP and Punjab, so under `disputed = "include"` (the default)
+they participate in the neighbour graph as normal administrative units.
+Use `"exclude_gb"`, `"exclude_ajk"`, or `"exclude_both"` to drop one or
+both units before building the weights. The returned `data` element is
+always the `sf` object actually used to build the weights — identical to
+the input when `disputed = "include"`, subsetted otherwise. Always use
+`w$data` rather than the original input for all subsequent analysis and
+mapping, regardless of which `disputed` option is chosen.
 
 ## Examples
 
 ``` r
 # \donttest{
   districts <- get_districts()
-  w <- pk_neighbors(districts)
 
-  # Calculate Moran's I using spdep
-  moran_result <- spdep::moran.test(districts$area_km2, w$listw)
+  # Default: all units included
+  w <- pk_neighbors(districts)
+  moran_result <- spdep::moran.test(w$data$area_km2, w$listw)
   print(moran_result)
 #> 
 #>  Moran I test under randomisation
 #> 
-#> data:  districts$area_km2  
+#> data:  w$data$area_km2  
 #> weights: w$listw    
 #> 
 #> Moran I statistic standard deviate = 9.7714, p-value < 2.2e-16
@@ -107,15 +115,22 @@ offering better control over analytical decisions.
 #>       0.455579101      -0.006289308       0.002234218 
 #> 
 
-  # Queen contiguity (default)
-  w_queen <- pk_neighbors(districts, style = "queen")
+  # Rook contiguity
+  w_rook <- pk_neighbors(districts, style = "rook")
 
-  # K-nearest neighbours (k=5)
+  # K-nearest neighbours (k = 5)
   w_knn <- pk_neighbors(districts, style = "knn", k = 5)
 #> Warning: st_centroid assumes attributes are constant over geometries
 
-  # Flag disputed boundaries for documentation
-  w_flagged <- pk_neighbors(districts, disputed = "flag")
-  if (!is.null(w_flagged$boundary_note)) cat(w_flagged$boundary_note)
+  # Exclude both GB and AJK for sensitivity analysis
+  w_excl <- pk_neighbors(districts, disputed = "exclude_both")
+  # Use w_excl$data — not the original districts — for subsequent analysis
+  moran_excl <- spdep::moran.test(w_excl$data$area_km2, w_excl$listw)
+
+  # Exclude only Gilgit-Baltistan
+  w_no_gb <- pk_neighbors(districts, disputed = "exclude_gb")
+
+  # Exclude only Azad Jammu & Kashmir
+  w_no_ajk <- pk_neighbors(districts, disputed = "exclude_ajk")
 # }
 ```

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pkmapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,38 +39,47 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.1" id="pkmapr-121">pkmapr 1.2.1<a class="anchor" aria-label="anchor" href="#pkmapr-121"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.3.0" id="pkmapr-130">pkmapr 1.3.0<a class="anchor" aria-label="anchor" href="#pkmapr-130"></a></h2>
+<ul><li>version 1.2.1 is now on CRAN.</li>
+<li>Redesigned <code><a href="../reference/pk_neighbors.html">pk_neighbors()</a></code>: the <code>disputed</code> argument now accepts <code>"include"</code> (default), <code>"exclude_both"</code>, <code>"exclude_gb"</code>, and <code>"exclude_ajk"</code>, giving analysts control over whether GB and AJK participate in the spatial weights structure.</li>
+<li>
+<code><a href="../reference/pk_neighbors.html">pk_neighbors()</a></code> now returns a <code>data</code> element containing the <code>sf</code> object used to build the weights, always in row-for-row alignment with <code>nb</code> and <code>listw</code>.</li>
+<li>Also polished all three vignettes.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.2.1" id="pkmapr-121">pkmapr 1.2.1<a class="anchor" aria-label="anchor" href="#pkmapr-121"></a></h2><p class="text-muted">CRAN release: 2026-05-13</p>
 <ul><li>Added missing <code>\value</code> tags to exported functions.</li>
 <li>Enhanced documentation with output structure and meaning.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.0" id="pkmapr-v120">pkmapr v1.2.0<a class="anchor" aria-label="anchor" href="#pkmapr-v120"></a></h2>
-<ul><li>Added extensive tests.</li>
-<li>Test coverage now at ~80%.</li>
+<h2 class="pkg-version" data-toc-text="1.2.0" id="pkmapr-120">pkmapr 1.2.0<a class="anchor" aria-label="anchor" href="#pkmapr-120"></a></h2>
+<ul><li>Added extensive tests. Test coverage now at ~80%.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.1.1" id="pkmapr-v111">pkmapr v1.1.1<a class="anchor" aria-label="anchor" href="#pkmapr-v111"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.1.1" id="pkmapr-111">pkmapr 1.1.1<a class="anchor" aria-label="anchor" href="#pkmapr-111"></a></h2>
 <ul><li>No functional changes.</li>
-<li>Added single quote marks to programs in description.</li>
+<li>Added single quote marks to package names in DESCRIPTION.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.1.0" id="pkmapr-v110">pkmapr v1.1.0<a class="anchor" aria-label="anchor" href="#pkmapr-v110"></a></h2>
-<ul><li>Removed <code>simplified</code> parameter (data is now always the simplified version).</li>
-<li>Removed <code>refresh</code> parameter (data is now embedded in the package, no downloading).</li>
+<h2 class="pkg-version" data-toc-text="1.1.0" id="pkmapr-110">pkmapr 1.1.0<a class="anchor" aria-label="anchor" href="#pkmapr-110"></a></h2>
+<ul><li>Removed <code>simplified</code> parameter; data is now always the simplified version.</li>
+<li>Removed <code>refresh</code> parameter; data is now embedded in the package with no downloading required.</li>
 <li>Removed <code>pkmapr_cache_info()</code> and <code>pkmapr_clear_cache()</code>.</li>
 <li>Package size reduced.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.0.0" id="pkmapr-v100">pkmapr v1.0.0<a class="anchor" aria-label="anchor" href="#pkmapr-v100"></a></h2>
-<ul><li>Testing edge cases.</li>
-<li>First stable release.</li>
+<h2 class="pkg-version" data-toc-text="1.0.0" id="pkmapr-100">pkmapr 1.0.0<a class="anchor" aria-label="anchor" href="#pkmapr-100"></a></h2>
+<ul><li>First stable release.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.3.0" id="pkmapr-v030">pkmapr v0.3.0<a class="anchor" aria-label="anchor" href="#pkmapr-v030"></a></h2>
-<ul><li>New functions: <code><a href="../reference/pk_version.html">pk_version()</a></code> checks installed version against latest GitHub release, <code><a href="../reference/pk_search.html">pk_search()</a></code> searches across all admin levels with optional fuzzy matching</li>
-<li>Enhancements: Province and district filters are now case-insensitive, error messages show valid options when a filter fails, whitespace is automatically trimmed from filter inputs</li>
-<li>Documentation: Added notes about case insensitivity, fuzzy matching, and also updated examples to show case-insensitive usage</li>
-<li>Dependencies: Added <code>jsonlite</code> to Imports (used by <code><a href="../reference/pk_version.html">pk_version()</a></code>)</li>
+<h2 class="pkg-version" data-toc-text="0.3.0" id="pkmapr-030">pkmapr 0.3.0<a class="anchor" aria-label="anchor" href="#pkmapr-030"></a></h2>
+<ul><li>New function <code><a href="../reference/pk_version.html">pk_version()</a></code>: checks the installed version against the latest GitHub release.</li>
+<li>New function <code><a href="../reference/pk_search.html">pk_search()</a></code>: searches across all admin levels with optional fuzzy matching.</li>
+<li>Province and district filters are now case-insensitive.</li>
+<li>Error messages now show valid options when a filter fails.</li>
+<li>Whitespace is automatically trimmed from filter inputs.</li>
+<li>Documentation updated to reflect case-insensitive and fuzzy matching usage.</li>
+<li>Added <code>jsonlite</code> to Imports.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="pkmapr-020">pkmapr 0.2.0<a class="anchor" aria-label="anchor" href="#pkmapr-020"></a></h2>
@@ -80,7 +89,7 @@
 <li>Improved vignettes and function documentation.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.1" id="pkmapr-01">pkmapr 0.1.<a class="anchor" aria-label="anchor" href="#pkmapr-01"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.1.0" id="pkmapr-010">pkmapr 0.1.0<a class="anchor" aria-label="anchor" href="#pkmapr-010"></a></h2>
 <ul><li>Initial release.</li>
 </ul></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -34,8 +34,8 @@ Returns invisibly a list (class "list") with the following components:
 ``` r
 # \donttest{
 pk_version()
-#> Installed version: 1.2.1 
-#> Latest version:    1.2.1 
+#> Installed version: 1.3.0 
+#> Latest version:    1.3.0 
 #> You have the latest version
 
 # Silent mode for programmatic use

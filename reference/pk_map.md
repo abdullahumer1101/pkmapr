@@ -1,7 +1,6 @@
-# Produces a ggplot2 map for rapid exploratory visualisation. Returns a ggplot object that can be extended with standard ggplot2 layers.
+# Produces a ggplot2 map for rapid exploratory visualisation.
 
-Produces a ggplot2 map for rapid exploratory visualisation. Returns a
-ggplot object that can be extended with standard ggplot2 layers.
+Produces a ggplot2 map for rapid exploratory visualisation.
 
 ## Usage
 
