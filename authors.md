@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/abdullahumer1101/pkmapr/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/abdullahumer1101/pkmapr/blob/v1.3.0/inst/CITATION)
 
 Umer, A. (2026). pkmapr: Pakistan Spatial Data Toolkit. R package
 version 1.2.1. https://doi.org/10.32614/CRAN.package.pkmapr
