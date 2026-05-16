@@ -33,7 +33,9 @@ remotes::install_github("abdullahumer1101/pkmapr")
 citation("pkmapr")
 ```
 
-Or cite directly. For the CRAN release:
+Or cite directly.
+
+For the CRAN release:
 
 > Umer, A. (2026). pkmapr: Pakistan Spatial Data Toolkit. R package
 > version 1.2.1. <https://doi.org/10.32614/CRAN.package.pkmapr>
@@ -42,6 +44,11 @@ For development releases archived on Zenodo:
 
 > Umer, A. (2026). pkmapr: Pakistan Spatial Data Toolkit. Zenodo.
 > <https://doi.org/10.5281/zenodo.19769542>
+
+## See also
+
+- For census indicators from the Pakistan Population Census 2023, see
+  [PakPC2023](https://cran.r-project.org/package=PakPC2023).
 
 # Package index
 

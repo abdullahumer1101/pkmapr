@@ -8,7 +8,7 @@ direct use with `spdep` and `spatialreg`.
 ``` r
 pk_neighbors(
   x,
-  style = c("queen", "rook", "knn"),
+  style = c("queen", "rook", "knn", "idw"),
   k = NULL,
   disputed = c("include", "exclude_both", "exclude_gb", "exclude_ajk")
 )
@@ -26,7 +26,8 @@ pk_neighbors(
 - style:
 
   Character. Neighbour definition: `"queen"` (shared boundary point,
-  default), `"rook"` (shared edge), or `"knn"` (k nearest centroids).
+  default), `"rook"` (shared edge), `"knn"` (k nearest centroids), or
+  `"idw"` (inverse distance weights).
 
 - k:
 
@@ -120,6 +121,10 @@ mapping, regardless of which `disputed` option is chosen.
 
   # K-nearest neighbours (k = 5)
   w_knn <- pk_neighbors(districts, style = "knn", k = 5)
+#> Warning: st_centroid assumes attributes are constant over geometries
+
+  # Inverse distance weights
+  w_idw <- pk_neighbors(districts, style = "idw")
 #> Warning: st_centroid assumes attributes are constant over geometries
 
   # Exclude both GB and AJK for sensitivity analysis

@@ -34,14 +34,15 @@ Returns invisibly a list (class "list") with the following components:
 ``` r
 # \donttest{
 pk_version()
-#> Installed version: 1.3.0 
+#> Installed version: 1.4.0 
 #> Latest version:    1.3.0 
-#> You have the latest version
+#> Update available! Run: remotes::install_github('abdullahumer1101/pkmapr')
 
 # Silent mode for programmatic use
 vers <- pk_version(quiet = TRUE)
 if (!is.na(vers$latest) && vers$installed != vers$latest) {
   message("Update recommended!")
 }
+#> Update recommended!
 # }
 ```
