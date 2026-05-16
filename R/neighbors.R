@@ -14,10 +14,12 @@
 #' `w$data` rather than the original input for all subsequent analysis and
 #' mapping, regardless of which `disputed` option is chosen.
 #'
+#' @importFrom stats dist
 #' @param x An `sf` object with polygon geometries, typically the output of
 #'   `get_districts()` or `get_provinces()`.
 #' @param style Character. Neighbour definition: `"queen"` (shared boundary
-#'   point, default), `"rook"` (shared edge), or `"knn"` (k nearest centroids).
+#'   point, default), `"rook"` (shared edge), `"knn"` (k nearest centroids),
+#'   or `"idw"` (inverse distance weights).
 #' @param k Integer. Number of nearest neighbours. Required when
 #'   `style = "knn"`.
 #' @param disputed Character. Controls whether Gilgit-Baltistan and/or
@@ -60,6 +62,9 @@
 #'   # K-nearest neighbours (k = 5)
 #'   w_knn <- pk_neighbors(districts, style = "knn", k = 5)
 #'
+#'   # Inverse distance weights
+#'   w_idw <- pk_neighbors(districts, style = "idw")
+#'
 #'   # Exclude both GB and AJK for sensitivity analysis
 #'   w_excl <- pk_neighbors(districts, disputed = "exclude_both")
 #'   # Use w_excl$data — not the original districts — for subsequent analysis
@@ -72,8 +77,7 @@
 #'   w_no_ajk <- pk_neighbors(districts, disputed = "exclude_ajk")
 #' }
 pk_neighbors <- function(x,
-                         style    = c("queen", "rook", "knn"),
-                         k        = NULL,
+                         style    = c("queen", "rook", "knn", "idw"),                         k        = NULL,
                          disputed = c("include",
                                       "exclude_both",
                                       "exclude_gb",
@@ -119,6 +123,15 @@ pk_neighbors <- function(x,
     if (is.null(k)) cli::cli_abort("{.arg k} is required when style = 'knn'.")
     coords <- sf::st_coordinates(sf::st_centroid(sf::st_transform(x, 32642)))
     nb     <- spdep::knn2nb(spdep::knearneigh(coords, k = k))
+
+  } else if (style == "idw") {
+    coords <- sf::st_coordinates(sf::st_centroid(sf::st_transform(x, 32642)))
+    dists  <- as.matrix(dist(coords))
+    diag(dists) <- Inf
+    dists_inv <- 1 / dists
+    listw <- spdep::mat2listw(dists_inv, style = "W", zero.policy = TRUE)
+    nb    <- listw$neighbours
+    return(list(nb = nb, listw = listw, data = x))
 
   } else {
     nb      <- spdep::poly2nb(x, queen = (style == "queen"), snap = 1e-3)

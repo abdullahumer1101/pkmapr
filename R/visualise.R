@@ -5,6 +5,10 @@
 #'   produces an outline map.
 #' @param title Character. Map title. NULL for no title.
 #' @param ... Additional arguments passed to \code{ggplot2::geom_sf()}.
+#' @param palette Character. Viridis palette option. One of "viridis" (default),
+#'   "magma", "plasma", "inferno", or "cividis".
+#' @param breaks Numeric vector. Custom legend break points. NULL (default)
+#'   lets ggplot2 choose automatically.
 #' @return Returns a ggplot object (class "gg" and "ggplot") representing
 #'   a choropleth map.
 #'
@@ -24,7 +28,11 @@
 #'
 #' # Choropleth map with fill variable
 #' pk_map(get_provinces(), fill = "area_km2", title = "Province areas")
-pk_map <- function(x, fill = NULL, title = NULL, ...) {
+pk_map <- function(x,
+                   fill = NULL,
+                   title = NULL,
+                   palette = "viridis",
+                   breaks = NULL, ...) {
   rlang::check_installed("ggplot2", reason = "to use pk_map()")
 
   if (is.null(fill)) {
@@ -34,9 +42,9 @@ pk_map <- function(x, fill = NULL, title = NULL, ...) {
   } else {
     p <- ggplot2::ggplot(x, ggplot2::aes(fill = .data[[fill]])) +
       ggplot2::geom_sf(color = "white", linewidth = 0.3, ...) +
-      ggplot2::scale_fill_viridis_c(na.value = "grey80")
-  }
-
+      ggplot2::scale_fill_viridis_c(option = palette,
+                                    breaks = breaks,
+                                    na.value = "grey80")  }
   p + ggplot2::theme_void() + ggplot2::labs(title = title)
 }
 
