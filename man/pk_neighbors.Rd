@@ -6,7 +6,7 @@
 \usage{
 pk_neighbors(
   x,
-  style = c("queen", "rook", "knn"),
+  style = c("queen", "rook", "knn", "idw"),
   k = NULL,
   disputed = c("include", "exclude_both", "exclude_gb", "exclude_ajk")
 )
@@ -16,7 +16,8 @@ pk_neighbors(
 \code{get_districts()} or \code{get_provinces()}.}
 
 \item{style}{Character. Neighbour definition: \code{"queen"} (shared boundary
-point, default), \code{"rook"} (shared edge), or \code{"knn"} (k nearest centroids).}
+point, default), \code{"rook"} (shared edge), \code{"knn"} (k nearest centroids),
+or \code{"idw"} (inverse distance weights).}
 
 \item{k}{Integer. Number of nearest neighbours. Required when
 \code{style = "knn"}.}
@@ -77,6 +78,9 @@ mapping, regardless of which \code{disputed} option is chosen.
 
   # K-nearest neighbours (k = 5)
   w_knn <- pk_neighbors(districts, style = "knn", k = 5)
+
+  # Inverse distance weights
+  w_idw <- pk_neighbors(districts, style = "idw")
 
   # Exclude both GB and AJK for sensitivity analysis
   w_excl <- pk_neighbors(districts, disputed = "exclude_both")

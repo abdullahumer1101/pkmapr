@@ -58,20 +58,19 @@ that works, check that your data has the expected column names.
 ``` r
 # Get bounding box for Lahore district
 bb <- pk_bbox("Lahore", level = "district")
-#> Error in getter(simplified = TRUE): unused argument (simplified = TRUE)
 print(bb)
-#> Error: object 'bb' not found
+#>     xmin     ymin     xmax     ymax 
+#> 74.00430 31.25733 74.64111 31.71661 
 
 # Use with ggplot2
 # \donttest{
   library(ggplot2)
   districts <- get_districts()
   bb_punjab <- pk_bbox("Punjab", level = "province")
-#> Error in getter(simplified = TRUE): unused argument (simplified = TRUE)
   ggplot() +
     geom_sf(data = districts) +
     coord_sf(xlim = c(bb_punjab["xmin"], bb_punjab["xmax"]),
              ylim = c(bb_punjab["ymin"], bb_punjab["ymax"]))
-#> Error: object 'bb_punjab' not found
+
 # }
 ```

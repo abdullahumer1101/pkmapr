@@ -34,8 +34,8 @@ Returns invisibly a list (class "list") with the following components:
 ``` r
 # \donttest{
 pk_version()
-#> Installed version: 1.2.0 
-#> Latest version:    1.2.1 
+#> Installed version: 1.4.0 
+#> Latest version:    1.3.0 
 #> Update available! Run: remotes::install_github('abdullahumer1101/pkmapr')
 
 # Silent mode for programmatic use

@@ -5,7 +5,7 @@ Produces a ggplot2 map for rapid exploratory visualisation.
 ## Usage
 
 ``` r
-pk_map(x, fill = NULL, title = NULL, ...)
+pk_map(x, fill = NULL, title = NULL, palette = "viridis", breaks = NULL, ...)
 ```
 
 ## Arguments
@@ -22,6 +22,16 @@ pk_map(x, fill = NULL, title = NULL, ...)
 - title:
 
   Character. Map title. NULL for no title.
+
+- palette:
+
+  Character. Viridis palette option. One of "viridis" (default),
+  "magma", "plasma", "inferno", or "cividis".
+
+- breaks:
+
+  Numeric vector. Custom legend break points. NULL (default) lets
+  ggplot2 choose automatically.
 
 - ...:
 

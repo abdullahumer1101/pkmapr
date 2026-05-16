@@ -59,3 +59,7 @@ For development releases archived on Zenodo:
 
 > Umer, A. (2026). pkmapr: Pakistan Spatial Data Toolkit. Zenodo.
 > <https://doi.org/10.5281/zenodo.19769542>
+
+
+## See also
+* For census indicators from the Pakistan Population Census 2023, see [PakPC2023](https://cran.r-project.org/package=PakPC2023).

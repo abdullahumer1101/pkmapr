@@ -1,5 +1,16 @@
 # Changelog
 
+## pkmapr 1.4.0
+
+- Added `palette` and `breaks` arguments to
+  [`pk_map()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_map.md)
+  for control over choropleth colour scales and legend break points.
+- Added `gains`style = “idw” to
+  [`pk_neighbors()`](https://abdullahumer1101.github.io/pkmapr/reference/pk_neighbors.md)
+  for inverse distance weights.
+- Added cross-reference to PakPC2023 (Yaseen et al.) for census
+  indicator data.
+
 ## pkmapr 1.3.0
 
 - version 1.2.1 is now on CRAN.

@@ -1,6 +1,6 @@
 Package: pkmapr
 Title: Pakistan Spatial Data Toolkit
-Version: 1.3.0
+Version: 1.4.0
 Depends: R (>= 4.1.0)
 Authors@R:
     person("Abdullah Umer", email = "abdullahumer1101@gmail.com",
@@ -35,7 +35,8 @@ Suggests:
     knitr,
     readr,
     rmarkdown,
-    spelling
+    spelling, 
+    PakPC2023
 VignetteBuilder: knitr
 URL: https://cran.r-project.org/package=pkmapr,
     https://abdullahumer1101.github.io/pkmapr/,

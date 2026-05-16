@@ -8,7 +8,7 @@ direct use with `spdep` and `spatialreg`.
 ``` r
 pk_neighbors(
   x,
-  style = c("queen", "rook", "knn"),
+  style = c("queen", "rook", "knn", "idw"),
   k = NULL,
   disputed = c("include", "exclude_both", "exclude_gb", "exclude_ajk")
 )
@@ -26,7 +26,8 @@ pk_neighbors(
 - style:
 
   Character. Neighbour definition: `"queen"` (shared boundary point,
-  default), `"rook"` (shared edge), or `"knn"` (k nearest centroids).
+  default), `"rook"` (shared edge), `"knn"` (k nearest centroids), or
+  `"idw"` (inverse distance weights).
 
 - k:
 
@@ -102,9 +103,19 @@ mapping, regardless of which `disputed` option is chosen.
   # Default: all units included
   w <- pk_neighbors(districts)
   moran_result <- spdep::moran.test(w$data$area_km2, w$listw)
-#> Error in spdep::moran.test(w$data$area_km2, w$listw): w$data$area_km2 is not a numeric vector
   print(moran_result)
-#> Error: object 'moran_result' not found
+#> 
+#>  Moran I test under randomisation
+#> 
+#> data:  w$data$area_km2  
+#> weights: w$listw    
+#> 
+#> Moran I statistic standard deviate = 9.7714, p-value < 2.2e-16
+#> alternative hypothesis: greater
+#> sample estimates:
+#> Moran I statistic       Expectation          Variance 
+#>       0.455579101      -0.006289308       0.002234218 
+#> 
 
   # Rook contiguity
   w_rook <- pk_neighbors(districts, style = "rook")
@@ -113,23 +124,19 @@ mapping, regardless of which `disputed` option is chosen.
   w_knn <- pk_neighbors(districts, style = "knn", k = 5)
 #> Warning: st_centroid assumes attributes are constant over geometries
 
+  # Inverse distance weights
+  w_idw <- pk_neighbors(districts, style = "idw")
+#> Warning: st_centroid assumes attributes are constant over geometries
+
   # Exclude both GB and AJK for sensitivity analysis
   w_excl <- pk_neighbors(districts, disputed = "exclude_both")
-#> Error in pk_neighbors(districts, disputed = "exclude_both"): `disputed` must be one of "exclude", "include", or "flag", not
-#> "exclude_both".
   # Use w_excl$data — not the original districts — for subsequent analysis
   moran_excl <- spdep::moran.test(w_excl$data$area_km2, w_excl$listw)
-#> Error: object 'w_excl' not found
 
   # Exclude only Gilgit-Baltistan
   w_no_gb <- pk_neighbors(districts, disputed = "exclude_gb")
-#> Error in pk_neighbors(districts, disputed = "exclude_gb"): `disputed` must be one of "exclude", "include", or "flag", not
-#> "exclude_gb".
-#> ℹ Did you mean "exclude"?
 
   # Exclude only Azad Jammu & Kashmir
   w_no_ajk <- pk_neighbors(districts, disputed = "exclude_ajk")
-#> Error in pk_neighbors(districts, disputed = "exclude_ajk"): `disputed` must be one of "exclude", "include", or "flag", not
-#> "exclude_ajk".
 # }
 ```

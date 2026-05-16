@@ -4,7 +4,7 @@
 \alias{pk_map}
 \title{Produces a ggplot2 map for rapid exploratory visualisation.}
 \usage{
-pk_map(x, fill = NULL, title = NULL, ...)
+pk_map(x, fill = NULL, title = NULL, palette = "viridis", breaks = NULL, ...)
 }
 \arguments{
 \item{x}{An sf object.}
@@ -13,6 +13,12 @@ pk_map(x, fill = NULL, title = NULL, ...)
 produces an outline map.}
 
 \item{title}{Character. Map title. NULL for no title.}
+
+\item{palette}{Character. Viridis palette option. One of "viridis" (default),
+"magma", "plasma", "inferno", or "cividis".}
+
+\item{breaks}{Numeric vector. Custom legend break points. NULL (default)
+lets ggplot2 choose automatically.}
 
 \item{...}{Additional arguments passed to \code{ggplot2::geom_sf()}.}
 }

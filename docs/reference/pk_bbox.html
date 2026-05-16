@@ -11,7 +11,7 @@ spatial data."><meta name="google-site-verification" content="g3XYDIHI4F1mvCqYwY
 
     <a class="navbar-brand me-2" href="../index.html">pkmapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,21 +99,20 @@ If that works, check that your data has the expected column names.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Get bounding box for Lahore district</span></span></span>
 <span class="r-in"><span><span class="va">bb</span> <span class="op">&lt;-</span> <span class="fu">pk_bbox</span><span class="op">(</span><span class="st">"Lahore"</span>, level <span class="op">=</span> <span class="st">"district"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in getter(simplified = TRUE):</span> unused argument (simplified = TRUE)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'bb' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     xmin     ymin     xmax     ymax </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74.00430 31.25733 74.64111 31.71661 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use with ggplot2</span></span></span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_districts.html">get_districts</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">bb_punjab</span> <span class="op">&lt;-</span> <span class="fu">pk_bbox</span><span class="op">(</span><span class="st">"Punjab"</span>, level <span class="op">=</span> <span class="st">"province"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in getter(simplified = TRUE):</span> unused argument (simplified = TRUE)</span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">districts</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">bb_punjab</span><span class="op">[</span><span class="st">"xmin"</span><span class="op">]</span>, <span class="va">bb_punjab</span><span class="op">[</span><span class="st">"xmax"</span><span class="op">]</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>             ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">bb_punjab</span><span class="op">[</span><span class="st">"ymin"</span><span class="op">]</span>, <span class="va">bb_punjab</span><span class="op">[</span><span class="st">"ymax"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'bb_punjab' not found</span>
+<span class="r-plt img"><img src="pk_bbox-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

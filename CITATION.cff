@@ -3,7 +3,7 @@ message: "To cite package 'pkmapr' in publications use:"
 type: software
 license: GPL-3.0-only
 title: "pkmapr: Pakistan Spatial Data Toolkit"
-version: 1.3.0
+version: 1.4.0
 abstract: "Provides a tidy interface to Pakistan's official administrative
   boundary data from OCHA. Spatial data at country, province, district, and
   tehsil levels are embedded in the package as sf objects compatible with the
